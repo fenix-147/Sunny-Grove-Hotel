@@ -1,0 +1,182 @@
+{
+	"$schema": "https://schemas.wp.org/wp/6.6/theme.json",
+	"version": 3,
+	"settings": {
+		"appearanceTools": true,
+		"useRootPaddingAwareAlignments": true,
+		"layout": {
+			"contentSize": "760px",
+			"wideSize": "1200px"
+		},
+		"color": {
+			"defaultPalette": false,
+			"defaultGradients": false,
+			"defaultDuotone": false,
+			"palette": [
+				{ "slug": "primary", "name": "Xanh ngọc biển (chính)", "color": "#1FA3A3" },
+				{ "slug": "secondary", "name": "Xanh lá vườn (phụ)", "color": "#5E9C76" },
+				{ "slug": "accent", "name": "Vàng nắng (nút đặt phòng)", "color": "#F6B93B" },
+				{ "slug": "sand", "name": "Cát (nền sáng)", "color": "#F7F1E6" },
+				{ "slug": "sand-deep", "name": "Cát đậm (nền khối xen kẽ)", "color": "#EFE5D3" },
+				{ "slug": "ink", "name": "Chữ đậm", "color": "#1E2A2B" },
+				{ "slug": "white", "name": "Trắng", "color": "#FFFFFF" }
+			],
+			"gradients": [
+				{ "slug": "lagoon", "name": "Biển chiều", "gradient": "linear-gradient(135deg, var(--wp--preset--color--primary) 0%, var(--wp--preset--color--secondary) 100%)" },
+				{ "slug": "sunrise", "name": "Nắng sớm", "gradient": "linear-gradient(180deg, var(--wp--preset--color--sand) 0%, var(--wp--preset--color--white) 100%)" }
+			]
+		},
+		"typography": {
+			"defaultFontSizes": false,
+			"fluid": true,
+			"fontFamilies": [
+				{
+					"slug": "heading",
+					"name": "Lora (tiêu đề)",
+					"fontFamily": "Lora, Georgia, 'Times New Roman', serif",
+					"fontFace": [
+						{ "fontFamily": "Lora", "fontWeight": "400 700", "fontStyle": "normal", "fontDisplay": "swap", "src": [ "file:./assets/fonts/lora-vietnamese-wght-normal.woff2" ], "unicodeRange": "U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB" },
+						{ "fontFamily": "Lora", "fontWeight": "400 700", "fontStyle": "normal", "fontDisplay": "swap", "src": [ "file:./assets/fonts/lora-latin-ext-wght-normal.woff2" ], "unicodeRange": "U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF" },
+						{ "fontFamily": "Lora", "fontWeight": "400 700", "fontStyle": "normal", "fontDisplay": "swap", "src": [ "file:./assets/fonts/lora-latin-wght-normal.woff2" ], "unicodeRange": "U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD" }
+					]
+				},
+				{
+					"slug": "body",
+					"name": "Be Vietnam Pro (nội dung)",
+					"fontFamily": "'Be Vietnam Pro', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif",
+					"fontFace": [
+						{ "fontFamily": "Be Vietnam Pro", "fontWeight": "400", "fontStyle": "normal", "fontDisplay": "swap", "src": [ "file:./assets/fonts/be-vietnam-pro-vietnamese-400-normal.woff2" ], "unicodeRange": "U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB" },
+						{ "fontFamily": "Be Vietnam Pro", "fontWeight": "400", "fontStyle": "normal", "fontDisplay": "swap", "src": [ "file:./assets/fonts/be-vietnam-pro-latin-ext-400-normal.woff2" ], "unicodeRange": "U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF" },
+						{ "fontFamily": "Be Vietnam Pro", "fontWeight": "400", "fontStyle": "normal", "fontDisplay": "swap", "src": [ "file:./assets/fonts/be-vietnam-pro-latin-400-normal.woff2" ], "unicodeRange": "U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD" },
+						{ "fontFamily": "Be Vietnam Pro", "fontWeight": "500", "fontStyle": "normal", "fontDisplay": "swap", "src": [ "file:./assets/fonts/be-vietnam-pro-vietnamese-500-normal.woff2" ], "unicodeRange": "U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB" },
+						{ "fontFamily": "Be Vietnam Pro", "fontWeight": "500", "fontStyle": "normal", "fontDisplay": "swap", "src": [ "file:./assets/fonts/be-vietnam-pro-latin-ext-500-normal.woff2" ], "unicodeRange": "U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF" },
+						{ "fontFamily": "Be Vietnam Pro", "fontWeight": "500", "fontStyle": "normal", "fontDisplay": "swap", "src": [ "file:./assets/fonts/be-vietnam-pro-latin-500-normal.woff2" ], "unicodeRange": "U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD" },
+						{ "fontFamily": "Be Vietnam Pro", "fontWeight": "600", "fontStyle": "normal", "fontDisplay": "swap", "src": [ "file:./assets/fonts/be-vietnam-pro-vietnamese-600-normal.woff2" ], "unicodeRange": "U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB" },
+						{ "fontFamily": "Be Vietnam Pro", "fontWeight": "600", "fontStyle": "normal", "fontDisplay": "swap", "src": [ "file:./assets/fonts/be-vietnam-pro-latin-ext-600-normal.woff2" ], "unicodeRange": "U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF" },
+						{ "fontFamily": "Be Vietnam Pro", "fontWeight": "600", "fontStyle": "normal", "fontDisplay": "swap", "src": [ "file:./assets/fonts/be-vietnam-pro-latin-600-normal.woff2" ], "unicodeRange": "U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD" },
+						{ "fontFamily": "Be Vietnam Pro", "fontWeight": "700", "fontStyle": "normal", "fontDisplay": "swap", "src": [ "file:./assets/fonts/be-vietnam-pro-vietnamese-700-normal.woff2" ], "unicodeRange": "U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB" },
+						{ "fontFamily": "Be Vietnam Pro", "fontWeight": "700", "fontStyle": "normal", "fontDisplay": "swap", "src": [ "file:./assets/fonts/be-vietnam-pro-latin-ext-700-normal.woff2" ], "unicodeRange": "U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF" },
+						{ "fontFamily": "Be Vietnam Pro", "fontWeight": "700", "fontStyle": "normal", "fontDisplay": "swap", "src": [ "file:./assets/fonts/be-vietnam-pro-latin-700-normal.woff2" ], "unicodeRange": "U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD" }
+					]
+				}
+			],
+			"fontSizes": [
+				{ "slug": "small", "name": "Nhỏ", "size": "0.9375rem", "fluid": { "min": "0.875rem", "max": "0.9375rem" } },
+				{ "slug": "medium", "name": "Vừa", "size": "1.0625rem", "fluid": { "min": "1rem", "max": "1.0625rem" } },
+				{ "slug": "large", "name": "Lớn", "size": "1.375rem", "fluid": { "min": "1.2rem", "max": "1.5rem" } },
+				{ "slug": "x-large", "name": "Rất lớn", "size": "2rem", "fluid": { "min": "1.6rem", "max": "2.25rem" } },
+				{ "slug": "xx-large", "name": "Tiêu đề khối", "size": "2.75rem", "fluid": { "min": "2.1rem", "max": "3.25rem" } },
+				{ "slug": "huge", "name": "Tiêu đề hero", "size": "4rem", "fluid": { "min": "2.5rem", "max": "4.5rem" } }
+			]
+		},
+		"spacing": {
+			"units": [ "px", "rem", "%", "vh", "vw" ],
+			"defaultSpacingSizes": false,
+			"spacingSizes": [
+				{ "slug": "20", "name": "2XS", "size": "0.5rem" },
+				{ "slug": "30", "name": "XS", "size": "clamp(0.75rem, 1.5vw, 1rem)" },
+				{ "slug": "40", "name": "S", "size": "clamp(1rem, 2.5vw, 1.5rem)" },
+				{ "slug": "50", "name": "M", "size": "clamp(1.5rem, 3.5vw, 2.5rem)" },
+				{ "slug": "60", "name": "L", "size": "clamp(2.25rem, 5vw, 4rem)" },
+				{ "slug": "70", "name": "XL", "size": "clamp(3rem, 7vw, 6rem)" },
+				{ "slug": "80", "name": "2XL", "size": "clamp(4rem, 10vw, 8rem)" }
+			]
+		},
+		"shadow": {
+			"defaultPresets": false,
+			"presets": [
+				{ "slug": "soft", "name": "Mềm", "shadow": "0 10px 30px rgba(30, 42, 43, 0.08)" },
+				{ "slug": "lift", "name": "Nổi", "shadow": "0 18px 40px rgba(30, 42, 43, 0.14)" }
+			]
+		},
+		"custom": {
+			"radius": { "small": "10px", "medium": "16px", "large": "28px", "pill": "999px" },
+			"headerHeight": "72px",
+			"motion": { "ease": "cubic-bezier(.22, .61, .36, 1)", "duration": "0.7s" },
+			"link": { "color": "color-mix(in srgb, var(--wp--preset--color--primary) 68%, #000)" },
+			"eyebrow": { "color": "color-mix(in srgb, var(--wp--preset--color--secondary) 62%, #000)" }
+		},
+		"blocks": {
+			"core/button": { "border": { "radius": true } }
+		}
+	},
+	"styles": {
+		"color": {
+			"background": "var(--wp--preset--color--sand)",
+			"text": "var(--wp--preset--color--ink)"
+		},
+		"typography": {
+			"fontFamily": "var(--wp--preset--font-family--body)",
+			"fontSize": "var(--wp--preset--font-size--medium)",
+			"lineHeight": "1.65"
+		},
+		"spacing": {
+			"blockGap": "1.25rem",
+			"padding": {
+				"left": "var(--wp--preset--spacing--40)",
+				"right": "var(--wp--preset--spacing--40)"
+			}
+		},
+		"elements": {
+			"link": {
+				"color": { "text": "var(--wp--custom--link--color)" },
+				"typography": { "textDecoration": "underline" },
+				":hover": { "color": { "text": "var(--wp--preset--color--ink)" } },
+				":focus": { "outline": { "color": "var(--wp--preset--color--primary)", "offset": "3px", "style": "solid", "width": "2px" } }
+			},
+			"heading": {
+				"color": { "text": "var(--wp--preset--color--ink)" },
+				"typography": { "fontFamily": "var(--wp--preset--font-family--heading)", "fontWeight": "600", "lineHeight": "1.2", "letterSpacing": "-0.01em" }
+			},
+			"h1": { "typography": { "fontSize": "var(--wp--preset--font-size--huge)", "lineHeight": "1.1" } },
+			"h2": { "typography": { "fontSize": "var(--wp--preset--font-size--xx-large)" } },
+			"h3": { "typography": { "fontSize": "var(--wp--preset--font-size--large)" } },
+			"h4": { "typography": { "fontSize": "var(--wp--preset--font-size--medium)" } },
+			"button": {
+				"color": { "background": "var(--wp--preset--color--accent)", "text": "var(--wp--preset--color--ink)" },
+				"border": { "radius": "var(--wp--custom--radius--pill)", "width": "0" },
+				"spacing": { "padding": { "top": "0.85rem", "bottom": "0.85rem", "left": "1.6rem", "right": "1.6rem" } },
+				"typography": { "fontFamily": "var(--wp--preset--font-family--body)", "fontSize": "var(--wp--preset--font-size--medium)", "fontWeight": "700", "lineHeight": "1.3", "textDecoration": "none" },
+				"shadow": "var(--wp--preset--shadow--soft)",
+				":hover": { "color": { "background": "color-mix(in srgb, var(--wp--preset--color--accent) 85%, #000)", "text": "var(--wp--preset--color--ink)" } },
+				":focus": { "outline": { "color": "var(--wp--preset--color--ink)", "offset": "3px", "style": "solid", "width": "2px" } }
+			},
+			"caption": { "typography": { "fontSize": "var(--wp--preset--font-size--small)" } }
+		},
+		"blocks": {
+			"core/button": {
+				"variations": {
+					"outline": {
+						"color": { "background": "transparent", "text": "currentColor" },
+						"border": { "color": "currentColor", "width": "2px", "style": "solid" },
+						"shadow": "none"
+					}
+				}
+			},
+			"core/post-title": {
+				"elements": { "link": { "color": { "text": "var(--wp--preset--color--ink)" }, "typography": { "textDecoration": "none" } } }
+			},
+			"core/quote": {
+				"border": { "width": "0" },
+				"typography": { "fontFamily": "var(--wp--preset--font-family--heading)", "fontSize": "var(--wp--preset--font-size--large)", "fontStyle": "italic", "lineHeight": "1.5" }
+			},
+			"core/separator": { "color": { "text": "var(--wp--preset--color--sand-deep)" } },
+			"core/post-date": { "typography": { "fontSize": "var(--wp--preset--font-size--small)" } },
+			"core/site-title": {
+				"typography": { "fontFamily": "var(--wp--preset--font-family--heading)", "fontSize": "var(--wp--preset--font-size--large)", "fontWeight": "600" },
+				"elements": { "link": { "color": { "text": "inherit" }, "typography": { "textDecoration": "none" } } }
+			},
+			"core/image": { "border": { "radius": "var(--wp--custom--radius--medium)" } },
+			"core/post-featured-image": { "border": { "radius": "var(--wp--custom--radius--medium)" } },
+			"core/details": { "border": { "radius": "var(--wp--custom--radius--medium)" } },
+			"core/query-pagination": { "typography": { "fontWeight": "600" } }
+		}
+	},
+	"templateParts": [
+		{ "name": "header", "title": "Đầu trang", "area": "header" },
+		{ "name": "footer", "title": "Chân trang", "area": "footer" }
+	],
+	"customTemplates": [
+		{ "name": "page-title", "title": "Trang có tiêu đề", "postTypes": [ "page" ] }
+	]
+}

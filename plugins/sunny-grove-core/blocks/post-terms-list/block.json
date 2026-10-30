@@ -1,0 +1,20 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "sunny-grove/post-terms-list",
+	"title": "Danh sách tiện nghi / nhãn",
+	"category": "sunny-grove",
+	"icon": "yes-alt",
+	"description": "Hiển thị các mục đã tích (ví dụ tiện nghi trong phòng, nhãn địa điểm) dưới dạng danh sách có dấu tích hoặc thẻ nhỏ.",
+	"textdomain": "sunny-grove-core",
+	"usesContext": [ "postId", "postType" ],
+	"attributes": {
+		"taxonomy": { "type": "string", "default": "sg_room_feature" },
+		"variant": { "type": "string", "default": "checks", "enum": [ "checks", "chips" ] },
+		"showTitle": { "type": "boolean", "default": false }
+	},
+	"supports": { "html": false, "spacing": { "margin": true } },
+	"editorScript": "sgc-blocks-editor",
+	"style": "sgc-blocks",
+	"render": "file:./render.php"
+}

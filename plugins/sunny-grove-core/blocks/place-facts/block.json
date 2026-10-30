@@ -1,0 +1,19 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "sunny-grove/place-facts",
+	"title": "Khoảng cách & chỉ đường",
+	"category": "sunny-grove",
+	"icon": "location",
+	"description": "Khoảng cách (km), thời gian và phương tiện di chuyển, dòng so sánh vui và nút mở Google Maps của địa điểm.",
+	"textdomain": "sunny-grove-core",
+	"usesContext": [ "postId", "postType" ],
+	"attributes": {
+		"showCompare": { "type": "boolean", "default": true },
+		"showMap": { "type": "boolean", "default": true }
+	},
+	"supports": { "html": false, "spacing": { "margin": true } },
+	"editorScript": "sgc-blocks-editor",
+	"style": "sgc-blocks",
+	"render": "file:./render.php"
+}

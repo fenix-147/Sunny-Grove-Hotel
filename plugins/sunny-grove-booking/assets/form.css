@@ -1,0 +1,123 @@
+/*
+ * Sunny Grove Booking – giao diện form. Màu, font, bo góc lấy từ theme.json của theme đang dùng (có giá trị dự phòng),
+ * nên form tự đồng bộ khi đổi màu trong Global Styles.
+ */
+.sgb-block,
+.sgb-wrap {
+	--sgb-primary: var(--wp--preset--color--primary, #1fa3a3);
+	--sgb-accent: var(--wp--preset--color--accent, #f6b93b);
+	--sgb-ink: var(--wp--preset--color--ink, #1e2a2b);
+	--sgb-bg: var(--wp--preset--color--white, #fff);
+	--sgb-sand: var(--wp--preset--color--sand, #f7f1e6);
+	--sgb-error: #b42318;
+	--sgb-radius: var(--wp--custom--radius--medium, 14px);
+	font-family: var(--wp--preset--font-family--body, inherit);
+	color: var(--sgb-ink);
+}
+.sgb-wrap {
+	padding: clamp(1.25rem, 3vw, 2.25rem);
+	border-radius: var(--wp--custom--radius--large, 24px);
+	background: var(--sgb-bg);
+	box-shadow: var(--wp--preset--shadow--soft, 0 10px 30px rgba(30, 42, 43, .08));
+}
+.sgb-form { margin: 0; }
+.sgb-grid { display: grid; gap: 1rem 1.25rem; grid-template-columns: 1fr; }
+@media (min-width: 640px) {
+	.sgb-grid { grid-template-columns: 1fr 1fr; }
+	.sgb-field--wide { grid-column: 1 / -1; }
+}
+.sgb-field { display: flex; flex-direction: column; gap: .35rem; min-width: 0; margin: 0; }
+.sgb-field label, .sgb-methods legend { font-weight: 600; font-size: var(--wp--preset--font-size--small, .9375rem); }
+.sgb-req { color: var(--sgb-error); }
+.sgb-input {
+	width: 100%;
+	min-height: 48px;
+	padding: .65rem .9rem;
+	border: 1.5px solid color-mix(in srgb, var(--sgb-ink) 22%, transparent);
+	border-radius: var(--sgb-radius);
+	background: var(--sgb-bg);
+	color: var(--sgb-ink);
+	font: inherit;
+	font-size: max(16px, 1rem); /* tránh iOS tự phóng to khi chạm vào ô */
+	box-sizing: border-box;
+	transition: border-color .2s, box-shadow .2s;
+}
+textarea.sgb-input { min-height: 96px; resize: vertical; }
+.sgb-input:focus { outline: none; border-color: var(--sgb-primary); box-shadow: 0 0 0 3px color-mix(in srgb, var(--sgb-primary) 25%, transparent); }
+.sgb-input[aria-invalid="true"] { border-color: var(--sgb-error); }
+.sgb-error { margin: 0; min-height: 0; color: var(--sgb-error); font-size: .875rem; }
+.sgb-error:empty { display: none; }
+.sgb-hint { margin: .25rem 0 0; font-size: .875rem; opacity: .8; }
+.sgb-hint:empty { display: none; }
+.sgb-privacy { font-size: .875rem; opacity: .85; margin: .75rem 0 1rem; }
+.sgb-methods { border: 0; padding: 0; display: flex; flex-wrap: wrap; gap: .5rem; flex-direction: row; }
+.sgb-methods legend { margin-bottom: .35rem; padding: 0; width: 100%; }
+.sgb-choice { position: relative; display: inline-flex; }
+.sgb-choice input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
+.sgb-choice span {
+	display: inline-flex;
+	align-items: center;
+	min-height: 44px;
+	padding: .4rem 1rem;
+	border: 1.5px solid color-mix(in srgb, var(--sgb-ink) 22%, transparent);
+	border-radius: 999px;
+	font-weight: 600;
+	font-size: .9375rem;
+	transition: background .2s, border-color .2s, color .2s;
+}
+.sgb-choice input:checked + span { background: var(--sgb-primary); border-color: var(--sgb-primary); color: #fff; }
+.sgb-choice input:focus-visible + span { outline: 2px solid var(--sgb-ink); outline-offset: 2px; }
+.sgb-button {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: .4rem;
+	min-height: 52px;
+	padding: .8rem 1.75rem;
+	border: 0;
+	border-radius: 999px;
+	background: var(--sgb-accent);
+	color: var(--sgb-ink);
+	font: inherit;
+	font-weight: 700;
+	text-decoration: none;
+	cursor: pointer;
+	transition: transform .2s, background .2s;
+}
+.sgb-button:hover { transform: translateY(-2px); background: color-mix(in srgb, var(--sgb-accent) 85%, #000); color: var(--sgb-ink); }
+.sgb-button:disabled { opacity: .7; cursor: progress; transform: none; }
+.sgb-button--ghost { background: transparent; border: 2px solid currentColor; }
+.sgb-button--ghost:hover { background: color-mix(in srgb, var(--sgb-ink) 6%, transparent); }
+.sgb-form--full .sgb-button { width: 100%; }
+@media (min-width: 640px) { .sgb-form--full .sgb-button { width: auto; } }
+.sgb-link { margin-top: 1rem; padding: .5rem 0; border: 0; background: none; color: inherit; font: inherit; text-decoration: underline; cursor: pointer; min-height: 44px; }
+.sgb-alert { margin: 0 0 1rem; padding: .75rem 1rem; border-radius: var(--sgb-radius); background: color-mix(in srgb, var(--sgb-error) 10%, transparent); color: var(--sgb-error); font-weight: 600; }
+.sgb-success { padding: .5rem 0; outline: none; }
+.sgb-success__title { font-family: var(--wp--preset--font-family--heading, serif); font-size: var(--wp--preset--font-size--x-large, 1.6rem); line-height: 1.25; margin: 0 0 .75rem; }
+.sgb-success__actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 1rem; }
+.sgb-hp { position: absolute !important; left: -9999px !important; width: 1px; height: 1px; overflow: hidden; }
+
+/* Kiểu Gọn: khung tìm phòng trên ảnh/video */
+.sgb-form--compact { width: 100%; max-width: 980px; margin: var(--wp--preset--spacing--50, 2rem) auto 0; text-align: left; text-shadow: none; }
+.sgb-compact {
+	display: grid;
+	gap: .75rem;
+	grid-template-columns: 1fr 1fr;
+	padding: 1rem;
+	border-radius: var(--wp--custom--radius--large, 24px);
+	background: color-mix(in srgb, var(--sgb-bg) 94%, transparent);
+	color: var(--sgb-ink);
+	box-shadow: 0 18px 50px rgba(0, 0, 0, .18);
+	backdrop-filter: blur(8px);
+}
+.sgb-compact .sgb-field--submit { grid-column: 1 / -1; justify-content: flex-end; }
+.sgb-compact .sgb-button { width: 100%; }
+@media (min-width: 860px) {
+	.sgb-compact { grid-template-columns: 1.2fr 1.2fr .7fr .7fr auto; align-items: end; padding: 1rem 1rem 1rem 1.25rem; }
+	.sgb-compact .sgb-field--submit { grid-column: auto; }
+	.sgb-compact .sgb-button { width: auto; white-space: nowrap; }
+}
+@media (prefers-reduced-motion: reduce) {
+	.sgb-button, .sgb-input, .sgb-choice span { transition: none; }
+	.sgb-button:hover { transform: none; }
+}

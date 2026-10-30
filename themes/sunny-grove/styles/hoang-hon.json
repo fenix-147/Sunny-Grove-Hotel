@@ -1,0 +1,18 @@
+{
+	"$schema": "https://schemas.wp.org/wp/6.6/theme.json",
+	"version": 3,
+	"title": "Hoàng hôn",
+	"settings": {
+		"color": {
+			"palette": [
+				{ "slug": "primary", "name": "Cam hoàng hôn (chính)", "color": "#E07A4F" },
+				{ "slug": "secondary", "name": "Xanh lá vườn (phụ)", "color": "#5E9C76" },
+				{ "slug": "accent", "name": "Vàng nắng (nút đặt phòng)", "color": "#F6B93B" },
+				{ "slug": "sand", "name": "Cát (nền sáng)", "color": "#FBF4EC" },
+				{ "slug": "sand-deep", "name": "Cát đậm (nền khối xen kẽ)", "color": "#F3E3D2" },
+				{ "slug": "ink", "name": "Chữ đậm", "color": "#2B2220" },
+				{ "slug": "white", "name": "Trắng", "color": "#FFFFFF" }
+			]
+		}
+	}
+}

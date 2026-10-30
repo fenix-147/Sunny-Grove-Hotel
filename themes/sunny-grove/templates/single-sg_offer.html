@@ -1,0 +1,51 @@
+<!-- wp:template-part {"slug":"header","tagName":"header","className":"sg-header"} /-->
+
+<!-- wp:group {"tagName":"main","style":{"spacing":{"padding":{"top":"var:preset|spacing|50"}}},"layout":{"type":"constrained"}} -->
+<main class="wp-block-group" style="padding-top:var(--wp--preset--spacing--50)"><!-- wp:columns {"verticalAlignment":"center","align":"wide","className":"sg-single-head","style":{"spacing":{"blockGap":{"left":"var:preset|spacing|60"}}}} -->
+<div class="wp-block-columns alignwide are-vertically-aligned-center sg-single-head"><!-- wp:column {"verticalAlignment":"center","width":"55%"} -->
+<div class="wp-block-column is-vertically-aligned-center" style="flex-basis:55%"><!-- wp:post-featured-image {"aspectRatio":"4/3","sizeSlug":"large","className":"is-style-sg-kenburns"} /--></div>
+<!-- /wp:column -->
+
+<!-- wp:column {"verticalAlignment":"center","width":"45%"} -->
+<div class="wp-block-column is-vertically-aligned-center" style="flex-basis:45%"><!-- wp:paragraph {"className":"sg-hours","metadata":{"bindings":{"content":{"source":"sunny-grove/meta","args":{"key":"badge"}}}}} -->
+<p class="sg-hours"></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:post-title {"level":1} /-->
+
+<!-- wp:paragraph {"className":"sg-price","metadata":{"bindings":{"content":{"source":"sunny-grove/meta","args":{"key":"offer_price"}}}}} -->
+<p class="sg-price"></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph {"className":"sg-old-price","metadata":{"bindings":{"content":{"source":"sunny-grove/meta","args":{"key":"old_price"}}}}} -->
+<p class="sg-old-price"></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph {"className":"sg-meta-line","metadata":{"bindings":{"content":{"source":"sunny-grove/meta","args":{"key":"valid_until"}}}}} -->
+<p class="sg-meta-line"></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:buttons -->
+<div class="wp-block-buttons"><!-- wp:button {"metadata":{"bindings":{"text":{"source":"sunny-grove/label","args":{"key":"offer_book"}},"url":{"source":"sunny-grove/meta","args":{"key":"book_url"}}}}} -->
+<div class="wp-block-button"><a class="wp-block-button__link wp-element-button"></a></div>
+<!-- /wp:button --></div>
+<!-- /wp:buttons --></div>
+<!-- /wp:column --></div>
+<!-- /wp:columns -->
+
+<!-- wp:group {"style":{"spacing":{"margin":{"top":"var:preset|spacing|50"}}},"layout":{"type":"constrained"}} -->
+<div class="wp-block-group" style="margin-top:var(--wp--preset--spacing--50)"><!-- wp:post-content {"layout":{"type":"default"},"className":"sg-prose"} /-->
+
+<!-- wp:heading {"level":3,"metadata":{"bindings":{"content":{"source":"sunny-grove/label","args":{"key":"offer_conditions"}}}}} -->
+<h3 class="wp-block-heading"></h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph {"metadata":{"bindings":{"content":{"source":"sunny-grove/meta","args":{"key":"conditions"}}}}} -->
+<p></p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:group -->
+
+<!-- wp:pattern {"slug":"sunny-grove/offers-other"} /--></main>
+<!-- /wp:group -->
+
+<!-- wp:template-part {"slug":"footer","tagName":"div"} /-->

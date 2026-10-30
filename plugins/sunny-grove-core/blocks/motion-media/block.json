@@ -1,0 +1,23 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "sunny-grove/motion-media",
+	"title": "Ảnh động của thẻ",
+	"category": "sunny-grove",
+	"icon": "format-image",
+	"description": "Ảnh đại diện có hiệu ứng Ken Burns; nếu bài có video ngắn thì tự chạy không tiếng khi cuộn tới. Dùng trong Query Loop.",
+	"textdomain": "sunny-grove-core",
+	"usesContext": [ "postId", "postType" ],
+	"attributes": {
+		"aspectRatio": { "type": "string", "default": "4/3" },
+		"isLink": { "type": "boolean", "default": true },
+		"showVideo": { "type": "boolean", "default": true },
+		"showBadge": { "type": "boolean", "default": false },
+		"sizes": { "type": "string", "default": "(min-width: 1024px) 33vw, (min-width: 600px) 50vw, 100vw" }
+	},
+	"supports": { "html": false, "spacing": { "margin": true } },
+	"editorScript": "sgc-blocks-editor",
+	"style": "sgc-blocks",
+	"viewScript": "sgc-blocks-view",
+	"render": "file:./render.php"
+}

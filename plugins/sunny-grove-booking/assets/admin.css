@@ -1,0 +1,13 @@
+.sgb-badge { display: inline-block; padding: 2px 10px; border-radius: 999px; font-size: 12px; font-weight: 600; line-height: 1.8; white-space: nowrap; }
+.sgb-badge--new { background: #fff4d6; color: #7a5200; }
+.sgb-badge--contacted { background: #dff2f2; color: #0d5c5c; }
+.sgb-badge--confirmed { background: #def7e5; color: #146c2e; }
+.sgb-badge--cancelled { background: #f1f1f1; color: #646970; text-decoration: line-through; }
+.column-sgb_status { width: 110px; }
+.column-sgb_lang { width: 70px; }
+.sgb-status-choice { display: block; margin: 6px 0; }
+.sgb-details th { width: 200px; }
+.sgb-code { font-size: 14px; }
+.sgb-error-text { color: #b42318; }
+.sgb-settings .sgb-group-title { margin-top: 28px; padding-top: 12px; border-top: 1px solid #dcdcde; }
+.sgb-settings code { white-space: normal; line-height: 2; }

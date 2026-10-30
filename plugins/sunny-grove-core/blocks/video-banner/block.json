@@ -1,0 +1,26 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "sunny-grove/video-banner",
+	"title": "Banner video",
+	"category": "sunny-grove",
+	"icon": "format-video",
+	"description": "Banner đầu trang có video nền tự chạy (không tiếng) và ảnh poster dự phòng. Video chỉ tải sau khi trang hiển thị xong.",
+	"keywords": [ "hero", "video", "banner", "cover" ],
+	"textdomain": "sunny-grove-core",
+	"attributes": {
+		"videoUrl": { "type": "string", "default": "" },
+		"videoMobileUrl": { "type": "string", "default": "" },
+		"posterId": { "type": "number", "default": 0 },
+		"posterUrl": { "type": "string", "default": "" },
+		"overlay": { "type": "number", "default": 35 },
+		"height": { "type": "string", "default": "large", "enum": [ "full", "large", "medium", "small" ] },
+		"contentPosition": { "type": "string", "default": "center", "enum": [ "center", "bottom" ] },
+		"align": { "type": "string", "default": "full" }
+	},
+	"supports": { "align": [ "wide", "full" ], "html": false, "anchor": true },
+	"editorScript": "sgc-blocks-editor",
+	"style": "sgc-blocks",
+	"viewScript": "sgc-blocks-view",
+	"render": "file:./render.php"
+}

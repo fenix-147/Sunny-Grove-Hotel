@@ -1,0 +1,19 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "sunny-grove/menu",
+	"title": "Menu song ngữ",
+	"category": "sunny-grove",
+	"icon": "menu",
+	"description": "Hiển thị menu tại vị trí đã chọn (Giao diện → Menu). Polylang tự đổi menu theo ngôn ngữ. Trên điện thoại có nút mở menu.",
+	"textdomain": "sunny-grove-core",
+	"attributes": {
+		"location": { "type": "string", "default": "primary" },
+		"mobileToggle": { "type": "boolean", "default": true }
+	},
+	"supports": { "html": false, "spacing": { "margin": true } },
+	"editorScript": "sgc-blocks-editor",
+	"style": "sgc-blocks",
+	"viewScript": "sgc-blocks-view",
+	"render": "file:./render.php"
+}

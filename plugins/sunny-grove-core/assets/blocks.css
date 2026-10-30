@@ -1,0 +1,417 @@
+/*
+ * Sunny Grove – giao diện các block động.
+ * Toàn bộ màu, font, khoảng cách lấy từ biến của theme.json (--wp--preset--*), có giá trị dự phòng.
+ */
+
+.sg-banner,
+.sg-media,
+.sg-gallery,
+.sg-filter,
+.sg-contact,
+.sg-facts,
+.sg-place,
+.sg-terms,
+.sg-lang,
+.sg-menu {
+	--sg-primary: var(--wp--preset--color--primary, #1fa3a3);
+	--sg-secondary: var(--wp--preset--color--secondary, #5e9c76);
+	--sg-accent: var(--wp--preset--color--accent, #f6b93b);
+	--sg-sand: var(--wp--preset--color--sand, #f7f1e6);
+	--sg-ink: var(--wp--preset--color--ink, #1e2a2b);
+	--sg-white: var(--wp--preset--color--white, #fff);
+	--sg-radius: var(--wp--custom--radius--medium, 16px);
+	--sg-radius-lg: var(--wp--custom--radius--large, 28px);
+	--sg-ease: cubic-bezier(.22, .61, .36, 1);
+}
+
+/* ---------- Banner video ---------- */
+.sg-banner {
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	overflow: hidden;
+	color: var(--sg-white);
+	background: var(--sg-ink);
+	isolation: isolate;
+	margin-block-start: 0;
+}
+.sg-banner--full { min-height: 100svh; }
+.sg-banner--large { min-height: min(86svh, 820px); }
+.sg-banner--medium { min-height: min(62svh, 560px); }
+.sg-banner--small { min-height: min(44svh, 400px); }
+.sg-banner--bottom { align-items: flex-end; }
+.sg-banner__media {
+	position: absolute;
+	inset: 0;
+	z-index: -1;
+}
+.sg-banner__media::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+	background: linear-gradient(180deg, rgba(10, 30, 32, calc(var(--sg-overlay, .35) * .6)) 0%, rgba(10, 30, 32, var(--sg-overlay, .35)) 70%, rgba(10, 30, 32, calc(var(--sg-overlay, .35) + .15)) 100%);
+}
+.sg-banner__poster,
+.sg-banner__video {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+.sg-banner__poster { animation: sg-kenburns 24s var(--sg-ease) infinite alternate; }
+.sg-banner__video {
+	opacity: 0;
+	transition: opacity 1.2s var(--sg-ease);
+}
+.sg-banner__video.is-playing { opacity: 1; }
+.sg-banner__content {
+	position: relative;
+	width: 100%;
+	max-width: var(--wp--style--global--wide-size, 1200px);
+	padding: var(--wp--preset--spacing--60, 4rem) var(--wp--preset--spacing--40, 1.25rem);
+	text-align: center;
+	text-shadow: 0 1px 18px rgba(0, 0, 0, .25);
+}
+.sg-banner--bottom .sg-banner__content { padding-bottom: var(--wp--preset--spacing--70, 5rem); }
+.sg-banner__content > * { margin-left: auto; margin-right: auto; }
+.sg-banner__content :where(h1, h2, h3, p) { color: inherit; }
+.sg-banner__toggle {
+	position: absolute;
+	right: var(--wp--preset--spacing--40, 1.25rem);
+	bottom: var(--wp--preset--spacing--40, 1.25rem);
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 48px;
+	height: 48px;
+	border: 1px solid rgba(255, 255, 255, .5);
+	border-radius: 999px;
+	background: rgba(10, 30, 32, .35);
+	color: #fff;
+	cursor: pointer;
+	backdrop-filter: blur(6px);
+}
+.sg-banner__toggle:hover { background: rgba(10, 30, 32, .6); }
+.sg-banner__toggle .sg-banner__icon-play,
+.sg-banner__toggle.is-paused .sg-banner__icon-pause { display: none; }
+.sg-banner__toggle.is-paused .sg-banner__icon-play { display: inline-flex; }
+
+@keyframes sg-kenburns {
+	from { transform: scale(1) translate3d(0, 0, 0); }
+	to { transform: scale(1.08) translate3d(-1.5%, -1%, 0); }
+}
+
+/* ---------- Ảnh động trên thẻ ---------- */
+.sg-media {
+	position: relative;
+	display: block;
+	overflow: hidden;
+	border-radius: var(--sg-radius);
+	background: var(--sg-sand);
+}
+.sg-media__img,
+.sg-media__video {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	transition: transform 1.2s var(--sg-ease), opacity .8s var(--sg-ease);
+}
+.sg-media__video { opacity: 0; }
+.sg-media__video.is-playing { opacity: 1; }
+.wp-block-post:hover .sg-media__img,
+.sg-media:hover .sg-media__img { transform: scale(1.06); }
+.sg-media__badge {
+	position: absolute;
+	top: 12px;
+	left: 12px;
+	padding: .35em .8em;
+	border-radius: 999px;
+	background: var(--sg-accent);
+	color: var(--sg-ink);
+	font-weight: 700;
+	font-size: var(--wp--preset--font-size--small, .875rem);
+}
+
+/* ---------- Thư viện ---------- */
+.sg-gallery__title {
+	font-family: var(--wp--preset--font-family--heading, serif);
+	font-size: var(--wp--preset--font-size--large, 1.4rem);
+	margin: 0 0 .75rem;
+}
+.sg-gallery__list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+.sg-gallery--grid .sg-gallery__list {
+	display: grid;
+	gap: 10px;
+	grid-template-columns: repeat(2, 1fr);
+}
+.sg-gallery--grid .sg-gallery__item:first-child {
+	grid-column: span 2;
+}
+@media (min-width: 782px) {
+	.sg-gallery--grid .sg-gallery__list { grid-template-columns: repeat(4, 1fr); }
+	.sg-gallery--grid .sg-gallery__item:first-child { grid-column: span 2; grid-row: span 2; }
+}
+.sg-gallery--scroller .sg-gallery__list {
+	display: flex;
+	gap: 12px;
+	overflow-x: auto;
+	scroll-snap-type: x mandatory;
+	padding-bottom: 8px;
+	scrollbar-width: thin;
+}
+.sg-gallery--scroller .sg-gallery__item {
+	flex: 0 0 min(85%, 760px);
+	scroll-snap-align: start;
+}
+.sg-gallery__item {
+	overflow: hidden;
+	border-radius: var(--sg-radius);
+	background: var(--sg-sand);
+	aspect-ratio: 4 / 3;
+}
+.sg-gallery__item img,
+.sg-gallery__video {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	display: block;
+	transition: transform .8s var(--sg-ease);
+}
+.sg-gallery__item:hover img { transform: scale(1.04); }
+
+/* ---------- Bộ lọc ---------- */
+.sg-filter__chips {
+	display: flex;
+	flex-wrap: wrap;
+	gap: .5rem;
+}
+.sg-filter__chip {
+	min-height: 48px;
+	padding: .5rem 1.25rem;
+	border: 1.5px solid color-mix(in srgb, var(--sg-primary) 45%, transparent);
+	border-radius: 999px;
+	background: var(--sg-white);
+	color: var(--sg-ink);
+	font: inherit;
+	font-weight: 600;
+	cursor: pointer;
+	transition: background .2s, color .2s, border-color .2s, transform .2s;
+}
+.sg-filter__chip:hover { border-color: var(--sg-primary); transform: translateY(-1px); }
+.sg-filter__chip.is-active {
+	background: var(--sg-primary);
+	border-color: var(--sg-primary);
+	color: var(--sg-white);
+}
+.wp-block-post[hidden] { display: none !important; }
+
+/* ---------- Thông số (phòng, địa điểm) ---------- */
+.sg-facts {
+	display: flex;
+	flex-wrap: wrap;
+	gap: .5rem 1.1rem;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	font-size: var(--wp--preset--font-size--small, .9375rem);
+	color: color-mix(in srgb, var(--sg-ink) 82%, transparent);
+}
+.sg-facts__item {
+	display: inline-flex;
+	align-items: center;
+	gap: .4rem;
+}
+.sg-facts .sg-icon { color: var(--sg-primary); flex: none; }
+.sg-place { display: grid; gap: .75rem; }
+.sg-place__compare {
+	margin: 0;
+	font-family: var(--wp--preset--font-family--heading, serif);
+	font-style: italic;
+	color: var(--sg-secondary);
+}
+.sg-place__map {
+	display: inline-flex;
+	align-items: center;
+	gap: .4rem;
+	justify-self: start;
+	min-height: 44px;
+	font-weight: 600;
+	color: var(--sg-primary);
+	text-decoration: none;
+}
+.sg-place__map:hover { text-decoration: underline; }
+
+/* ---------- Danh sách tiện nghi ---------- */
+.sg-terms__title { margin: 0 0 .75rem; }
+.sg-terms__list { list-style: none; margin: 0; padding: 0; }
+.sg-terms--checks .sg-terms__list {
+	display: grid;
+	gap: .5rem 1.5rem;
+	grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+}
+.sg-terms--checks .sg-terms__item { display: flex; align-items: center; gap: .5rem; }
+.sg-terms--checks .sg-icon { color: var(--sg-secondary); }
+.sg-terms--chips .sg-terms__list { display: flex; flex-wrap: wrap; gap: .4rem; }
+.sg-terms--chips .sg-terms__item {
+	padding: .25rem .75rem;
+	border-radius: 999px;
+	background: color-mix(in srgb, var(--sg-secondary) 14%, transparent);
+	color: var(--sg-ink);
+	font-size: var(--wp--preset--font-size--small, .875rem);
+	font-weight: 600;
+}
+
+/* ---------- Liên hệ ---------- */
+.sg-contact__list { list-style: none; margin: 0; padding: 0; display: grid; gap: .75rem; }
+.sg-contact__link { display: inline-flex; align-items: flex-start; gap: .65rem; color: inherit; text-decoration: none; min-height: 44px; }
+.sg-contact__item--name .sg-contact__link, .sg-contact__item--about .sg-contact__link { min-height: 0; }
+.sg-contact__link:hover .sg-contact__value { text-decoration: underline; }
+.sg-contact__icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	flex: none;
+	width: 40px;
+	height: 40px;
+	border-radius: 999px;
+	background: color-mix(in srgb, var(--sg-primary) 14%, transparent);
+	color: var(--sg-primary);
+}
+.sg-contact__text { display: flex; flex-direction: column; justify-content: center; min-height: 40px; }
+.sg-contact__label { font-size: var(--wp--preset--font-size--small, .8125rem); opacity: .75; }
+.sg-contact__value { font-weight: 600; }
+.sg-contact__item--name .sg-contact__value { font-family: var(--wp--preset--font-family--heading, serif); font-size: var(--wp--preset--font-size--large, 1.25rem); }
+.sg-contact__item--about .sg-contact__value { font-weight: 400; opacity: .85; }
+.sg-contact--inline .sg-contact__list { display: flex; flex-wrap: wrap; gap: .75rem 1.5rem; }
+.sg-contact--buttons .sg-contact__list { display: flex; flex-wrap: wrap; gap: .75rem; }
+.sg-contact--buttons .sg-contact__link {
+	align-items: center;
+	padding: .35rem 1.1rem .35rem .35rem;
+	border-radius: 999px;
+	background: var(--sg-white);
+	box-shadow: 0 6px 20px rgba(30, 42, 43, .08);
+}
+.sg-contact--buttons .sg-contact__label { display: none; }
+.sg-contact__map {
+	margin-top: 1.25rem;
+	border-radius: var(--sg-radius-lg);
+	overflow: hidden;
+	aspect-ratio: 16 / 10;
+	background: var(--sg-sand);
+}
+.sg-contact__map iframe { width: 100%; height: 100%; border: 0; display: block; }
+.sg-contact__maplink a { display: inline-flex; align-items: center; gap: .4rem; font-weight: 600; min-height: 44px; }
+
+/* ---------- Chuyển ngôn ngữ ---------- */
+.sg-lang__list { display: flex; gap: .25rem; list-style: none; margin: 0; padding: 0; }
+.sg-lang__link {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-width: 44px;
+	min-height: 44px;
+	padding: 0 .5rem;
+	border-radius: 999px;
+	font-weight: 600;
+	font-size: var(--wp--preset--font-size--small, .875rem);
+	color: inherit;
+	text-decoration: none;
+	letter-spacing: .04em;
+}
+.sg-lang__link:hover { background: color-mix(in srgb, var(--sg-primary) 12%, transparent); }
+.sg-lang__link.is-current { background: var(--sg-primary); color: var(--sg-white); }
+
+/* ---------- Menu ---------- */
+.sg-menu__list { display: flex; gap: .25rem 1.5rem; list-style: none; margin: 0; padding: 0; flex-wrap: wrap; }
+.sg-menu__list a {
+	display: inline-flex;
+	align-items: center;
+	min-height: 44px;
+	color: inherit;
+	text-decoration: none;
+	font-weight: 500;
+	background-image: linear-gradient(currentColor, currentColor);
+	background-size: 0 2px;
+	background-position: 0 85%;
+	background-repeat: no-repeat;
+	transition: background-size .3s var(--sg-ease);
+}
+.sg-menu__list a:hover,
+.sg-menu__list .current-menu-item > a { background-size: 100% 2px; }
+.sg-menu__toggle { display: none; }
+
+@media (max-width: 959px) {
+	.sg-menu.has-toggle .sg-menu__toggle {
+		display: inline-flex;
+		align-items: center;
+		gap: .4rem;
+		min-height: 48px;
+		min-width: 48px;
+		padding: 0 .75rem;
+		border: 0;
+		border-radius: 999px;
+		background: transparent;
+		color: inherit;
+		font: inherit;
+		font-weight: 600;
+		cursor: pointer;
+	}
+	.sg-menu__toggle-text { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+	.sg-menu .sg-menu__icon-close,
+	.sg-menu.is-open .sg-menu__icon-open { display: none; }
+	.sg-menu.is-open .sg-menu__icon-close { display: inline-flex; }
+	.sg-menu.has-toggle .sg-menu__panel {
+		position: fixed;
+		inset: var(--sg-header-height, 72px) 0 0 0;
+		z-index: 99;
+		padding: var(--wp--preset--spacing--50, 2rem) var(--wp--preset--spacing--40, 1.25rem);
+		background: var(--sg-sand);
+		color: var(--sg-ink);
+		overflow-y: auto;
+		opacity: 0;
+		visibility: hidden;
+		transform: translateY(-8px);
+		transition: opacity .25s var(--sg-ease), transform .25s var(--sg-ease), visibility 0s linear .25s;
+	}
+	.admin-bar .sg-menu.has-toggle .sg-menu__panel { top: calc(var(--sg-header-height, 72px) + var(--wp-admin--admin-bar--height, 0px)); }
+	.sg-menu.has-toggle.is-open .sg-menu__panel {
+		opacity: 1;
+		visibility: visible;
+		transform: none;
+		transition-delay: 0s;
+	}
+	.sg-menu.has-toggle .sg-menu__list { flex-direction: column; gap: 0; }
+	.sg-menu.has-toggle .sg-menu__list a {
+		width: 100%;
+		min-height: 56px;
+		font-family: var(--wp--preset--font-family--heading, serif);
+		font-size: var(--wp--preset--font-size--x-large, 1.6rem);
+		border-bottom: 1px solid color-mix(in srgb, var(--sg-ink) 10%, transparent);
+	}
+	html.sg-menu-open { overflow: hidden; }
+}
+
+/* ---------- Trình soạn thảo ---------- */
+.sgc-empty-preview {
+	padding: 1rem;
+	border: 1px dashed #c3c4c7;
+	border-radius: 8px;
+	font-size: 13px;
+	color: #50575e;
+}
+
+/* ---------- Giảm chuyển động ---------- */
+@media (prefers-reduced-motion: reduce) {
+	.sg-banner__poster { animation: none; }
+	.sg-media__img, .sg-gallery__item img, .sg-filter__chip, .sg-menu__list a { transition: none; }
+	.wp-block-post:hover .sg-media__img, .sg-media:hover .sg-media__img, .sg-gallery__item:hover img { transform: none; }
+	.sg-banner__video, .sg-media__video { display: none; }
+}

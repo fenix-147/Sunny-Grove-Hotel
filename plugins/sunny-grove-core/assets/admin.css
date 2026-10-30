@@ -1,0 +1,13 @@
+.sgc-fields { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px 24px; }
+.sgc-field label { display: block; margin-bottom: 6px; }
+.sgc-field input[type="text"], .sgc-field input[type="number"], .sgc-field input[type="url"], .sgc-field input[type="date"], .sgc-field select, .sgc-field textarea { width: 100%; min-height: 36px; }
+.sgc-field--gallery, .sgc-field--textarea, .sgc-field--video { grid-column: 1 / -1; }
+.sgc-gallery-preview { display: flex; flex-wrap: wrap; gap: 8px; margin: 8px 0; }
+.sgc-thumb { display: inline-flex; width: 80px; height: 80px; border-radius: 8px; overflow: hidden; background: #f0f0f1; align-items: center; justify-content: center; }
+.sgc-thumb img { width: 80px; height: 80px; object-fit: cover; }
+.sgc-thumb--video .dashicons { font-size: 32px; width: 32px; height: 32px; color: #1FA3A3; }
+.sgc-settings .form-table th { width: 240px; }
+.sgc-settings .nav-tab-wrapper { margin-bottom: 16px; }
+.sgc-settings textarea.large-text { min-height: 80px; }
+.sgc-settings .sgc-group-title { margin-top: 28px; padding-top: 12px; border-top: 1px solid #dcdcde; }
+.sgc-demo-box { max-width: 760px; background: #fff; border: 1px solid #dcdcde; border-radius: 8px; padding: 16px 24px; margin-top: 16px; }

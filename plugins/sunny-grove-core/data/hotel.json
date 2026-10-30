@@ -1,0 +1,24 @@
+{
+	"general": {
+		"phone": { "label": "Hotline", "type": "text", "value": "0900 000 000", "help": "[CẦN THAY] Số hiển thị trên website và nút Gọi." },
+		"zalo": { "label": "Số Zalo", "type": "text", "value": "0900 000 000", "help": "[CẦN THAY] Số điện thoại đăng ký Zalo của khách sạn." },
+		"whatsapp": { "label": "Số WhatsApp", "type": "text", "value": "+84 900 000 000", "help": "[CẦN THAY] Nên ghi kèm mã quốc gia, ví dụ +84 900 000 000." },
+		"country_code": { "label": "Mã quốc gia", "type": "text", "value": "84", "help": "Dùng để tạo link WhatsApp từ số bắt đầu bằng 0." },
+		"email": { "label": "Email", "type": "email", "value": "hello@sunnygrove.example", "help": "[CẦN THAY]" },
+		"map_link": { "label": "Link Google Maps của khách sạn", "type": "url", "value": "https://maps.google.com/?q=Duong+Dong,+Phu+Quoc", "help": "[CẦN THAY] Mở Google Maps → Chia sẻ → Sao chép đường liên kết." },
+		"map_embed": { "label": "Link nhúng bản đồ (src của iframe)", "type": "url", "value": "https://www.google.com/maps?q=Duong+Dong,+Phu+Quoc&output=embed", "help": "[CẦN THAY] Google Maps → Chia sẻ → Nhúng bản đồ → chỉ dán phần trong src=\"…\"." },
+		"facebook": { "label": "Facebook", "type": "url", "value": "", "help": "" },
+		"instagram": { "label": "Instagram", "type": "url", "value": "", "help": "" },
+		"booking_page": { "label": "Trang Đặt phòng", "type": "page", "value": "", "help": "Nút “Đặt phòng” trên toàn site sẽ dẫn tới trang này (tự đổi theo ngôn ngữ)." },
+		"chat_enabled": { "label": "Hiện nút chat nổi (Zalo, WhatsApp, Gọi)", "type": "checkbox", "value": "1", "help": "" },
+		"chat_side": { "label": "Vị trí nút chat", "type": "select", "value": "right", "options": { "right": "Góc phải", "left": "Góc trái" }, "help": "" },
+		"webp": { "label": "Tự tạo ảnh WebP khi tải ảnh lên", "type": "checkbox", "value": "1", "help": "Tắt nếu đã bật tối ưu ảnh trong LiteSpeed Cache để tránh xử lý hai lần." }
+	},
+	"i18n": {
+		"name": { "label": "Tên khách sạn", "type": "text", "vi": "Sunny Grove Hotel – Phú Quốc", "en": "Sunny Grove Hotel – Phu Quoc" },
+		"slogan": { "label": "Slogan", "type": "text", "vi": "Nắng đảo, vườn xanh – kỳ nghỉ trọn vẹn cho cả nhà", "en": "Island sunshine, garden calm – a holiday the whole family remembers" },
+		"address": { "label": "Địa chỉ", "type": "text", "vi": "123 Trần Hưng Đạo, Dương Đông, Phú Quốc, Kiên Giang [CẦN THAY]", "en": "123 Tran Hung Dao, Duong Dong, Phu Quoc, Kien Giang [TO REPLACE]" },
+		"checkin": { "label": "Giờ nhận / trả phòng", "type": "text", "vi": "Nhận phòng 14:00 · Trả phòng 12:00", "en": "Check-in 2:00 pm · Check-out 12:00 pm" },
+		"footer_about": { "label": "Giới thiệu ngắn ở chân trang", "type": "textarea", "vi": "Khu vườn xanh mát giữa đảo nắng – nơi cả nhà cùng nghỉ ngơi, vui chơi và lưu giữ kỷ niệm.", "en": "A cool green garden on a sunny island – where the whole family rests, plays and makes memories." }
+	}
+}

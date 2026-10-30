@@ -1,0 +1,41 @@
+<!-- wp:template-part {"slug":"header","tagName":"header","className":"sg-header"} /-->
+
+<!-- wp:group {"tagName":"main","style":{"spacing":{"padding":{"top":"var:preset|spacing|50"}}},"layout":{"type":"constrained"}} -->
+<main class="wp-block-group" style="padding-top:var(--wp--preset--spacing--50)"><!-- wp:sunny-grove/media-gallery {"layout":"scroller","max":12,"align":"wide"} /-->
+
+<!-- wp:columns {"align":"wide","className":"sg-single-head","style":{"spacing":{"margin":{"top":"var:preset|spacing|50"},"blockGap":{"left":"var:preset|spacing|60"}}}} -->
+<div class="wp-block-columns alignwide sg-single-head" style="margin-top:var(--wp--preset--spacing--50)"><!-- wp:column {"width":"64%"} -->
+<div class="wp-block-column" style="flex-basis:64%"><!-- wp:sunny-grove/post-terms-list {"taxonomy":"sg_guest_type","variant":"chips"} /-->
+
+<!-- wp:post-title {"level":1} /-->
+
+<!-- wp:sunny-grove/room-facts /-->
+
+<!-- wp:post-content {"layout":{"type":"default"},"className":"sg-prose"} /-->
+
+<!-- wp:sunny-grove/post-terms-list {"taxonomy":"sg_room_feature","showTitle":true,"style":{"spacing":{"margin":{"top":"var:preset|spacing|50"}}}} /--></div>
+<!-- /wp:column -->
+
+<!-- wp:column {"width":"36%"} -->
+<div class="wp-block-column" style="flex-basis:36%"><!-- wp:group {"className":"sg-book-box","layout":{"type":"default"}} -->
+<div class="wp-block-group sg-book-box"><!-- wp:paragraph {"className":"sg-price","metadata":{"bindings":{"content":{"source":"sunny-grove/meta","args":{"key":"price"}}}}} -->
+<p class="sg-price"></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:sunny-grove/hotel-info {"fields":["checkin"]} /-->
+
+<!-- wp:buttons -->
+<div class="wp-block-buttons"><!-- wp:button {"metadata":{"bindings":{"text":{"source":"sunny-grove/label","args":{"key":"book_room"}},"url":{"source":"sunny-grove/meta","args":{"key":"book_url"}}}}} -->
+<div class="wp-block-button"><a class="wp-block-button__link wp-element-button"></a></div>
+<!-- /wp:button --></div>
+<!-- /wp:buttons -->
+
+<!-- wp:sunny-grove/hotel-info {"fields":["phone","zalo"]} /--></div>
+<!-- /wp:group --></div>
+<!-- /wp:column --></div>
+<!-- /wp:columns -->
+
+<!-- wp:pattern {"slug":"sunny-grove/rooms-other"} /--></main>
+<!-- /wp:group -->
+
+<!-- wp:template-part {"slug":"footer","tagName":"div"} /-->

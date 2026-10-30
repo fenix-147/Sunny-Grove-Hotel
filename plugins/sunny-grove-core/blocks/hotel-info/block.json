@@ -1,0 +1,19 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "sunny-grove/hotel-info",
+	"title": "Thông tin liên hệ",
+	"category": "sunny-grove",
+	"icon": "phone",
+	"description": "Hotline, Zalo, WhatsApp, email, địa chỉ và bản đồ – lấy từ Sunny Grove → Thông tin khách sạn.",
+	"textdomain": "sunny-grove-core",
+	"attributes": {
+		"fields": { "type": "array", "default": [ "phone", "zalo", "whatsapp", "email", "address" ], "items": { "type": "string" } },
+		"layout": { "type": "string", "default": "list", "enum": [ "list", "inline", "buttons" ] },
+		"showMap": { "type": "boolean", "default": false }
+	},
+	"supports": { "html": false, "align": [ "wide", "full" ], "spacing": { "margin": true }, "color": { "text": true, "link": true } },
+	"editorScript": "sgc-blocks-editor",
+	"style": "sgc-blocks",
+	"render": "file:./render.php"
+}

@@ -1,0 +1,18 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "sunny-grove/term-filter",
+	"title": "Bộ lọc nhanh",
+	"category": "sunny-grove",
+	"icon": "filter",
+	"description": "Các nút lọc (ví dụ Gia đình / Cặp đôi / Nhóm bạn). Đặt ngay phía trên một Query Loop để lọc danh sách mà không tải lại trang.",
+	"textdomain": "sunny-grove-core",
+	"attributes": {
+		"taxonomy": { "type": "string", "default": "sg_guest_type" }
+	},
+	"supports": { "html": false, "align": [ "wide", "full" ], "spacing": { "margin": true } },
+	"editorScript": "sgc-blocks-editor",
+	"style": "sgc-blocks",
+	"viewScript": "sgc-blocks-view",
+	"render": "file:./render.php"
+}

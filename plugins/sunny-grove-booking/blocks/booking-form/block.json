@@ -1,0 +1,19 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "sunny-grove-booking/booking-form",
+	"title": "Form đặt phòng",
+	"category": "widgets",
+	"icon": "calendar-alt",
+	"description": "Form “Yêu cầu đặt phòng”. Kiểu Đầy đủ cho trang Đặt phòng, kiểu Gọn (chọn ngày + số khách) cho trang chủ. Chữ trên form sửa tại Đặt phòng → Cài đặt.",
+	"keywords": [ "booking", "đặt phòng", "form", "reservation" ],
+	"textdomain": "sunny-grove-booking",
+	"attributes": {
+		"variant": { "type": "string", "default": "full", "enum": [ "full", "compact" ] },
+		"defaultRoom": { "type": "number", "default": 0 }
+	},
+	"supports": { "html": false, "align": [ "wide", "full" ], "spacing": { "margin": true } },
+	"editorScript": "sgb-editor",
+	"style": "sgb-form",
+	"render": "file:./render.php"
+}

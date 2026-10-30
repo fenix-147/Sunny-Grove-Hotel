@@ -1,0 +1,51 @@
+.sg-chat {
+	position: fixed;
+	bottom: max(16px, env(safe-area-inset-bottom));
+	z-index: 90;
+}
+.sg-chat--right { right: 16px; }
+.sg-chat--left { left: 16px; }
+.sg-chat__list { display: flex; flex-direction: column; gap: 10px; list-style: none; margin: 0; padding: 0; }
+.sg-chat__btn {
+	position: relative;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 52px;
+	height: 52px;
+	border-radius: 999px;
+	color: #fff;
+	text-decoration: none;
+	box-shadow: 0 8px 22px rgba(30, 42, 43, .22);
+	transition: transform .2s ease, box-shadow .2s ease;
+}
+.sg-chat__btn:hover, .sg-chat__btn:focus-visible { transform: translateY(-2px) scale(1.04); box-shadow: 0 12px 28px rgba(30, 42, 43, .28); }
+.sg-chat__btn--zalo { background: #0068ff; }
+.sg-chat__btn--whatsapp { background: #1f8f4e; }
+.sg-chat__btn--phone { background: var(--wp--preset--color--primary, #1fa3a3); }
+.sg-chat__label {
+	position: absolute;
+	right: calc(100% + 10px);
+	top: 50%;
+	transform: translateY(-50%);
+	padding: .3em .75em;
+	border-radius: 8px;
+	background: var(--wp--preset--color--ink, #1e2a2b);
+	color: #fff;
+	font-size: .8125rem;
+	font-weight: 600;
+	white-space: nowrap;
+	opacity: 0;
+	pointer-events: none;
+	transition: opacity .2s ease;
+}
+.sg-chat--left .sg-chat__label { right: auto; left: calc(100% + 10px); }
+.sg-chat__btn:hover .sg-chat__label, .sg-chat__btn:focus-visible .sg-chat__label { opacity: 1; }
+@media (max-width: 600px) {
+	.sg-chat__btn { width: 48px; height: 48px; }
+	.sg-chat__label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); padding: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+	.sg-chat__btn { transition: none; }
+}
+@media print { .sg-chat { display: none; } }

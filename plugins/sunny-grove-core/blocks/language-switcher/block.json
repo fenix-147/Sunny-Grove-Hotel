@@ -1,0 +1,17 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "sunny-grove/language-switcher",
+	"title": "Nút chuyển ngôn ngữ",
+	"category": "sunny-grove",
+	"icon": "translation",
+	"description": "Chuyển giữa Tiếng Việt và English (cần plugin Polylang). Dẫn tới bản dịch của trang đang xem.",
+	"textdomain": "sunny-grove-core",
+	"attributes": {
+		"display": { "type": "string", "default": "code", "enum": [ "code", "name" ] }
+	},
+	"supports": { "html": false, "spacing": { "margin": true } },
+	"editorScript": "sgc-blocks-editor",
+	"style": "sgc-blocks",
+	"render": "file:./render.php"
+}
