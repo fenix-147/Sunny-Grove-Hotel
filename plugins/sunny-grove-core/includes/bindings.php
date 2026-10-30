@@ -31,8 +31,9 @@ function sgc_meta_value( $post_id, $key ) {
 	if ( ! $post_id ) {
 		return '';
 	}
+	// Trường chữ lấy bản theo ngôn ngữ đang xem (chưa dịch thì dùng tiếng Việt); số liệu dùng chung.
 	$get = static function ( $meta ) use ( $post_id ) {
-		return get_post_meta( $post_id, $meta, true );
+		return sg_meta_tr( $post_id, $meta );
 	};
 
 	switch ( $key ) {
@@ -128,7 +129,7 @@ function sgc_hotel_value( $key ) {
 		case 'booking_url':
 			return sgc_booking_url();
 		case 'home_url':
-			return function_exists( 'pll_home_url' ) ? pll_home_url() : home_url( '/' );
+			return home_url( '/' );
 	}
 	return (string) sgc_hotel( $key );
 }
@@ -194,7 +195,7 @@ function sgc_binding_editor_script() {
 	$labels = array();
 	$hotel  = array();
 	// Nhãn và thông tin khách sạn cho từng ngôn ngữ: trình soạn thảo chọn theo ngôn ngữ của trang đang sửa.
-	foreach ( array_keys( sgc_languages() ) as $lang ) {
+	foreach ( array_keys( sg_languages() ) as $lang ) {
 		foreach ( array_keys( $schema['fields'] ) as $key ) {
 			$labels[ $lang ][ $key ] = sgc_label( $key, array(), $lang );
 		}
@@ -209,7 +210,7 @@ function sgc_binding_editor_script() {
 				'labels'  => $labels,
 				'hotel'   => $hotel,
 				'fields'  => sgc_meta_display_fields(),
-				'default' => sgc_default_lang(),
+				'default' => sg_default_lang(),
 			)
 		) . ';',
 		'before'

@@ -75,8 +75,8 @@ add_filter( 'sunny_grove_media', 'sgc_demo_pattern_media', 10, 2 );
  */
 function sgc_demo_page_url( $url, $key ) {
 	$pages = (array) get_option( 'sgc_pages', array() );
-	$lang  = sgc_demo_building_lang() ? sgc_demo_building_lang() : sgc_current_lang();
-	$id    = $pages[ $key ][ $lang ] ?? ( $pages[ $key ][ sgc_default_lang() ] ?? 0 );
+	$lang  = sgc_demo_building_lang() ? sgc_demo_building_lang() : sg_current_lang();
+	$id    = $pages[ $key ][ $lang ] ?? ( $pages[ $key ][ sg_default_lang() ] ?? 0 );
 	return $id ? (string) get_permalink( $id ) : $url;
 }
 add_filter( 'sunny_grove_page_url', 'sgc_demo_page_url', 10, 2 );
@@ -121,7 +121,7 @@ function sgc_demo_attachment( $file ) {
  */
 function sgc_contact_form_shortcode() {
 	$forms = (array) get_option( 'sgc_contact_forms', array() );
-	$id    = $forms[ sgc_current_lang() ] ?? ( $forms[ sgc_default_lang() ] ?? 0 );
+	$id    = $forms[ sg_current_lang() ] ?? ( $forms[ sg_default_lang() ] ?? 0 );
 	if ( $id && shortcode_exists( 'contact-form-7' ) ) {
 		return do_shortcode( '[contact-form-7 id="' . (int) $id . '"]' );
 	}
@@ -464,7 +464,7 @@ function sgc_demo_import() {
 
 	$data      = sgc_demo_data();
 	$has_pll   = sgc_demo_setup_languages();
-	$langs     = $has_pll ? array( 'vi', 'en' ) : array( sgc_default_lang() );
+	$langs     = $has_pll ? array( 'vi', 'en' ) : array( sg_default_lang() );
 	$locales   = array(
 		'vi' => 'vi',
 		'en' => 'en_US',

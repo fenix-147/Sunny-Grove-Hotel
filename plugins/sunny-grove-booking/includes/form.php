@@ -36,9 +36,6 @@ function sgb_rooms() {
 		),
 		'no_found_rows'  => true,
 	);
-	if ( function_exists( 'pll_current_language' ) && pll_current_language() ) {
-		$args['lang'] = pll_current_language();
-	}
 	return get_posts( $args );
 }
 

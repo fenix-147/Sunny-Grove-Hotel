@@ -430,9 +430,12 @@ function sg_i18n_render_block( $content, $block ) {
 		return $content;
 	}
 	$spec = sg_i18n_block_spec()[ $block['blockName'] ] ?? null;
-	$tr   = $spec ? sg_i18n_block_translation( $block, $lang ) : array();
-	if ( ! $spec || ! $tr ) {
+	if ( ! $spec ) {
 		return $content;
+	}
+	$tr = sg_i18n_block_translation( $block, $lang );
+	if ( ! $tr ) {
+		return sg_i18n_localize_links( $content, $lang );
 	}
 	foreach ( $spec['html'] ?? array() as $field => $selector ) {
 		if ( ! isset( $tr[ $field ] ) || '' === $tr[ $field ] ) {
@@ -471,9 +474,39 @@ function sg_i18n_render_block( $content, $block ) {
 			$content
 		);
 	}
-	return $content;
+	return sg_i18n_localize_links( $content, $lang );
 }
 add_filter( 'render_block', 'sg_i18n_render_block', 5, 2 );
+
+/**
+ * Đổi các link nội bộ trong HTML sang đường dẫn của ngôn ngữ đang xem (link ngoài giữ nguyên).
+ *
+ * @param string $html HTML.
+ * @param string $lang Ngôn ngữ.
+ * @return string
+ */
+function sg_i18n_localize_links( $html, $lang ) {
+	static $cache = array();
+	if ( false === strpos( $html, 'href' ) ) {
+		return $html;
+	}
+	$home = untrailingslashit( get_option( 'home' ) );
+	$proc = new WP_HTML_Tag_Processor( $html );
+	while ( $proc->next_tag( array( 'tag_name' => 'a' ) ) ) {
+		$href = (string) $proc->get_attribute( 'href' );
+		if ( 0 === strpos( $href, '/' ) && 0 !== strpos( $href, '//' ) ) {
+			$href = $home . $href;
+		}
+		if ( 0 !== strpos( $href, $home ) || preg_match( '#/(wp-admin|wp-content|wp-includes|wp-json)/#', $href ) ) {
+			continue;
+		}
+		if ( ! isset( $cache[ $lang ][ $href ] ) ) {
+			$cache[ $lang ][ $href ] = sg_url( $href, $lang );
+		}
+		$proc->set_attribute( 'href', $cache[ $lang ][ $href ] );
+	}
+	return $proc->get_updated_html();
+}
 
 /**
  * Block động: đổi thuộc tính chữ trước khi render.

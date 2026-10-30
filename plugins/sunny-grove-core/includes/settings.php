@@ -22,7 +22,7 @@ function sgc_default_for_lang( $field, $lang ) {
 }
 
 /**
- * Nạp giá trị mặc định (chỉ những trường còn trống) – chạy khi kích hoạt plugin và khi thêm ngôn ngữ.
+ * Nạp giá trị mặc định (chỉ những trường còn trống) – chạy khi kích hoạt plugin.
  */
 function sgc_seed_options() {
 	$hotel   = sgc_data( 'hotel' );
@@ -37,7 +37,7 @@ function sgc_seed_options() {
 	$i18n   = (array) get_option( 'sgc_hotel_i18n', array() );
 	$labels = (array) get_option( 'sgc_labels', array() );
 	$schema = sgc_data( 'labels' );
-	foreach ( array_keys( sgc_languages() ) as $lang ) {
+	foreach ( array_keys( sg_languages() ) as $lang ) {
 		foreach ( $hotel['i18n'] as $key => $field ) {
 			if ( ! isset( $i18n[ $lang ][ $key ] ) ) {
 				$i18n[ $lang ][ $key ] = sgc_default_for_lang( $field, $lang );
@@ -52,7 +52,6 @@ function sgc_seed_options() {
 	update_option( 'sgc_hotel_i18n', $i18n );
 	update_option( 'sgc_labels', $labels );
 }
-add_action( 'pll_add_language', 'sgc_seed_options', 20 );
 
 /**
  * Lấy thông tin khách sạn. Trường song ngữ tự lấy theo ngôn ngữ đang xem.
@@ -64,7 +63,7 @@ add_action( 'pll_add_language', 'sgc_seed_options', 20 );
 function sgc_hotel( $key, $lang = '' ) {
 	$hotel = sgc_data( 'hotel' );
 	if ( isset( $hotel['i18n'][ $key ] ) ) {
-		$lang = $lang ? $lang : sgc_current_lang();
+		$lang = $lang ? $lang : sg_current_lang();
 		$i18n = (array) get_option( 'sgc_hotel_i18n', array() );
 		if ( isset( $i18n[ $lang ][ $key ] ) && '' !== $i18n[ $lang ][ $key ] ) {
 			return $i18n[ $lang ][ $key ];
@@ -87,7 +86,7 @@ function sgc_hotel( $key, $lang = '' ) {
  * @return string
  */
 function sgc_label( $key, $vars = array(), $lang = '' ) {
-	$lang   = $lang ? $lang : sgc_current_lang();
+	$lang   = $lang ? $lang : sg_current_lang();
 	$labels = (array) get_option( 'sgc_labels', array() );
 	if ( isset( $labels[ $lang ][ $key ] ) && '' !== $labels[ $lang ][ $key ] ) {
 		$text = $labels[ $lang ][ $key ];
@@ -106,10 +105,10 @@ function sgc_label( $key, $vars = array(), $lang = '' ) {
  * @return string
  */
 function sgc_booking_url( $args = array() ) {
-	$page_id = sgc_translated_id( (int) sgc_hotel( 'booking_page' ) );
+	$page_id = (int) sgc_hotel( 'booking_page' );
 	$url     = $page_id ? get_permalink( $page_id ) : '';
 	if ( ! $url ) {
-		$url = function_exists( 'pll_home_url' ) ? pll_home_url() : home_url( '/' );
+		$url = home_url( '/' );
 	}
 	return $args ? add_query_arg( array_map( 'rawurlencode', $args ), $url ) : $url;
 }
@@ -145,45 +144,19 @@ function sgc_settings_assets( $hook ) {
 add_action( 'admin_enqueue_scripts', 'sgc_settings_assets' );
 
 /**
- * Tab ngôn ngữ.
- *
- * @param string $page   Slug trang.
- * @param string $active Ngôn ngữ đang chọn.
- * @param bool   $general Có tab "Chung" hay không.
- */
-function sgc_lang_tabs( $page, $active, $general = false ) {
-	echo '<nav class="nav-tab-wrapper">';
-	if ( $general ) {
-		printf(
-			'<a href="%1$s" class="nav-tab %2$s">%3$s</a>',
-			esc_url( admin_url( 'admin.php?page=' . $page ) ),
-			'general' === $active ? 'nav-tab-active' : '',
-			esc_html__( 'Chung (mọi ngôn ngữ)', 'sunny-grove-core' )
-		);
-	}
-	foreach ( sgc_languages() as $slug => $lang ) {
-		printf(
-			'<a href="%1$s" class="nav-tab %2$s">%3$s</a>',
-			esc_url( admin_url( 'admin.php?page=' . $page . '&tab=' . $slug ) ),
-			$slug === $active ? 'nav-tab-active' : '',
-			esc_html( $lang['name'] )
-		);
-	}
-	echo '</nav>';
-}
-
-/**
  * Ô nhập theo kiểu.
  *
  * @param string $name  Tên input.
  * @param array  $field Định nghĩa.
  * @param mixed  $value Giá trị.
+ * @param string $lang  Ngôn ngữ của ô (để gắn thuộc tính lang cho trình kiểm tra chính tả).
  */
-function sgc_settings_input( $name, $field, $value ) {
-	$type = $field['type'] ?? 'text';
+function sgc_settings_input( $name, $field, $value, $lang = '' ) {
+	$type     = $field['type'] ?? 'text';
+	$lang_att = $lang ? ' lang="' . esc_attr( sg_languages()[ $lang ]['locale'] ?? $lang ) . '"' : '';
 	switch ( $type ) {
 		case 'textarea':
-			printf( '<textarea name="%1$s" class="large-text" rows="3">%2$s</textarea>', esc_attr( $name ), esc_textarea( $value ) );
+			printf( '<textarea name="%1$s" class="large-text" rows="3"%3$s>%2$s</textarea>', esc_attr( $name ), esc_textarea( $value ), $lang_att ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			break;
 		case 'checkbox':
 			printf( '<input type="hidden" name="%1$s" value="0"><label><input type="checkbox" name="%1$s" value="1" %2$s> %3$s</label>', esc_attr( $name ), checked( $value, '1', false ), esc_html__( 'Bật', 'sunny-grove-core' ) );
@@ -202,63 +175,114 @@ function sgc_settings_input( $name, $field, $value ) {
 					'selected'          => (int) $value,
 					'show_option_none'  => '—',
 					'option_none_value' => '',
-					'lang'              => function_exists( 'pll_default_language' ) ? pll_default_language() : '',
 				)
 			);
 			break;
 		default:
 			$input = array(
-				'email' => 'email',
-				'url'   => 'url',
+				'email'  => 'email',
+				'url'    => 'url',
+				'number' => 'number',
 			);
-			printf( '<input type="%1$s" name="%2$s" value="%3$s" class="regular-text">', esc_attr( $input[ $type ] ?? 'text' ), esc_attr( $name ), esc_attr( $value ) );
+			printf( '<input type="%1$s" name="%2$s" value="%3$s" class="regular-text"%4$s%5$s>', esc_attr( $input[ $type ] ?? 'text' ), esc_attr( $name ), esc_attr( $value ), 'number' === $type ? ' step="any"' : '', $lang_att ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	}
-	if ( ! empty( $field['help'] ) ) {
+	if ( ! empty( $field['help'] ) && ! $lang ) {
 		echo '<p class="description">' . esc_html( $field['help'] ) . '</p>';
 	}
 }
 
 /**
- * Lấy tab hiện tại (ngôn ngữ hoặc general).
+ * Hàng song ngữ: tên trường | ô Tiếng Việt | ô English.
  *
- * @param bool $allow_general Cho phép tab chung.
+ * @param string   $label  Tên trường.
+ * @param callable $render Hàm in ô nhập cho một ngôn ngữ: fn( $lang ).
+ * @param string   $help   Hướng dẫn.
+ */
+function sgc_settings_bilingual_row( $label, $render, $help = '' ) {
+	echo '<tr><th scope="row">' . esc_html( $label );
+	if ( $help ) {
+		echo '<p class="description">' . esc_html( $help ) . '</p>';
+	}
+	echo '</th>';
+	foreach ( array_keys( sg_languages() ) as $lang ) {
+		echo '<td class="sgc-lang-cell" data-lang="' . esc_attr( $lang ) . '">';
+		$render( $lang );
+		echo '</td>';
+	}
+	echo '</tr>';
+}
+
+/**
+ * Tiêu đề cột ngôn ngữ của bảng song ngữ.
+ */
+function sgc_settings_bilingual_head() {
+	echo '<thead><tr><th></th>';
+	foreach ( sg_languages() as $lang ) {
+		echo '<th scope="col" class="sgc-lang-head">' . esc_html( $lang['name'] ) . '</th>';
+	}
+	echo '</tr></thead>';
+}
+
+/**
+ * Tên và mô tả website theo ngôn ngữ (ngôn ngữ mặc định lưu ở Cài đặt → Tổng quan của WordPress).
+ *
+ * @param string $option blogname | blogdescription.
+ * @param string $lang   Ngôn ngữ.
  * @return string
  */
-function sgc_current_tab( $allow_general ) {
-	$tab   = isset( $_GET['tab'] ) ? sanitize_key( $_GET['tab'] ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
-	$langs = sgc_languages();
-	if ( isset( $langs[ $tab ] ) ) {
-		return $tab;
+function sgc_site_string( $option, $lang ) {
+	if ( sg_default_lang() === $lang ) {
+		return (string) get_option( $option );
 	}
-	return $allow_general ? 'general' : (string) array_key_first( $langs );
+	$strings = (array) get_option( 'sg_i18n_strings', array() );
+	return (string) ( $strings[ $lang ][ $option ] ?? '' );
 }
 
 /**
  * Trang Thông tin khách sạn.
  */
 function sgc_render_hotel_page() {
-	$tab   = sgc_current_tab( true );
 	$hotel = sgc_data( 'hotel' );
 	echo '<div class="wrap sgc-settings"><h1>' . esc_html__( 'Thông tin khách sạn', 'sunny-grove-core' ) . '</h1>';
 	sgc_settings_notice();
 	echo '<p>' . esc_html__( 'Các thông tin này hiển thị ở đầu trang, chân trang, trang Liên hệ và nút chat nổi. Sửa ở đây là toàn bộ website cập nhật theo.', 'sunny-grove-core' ) . '</p>';
-	sgc_lang_tabs( 'sgc-hotel', $tab, true );
 	echo '<form method="post" action="' . esc_url( admin_url( 'admin-post.php' ) ) . '">';
 	wp_nonce_field( 'sgc_save_settings' );
-	echo '<input type="hidden" name="action" value="sgc_save_settings"><input type="hidden" name="sgc_page" value="hotel"><input type="hidden" name="sgc_tab" value="' . esc_attr( $tab ) . '">';
+	echo '<input type="hidden" name="action" value="sgc_save_settings"><input type="hidden" name="sgc_page" value="hotel">';
+
+	echo '<h2 class="sgc-group-title">' . esc_html__( 'Chữ hiển thị (nhập cả hai ngôn ngữ)', 'sunny-grove-core' ) . '</h2>';
+	echo '<p class="description">' . esc_html__( 'Ô English để trống thì website bản tiếng Anh hiện chữ tiếng Việt.', 'sunny-grove-core' ) . '</p>';
+	echo '<table class="form-table sgc-bilingual" role="presentation">';
+	sgc_settings_bilingual_head();
+	sgc_settings_bilingual_row(
+		__( 'Tên website', 'sunny-grove-core' ),
+		static function ( $lang ) {
+			sgc_settings_input( 'sgc_site[' . $lang . '][blogname]', array(), sgc_site_string( 'blogname', $lang ), $lang );
+		}
+	);
+	sgc_settings_bilingual_row(
+		__( 'Mô tả ngắn của website (tagline)', 'sunny-grove-core' ),
+		static function ( $lang ) {
+			sgc_settings_input( 'sgc_site[' . $lang . '][blogdescription]', array(), sgc_site_string( 'blogdescription', $lang ), $lang );
+		}
+	);
+	foreach ( $hotel['i18n'] as $key => $field ) {
+		sgc_settings_bilingual_row(
+			$field['label'],
+			static function ( $lang ) use ( $key, $field ) {
+				sgc_settings_input( 'sgc_i18n[' . $lang . '][' . $key . ']', $field, sgc_hotel( $key, $lang ), $lang );
+			},
+			$field['help'] ?? ''
+		);
+	}
+	echo '</table>';
+
+	echo '<h2 class="sgc-group-title">' . esc_html__( 'Thông tin chung (dùng cho mọi ngôn ngữ)', 'sunny-grove-core' ) . '</h2>';
 	echo '<table class="form-table" role="presentation">';
-	if ( 'general' === $tab ) {
-		foreach ( $hotel['general'] as $key => $field ) {
-			echo '<tr><th scope="row">' . esc_html( $field['label'] ) . '</th><td>';
-			sgc_settings_input( 'sgc[' . $key . ']', $field, sgc_hotel( $key ) );
-			echo '</td></tr>';
-		}
-	} else {
-		foreach ( $hotel['i18n'] as $key => $field ) {
-			echo '<tr><th scope="row">' . esc_html( $field['label'] ) . '</th><td>';
-			sgc_settings_input( 'sgc[' . $key . ']', $field, sgc_hotel( $key, $tab ) );
-			echo '</td></tr>';
-		}
+	foreach ( $hotel['general'] as $key => $field ) {
+		echo '<tr><th scope="row">' . esc_html( $field['label'] ) . '</th><td>';
+		sgc_settings_input( 'sgc_general[' . $key . ']', $field, sgc_hotel( $key ) );
+		echo '</td></tr>';
 	}
 	echo '</table>';
 	submit_button( __( 'Lưu thay đổi', 'sunny-grove-core' ) );
@@ -269,26 +293,28 @@ function sgc_render_hotel_page() {
  * Trang Nhãn hiển thị.
  */
 function sgc_render_labels_page() {
-	$tab    = sgc_current_tab( false );
 	$schema = sgc_data( 'labels' );
+	$labels = (array) get_option( 'sgc_labels', array() );
 	echo '<div class="wrap sgc-settings"><h1>' . esc_html__( 'Nhãn hiển thị', 'sunny-grove-core' ) . '</h1>';
 	sgc_settings_notice();
 	echo '<p>' . esc_html__( 'Các chữ nhỏ dùng chung trên website (nút, đơn vị, thông báo). Chữ trong ngoặc nhọn như {n}, {gia} sẽ được thay bằng số liệu thật – hãy giữ nguyên chúng.', 'sunny-grove-core' ) . '</p>';
-	sgc_lang_tabs( 'sgc-labels', $tab );
 	echo '<form method="post" action="' . esc_url( admin_url( 'admin-post.php' ) ) . '">';
 	wp_nonce_field( 'sgc_save_settings' );
-	echo '<input type="hidden" name="action" value="sgc_save_settings"><input type="hidden" name="sgc_page" value="labels"><input type="hidden" name="sgc_tab" value="' . esc_attr( $tab ) . '">';
+	echo '<input type="hidden" name="action" value="sgc_save_settings"><input type="hidden" name="sgc_page" value="labels">';
 	foreach ( $schema['groups'] as $group => $group_label ) {
-		echo '<h2 class="sgc-group-title">' . esc_html( $group_label ) . '</h2><table class="form-table" role="presentation">';
+		echo '<h2 class="sgc-group-title">' . esc_html( $group_label ) . '</h2><table class="form-table sgc-bilingual" role="presentation">';
+		sgc_settings_bilingual_head();
 		foreach ( $schema['fields'] as $key => $field ) {
 			if ( $field['group'] !== $group ) {
 				continue;
 			}
-			$labels = (array) get_option( 'sgc_labels', array() );
-			$value  = $labels[ $tab ][ $key ] ?? sgc_default_for_lang( $field, $tab );
-			echo '<tr><th scope="row">' . esc_html( $field['label'] ) . '</th><td>';
-			printf( '<input type="text" name="sgc[%1$s]" value="%2$s" class="large-text">', esc_attr( $key ), esc_attr( $value ) );
-			echo '</td></tr>';
+			sgc_settings_bilingual_row(
+				$field['label'],
+				static function ( $lang ) use ( $key, $field, $labels ) {
+					$value = $labels[ $lang ][ $key ] ?? sgc_default_for_lang( $field, $lang );
+					sgc_settings_input( 'sgc_labels[' . $lang . '][' . $key . ']', array(), $value, $lang );
+				}
+			);
 		}
 		echo '</table>';
 	}
@@ -315,35 +341,59 @@ function sgc_save_settings() {
 	check_admin_referer( 'sgc_save_settings' );
 
 	$page  = isset( $_POST['sgc_page'] ) ? sanitize_key( $_POST['sgc_page'] ) : '';
-	$tab   = isset( $_POST['sgc_tab'] ) ? sanitize_key( $_POST['sgc_tab'] ) : '';
-	$input = isset( $_POST['sgc'] ) && is_array( $_POST['sgc'] ) ? wp_unslash( $_POST['sgc'] ) : array(); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
-	$langs = sgc_languages();
+	$langs = sg_languages();
+	$read  = static function ( $key ) {
+		return isset( $_POST[ $key ] ) && is_array( $_POST[ $key ] ) ? wp_unslash( $_POST[ $key ] ) : array(); // phpcs:ignore WordPress.Security.NonceVerification.Missing, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+	};
 
 	if ( 'hotel' === $page ) {
-		$hotel = sgc_data( 'hotel' );
-		if ( 'general' === $tab ) {
-			$general = (array) get_option( 'sgc_hotel', array() );
-			foreach ( $hotel['general'] as $key => $field ) {
-				if ( isset( $input[ $key ] ) ) {
-					$general[ $key ] = sgc_sanitize_setting( $input[ $key ], $field );
-				}
+		$hotel   = sgc_data( 'hotel' );
+		$general = (array) get_option( 'sgc_hotel', array() );
+		$input   = $read( 'sgc_general' );
+		foreach ( $hotel['general'] as $key => $field ) {
+			if ( isset( $input[ $key ] ) ) {
+				$general[ $key ] = sgc_sanitize_setting( $input[ $key ], $field );
 			}
-			update_option( 'sgc_hotel', $general );
-		} elseif ( isset( $langs[ $tab ] ) ) {
-			$i18n = (array) get_option( 'sgc_hotel_i18n', array() );
-			foreach ( $hotel['i18n'] as $key => $field ) {
-				if ( isset( $input[ $key ] ) ) {
-					$i18n[ $tab ][ $key ] = sgc_sanitize_setting( $input[ $key ], $field );
-				}
-			}
-			update_option( 'sgc_hotel_i18n', $i18n );
 		}
-	} elseif ( 'labels' === $page && isset( $langs[ $tab ] ) ) {
+		update_option( 'sgc_hotel', $general );
+
+		$i18n  = (array) get_option( 'sgc_hotel_i18n', array() );
+		$input = $read( 'sgc_i18n' );
+		foreach ( array_keys( $langs ) as $lang ) {
+			foreach ( $hotel['i18n'] as $key => $field ) {
+				if ( isset( $input[ $lang ][ $key ] ) ) {
+					$i18n[ $lang ][ $key ] = sgc_sanitize_setting( $input[ $lang ][ $key ], $field );
+				}
+			}
+		}
+		update_option( 'sgc_hotel_i18n', $i18n );
+
+		// Tên/mô tả website: ngôn ngữ mặc định lưu vào tùy chọn của WordPress, ngôn ngữ khác lưu riêng.
+		$site    = $read( 'sgc_site' );
+		$strings = (array) get_option( 'sg_i18n_strings', array() );
+		foreach ( array_keys( $langs ) as $lang ) {
+			foreach ( array( 'blogname', 'blogdescription' ) as $option ) {
+				if ( ! isset( $site[ $lang ][ $option ] ) ) {
+					continue;
+				}
+				$value = sanitize_text_field( $site[ $lang ][ $option ] );
+				if ( sg_default_lang() === $lang ) {
+					update_option( $option, $value );
+				} else {
+					$strings[ $lang ][ $option ] = $value;
+				}
+			}
+		}
+		update_option( 'sg_i18n_strings', $strings );
+	} elseif ( 'labels' === $page ) {
 		$schema = sgc_data( 'labels' );
 		$labels = (array) get_option( 'sgc_labels', array() );
-		foreach ( $schema['fields'] as $key => $field ) {
-			if ( isset( $input[ $key ] ) ) {
-				$labels[ $tab ][ $key ] = sanitize_text_field( $input[ $key ] );
+		$input  = $read( 'sgc_labels' );
+		foreach ( array_keys( $langs ) as $lang ) {
+			foreach ( array_keys( $schema['fields'] ) as $key ) {
+				if ( isset( $input[ $lang ][ $key ] ) ) {
+					$labels[ $lang ][ $key ] = sanitize_text_field( $input[ $lang ][ $key ] );
+				}
 			}
 		}
 		update_option( 'sgc_labels', $labels );
@@ -351,7 +401,7 @@ function sgc_save_settings() {
 
 	do_action( 'sgc_settings_saved', $page );
 	$slug = 'labels' === $page ? 'sgc-labels' : 'sgc-hotel';
-	wp_safe_redirect( admin_url( 'admin.php?page=' . $slug . '&tab=' . $tab . '&sgc_saved=1' ) );
+	wp_safe_redirect( admin_url( 'admin.php?page=' . $slug . '&sgc_saved=1' ) );
 	exit;
 }
 add_action( 'admin_post_sgc_save_settings', 'sgc_save_settings' );

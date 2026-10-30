@@ -605,6 +605,7 @@ function sg_migrate_apply( array $plan ) {
 		update_option( 'page_on_front', (int) $plan['front']['vi'] );
 		$log[] = sprintf( 'Đặt trang chủ = #%d.', $plan['front']['vi'] );
 	}
+	update_option( 'sg_i18n_merged_ids', array_values( array_map( 'intval', wp_list_pluck( $plan['posts'], 'en' ) ) ), false );
 	update_option(
 		'sg_i18n_migration',
 		array(
@@ -632,6 +633,7 @@ function sg_migrate_trash_old() {
 			'fields'           => 'ids',
 			'suppress_filters' => true,
 			'meta_key'         => '_sg_i18n_merged_into', // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_key
+			'sg_include_merged' => true,
 		)
 	);
 	$log = array();
@@ -640,3 +642,29 @@ function sg_migrate_trash_old() {
 	}
 	return $log;
 }
+
+/**
+ * Bài tiếng Anh cũ đã ghép (chờ dọn dẹp).
+ *
+ * @return int[]
+ */
+function sg_migrate_merged_ids() {
+	return array_map( 'intval', (array) get_option( 'sg_i18n_merged_ids', array() ) );
+}
+
+/**
+ * Sau khi chuyển đổi và trước bước dọn dẹp: ẩn bài tiếng Anh cũ khỏi mọi danh sách (website, quản trị, REST)
+ * để không hiện trùng. Không xóa gì – bước dọn dẹp mới đưa chúng vào Thùng rác.
+ *
+ * @param WP_Query $query Truy vấn.
+ */
+function sg_migrate_hide_merged( $query ) {
+	if ( sg_i18n_legacy_active() || $query->get( 'sg_include_merged' ) || 'trash' === $query->get( 'post_status' ) ) {
+		return;
+	}
+	$ids = sg_migrate_merged_ids();
+	if ( $ids ) {
+		$query->set( 'post__not_in', array_merge( (array) $query->get( 'post__not_in' ), $ids ) );
+	}
+}
+add_action( 'pre_get_posts', 'sg_migrate_hide_merged' );

@@ -274,7 +274,14 @@ function sgb_handle_submission( array $data ) {
 		return $fail( 'err_network' );
 	}
 
-	$room_title = $clean['room_id'] ? get_the_title( $clean['room_id'] ) : $clean['room_text'];
+	// Tên phòng theo ngôn ngữ khách đã chọn (dùng trong email và trang quản trị).
+	$room_title = $clean['room_text'];
+	if ( $clean['room_id'] ) {
+		$room_id    = (int) $clean['room_id'];
+		$room_title = function_exists( 'sg_with_lang' ) ? sg_with_lang( $lang, static function () use ( $room_id ) {
+			return get_the_title( $room_id );
+		}, false ) : get_the_title( $room_id );
+	}
 	$meta       = array(
 		'checkin'        => $clean['checkin'],
 		'checkout'       => $clean['checkout'],

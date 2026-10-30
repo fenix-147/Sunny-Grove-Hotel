@@ -24,25 +24,13 @@ function sgb_defaults( $name ) {
 }
 
 /**
- * Ngôn ngữ của site (Polylang nếu có).
+ * Ngôn ngữ của site – lấy từ plugin Sunny Grove Core (đa ngôn ngữ tự viết); không có thì dùng ngôn ngữ của WordPress.
  *
  * @return array slug => [ name, locale ]
  */
 function sgb_languages() {
-	if ( function_exists( 'pll_languages_list' ) ) {
-		$slugs = pll_languages_list( array( 'fields' => 'slug' ) );
-		if ( $slugs ) {
-			$names   = pll_languages_list( array( 'fields' => 'name' ) );
-			$locales = pll_languages_list( array( 'fields' => 'locale' ) );
-			$out     = array();
-			foreach ( $slugs as $i => $slug ) {
-				$out[ $slug ] = array(
-					'name'   => $names[ $i ],
-					'locale' => $locales[ $i ],
-				);
-			}
-			return $out;
-		}
+	if ( function_exists( 'sg_languages' ) && sg_languages() ) {
+		return sg_languages();
 	}
 	$locale = get_locale();
 	return array(
@@ -59,10 +47,7 @@ function sgb_languages() {
  * @return string
  */
 function sgb_default_lang() {
-	if ( function_exists( 'pll_default_language' ) && pll_default_language() ) {
-		return pll_default_language();
-	}
-	return (string) array_key_first( sgb_languages() );
+	return function_exists( 'sg_default_lang' ) ? sg_default_lang() : (string) array_key_first( sgb_languages() );
 }
 
 /**
@@ -71,10 +56,7 @@ function sgb_default_lang() {
  * @return string
  */
 function sgb_current_lang() {
-	if ( function_exists( 'pll_current_language' ) && pll_current_language() ) {
-		return pll_current_language();
-	}
-	return sgb_default_lang();
+	return function_exists( 'sg_current_lang' ) ? sg_current_lang() : sgb_default_lang();
 }
 
 /**
@@ -114,7 +96,6 @@ function sgb_seed_options() {
 	}
 	update_option( 'sgb_texts', $texts );
 }
-add_action( 'pll_add_language', 'sgb_seed_options', 20 );
 
 /**
  * Cài đặt chung.
@@ -182,9 +163,8 @@ function sgb_contact_info( $lang = '' ) {
  */
 function sgb_booking_page_url( $lang = '' ) {
 	$page_id = (int) sgb_general( 'booking_page' );
-	if ( $page_id && function_exists( 'pll_get_post' ) ) {
-		$translated = pll_get_post( $page_id, $lang ? $lang : sgb_current_lang() );
-		$page_id    = $translated ? $translated : $page_id;
+	if ( ! $page_id ) {
+		return '';
 	}
-	return $page_id ? (string) get_permalink( $page_id ) : '';
+	return function_exists( 'sg_permalink' ) ? sg_permalink( $page_id, $lang ? $lang : sgb_current_lang() ) : (string) get_permalink( $page_id );
 }

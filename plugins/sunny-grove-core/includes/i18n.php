@@ -141,8 +141,9 @@ function sg_home_path() {
  * ---------------------------------------------------------------------- */
 
 /**
- * Nhận diện tiền tố ngôn ngữ trên URL và bỏ tiền tố để WordPress xử lý như bình thường.
- * Chạy sớm (plugins_loaded) để locale đúng ngay từ đầu.
+ * Nhận diện tiền tố ngôn ngữ trên URL. Chạy sớm (plugins_loaded) để locale đúng ngay từ đầu.
+ * Tiền tố chỉ được bỏ khỏi REQUEST_URI trong lúc WordPress phân tích đường dẫn (sg_i18n_strip_uri),
+ * để code khác đọc REQUEST_URI trước đó vẫn thấy đúng địa chỉ thật.
  */
 function sg_i18n_detect() {
 	if ( sg_i18n_legacy_active() || is_admin() || ( defined( 'WP_CLI' ) && WP_CLI ) || empty( $_SERVER['REQUEST_URI'] ) ) {
@@ -162,14 +163,26 @@ function sg_i18n_detect() {
 		if ( preg_match( '#^' . preg_quote( $prefix, '#' ) . '(/|\?|$)#', $rest, $m ) ) {
 			$GLOBALS['sg_lang']             = $lang;
 			$GLOBALS['sg_i18n_request_uri'] = $uri;
-			$stripped                       = substr( $rest, strlen( $prefix ) );
-			$stripped                       = ltrim( $stripped, '/' );
-			$_SERVER['REQUEST_URI']         = $home . $stripped;
+			$GLOBALS['sg_i18n_stripped']    = $home . ltrim( substr( $rest, strlen( $prefix ) ), '/' );
 			return;
 		}
 	}
 }
 add_action( 'plugins_loaded', 'sg_i18n_detect', 0 );
+
+/**
+ * Bỏ tiền tố ngôn ngữ ngay trước khi WordPress phân tích đường dẫn.
+ *
+ * @param bool $parse Có phân tích hay không.
+ * @return bool
+ */
+function sg_i18n_strip_uri( $parse ) {
+	if ( isset( $GLOBALS['sg_i18n_stripped'] ) ) {
+		$_SERVER['REQUEST_URI'] = $GLOBALS['sg_i18n_stripped'];
+	}
+	return $parse;
+}
+add_filter( 'do_parse_request', 'sg_i18n_strip_uri', 1 );
 
 /**
  * Trả lại URI gốc sau khi WordPress phân tích xong (để redirect_canonical so sánh đúng).

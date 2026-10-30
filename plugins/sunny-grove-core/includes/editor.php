@@ -1,22 +1,14 @@
 <?php
 /**
  * Trình soạn thảo hiển thị giống ngoài website:
- * - Query Loop chỉ lấy bài cùng ngôn ngữ với trang đang sửa (Polylang bản miễn phí không lọc request REST của trình soạn thảo).
- * - Trường phòng/địa điểm/ưu đãi hiện giá trị đã định dạng (giá, ngày…) thay vì số thô.
+ * - Trường phòng/địa điểm/ưu đãi hiện giá trị đã định dạng (giá, ngày…) thay vì số thô, cho cả hai ngôn ngữ
+ *   (trường REST sg_display) – nút gạt VI | EN đổi qua lại ngay, không cần tải lại.
+ * - Block hiển thị từ máy chủ dùng nhãn theo ngôn ngữ đang gạt (tham số sg_lang).
  *
  * @package SunnyGroveCore
  */
 
 defined( 'ABSPATH' ) || exit;
-
-/**
- * Loại nội dung được lọc theo ngôn ngữ trong trình soạn thảo.
- *
- * @return string[]
- */
-function sgc_editor_lang_types() {
-	return array_merge( array_keys( sgc_data( 'post-types' ) ), array( 'post' ) );
-}
 
 /**
  * Các khóa trường có giá trị định dạng sẵn (khớp với sgc_meta_value), kèm tên và gợi ý khi còn trống
@@ -50,22 +42,29 @@ function sgc_meta_display_fields() {
 }
 
 /**
- * Giá trị đã định dạng của mọi trường, theo ngôn ngữ của chính bài đó.
+ * Giá trị đã định dạng của mọi trường (kèm tiêu đề, tóm tắt) cho từng ngôn ngữ.
  *
  * @param int $post_id ID bài.
- * @return array
+ * @return array lang => key => giá trị
  */
 function sgc_meta_display( $post_id ) {
-	return sgc_with_lang(
-		sgc_post_lang( $post_id ),
-		static function () use ( $post_id ) {
-			$out = array();
-			foreach ( array_keys( sgc_meta_display_fields() ) as $key ) {
-				$out[ $key ] = html_entity_decode( sgc_meta_value( $post_id, $key ), ENT_QUOTES, 'UTF-8' );
+	$out = array();
+	foreach ( array_keys( sg_languages() ) as $lang ) {
+		$out[ $lang ] = sg_with_lang(
+			$lang,
+			static function () use ( $post_id ) {
+				$values = array(
+					'title'   => html_entity_decode( get_the_title( $post_id ), ENT_QUOTES, 'UTF-8' ),
+					'excerpt' => html_entity_decode( get_the_excerpt( $post_id ), ENT_QUOTES, 'UTF-8' ),
+				);
+				foreach ( array_keys( sgc_meta_display_fields() ) as $key ) {
+					$values[ $key ] = html_entity_decode( sgc_meta_value( $post_id, $key ), ENT_QUOTES, 'UTF-8' );
+				}
+				return $values;
 			}
-			return $out;
-		}
-	);
+		);
+	}
+	return $out;
 }
 
 /**
@@ -76,30 +75,15 @@ function sgc_meta_display( $post_id ) {
  */
 function sgc_request_lang( $request ) {
 	$lang = sanitize_key( (string) $request->get_param( 'sg_lang' ) );
-	return $lang && isset( sgc_languages()[ $lang ] ) ? $lang : '';
+	return sg_is_lang( $lang ) ? $lang : '';
 }
 
 /**
- * Trường REST: sg_lang (ngôn ngữ của bài) và sg_display (giá trị đã định dạng).
+ * Trường REST sg_display: giá trị đã định dạng theo từng ngôn ngữ.
  */
 function sgc_register_editor_rest_fields() {
-	$lang_types = array_merge( sgc_editor_lang_types(), array( 'page' ) );
 	register_rest_field(
-		$lang_types,
-		'sg_lang',
-		array(
-			'get_callback' => static function ( $post ) {
-				return sgc_post_lang( $post['id'] );
-			},
-			'schema'       => array(
-				'type'     => 'string',
-				'context'  => array( 'view', 'edit' ),
-				'readonly' => true,
-			),
-		)
-	);
-	register_rest_field(
-		array_keys( sgc_data( 'post-types' ) ),
+		array_merge( array_keys( sgc_data( 'post-types' ) ), array( 'post', 'page' ) ),
 		'sg_display',
 		array(
 			'get_callback' => static function ( $post ) {
@@ -116,31 +100,6 @@ function sgc_register_editor_rest_fields() {
 add_action( 'rest_api_init', 'sgc_register_editor_rest_fields' );
 
 /**
- * Danh sách bài qua REST: chỉ lấy bài thuộc ngôn ngữ sg_lang.
- *
- * @param array           $args    Tham số WP_Query.
- * @param WP_REST_Request $request Request.
- * @return array
- */
-function sgc_rest_query_lang( $args, $request ) {
-	$lang = sgc_request_lang( $request );
-	if ( ! $lang || ! taxonomy_exists( 'language' ) ) {
-		return $args;
-	}
-	$args['tax_query']   = isset( $args['tax_query'] ) ? (array) $args['tax_query'] : array(); // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_tax_query
-	$args['tax_query'][] = array(
-		'taxonomy' => 'language',
-		'field'    => 'slug',
-		'terms'    => $lang,
-	);
-	return $args;
-}
-foreach ( sgc_editor_lang_types() as $sgc_type ) {
-	add_filter( "rest_{$sgc_type}_query", 'sgc_rest_query_lang', 10, 2 );
-}
-unset( $sgc_type );
-
-/**
  * Block hiển thị từ máy chủ (block-renderer) trong trình soạn thảo: dùng nhãn theo ngôn ngữ trang đang sửa.
  *
  * @param mixed           $response Phản hồi.
@@ -151,8 +110,8 @@ unset( $sgc_type );
 function sgc_rest_lang_before( $response, $handler, $request ) {
 	$lang = sgc_request_lang( $request );
 	if ( $lang ) {
-		$GLOBALS['sgc_lang_override']  = $lang;
-		$GLOBALS['sgc_lang_switched'] = switch_to_locale( sgc_languages()[ $lang ]['locale'] );
+		$GLOBALS['sg_lang_override']  = $lang;
+		$GLOBALS['sgc_lang_switched'] = switch_to_locale( sg_languages()[ $lang ]['locale'] );
 	}
 	return $response;
 }
@@ -165,50 +124,13 @@ add_filter( 'rest_request_before_callbacks', 'sgc_rest_lang_before', 10, 3 );
  * @return mixed
  */
 function sgc_rest_lang_after( $response ) {
-	if ( ! empty( $GLOBALS['sgc_lang_override'] ) ) {
+	if ( ! empty( $GLOBALS['sg_lang_override'] ) ) {
 		if ( ! empty( $GLOBALS['sgc_lang_switched'] ) ) {
 			restore_previous_locale();
 		}
-		$GLOBALS['sgc_lang_override']  = '';
+		$GLOBALS['sg_lang_override']  = '';
 		$GLOBALS['sgc_lang_switched'] = false;
 	}
 	return $response;
 }
 add_filter( 'rest_request_after_callbacks', 'sgc_rest_lang_after' );
-
-/**
- * Script trình soạn thảo: gắn ngôn ngữ trang đang sửa vào các request lấy bài.
- */
-function sgc_enqueue_editor_lang() {
-	if ( ! function_exists( 'pll_languages_list' ) ) {
-		return;
-	}
-	global $wp_post_types;
-	$bases = array();
-	foreach ( sgc_editor_lang_types() as $type ) {
-		if ( isset( $wp_post_types[ $type ] ) ) {
-			$bases[] = $wp_post_types[ $type ]->rest_base ? $wp_post_types[ $type ]->rest_base : $type;
-		}
-	}
-	// Ngôn ngữ ban đầu: bài đang mở, hoặc ngôn ngữ chọn khi tạo bản dịch mới.
-	$post_id = isset( $_GET['post'] ) ? absint( $_GET['post'] ) : 0; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
-	$lang    = $post_id ? sgc_post_lang( $post_id ) : '';
-	if ( ! $lang && isset( $_GET['new_lang'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
-		$lang = sanitize_key( wp_unslash( $_GET['new_lang'] ) ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended
-	}
-	wp_enqueue_script( 'sgc-editor-lang', SGC_URL . 'assets/editor-lang.js', array( 'wp-api-fetch', 'wp-url', 'wp-data', 'wp-core-data' ), SGC_VERSION, false );
-	wp_add_inline_script(
-		'sgc-editor-lang',
-		'window.sgcEditorLang = ' . wp_json_encode(
-			array(
-				'bases'      => $bases,
-				'translated' => array_merge( sgc_editor_lang_types(), array( 'page' ) ),
-				'postId'     => $post_id,
-				'lang'       => $lang,
-				'default'    => sgc_default_lang(),
-			)
-		) . ';',
-		'before'
-	);
-}
-add_action( 'enqueue_block_editor_assets', 'sgc_enqueue_editor_lang', 5 );

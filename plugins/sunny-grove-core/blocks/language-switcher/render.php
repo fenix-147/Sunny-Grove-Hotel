@@ -1,6 +1,6 @@
 <?php
 /**
- * Nút chuyển ngôn ngữ (Polylang).
+ * Nút chuyển ngôn ngữ: link tới cùng trang ở ngôn ngữ kia.
  *
  * @package SunnyGroveCore
  * @var array $attributes
@@ -8,18 +8,17 @@
 
 defined( 'ABSPATH' ) || exit;
 
-if ( ! function_exists( 'pll_the_languages' ) ) {
+if ( ! function_exists( 'sg_languages' ) || count( sg_languages() ) < 2 ) {
 	return;
 }
-$sgc_langs = pll_the_languages(
-	array(
-		'raw'                    => 1,
-		'hide_if_no_translation' => 0,
-		'hide_if_empty'          => 0,
-	)
-);
-if ( ! $sgc_langs || count( $sgc_langs ) < 2 ) {
-	return;
+$sgc_langs = array();
+foreach ( sg_languages() as $sgc_slug => $sgc_info ) {
+	$sgc_langs[] = array(
+		'slug'         => $sgc_slug,
+		'name'         => $sgc_info['name'],
+		'url'          => sg_translation_url( $sgc_slug ),
+		'current_lang' => sg_current_lang() === $sgc_slug,
+	);
 }
 $sgc_wrap = get_block_wrapper_attributes(
 	array(

@@ -107,18 +107,6 @@ function sgb_maybe_grant_caps() {
 add_action( 'admin_init', 'sgb_maybe_grant_caps' );
 
 /**
- * Yêu cầu đặt phòng không cần dịch (Polylang).
- *
- * @param array $types Loại nội dung.
- * @return array
- */
-function sgb_pll_exclude( $types ) {
-	unset( $types['sgb_request'] );
-	return $types;
-}
-add_filter( 'pll_get_post_types', 'sgb_pll_exclude', 20 );
-
-/**
  * Đọc một trường của yêu cầu.
  *
  * @param int    $post_id ID.

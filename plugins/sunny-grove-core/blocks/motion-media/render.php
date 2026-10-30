@@ -25,7 +25,7 @@ $sgc_img   = get_the_post_thumbnail(
 		'alt'     => '',
 	)
 );
-$sgc_badge = $attributes['showBadge'] ? get_post_meta( $sgc_post_id, 'sg_badge', true ) : '';
+$sgc_badge = $attributes['showBadge'] ? sg_meta_tr( $sgc_post_id, 'sg_badge' ) : '';
 
 $sgc_wrapper = get_block_wrapper_attributes(
 	array(

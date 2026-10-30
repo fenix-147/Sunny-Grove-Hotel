@@ -33,7 +33,6 @@ require_once SGC_DIR . 'includes/i18n-content.php';
 require_once SGC_DIR . 'includes/migrate.php';
 require_once SGC_DIR . 'includes/frontend.php';
 require_once SGC_DIR . 'includes/roles.php';
-require_once SGC_DIR . 'includes/polylang.php';
 require_once SGC_DIR . 'includes/demo.php';
 
 if ( defined( 'WP_CLI' ) && WP_CLI ) {
