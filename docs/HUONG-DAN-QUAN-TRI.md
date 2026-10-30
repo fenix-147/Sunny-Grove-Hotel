@@ -6,6 +6,7 @@ Tài liệu dành cho nhân viên khách sạn – **không cần biết code**.
 > - Sửa xong nhớ bấm nút xanh **Cập nhật** (hoặc **Lưu thay đổi**) ở góc trên bên phải.
 > - Mọi chỗ có chữ **[CẦN THAY]** là thông tin giả – hãy thay bằng thông tin thật trước khi mở website.
 > - Website có 2 ngôn ngữ. Khi sửa nội dung Tiếng Việt, đừng quên sửa bản English tương ứng (xem mục 8).
+> - **Trang chủ Tiếng Việt và Home (English) là 2 trang riêng.** Muốn sửa phòng, ưu đãi, tiện ích, địa điểm thì vào menu **Phòng / Ưu đãi / Tiện ích / Khám phá Phú Quốc** – không sửa trong trang chủ (xem [mục 8](#trang-chủ-tiếng-việt-và-home-english-là-2-trang-riêng)).
 
 ## Mục lục
 1. [Bản đồ trang quản trị](#1-bản-đồ-trang-quản-trị)
@@ -141,6 +142,27 @@ Website dùng **Polylang**: mỗi trang/phòng/địa điểm/ưu đãi/bài vi�
 **Sửa bản English đã có:** bấm biểu tượng ✏️ ở cột cờ 🇬🇧.
 
 **Tự đồng bộ giữa hai bản:** giá, diện tích, số khách, khoảng cách, thời gian, phương tiện, link bản đồ, ảnh, thư viện, ngày ưu đãi, thứ tự, nhóm. **Không đồng bộ (dịch riêng):** tiêu đề, nội dung, loại giường, hướng nhìn, mô tả ngắn, giờ hoạt động, dòng so sánh, giá ưu đãi dạng chữ, điều kiện.
+
+### Trang chủ Tiếng Việt và Home (English) là 2 trang riêng
+
+Trong **Trang** có hai trang: **Trang chủ** (Tiếng Việt) và **Home** (English). Sửa tiêu đề, đoạn giới thiệu, ảnh, nút… ở trang nào thì chỉ trang đó thay đổi – nhớ sửa cả hai.
+
+Các danh sách **Phòng tiêu biểu, Tiện ích, Khám phá Phú Quốc, Ưu đãi** trên trang chủ được **lấy tự động** từ dữ liệu:
+
+| Muốn sửa | Vào menu |
+|---|---|
+| Tên phòng, giá, ảnh, số khách | **Phòng** → bấm tên phòng |
+| Ưu đãi, giá ưu đãi, ngày hết hạn | **Ưu đãi** → bấm tên ưu đãi |
+| Hồ bơi, Kids Club, giờ mở cửa | **Tiện ích** |
+| Địa điểm, khoảng cách | **Khám phá Phú Quốc** |
+
+**Không sửa các thẻ này ngay trong trang chủ**: ở đó thẻ chỉ để xem trước. Bấm vào thẻ rồi gõ chữ thì sẽ đổi **khuôn mẫu chung của mọi thẻ**, không phải dữ liệu của một phòng.
+
+Khi mở trang chủ trong trình soạn thảo:
+- **Trang chủ** chỉ hiện phòng/ưu đãi Tiếng Việt, **Home** chỉ hiện bản English – giống hệt ngoài website.
+- Giá, ngày đã được định dạng sẵn (ví dụ “Từ 1.290.000đ / đêm”, “Áp dụng đến 30/04/2027”).
+- Ô nào chưa nhập sẽ để trống. Khi bấm vào thẻ, ô đó hiện chữ xám gợi ý, ví dụ “Chưa nhập giá cũ” – đây chỉ là gợi ý trong trình soạn thảo, **khách không thấy**. Muốn điền thì vào menu tương ứng ở bảng trên.
+- Khi sửa template trong **Giao diện → Trình chỉnh sửa**, danh sách mẫu hiển thị bằng Tiếng Việt (ngôn ngữ mặc định).
 
 **Các chữ khác:**
 - Thông tin khách sạn, nhãn hiển thị, chữ trên form và email đặt phòng: mỗi trang cài đặt đều có **tab Tiếng Việt / English**.

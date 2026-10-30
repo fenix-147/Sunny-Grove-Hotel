@@ -86,6 +86,9 @@ function sgc_default_lang() {
  * @return string
  */
 function sgc_current_lang() {
+	if ( ! empty( $GLOBALS['sgc_lang_override'] ) ) {
+		return $GLOBALS['sgc_lang_override'];
+	}
 	if ( function_exists( 'pll_current_language' ) ) {
 		$lang = pll_current_language();
 		if ( $lang ) {
@@ -93,6 +96,43 @@ function sgc_current_lang() {
 		}
 	}
 	return sgc_default_lang();
+}
+
+/**
+ * Chạy một hàm như thể đang xem bằng ngôn ngữ $lang (nhãn + định dạng số/ngày theo ngôn ngữ đó).
+ * Dùng cho các request của trình soạn thảo, nơi Polylang không biết ngôn ngữ đang sửa.
+ *
+ * @param string   $lang     Mã ngôn ngữ.
+ * @param callable $callback Hàm cần chạy.
+ * @return mixed
+ */
+function sgc_with_lang( $lang, $callback ) {
+	$langs = sgc_languages();
+	if ( ! $lang || ! isset( $langs[ $lang ] ) ) {
+		return $callback();
+	}
+	$previous                    = $GLOBALS['sgc_lang_override'] ?? '';
+	$GLOBALS['sgc_lang_override'] = $lang;
+	$switched                    = switch_to_locale( $langs[ $lang ]['locale'] );
+	try {
+		return $callback();
+	} finally {
+		if ( $switched ) {
+			restore_previous_locale();
+		}
+		$GLOBALS['sgc_lang_override'] = $previous;
+	}
+}
+
+/**
+ * Ngôn ngữ của một bài (mặc định nếu chưa gán).
+ *
+ * @param int $post_id ID bài.
+ * @return string
+ */
+function sgc_post_lang( $post_id ) {
+	$lang = function_exists( 'pll_get_post_language' ) ? pll_get_post_language( (int) $post_id ) : '';
+	return $lang ? $lang : sgc_default_lang();
 }
 
 /**

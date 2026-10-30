@@ -734,6 +734,16 @@ function sgc_demo_import() {
 		}
 	}
 	sgc_demo_building_lang( '' );
+	// Lưu nội dung có thể khiến Polylang gán lại ngôn ngữ theo ngữ cảnh đang chạy (ngôn ngữ đang xem / bộ lọc
+	// ngôn ngữ của quản trị) → gán lại ngôn ngữ và liên kết bản dịch cho chắc chắn.
+	foreach ( $pages as $ids ) {
+		foreach ( array_filter( $ids ) as $lang => $id ) {
+			if ( function_exists( 'pll_set_post_language' ) ) {
+				pll_set_post_language( $id, $lang );
+			}
+		}
+		sgc_demo_link_posts( $ids );
+	}
 	sgc_demo_log( 'Đã tạo ' . count( $data['pages'] ) . ' trang cho mỗi ngôn ngữ.' );
 
 	// Trang chủ tĩnh.

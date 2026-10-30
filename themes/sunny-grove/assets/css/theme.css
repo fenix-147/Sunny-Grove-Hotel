@@ -168,6 +168,19 @@ h1, h2, h3 { text-wrap: balance; }
 .sg-card__body .wp-block-post-title a::after { content: ""; position: absolute; inset: 0; z-index: 1; }
 .sg-card__body :where(a:not(.wp-block-post-title a), button, .wp-block-buttons) { position: relative; z-index: 2; }
 .sg-card__footer { margin-top: auto !important; padding-top: .5rem; align-items: center; }
+/* Dòng cuối của thẻ (giá/nút, giờ mở cửa, khoảng cách…) luôn nằm sát đáy để các thẻ cạnh nhau thẳng hàng. */
+.sg-card__body > :last-child:not(.block-list-appender) { margin-top: auto !important; }
+
+/* Thẻ trong lưới / băng chuyền cao bằng nhau – cả ngoài website lẫn trong trình soạn thảo
+   (trình soạn thảo bọc thêm lớp và tự thêm khoảng cách giữa các mục, làm thẻ đầu lệch so với thẻ xem trước). */
+:is(.sg-grid, .is-style-sg-carousel) .wp-block-post-template > li { display: flex; flex-direction: column; margin: 0 !important; }
+:is(.sg-grid, .is-style-sg-carousel) .wp-block-post-template > li > .sg-card { flex: 1 1 auto; height: auto; margin: 0 !important; }
+.editor-styles-wrapper .sg-card > .block-editor-block-list__block,
+.editor-styles-wrapper .sg-card__body > .block-editor-block-list__block { margin-block: 0 !important; }
+/* Ô "Thêm liên kết Xem thêm" của khối Trích đoạn chỉ hiện khi đang chọn khối (ngoài website không có). */
+.editor-styles-wrapper .sg-card .wp-block-post-excerpt:not(.is-selected) .wp-block-post-excerpt__more-text:has([data-rich-text-placeholder]) { display: none; }
+.editor-styles-wrapper .sg-card__body > .sg-card__footer,
+.editor-styles-wrapper .sg-card__body > .block-editor-block-list__block:last-child { margin-top: auto !important; }
 .sg-card__footer .wp-block-button__link { padding: .55rem 1.1rem; font-size: var(--wp--preset--font-size--small); }
 .is-style-sg-card { padding: var(--wp--preset--spacing--40); }
 

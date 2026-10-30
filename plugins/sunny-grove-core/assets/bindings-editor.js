@@ -1,10 +1,25 @@
 /* global wp, sgcBindingPreview */
 ( function () {
 	'use strict';
+
+	// Bản dịch tiếng Việt của WordPress dịch nhầm mã cách đếm chữ "words" (chuỗi được ghi chú "Do not translate!")
+	// → khối Trích đoạn trong trình soạn thảo cắt sai, chỉ còn "…". Giữ nguyên giá trị gốc cho chuỗi này.
+	if ( wp.hooks ) {
+		wp.hooks.addFilter( 'i18n.gettext_with_context', 'sunny-grove/word-count-type', function ( translation, text, context ) {
+			return context === 'Word count type. Do not translate!' ? text : translation;
+		} );
+	}
+
 	if ( ! wp.blocks || ! wp.blocks.registerBlockBindingsSource ) {
 		return;
 	}
 	var data = window.sgcBindingPreview || { labels: {}, hotel: {} };
+
+	// Nhãn/thông tin theo ngôn ngữ của trang đang sửa (editor-lang.js), mặc định là ngôn ngữ chính.
+	function forLang( group ) {
+		var lang = window.sgcEditorCurrentLang ? window.sgcEditorCurrentLang() : data.default;
+		return group[ lang ] || group[ data.default ] || {};
+	}
 
 	function values( bindings, resolve ) {
 		var out = {};
@@ -18,8 +33,9 @@
 	wp.blocks.registerBlockBindingsSource( {
 		name: 'sunny-grove/label',
 		getValues: function ( args ) {
+			var labels = forLang( data.labels );
 			return values( args.bindings, function ( key, attr ) {
-				return attr === 'url' ? '#' : ( data.labels[ key ] || key ).replace( '{nam}', new Date().getFullYear() );
+				return attr === 'url' ? '#' : ( labels[ key ] || key ).replace( '{nam}', new Date().getFullYear() );
 			} );
 		}
 	} );
@@ -27,33 +43,51 @@
 	wp.blocks.registerBlockBindingsSource( {
 		name: 'sunny-grove/hotel',
 		getValues: function ( args ) {
+			var hotel = forLang( data.hotel );
 			return values( args.bindings, function ( key, attr ) {
-				return attr === 'url' ? '#' : ( data.hotel[ key ] || key );
+				return attr === 'url' ? '#' : ( hotel[ key ] || key );
 			} );
 		}
 	} );
 
-	// Trường của phòng/địa điểm/ưu đãi: hiển thị giá trị thô trong trình soạn thảo, ngoài website sẽ được định dạng đầy đủ.
-	var metaMap = {
-		price: 'sg_price_from', adults: 'sg_adults', children: 'sg_children', area: 'sg_area', bed: 'sg_bed',
-		view: 'sg_view', hours: 'sg_hours', hours_line: 'sg_hours', short: 'sg_short', compare: 'sg_compare',
-		distance: 'sg_distance', travel: 'sg_time', offer_price: 'sg_price', old_price: 'sg_old_price',
-		badge: 'sg_badge', valid_until: 'sg_valid_to', conditions: 'sg_conditions', map_url: 'sg_map_url'
-	};
+	// Trường của phòng/địa điểm/ưu đãi: máy chủ trả sẵn giá trị đã định dạng (trường REST sg_display, cùng hàm với
+	// ngoài website) nên trình soạn thảo hiển thị giống hệt: "Từ 1.290.000đ / đêm", "Đến 30/04/2027"…
+	var fields = data.fields || {};
+
+	function escapeHtml( text ) {
+		return String( text ).replace( /&/g, '&amp;' ).replace( /</g, '&lt;' ).replace( />/g, '&gt;' );
+	}
+	function displayValues( select, context ) {
+		var ctx = context || {};
+		if ( ! ctx.postId || ! ctx.postType ) {
+			return {};
+		}
+		var record = select( 'core' ).getEntityRecord( 'postType', ctx.postType, ctx.postId );
+		return ( record && record.sg_display ) || {};
+	}
+
 	wp.blocks.registerBlockBindingsSource( {
 		name: 'sunny-grove/meta',
 		usesContext: [ 'postId', 'postType' ],
 		getValues: function ( args ) {
-			var ctx = args.context || {};
-			var record = ctx.postId && ctx.postType ?
-				args.select( 'core' ).getEditedEntityRecord( 'postType', ctx.postType, ctx.postId ) : null;
-			var meta = ( record && record.meta ) || {};
+			var shown = displayValues( args.select, args.context );
 			return values( args.bindings, function ( key, attr ) {
 				if ( attr === 'url' ) {
 					return '#';
 				}
-				var v = metaMap[ key ] ? meta[ metaMap[ key ] ] : '';
-				return ( v !== undefined && v !== '' && v !== null ) ? String( v ) : '[' + key + ']';
+				// Ô trống → chuỗi rỗng; WordPress hiện gợi ý chữ xám lấy từ getFieldsList bên dưới.
+				return shown[ key ] ? escapeHtml( shown[ key ] ) : '';
+			} );
+		},
+		// Tên trường; khi trường còn trống thì tên là gợi ý "Chưa nhập …" (WordPress dùng làm chữ xám giữ chỗ).
+		getFieldsList: function ( args ) {
+			var shown = displayValues( args.select, args.context );
+			return Object.keys( fields ).map( function ( key ) {
+				return {
+					label: shown[ key ] ? fields[ key ][ 0 ] : fields[ key ][ 1 ],
+					type: 'string',
+					args: { key: key }
+				};
 			} );
 		}
 	} );

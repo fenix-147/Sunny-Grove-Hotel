@@ -192,22 +192,24 @@ add_action( 'init', 'sgc_register_binding_sources' );
 function sgc_binding_editor_script() {
 	$schema = sgc_data( 'labels' );
 	$labels = array();
-	foreach ( $schema['fields'] as $key => $field ) {
-		$labels[ $key ] = sgc_label( $key );
+	$hotel  = array();
+	// Nhãn và thông tin khách sạn cho từng ngôn ngữ: trình soạn thảo chọn theo ngôn ngữ của trang đang sửa.
+	foreach ( array_keys( sgc_languages() ) as $lang ) {
+		foreach ( array_keys( $schema['fields'] ) as $key ) {
+			$labels[ $lang ][ $key ] = sgc_label( $key, array(), $lang );
+		}
+		foreach ( array( 'phone', 'email', 'address', 'name', 'slogan', 'checkin' ) as $key ) {
+			$hotel[ $lang ][ $key ] = sgc_hotel( $key, $lang );
+		}
 	}
 	wp_add_inline_script(
 		'sgc-bindings-editor',
 		'window.sgcBindingPreview = ' . wp_json_encode(
 			array(
-				'labels' => $labels,
-				'hotel'  => array(
-					'phone'   => sgc_hotel( 'phone' ),
-					'email'   => sgc_hotel( 'email' ),
-					'address' => sgc_hotel( 'address' ),
-					'name'    => sgc_hotel( 'name' ),
-					'slogan'  => sgc_hotel( 'slogan' ),
-					'checkin' => sgc_hotel( 'checkin' ),
-				),
+				'labels'  => $labels,
+				'hotel'   => $hotel,
+				'fields'  => sgc_meta_display_fields(),
+				'default' => sgc_default_lang(),
 			)
 		) . ';',
 		'before'
@@ -218,7 +220,7 @@ function sgc_binding_editor_script() {
  * Đăng ký script hiển thị nguồn dữ liệu trong trình soạn thảo.
  */
 function sgc_enqueue_binding_editor() {
-	wp_enqueue_script( 'sgc-bindings-editor', SGC_URL . 'assets/bindings-editor.js', array( 'wp-blocks', 'wp-data', 'wp-core-data' ), SGC_VERSION, true );
+	wp_enqueue_script( 'sgc-bindings-editor', SGC_URL . 'assets/bindings-editor.js', array( 'wp-blocks', 'wp-data', 'wp-core-data', 'wp-hooks', 'wp-i18n' ), SGC_VERSION, true );
 	sgc_binding_editor_script();
 }
 add_action( 'enqueue_block_editor_assets', 'sgc_enqueue_binding_editor' );
