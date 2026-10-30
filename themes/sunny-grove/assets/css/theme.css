@@ -87,6 +87,7 @@ h1, h2, h3 { text-wrap: balance; }
 .sg-header__brand { flex-shrink: 1; min-width: 0; }
 .sg-header .wp-block-site-title a,
 .sg-footer .wp-block-site-title a { display: inline-flex; align-items: center; gap: .55rem; white-space: nowrap; }
+.sg-header .wp-block-site-title a { min-height: 44px; }
 .sg-header .wp-block-site-title a::before {
 	content: "";
 	flex: none;

@@ -753,6 +753,19 @@ function sgc_demo_import() {
 	// Thông tin chung của site.
 	update_option( 'blogname', 'Sunny Grove' );
 	update_option( 'blogdescription', sgc_hotel( 'slogan', $main_lang ) );
+	// Dịch khẩu hiệu cho các ngôn ngữ khác (sửa được tại Ngôn ngữ → Bản dịch chuỗi).
+	if ( $has_pll && class_exists( 'PLL_MO' ) ) {
+		foreach ( array_slice( $langs, 1 ) as $lang_slug ) {
+			$lang_obj = PLL()->model->get_language( $lang_slug );
+			$slogan   = sgc_hotel( 'slogan', $lang_slug );
+			if ( $lang_obj && $slogan ) {
+				$mo = new PLL_MO();
+				$mo->import_from_db( $lang_obj );
+				$mo->add_entry( $mo->make_entry( sgc_hotel( 'slogan', $main_lang ), $slogan ) );
+				$mo->export_to_db( $lang_obj );
+			}
+		}
+	}
 	if ( ! get_option( 'permalink_structure' ) ) {
 		update_option( 'permalink_structure', '/%postname%/' );
 	}

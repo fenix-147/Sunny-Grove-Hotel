@@ -57,6 +57,10 @@ function sgc_view_strings() {
 				'play'      => sgc_label( 'video_play' ),
 				'menuOpen'  => sgc_label( 'menu_open' ),
 				'menuClose' => sgc_label( 'menu_close' ),
+				'galPrev'   => sgc_label( 'gallery_prev' ),
+				'galNext'   => sgc_label( 'gallery_next' ),
+				'galClose'  => sgc_label( 'gallery_close' ),
+				'galCount'  => sgc_label( 'gallery_counter', array( 'n' => '{n}', 'tong' => '{tong}' ) ),
 			)
 		);
 	}

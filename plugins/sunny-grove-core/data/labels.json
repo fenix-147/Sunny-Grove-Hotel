@@ -21,6 +21,11 @@
 		"language": { "group": "general", "label": "Tên vùng chọn ngôn ngữ (cho trình đọc màn hình)", "vi": "Chọn ngôn ngữ", "en": "Choose language" },
 		"date_format": { "group": "general", "label": "Định dạng ngày (theo PHP: d/m/Y, M j, Y…)", "vi": "d/m/Y", "en": "M j, Y" },
 		"gallery": { "group": "general", "label": "Tiêu đề thư viện ảnh thực tế", "vi": "Hình ảnh thực tế", "en": "Real photos" },
+		"gallery_open": { "group": "general", "label": "Thư viện ảnh: bấm để phóng to (cho trình đọc màn hình)", "vi": "Phóng to ảnh", "en": "Enlarge photo" },
+		"gallery_prev": { "group": "general", "label": "Thư viện ảnh: nút ảnh trước", "vi": "Ảnh trước", "en": "Previous photo" },
+		"gallery_next": { "group": "general", "label": "Thư viện ảnh: nút ảnh tiếp theo", "vi": "Ảnh tiếp theo", "en": "Next photo" },
+		"gallery_close": { "group": "general", "label": "Thư viện ảnh: nút đóng ảnh phóng to", "vi": "Đóng", "en": "Close" },
+		"gallery_counter": { "group": "general", "label": "Thư viện ảnh: số thứ tự ảnh ({n} = ảnh đang xem, {tong} = tổng số ảnh)", "vi": "Ảnh {n} / {tong}", "en": "Photo {n} of {tong}" },
 		"copyright": { "group": "general", "label": "Dòng bản quyền ở chân trang ({nam} = năm hiện tại)", "vi": "© {nam} Sunny Grove Hotel – Phú Quốc. Ảnh và video minh họa – sẽ thay bằng hình thật.", "en": "© {nam} Sunny Grove Hotel – Phu Quoc. Illustrative photos and videos – to be replaced with real ones." },
 
 		"price_format": { "group": "room", "label": "Giá phòng ({gia} = số tiền)", "vi": "Từ {gia}đ / đêm", "en": "From {gia} VND / night" },

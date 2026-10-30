@@ -43,6 +43,13 @@ $sgc_wrap   = get_block_wrapper_attributes( array( 'class' => 'sg-gallery sg-gal
 				} else {
 					// Kiểu trượt ngang nằm đầu trang chi tiết: ảnh đầu tiên là ảnh chính (LCP) nên tải ngay.
 					$sgc_first = 'scroller' === $sgc_layout && 0 === $sgc_index && ! $sgc_video;
+					$sgc_alt   = trim( (string) get_post_meta( $sgc_id, '_wp_attachment_image_alt', true ) );
+					// Liên kết tới ảnh lớn: không có JavaScript vẫn mở được ảnh; có JavaScript thì mở khung phóng to.
+					printf(
+						'<a class="sg-gallery__open" href="%1$s" aria-label="%2$s">',
+						esc_url( wp_get_attachment_image_url( $sgc_id, 'full' ) ),
+						esc_attr( sgc_label( 'gallery_open' ) . ( $sgc_alt ? ': ' . $sgc_alt : '' ) )
+					);
 					echo wp_get_attachment_image(
 						$sgc_id,
 						'large',
@@ -53,6 +60,7 @@ $sgc_wrap   = get_block_wrapper_attributes( array( 'class' => 'sg-gallery sg-gal
 							'sizes'         => $sgc_sizes,
 						)
 					); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+					echo '</a>';
 				}
 				?>
 			</li>
