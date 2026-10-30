@@ -92,6 +92,7 @@
 		"custom": {
 			"radius": { "small": "10px", "medium": "16px", "large": "28px", "pill": "999px" },
 			"headerHeight": "72px",
+			"pageScale": "0.8",
 			"motion": { "ease": "cubic-bezier(.22, .61, .36, 1)", "duration": "0.7s" },
 			"link": { "color": "color-mix(in srgb, var(--wp--preset--color--primary) 68%, #000)" },
 			"eyebrow": { "color": "color-mix(in srgb, var(--wp--preset--color--secondary) 62%, #000)" }

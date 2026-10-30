@@ -36,10 +36,11 @@
 	isolation: isolate;
 	margin-block-start: 0;
 }
-.sg-banner--full { min-height: 100svh; }
-.sg-banner--large { min-height: min(86svh, 820px); }
-.sg-banner--medium { min-height: min(62svh, 560px); }
-.sg-banner--small { min-height: min(44svh, 400px); }
+/* Chia cho --sg-zoom (theme thu nhỏ trang) để banner vẫn cao theo đúng màn hình. */
+.sg-banner--full { min-height: calc(100svh / var(--sg-zoom, 1)); }
+.sg-banner--large { min-height: min(calc(86svh / var(--sg-zoom, 1)), 820px); }
+.sg-banner--medium { min-height: min(calc(62svh / var(--sg-zoom, 1)), 560px); }
+.sg-banner--small { min-height: min(calc(44svh / var(--sg-zoom, 1)), 400px); }
 .sg-banner--bottom { align-items: flex-end; }
 .sg-banner__media {
 	position: absolute;
@@ -224,6 +225,7 @@
 .sg-gallery__nav:focus-visible,
 .sg-lightbox__btn:focus-visible {
 	outline: 3px solid var(--sg-accent);
+	border-radius: 999px;
 	outline-offset: 2px;
 }
 .sg-gallery__nav {
@@ -241,10 +243,10 @@
 	--sg-primary: var(--wp--preset--color--primary, #1fa3a3);
 	--sg-accent: var(--wp--preset--color--accent, #f6b93b);
 	--sg-ink: var(--wp--preset--color--ink, #1e2a2b);
-	width: 100vw;
+	width: calc(100vw / var(--sg-zoom, 1));
 	max-width: none;
-	height: 100vh;
-	height: 100dvh;
+	height: calc(100vh / var(--sg-zoom, 1));
+	height: calc(100dvh / var(--sg-zoom, 1));
 	max-height: none;
 	margin: 0;
 	padding: 0;

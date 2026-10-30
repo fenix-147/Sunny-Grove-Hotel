@@ -10,6 +10,15 @@
 }
 
 html { scroll-padding-top: calc(var(--sg-header-height) + 12px); }
+
+/* Thu nhỏ toàn trang trên màn hình máy tính (tỉ lệ đặt ở theme.json → settings.custom.pageScale) để nhìn bao quát hơn.
+   Điện thoại giữ 100% cho chữ dễ đọc, nút dễ bấm. Không áp dụng trong trình soạn thảo. */
+@media (min-width: 1024px) {
+	:root:not(.block-editor-iframe__html) {
+		--sg-zoom: var(--wp--custom--page-scale, 1);
+		zoom: var(--sg-zoom);
+	}
+}
 @media (prefers-reduced-motion: no-preference) {
 	html { scroll-behavior: smooth; }
 }
