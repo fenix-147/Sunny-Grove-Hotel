@@ -20,6 +20,7 @@ define( 'SGC_DIR', plugin_dir_path( __FILE__ ) );
 define( 'SGC_URL', plugin_dir_url( __FILE__ ) );
 
 require_once SGC_DIR . 'includes/helpers.php';
+require_once SGC_DIR . 'includes/i18n.php';
 require_once SGC_DIR . 'includes/icons.php';
 require_once SGC_DIR . 'includes/post-types.php';
 require_once SGC_DIR . 'includes/meta.php';
@@ -28,6 +29,8 @@ require_once SGC_DIR . 'includes/bindings.php';
 require_once SGC_DIR . 'includes/blocks.php';
 require_once SGC_DIR . 'includes/query.php';
 require_once SGC_DIR . 'includes/editor.php';
+require_once SGC_DIR . 'includes/i18n-content.php';
+require_once SGC_DIR . 'includes/migrate.php';
 require_once SGC_DIR . 'includes/frontend.php';
 require_once SGC_DIR . 'includes/roles.php';
 require_once SGC_DIR . 'includes/polylang.php';

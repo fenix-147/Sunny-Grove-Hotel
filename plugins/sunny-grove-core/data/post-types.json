@@ -1,6 +1,6 @@
 {
-	"sg_room": { "slug": "phong" },
-	"sg_amenity": { "slug": "dich-vu" },
-	"sg_place": { "slug": "dia-diem" },
-	"sg_offer": { "slug": "khuyen-mai" }
+	"sg_room": { "slug": "phong", "slug_en": "rooms" },
+	"sg_amenity": { "slug": "dich-vu", "slug_en": "amenities" },
+	"sg_place": { "slug": "dia-diem", "slug_en": "explore" },
+	"sg_offer": { "slug": "khuyen-mai", "slug_en": "offers" }
 }

@@ -1,0 +1,7 @@
+{
+	"default": "vi",
+	"languages": {
+		"vi": { "name": "Tiếng Việt", "locale": "vi", "prefix": "", "og_locale": "vi_VN" },
+		"en": { "name": "English", "locale": "en_US", "prefix": "en", "og_locale": "en_US" }
+	}
+}
