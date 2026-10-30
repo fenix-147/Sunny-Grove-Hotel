@@ -49,3 +49,7 @@
 	.sg-chat__btn { transition: none; }
 }
 @media print { .sg-chat { display: none; } }
+/* Nút Gọi chỉ hiện trên điện thoại / máy tính bảng (máy tính có chuột không gọi được). */
+@media (min-width: 1024px) and (hover: hover) and (pointer: fine) {
+	.sg-chat li:has(> .sg-chat__btn--phone) { display: none; }
+}

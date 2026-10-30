@@ -24,14 +24,15 @@ function sgc_render_chat() {
 	if ( '1' !== sgc_hotel( 'chat_enabled' ) ) {
 		return;
 	}
+	// Mỗi nút bật/tắt riêng; nút Gọi chỉ hiện trên điện thoại. Không tải script bên ngoài.
 	$buttons = array();
-	if ( sgc_hotel( 'zalo' ) ) {
+	if ( sgc_hotel( 'zalo' ) && '0' !== sgc_hotel( 'chat_zalo' ) ) {
 		$buttons[] = array( 'zalo', sgc_hotel_value( 'zalo_url' ), sgc_label( 'zalo' ), true );
 	}
-	if ( sgc_hotel( 'whatsapp' ) ) {
+	if ( sgc_hotel( 'whatsapp' ) && '0' !== sgc_hotel( 'chat_whatsapp' ) ) {
 		$buttons[] = array( 'whatsapp', sgc_hotel_value( 'whatsapp_url' ), sgc_label( 'whatsapp' ), true );
 	}
-	if ( sgc_hotel( 'phone' ) ) {
+	if ( sgc_hotel( 'phone' ) && '0' !== sgc_hotel( 'chat_phone' ) ) {
 		$buttons[] = array( 'phone', sgc_hotel_value( 'tel_url' ), sgc_label( 'call' ), false );
 	}
 	if ( ! $buttons ) {
