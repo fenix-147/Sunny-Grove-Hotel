@@ -15,9 +15,12 @@
 	}
 	var data = window.sgcBindingPreview || { labels: {}, hotel: {} };
 
-	// Nhãn/thông tin theo ngôn ngữ của trang đang sửa (editor-lang.js), mặc định là ngôn ngữ chính.
-	function forLang( group ) {
-		var lang = window.sgcEditorCurrentLang ? window.sgcEditorCurrentLang() : data.default;
+	// Ngôn ngữ đang gạt VI | EN (editor-i18n.js). Đọc qua select để block tự cập nhật khi gạt.
+	function currentLang( select ) {
+		return window.sgcEditorStore && select ? select( window.sgcEditorStore ).getMode() : data.default;
+	}
+	function forLang( group, select ) {
+		var lang = currentLang( select );
 		return group[ lang ] || group[ data.default ] || {};
 	}
 
@@ -33,7 +36,7 @@
 	wp.blocks.registerBlockBindingsSource( {
 		name: 'sunny-grove/label',
 		getValues: function ( args ) {
-			var labels = forLang( data.labels );
+			var labels = forLang( data.labels, args.select );
 			return values( args.bindings, function ( key, attr ) {
 				return attr === 'url' ? '#' : ( labels[ key ] || key ).replace( '{nam}', new Date().getFullYear() );
 			} );
@@ -43,7 +46,7 @@
 	wp.blocks.registerBlockBindingsSource( {
 		name: 'sunny-grove/hotel',
 		getValues: function ( args ) {
-			var hotel = forLang( data.hotel );
+			var hotel = forLang( data.hotel, args.select );
 			return values( args.bindings, function ( key, attr ) {
 				return attr === 'url' ? '#' : ( hotel[ key ] || key );
 			} );
@@ -63,7 +66,8 @@
 			return {};
 		}
 		var record = select( 'core' ).getEntityRecord( 'postType', ctx.postType, ctx.postId );
-		return ( record && record.sg_display ) || {};
+		var all = ( record && record.sg_display ) || {};
+		return all[ currentLang( select ) ] || all[ data.default ] || {};
 	}
 
 	wp.blocks.registerBlockBindingsSource( {

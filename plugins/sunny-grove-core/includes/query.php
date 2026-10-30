@@ -64,13 +64,13 @@ function sgc_query_loop_vars( $query, $block ) {
 add_filter( 'query_loop_block_query_vars', 'sgc_query_loop_vars', 10, 2 );
 
 /**
- * Trình soạn thảo (request có sg_lang) cũng ẩn ưu đãi hết hạn để hiển thị giống ngoài website.
+ * Trình soạn thảo (request có sg_editor) cũng ẩn ưu đãi hết hạn để hiển thị giống ngoài website.
  *
  * @param array           $args    Tham số WP_Query.
  * @param WP_REST_Request $request Request.
  * @return array
  */
 function sgc_rest_hide_expired_offers( $args, $request ) {
-	return $request->get_param( 'sg_lang' ) ? sgc_hide_expired_offers( $args ) : $args;
+	return ( $request->get_param( 'sg_editor' ) || $request->get_param( 'sg_lang' ) ) ? sgc_hide_expired_offers( $args ) : $args;
 }
 add_filter( 'rest_sg_offer_query', 'sgc_rest_hide_expired_offers', 10, 2 );

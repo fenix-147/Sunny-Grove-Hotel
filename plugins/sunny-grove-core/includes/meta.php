@@ -139,7 +139,7 @@ function sgc_meta_fields() {
 }
 
 /**
- * Đăng ký meta để dùng được với REST, Block Bindings và Polylang.
+ * Đăng ký meta để dùng được với REST và Block Bindings.
  */
 function sgc_register_meta() {
 	foreach ( sgc_meta_fields() as $post_type => $fields ) {
@@ -232,10 +232,25 @@ function sgc_render_meta_box( $post ) {
 		$value = get_post_meta( $post->ID, $key, true );
 		$id    = 'sgc-' . $key;
 		echo '<div class="sgc-field sgc-field--' . esc_attr( $field['type'] ) . '">';
-		echo '<label for="' . esc_attr( $id ) . '"><strong>' . esc_html( $field['label'] ) . '</strong></label>';
+		echo '<label for="' . esc_attr( $id ) . '"><strong>' . esc_html( $field['label'] ) . '</strong>' . ( in_array( $field['type'], array( 'text', 'textarea' ), true ) ? '' : ' <span class="sgc-shared">' . esc_html__( '(dùng chung cho mọi ngôn ngữ)', 'sunny-grove-core' ) . '</span>' ) . '</label>';
 		switch ( $field['type'] ) {
+			case 'text':
 			case 'textarea':
-				printf( '<textarea id="%1$s" name="%2$s" rows="3">%3$s</textarea>', esc_attr( $id ), esc_attr( $key ), esc_textarea( $value ) );
+				// Trường chữ: hai ô Tiếng Việt | English cạnh nhau. Ô English trống thì bản tiếng Anh hiện tiếng Việt.
+				echo '<div class="sgc-bilingual-field">';
+				foreach ( array_keys( sg_languages() ) as $lang ) {
+					$name  = sg_default_lang() === $lang ? $key : $key . '_' . $lang;
+					$v     = sg_default_lang() === $lang ? $value : get_post_meta( $post->ID, $name, true );
+					$in_id = sg_default_lang() === $lang ? $id : $id . '-' . $lang;
+					echo '<div class="sgc-bilingual-field__col"><span class="sgc-bilingual-field__lang">' . esc_html( sg_languages()[ $lang ]['name'] ) . '</span>';
+					if ( 'textarea' === $field['type'] ) {
+						printf( '<textarea id="%1$s" name="%2$s" rows="3" lang="%4$s">%3$s</textarea>', esc_attr( $in_id ), esc_attr( $name ), esc_textarea( $v ), esc_attr( sg_languages()[ $lang ]['locale'] ) );
+					} else {
+						printf( '<input type="text" id="%1$s" name="%2$s" value="%3$s" class="widefat" lang="%4$s">', esc_attr( $in_id ), esc_attr( $name ), esc_attr( $v ), esc_attr( sg_languages()[ $lang ]['locale'] ) );
+					}
+					echo '</div>';
+				}
+				echo '</div>';
 				break;
 			case 'select':
 				printf( '<select id="%1$s" name="%2$s"><option value="">—</option>', esc_attr( $id ), esc_attr( $key ) );
@@ -322,6 +337,21 @@ function sgc_save_meta( $post_id ) {
 			delete_post_meta( $post_id, $key );
 		} else {
 			update_post_meta( $post_id, $key, $value );
+		}
+		// Bản tiếng Anh của trường chữ.
+		if ( in_array( $field['type'], array( 'text', 'textarea' ), true ) ) {
+			foreach ( sg_secondary_langs() as $lang ) {
+				$tr_key = $key . '_' . $lang;
+				if ( ! isset( $_POST[ $tr_key ] ) ) {
+					continue;
+				}
+				$tr = sgc_sanitize_field( wp_unslash( $_POST[ $tr_key ] ), $field ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+				if ( '' === $tr ) {
+					delete_post_meta( $post_id, $tr_key );
+				} else {
+					update_post_meta( $post_id, $tr_key, $tr );
+				}
+			}
 		}
 	}
 }

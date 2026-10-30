@@ -1,0 +1,52 @@
+/* Sunny Grove – dịch trong trình soạn thảo. */
+
+/* Nút gạt VI | EN */
+.sg-mode-switch-host { display: flex; align-items: center; margin-inline-start: 8px; }
+.sg-mode-switch { display: inline-flex; border: 1px solid #1e1e1e; border-radius: 4px; overflow: hidden; }
+.sg-mode-switch .sg-mode-switch__btn.components-button { min-width: 40px; height: 32px; justify-content: center; border-radius: 0; font-weight: 600; box-shadow: none; }
+.sg-mode-switch .sg-mode-switch__btn.components-button.is-pressed { background: #1e1e1e; color: #fff; }
+.sg-i18n-panel .sg-mode-switch { margin-bottom: 8px; }
+
+/* Thanh bên */
+.sg-i18n-help { color: #50575e; }
+.sg-i18n-stats .is-done { color: #00753a; }
+.sg-i18n-stats .is-missing { color: #b32d2e; }
+.sg-i18n-stats .is-outdated { color: #9a6700; }
+.sg-i18n-group { margin: 0 0 12px; }
+.sg-i18n-group__title { font-weight: 600; margin: 0 0 4px; }
+.sg-i18n-group ul { margin: 0; max-height: 220px; overflow: auto; }
+.sg-i18n-group li { margin: 0 0 2px; }
+.sg-i18n-group .components-button.is-link { text-align: left; height: auto; white-space: normal; }
+
+/* Chế độ EN: không đổi ảnh (ảnh dùng chung). */
+body.sg-mode-en .block-editor-media-replace-flow__options,
+body.sg-mode-en .components-toolbar-group .block-editor-media-replace-flow__toggle,
+body.sg-mode-en .block-editor-media-placeholder { display: none !important; }
+
+/* Bên trong khung soạn thảo */
+.sg-mode-en [data-sg-tr]:not([data-sg-tr=""]) { position: relative; }
+.sg-mode-en [data-sg-tr]:not([data-sg-tr=""])::before {
+	content: attr(data-sg-tr);
+	position: absolute;
+	top: -0.9em;
+	left: 0;
+	z-index: 5;
+	padding: 1px 6px;
+	border-radius: 3px;
+	font: 600 11px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+	letter-spacing: 0;
+	text-transform: none;
+	background: #b32d2e;
+	color: #fff;
+	pointer-events: none;
+	white-space: nowrap;
+}
+.sg-mode-en .sg-tr-outdated::before { background: #9a6700 !important; }
+.sg-mode-en .sg-tr-missing { opacity: .55; }
+.sg-mode-en .sg-tr-missing:focus-within,
+.sg-mode-en .sg-tr-missing.is-selected { opacity: 1; }
+
+/* Tiêu đề bài: ở chế độ EN thay bằng ô tiêu đề tiếng Anh. */
+.sg-mode-en .editor-post-title:not(.sg-en-title) { display: none !important; }
+.sg-en-title { outline: none; }
+.sg-en-title.is-untranslated { opacity: .55; }

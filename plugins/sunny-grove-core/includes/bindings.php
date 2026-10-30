@@ -221,7 +221,7 @@ function sgc_binding_editor_script() {
  * Đăng ký script hiển thị nguồn dữ liệu trong trình soạn thảo.
  */
 function sgc_enqueue_binding_editor() {
-	wp_enqueue_script( 'sgc-bindings-editor', SGC_URL . 'assets/bindings-editor.js', array( 'wp-blocks', 'wp-data', 'wp-core-data', 'wp-hooks', 'wp-i18n' ), SGC_VERSION, true );
+	wp_enqueue_script( 'sgc-bindings-editor', SGC_URL . 'assets/bindings-editor.js', array( 'wp-blocks', 'wp-data', 'wp-core-data', 'wp-hooks', 'wp-i18n', 'sg-editor-i18n' ), SGC_VERSION, true );
 	sgc_binding_editor_script();
 }
 add_action( 'enqueue_block_editor_assets', 'sgc_enqueue_binding_editor' );

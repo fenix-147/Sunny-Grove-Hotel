@@ -16,14 +16,21 @@
 		} );
 	}
 
-	// Xem trước bằng server (truyền ID bài trong Query Loop để hiển thị đúng dữ liệu).
+	// Xem trước bằng server (truyền ID bài trong Query Loop để hiển thị đúng dữ liệu, và ngôn ngữ đang gạt VI | EN).
 	function preview( name, props ) {
 		var ctx = props.context || {};
+		var lang = wp.data.useSelect( function ( select ) {
+			return window.sgcEditorStore ? select( window.sgcEditorStore ).getMode() : '';
+		}, [] );
+		var args = ctx.postId ? { post_id: ctx.postId } : {};
+		if ( lang ) {
+			args.sg_lang = lang;
+		}
 		return el( 'div', be.useBlockProps(),
 			el( SSR, {
 				block: name,
 				attributes: props.attributes,
-				urlQueryArgs: ctx.postId ? { post_id: ctx.postId } : {},
+				urlQueryArgs: args,
 				EmptyResponsePlaceholder: function () {
 					return el( 'div', { className: 'sgc-empty-preview' }, __( 'Chưa có dữ liệu để hiển thị (xem ngoài website để kiểm tra).', 'sunny-grove-core' ) );
 				}

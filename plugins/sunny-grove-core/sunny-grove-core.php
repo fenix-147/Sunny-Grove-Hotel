@@ -30,6 +30,7 @@ require_once SGC_DIR . 'includes/blocks.php';
 require_once SGC_DIR . 'includes/query.php';
 require_once SGC_DIR . 'includes/editor.php';
 require_once SGC_DIR . 'includes/i18n-content.php';
+require_once SGC_DIR . 'includes/i18n-admin.php';
 require_once SGC_DIR . 'includes/migrate.php';
 require_once SGC_DIR . 'includes/frontend.php';
 require_once SGC_DIR . 'includes/roles.php';
