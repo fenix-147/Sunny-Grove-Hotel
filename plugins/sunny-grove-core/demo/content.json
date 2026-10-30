@@ -1,16 +1,56 @@
 {
 	"_note": "Nội dung mẫu song ngữ. Ảnh: Mixkit (giấy phép Mixkit, miễn phí) và Wikimedia Commons (CC, xem media/commons-credits.json). Video: Mixkit, phát trực tiếp từ assets.mixkit.co. Tất cả là hình minh họa – CẦN THAY bằng hình/video thật của khách sạn.",
 	"media": {
-		"hero": { "file": "mk-44364", "vi": "Bờ biển nhiệt đới hàng dừa nhìn từ trên cao", "en": "Palm-fringed tropical beach from above" },
-		"story": { "file": "mk-6213", "vi": "Gia đình dạo bước lúc hoàng hôn", "en": "A family walking together at sunset" },
-		"cta": { "file": "mk-4677", "vi": "Hoàng hôn trên bãi biển", "en": "Dusk over the beach" },
-		"banner-rooms": { "file": "mk-4196", "vi": "Phòng nghỉ sáng sủa, rộng rãi", "en": "A bright, spacious guest room" },
-		"banner-amenities": { "file": "mk-4045", "vi": "Hồ bơi giữa vườn nhiệt đới", "en": "Pool in the tropical garden" },
-		"banner-offers": { "file": "mk-26716", "vi": "Gia đình vui chơi bên bờ biển lúc hoàng hôn", "en": "A family by the sea at sunset" },
-		"banner-explore": { "file": "mk-44395", "vi": "Quần đảo xanh nhìn từ trên cao", "en": "Green islands from above" },
-		"banner-blog": { "file": "blog-sunset", "vi": "Hoàng hôn Phú Quốc", "en": "Phu Quoc sunset" },
-		"banner-contact": { "file": "mk-2167", "vi": "Thuyền trên biển lúc hoàng hôn", "en": "Boat at sea at sunset" },
-		"banner-booking": { "file": "mk-9902", "vi": "Khu nghỉ dưỡng có hồ bơi cạnh biển", "en": "Resort pool by the sea" }
+		"hero": {
+			"file": "mk-44364",
+			"vi": "Bờ biển nhiệt đới hàng dừa nhìn từ trên cao",
+			"en": "Palm-fringed tropical beach from above"
+		},
+		"story": {
+			"file": "mk-6213",
+			"vi": "Gia đình dạo bước lúc hoàng hôn",
+			"en": "A family walking together at sunset"
+		},
+		"cta": {
+			"file": "mk-4677",
+			"vi": "Hoàng hôn trên bãi biển",
+			"en": "Dusk over the beach"
+		},
+		"banner-rooms": {
+			"file": "mk-4196",
+			"vi": "Phòng nghỉ sáng sủa, rộng rãi",
+			"en": "A bright, spacious guest room"
+		},
+		"banner-amenities": {
+			"file": "mk-4045",
+			"vi": "Hồ bơi giữa vườn nhiệt đới",
+			"en": "Pool in the tropical garden"
+		},
+		"banner-offers": {
+			"file": "mk-26716",
+			"vi": "Gia đình vui chơi bên bờ biển lúc hoàng hôn",
+			"en": "A family by the sea at sunset"
+		},
+		"banner-explore": {
+			"file": "mk-44395",
+			"vi": "Quần đảo xanh nhìn từ trên cao",
+			"en": "Green islands from above"
+		},
+		"banner-blog": {
+			"file": "blog-sunset",
+			"vi": "Hoàng hôn Phú Quốc",
+			"en": "Phu Quoc sunset"
+		},
+		"banner-contact": {
+			"file": "mk-2167",
+			"vi": "Thuyền trên biển lúc hoàng hôn",
+			"en": "Boat at sea at sunset"
+		},
+		"banner-booking": {
+			"file": "mk-9902",
+			"vi": "Khu nghỉ dưỡng có hồ bơi cạnh biển",
+			"en": "Resort pool by the sea"
+		}
 	},
 	"videos": {
 		"video:hero": "https://assets.mixkit.co/videos/44364/44364-720.mp4",
@@ -26,32 +66,192 @@
 	},
 	"terms": {
 		"sg_guest_type": [
-			{ "key": "family", "vi": "Gia đình", "en": "Family", "slug": { "vi": "gia-dinh", "en": "family" } },
-			{ "key": "couple", "vi": "Cặp đôi", "en": "Couples", "slug": { "vi": "cap-doi", "en": "couples" } },
-			{ "key": "friends", "vi": "Nhóm bạn", "en": "Friends", "slug": { "vi": "nhom-ban", "en": "friends" } }
+			{
+				"key": "family",
+				"vi": "Gia đình",
+				"en": "Family",
+				"slug": {
+					"vi": "gia-dinh",
+					"en": "family"
+				}
+			},
+			{
+				"key": "couple",
+				"vi": "Cặp đôi",
+				"en": "Couples",
+				"slug": {
+					"vi": "cap-doi",
+					"en": "couples"
+				}
+			},
+			{
+				"key": "friends",
+				"vi": "Nhóm bạn",
+				"en": "Friends",
+				"slug": {
+					"vi": "nhom-ban",
+					"en": "friends"
+				}
+			}
 		],
 		"sg_room_feature": [
-			{ "key": "ac", "vi": "Máy lạnh", "en": "Air conditioning", "slug": { "vi": "may-lanh", "en": "air-conditioning" } },
-			{ "key": "wifi", "vi": "Wi-Fi tốc độ cao", "en": "Fast Wi-Fi", "slug": { "vi": "wifi", "en": "fast-wifi" } },
-			{ "key": "tv", "vi": "Smart TV", "en": "Smart TV", "slug": { "vi": "smart-tv", "en": "smart-tv-en" } },
-			{ "key": "fridge", "vi": "Tủ lạnh mini", "en": "Mini fridge", "slug": { "vi": "tu-lanh-mini", "en": "mini-fridge" } },
-			{ "key": "kettle", "vi": "Ấm đun nước, trà & cà phê", "en": "Kettle, tea & coffee", "slug": { "vi": "am-dun-nuoc", "en": "kettle" } },
-			{ "key": "safe", "vi": "Két sắt", "en": "In-room safe", "slug": { "vi": "ket-sat", "en": "safe" } },
-			{ "key": "crib", "vi": "Nôi em bé miễn phí", "en": "Free baby cot", "slug": { "vi": "noi-em-be", "en": "baby-cot" } },
-			{ "key": "bunk", "vi": "Giường tầng cho bé", "en": "Kids' bunk bed", "slug": { "vi": "giuong-tang", "en": "bunk-bed" } },
-			{ "key": "bathtub", "vi": "Bồn tắm", "en": "Bathtub", "slug": { "vi": "bon-tam", "en": "bathtub" } },
-			{ "key": "balcony", "vi": "Ban công riêng", "en": "Private balcony", "slug": { "vi": "ban-cong", "en": "balcony" } },
-			{ "key": "sofa", "vi": "Sofa giường", "en": "Sofa bed", "slug": { "vi": "sofa-giuong", "en": "sofa-bed" } },
-			{ "key": "seaview", "vi": "Cửa sổ nhìn biển", "en": "Sea-view window", "slug": { "vi": "nhin-bien", "en": "sea-view" } }
+			{
+				"key": "ac",
+				"vi": "Máy lạnh",
+				"en": "Air conditioning",
+				"slug": {
+					"vi": "may-lanh",
+					"en": "air-conditioning"
+				}
+			},
+			{
+				"key": "wifi",
+				"vi": "Wi-Fi tốc độ cao",
+				"en": "Fast Wi-Fi",
+				"slug": {
+					"vi": "wifi",
+					"en": "fast-wifi"
+				}
+			},
+			{
+				"key": "tv",
+				"vi": "Smart TV",
+				"en": "Smart TV",
+				"slug": {
+					"vi": "smart-tv",
+					"en": "smart-tv-en"
+				}
+			},
+			{
+				"key": "fridge",
+				"vi": "Tủ lạnh mini",
+				"en": "Mini fridge",
+				"slug": {
+					"vi": "tu-lanh-mini",
+					"en": "mini-fridge"
+				}
+			},
+			{
+				"key": "kettle",
+				"vi": "Ấm đun nước, trà & cà phê",
+				"en": "Kettle, tea & coffee",
+				"slug": {
+					"vi": "am-dun-nuoc",
+					"en": "kettle"
+				}
+			},
+			{
+				"key": "safe",
+				"vi": "Két sắt",
+				"en": "In-room safe",
+				"slug": {
+					"vi": "ket-sat",
+					"en": "safe"
+				}
+			},
+			{
+				"key": "crib",
+				"vi": "Nôi em bé miễn phí",
+				"en": "Free baby cot",
+				"slug": {
+					"vi": "noi-em-be",
+					"en": "baby-cot"
+				}
+			},
+			{
+				"key": "bunk",
+				"vi": "Giường tầng cho bé",
+				"en": "Kids' bunk bed",
+				"slug": {
+					"vi": "giuong-tang",
+					"en": "bunk-bed"
+				}
+			},
+			{
+				"key": "bathtub",
+				"vi": "Bồn tắm",
+				"en": "Bathtub",
+				"slug": {
+					"vi": "bon-tam",
+					"en": "bathtub"
+				}
+			},
+			{
+				"key": "balcony",
+				"vi": "Ban công riêng",
+				"en": "Private balcony",
+				"slug": {
+					"vi": "ban-cong",
+					"en": "balcony"
+				}
+			},
+			{
+				"key": "sofa",
+				"vi": "Sofa giường",
+				"en": "Sofa bed",
+				"slug": {
+					"vi": "sofa-giuong",
+					"en": "sofa-bed"
+				}
+			},
+			{
+				"key": "seaview",
+				"vi": "Cửa sổ nhìn biển",
+				"en": "Sea-view window",
+				"slug": {
+					"vi": "nhin-bien",
+					"en": "sea-view"
+				}
+			}
 		],
 		"sg_place_tag": [
-			{ "key": "walk", "vi": "Đi bộ được", "en": "Walkable", "slug": { "vi": "di-bo-duoc", "en": "walkable" } },
-			{ "key": "near", "vi": "Dưới 30 phút đi xe", "en": "Under 30 min by car", "slug": { "vi": "duoi-30-phut", "en": "under-30-min" } },
-			{ "key": "kids", "vi": "Phù hợp trẻ em", "en": "Kid-friendly", "slug": { "vi": "phu-hop-tre-em", "en": "kid-friendly" } }
+			{
+				"key": "walk",
+				"vi": "Đi bộ được",
+				"en": "Walkable",
+				"slug": {
+					"vi": "di-bo-duoc",
+					"en": "walkable"
+				}
+			},
+			{
+				"key": "near",
+				"vi": "Dưới 30 phút đi xe",
+				"en": "Under 30 min by car",
+				"slug": {
+					"vi": "duoi-30-phut",
+					"en": "under-30-min"
+				}
+			},
+			{
+				"key": "kids",
+				"vi": "Phù hợp trẻ em",
+				"en": "Kid-friendly",
+				"slug": {
+					"vi": "phu-hop-tre-em",
+					"en": "kid-friendly"
+				}
+			}
 		],
 		"category": [
-			{ "key": "guide", "vi": "Cẩm nang", "en": "Travel guide", "slug": { "vi": "cam-nang", "en": "travel-guide" } },
-			{ "key": "food", "vi": "Ẩm thực", "en": "Food", "slug": { "vi": "am-thuc", "en": "food" } }
+			{
+				"key": "guide",
+				"vi": "Cẩm nang",
+				"en": "Travel guide",
+				"slug": {
+					"vi": "cam-nang",
+					"en": "travel-guide"
+				}
+			},
+			{
+				"key": "food",
+				"vi": "Ẩm thực",
+				"en": "Food",
+				"slug": {
+					"vi": "am-thuc",
+					"en": "food"
+				}
+			}
 		]
 	},
 	"rooms": [
@@ -59,241 +259,1152 @@
 			"key": "family-garden",
 			"order": 1,
 			"image": "mk-4029",
-			"gallery": [ "mk-4029", "mk-4197", "mk-4488", "mk-32977" ],
-			"meta": { "sg_price_from": 1290000, "sg_area": 35, "sg_adults": 2, "sg_children": 2 },
-			"i18n_meta": {
-				"sg_bed": { "vi": "1 giường đôi + 1 giường tầng cho bé", "en": "1 double bed + 1 kids' bunk bed" },
-				"sg_view": { "vi": "Nhìn ra vườn", "en": "Garden view" }
+			"gallery": [
+				"mk-4029",
+				"mk-4197",
+				"mk-4488",
+				"mk-32977"
+			],
+			"meta": {
+				"sg_price_from": 1290000,
+				"sg_area": 35,
+				"sg_adults": 2,
+				"sg_children": 2
 			},
-			"terms": { "sg_guest_type": [ "family" ], "sg_room_feature": [ "ac", "wifi", "tv", "fridge", "kettle", "safe", "crib", "bunk" ] },
+			"i18n_meta": {
+				"sg_bed": {
+					"vi": "1 giường đôi + 1 giường tầng cho bé",
+					"en": "1 double bed + 1 kids' bunk bed"
+				},
+				"sg_view": {
+					"vi": "Nhìn ra vườn",
+					"en": "Garden view"
+				}
+			},
+			"terms": {
+				"sg_guest_type": [
+					"family"
+				],
+				"sg_room_feature": [
+					"ac",
+					"wifi",
+					"tv",
+					"fridge",
+					"kettle",
+					"safe",
+					"crib",
+					"bunk"
+				]
+			},
 			"vi": {
 				"title": "Family Garden Room",
 				"excerpt": "Phòng gia đình 35m² nhìn ra vườn, có giường tầng cho bé – lựa chọn yêu thích của các gia đình trẻ.",
-				"content": [ "Mở cửa là thấy tán dừa và bãi cỏ xanh – nơi các bé có thể chạy nhảy ngay sáng sớm. Family Garden Room có một giường đôi êm ái cho ba mẹ và giường tầng nhỏ xinh cho hai bé.", "Phòng được bố trí gọn gàng với góc để đồ chơi, nôi em bé miễn phí theo yêu cầu và phòng tắm rộng có vòi sen cầm tay tiện tắm cho bé.", "## Phù hợp với", "- Gia đình 2 người lớn và 2 trẻ em", "- Gia đình có bé nhỏ cần không gian yên tĩnh", "- Khách thích dạo vườn buổi sáng" ]
+				"content": [
+					"Mở cửa là thấy tán dừa và bãi cỏ xanh – nơi các bé có thể chạy nhảy ngay sáng sớm. Family Garden Room có một giường đôi êm ái cho ba mẹ và giường tầng nhỏ xinh cho hai bé.",
+					"Phòng được bố trí gọn gàng với góc để đồ chơi, nôi em bé miễn phí theo yêu cầu và phòng tắm rộng có vòi sen cầm tay tiện tắm cho bé.",
+					"## Phù hợp với",
+					"- Gia đình 2 người lớn và 2 trẻ em",
+					"- Gia đình có bé nhỏ cần không gian yên tĩnh",
+					"- Khách thích dạo vườn buổi sáng"
+				]
 			},
 			"en": {
 				"title": "Family Garden Room",
 				"excerpt": "A 35m² family room facing the garden, with a bunk bed the kids will love.",
-				"content": [ "Open the door to palm trees and a green lawn where little ones can run around first thing in the morning. The Family Garden Room has a comfy double bed for parents and a cosy bunk bed for two kids.", "There's a toy corner, a free baby cot on request and a roomy bathroom with a hand shower – perfect for bath time.", "## Perfect for", "- Families of 2 adults and 2 children", "- Families with toddlers who need a quiet space", "- Guests who love a morning garden stroll" ]
+				"content": [
+					"Open the door to palm trees and a green lawn where little ones can run around first thing in the morning. The Family Garden Room has a comfy double bed for parents and a cosy bunk bed for two kids.",
+					"There's a toy corner, a free baby cot on request and a roomy bathroom with a hand shower – perfect for bath time.",
+					"## Perfect for",
+					"- Families of 2 adults and 2 children",
+					"- Families with toddlers who need a quiet space",
+					"- Guests who love a morning garden stroll"
+				]
 			}
 		},
 		{
 			"key": "family-suite",
 			"order": 2,
 			"image": "mk-4030",
-			"gallery": [ "mk-4030", "mk-4196", "mk-4198", "mk-4019" ],
-			"meta": { "sg_price_from": 2190000, "sg_area": 55, "sg_adults": 4, "sg_children": 2 },
-			"i18n_meta": {
-				"sg_bed": { "vi": "2 phòng ngủ: 1 giường King + 2 giường đơn", "en": "2 bedrooms: 1 king bed + 2 single beds" },
-				"sg_view": { "vi": "Ban công nhìn vườn và hồ bơi", "en": "Balcony over the garden and pool" }
+			"gallery": [
+				"mk-4030",
+				"mk-4196",
+				"mk-4198",
+				"mk-4019"
+			],
+			"meta": {
+				"sg_price_from": 2190000,
+				"sg_area": 55,
+				"sg_adults": 4,
+				"sg_children": 2
 			},
-			"terms": { "sg_guest_type": [ "family", "friends" ], "sg_room_feature": [ "ac", "wifi", "tv", "fridge", "kettle", "safe", "crib", "bathtub", "balcony", "sofa" ] },
+			"i18n_meta": {
+				"sg_bed": {
+					"vi": "2 phòng ngủ: 1 giường King + 2 giường đơn",
+					"en": "2 bedrooms: 1 king bed + 2 single beds"
+				},
+				"sg_view": {
+					"vi": "Ban công nhìn vườn và hồ bơi",
+					"en": "Balcony over the garden and pool"
+				}
+			},
+			"terms": {
+				"sg_guest_type": [
+					"family",
+					"friends"
+				],
+				"sg_room_feature": [
+					"ac",
+					"wifi",
+					"tv",
+					"fridge",
+					"kettle",
+					"safe",
+					"crib",
+					"bathtub",
+					"balcony",
+					"sofa"
+				]
+			},
 			"vi": {
 				"title": "Family Suite 2 phòng ngủ",
 				"excerpt": "Căn suite 55m² với 2 phòng ngủ riêng và ban công – rộng rãi cho đại gia đình hoặc ông bà đi cùng.",
-				"content": [ "Hai phòng ngủ tách biệt giúp cả nhà nghỉ ngơi thoải mái: ba mẹ ở phòng giường King, ông bà hoặc các anh chị lớn ở phòng hai giường đơn.", "Phòng khách nhỏ có sofa giường, bàn ăn và ban công nhìn xuống vườn và hồ bơi – nơi lý tưởng để nhâm nhi cà phê khi các bé còn ngủ.", "## Điểm cộng", "- Bồn tắm cho bé nghịch nước", "- Ban công riêng, cửa an toàn cho trẻ", "- Ở được 4 người lớn + 2 trẻ em" ]
+				"content": [
+					"Hai phòng ngủ tách biệt giúp cả nhà nghỉ ngơi thoải mái: ba mẹ ở phòng giường King, ông bà hoặc các anh chị lớn ở phòng hai giường đơn.",
+					"Phòng khách nhỏ có sofa giường, bàn ăn và ban công nhìn xuống vườn và hồ bơi – nơi lý tưởng để nhâm nhi cà phê khi các bé còn ngủ.",
+					"## Điểm cộng",
+					"- Bồn tắm cho bé nghịch nước",
+					"- Ban công riêng, cửa an toàn cho trẻ",
+					"- Ở được 4 người lớn + 2 trẻ em"
+				]
 			},
 			"en": {
 				"title": "Two-Bedroom Family Suite",
 				"excerpt": "A 55m² suite with two separate bedrooms and a balcony – room for the whole extended family.",
-				"content": [ "Two separate bedrooms mean everyone rests well: parents in the king room, grandparents or older kids in the twin room.", "The small living area has a sofa bed, dining table and a balcony overlooking the garden and pool – ideal for a quiet coffee while the kids sleep in.", "## Highlights", "- A bathtub for splash time", "- Private balcony with child-safe door", "- Sleeps 4 adults + 2 children" ]
+				"content": [
+					"Two separate bedrooms mean everyone rests well: parents in the king room, grandparents or older kids in the twin room.",
+					"The small living area has a sofa bed, dining table and a balcony overlooking the garden and pool – ideal for a quiet coffee while the kids sleep in.",
+					"## Highlights",
+					"- A bathtub for splash time",
+					"- Private balcony with child-safe door",
+					"- Sleeps 4 adults + 2 children"
+				]
 			}
 		},
 		{
 			"key": "couple-deluxe",
 			"order": 3,
 			"image": "mk-4047",
-			"gallery": [ "mk-4047", "mk-4019", "mk-4677", "mk-4488" ],
-			"meta": { "sg_price_from": 1490000, "sg_area": 30, "sg_adults": 2, "sg_children": 0 },
-			"i18n_meta": {
-				"sg_bed": { "vi": "1 giường King", "en": "1 king bed" },
-				"sg_view": { "vi": "Nhìn ra biển", "en": "Sea view" }
+			"gallery": [
+				"mk-4047",
+				"mk-4019",
+				"mk-4677",
+				"mk-4488"
+			],
+			"meta": {
+				"sg_price_from": 1490000,
+				"sg_area": 30,
+				"sg_adults": 2,
+				"sg_children": 0
 			},
-			"terms": { "sg_guest_type": [ "couple" ], "sg_room_feature": [ "ac", "wifi", "tv", "fridge", "kettle", "safe", "bathtub", "balcony", "seaview" ] },
+			"i18n_meta": {
+				"sg_bed": {
+					"vi": "1 giường King",
+					"en": "1 king bed"
+				},
+				"sg_view": {
+					"vi": "Nhìn ra biển",
+					"en": "Sea view"
+				}
+			},
+			"terms": {
+				"sg_guest_type": [
+					"couple"
+				],
+				"sg_room_feature": [
+					"ac",
+					"wifi",
+					"tv",
+					"fridge",
+					"kettle",
+					"safe",
+					"bathtub",
+					"balcony",
+					"seaview"
+				]
+			},
 			"vi": {
 				"title": "Couple Deluxe Sea View",
 				"excerpt": "Phòng đôi 30m² nhìn biển, ban công đón hoàng hôn – dành riêng cho hai người.",
-				"content": [ "Thức dậy với ánh nắng trên mặt biển, kết thúc ngày bằng hoàng hôn ngay trên ban công. Couple Deluxe Sea View là góc riêng tư cho những cặp đôi cần một kỳ nghỉ chậm rãi.", "Giường King êm ái, bồn tắm cạnh cửa sổ và bộ trà – cà phê đặc sản Phú Quốc chờ sẵn trong phòng.", "## Gợi ý", "- Đặt kèm bữa tối lãng mạn trong vườn", "- Phù hợp kỷ niệm ngày cưới, tuần trăng mật" ]
+				"content": [
+					"Thức dậy với ánh nắng trên mặt biển, kết thúc ngày bằng hoàng hôn ngay trên ban công. Couple Deluxe Sea View là góc riêng tư cho những cặp đôi cần một kỳ nghỉ chậm rãi.",
+					"Giường King êm ái, bồn tắm cạnh cửa sổ và bộ trà – cà phê đặc sản Phú Quốc chờ sẵn trong phòng.",
+					"## Gợi ý",
+					"- Đặt kèm bữa tối lãng mạn trong vườn",
+					"- Phù hợp kỷ niệm ngày cưới, tuần trăng mật"
+				]
 			},
 			"en": {
 				"title": "Couple Deluxe Sea View",
 				"excerpt": "A 30m² sea-view room with a sunset balcony – made for two.",
-				"content": [ "Wake up to sunlight on the sea and end the day with the sunset from your own balcony. The Couple Deluxe Sea View is a private corner for couples who want to slow down.", "A plush king bed, a bathtub by the window and local Phu Quoc tea and coffee waiting for you.", "## Tips", "- Add a romantic dinner in the garden", "- Lovely for anniversaries and honeymoons" ]
+				"content": [
+					"Wake up to sunlight on the sea and end the day with the sunset from your own balcony. The Couple Deluxe Sea View is a private corner for couples who want to slow down.",
+					"A plush king bed, a bathtub by the window and local Phu Quoc tea and coffee waiting for you.",
+					"## Tips",
+					"- Add a romantic dinner in the garden",
+					"- Lovely for anniversaries and honeymoons"
+				]
 			}
 		},
 		{
 			"key": "friends-room",
 			"order": 4,
 			"image": "mk-3109",
-			"gallery": [ "mk-3109", "mk-4197", "mk-4198", "mk-12975" ],
-			"meta": { "sg_price_from": 1690000, "sg_area": 40, "sg_adults": 4, "sg_children": 0 },
-			"i18n_meta": {
-				"sg_bed": { "vi": "2 giường đôi", "en": "2 double beds" },
-				"sg_view": { "vi": "Nhìn ra vườn", "en": "Garden view" }
+			"gallery": [
+				"mk-3109",
+				"mk-4197",
+				"mk-4198",
+				"mk-12975"
+			],
+			"meta": {
+				"sg_price_from": 1690000,
+				"sg_area": 40,
+				"sg_adults": 4,
+				"sg_children": 0
 			},
-			"terms": { "sg_guest_type": [ "friends" ], "sg_room_feature": [ "ac", "wifi", "tv", "fridge", "kettle", "safe" ] },
+			"i18n_meta": {
+				"sg_bed": {
+					"vi": "2 giường đôi",
+					"en": "2 double beds"
+				},
+				"sg_view": {
+					"vi": "Nhìn ra vườn",
+					"en": "Garden view"
+				}
+			},
+			"terms": {
+				"sg_guest_type": [
+					"friends"
+				],
+				"sg_room_feature": [
+					"ac",
+					"wifi",
+					"tv",
+					"fridge",
+					"kettle",
+					"safe"
+				]
+			},
 			"vi": {
 				"title": "Friends Room",
 				"excerpt": "Phòng 40m² với 2 giường đôi cho nhóm 4 người – rộng, sáng và tiết kiệm.",
-				"content": [ "Hai giường đôi rộng rãi, tủ đồ lớn và nhiều ổ cắm sạc – mọi thứ một nhóm bạn cần cho chuyến đi Phú Quốc năng động.", "Lễ tân hỗ trợ thuê xe máy, đặt tour lặn ngắm san hô và gợi ý quán hải sản ngon gần chợ đêm.", "## Phù hợp với", "- Nhóm 4 người bạn", "- Gia đình có con lớn" ]
+				"content": [
+					"Hai giường đôi rộng rãi, tủ đồ lớn và nhiều ổ cắm sạc – mọi thứ một nhóm bạn cần cho chuyến đi Phú Quốc năng động.",
+					"Lễ tân hỗ trợ thuê xe máy, đặt tour lặn ngắm san hô và gợi ý quán hải sản ngon gần chợ đêm.",
+					"## Phù hợp với",
+					"- Nhóm 4 người bạn",
+					"- Gia đình có con lớn"
+				]
 			},
 			"en": {
 				"title": "Friends Room",
 				"excerpt": "A 40m² room with two double beds for groups of four – roomy, bright and great value.",
-				"content": [ "Two big double beds, a large wardrobe and plenty of charging points – everything a group of friends needs for an active Phu Quoc trip.", "Our front desk can arrange motorbike rental, snorkelling tours and tips for the best seafood near the night market.", "## Great for", "- Groups of 4 friends", "- Families with older kids" ]
+				"content": [
+					"Two big double beds, a large wardrobe and plenty of charging points – everything a group of friends needs for an active Phu Quoc trip.",
+					"Our front desk can arrange motorbike rental, snorkelling tours and tips for the best seafood near the night market.",
+					"## Great for",
+					"- Groups of 4 friends",
+					"- Families with older kids"
+				]
 			}
 		}
 	],
 	"amenities": [
 		{
-			"key": "pools", "order": 1, "image": "mk-4045", "gallery": [ "mk-4045", "mk-13195", "mk-9902" ], "video": "https://assets.mixkit.co/videos/13195/13195-360.mp4",
-			"vi": { "title": "Hồ bơi người lớn & hồ bơi trẻ em", "hours": "06:00 – 20:00 hằng ngày", "short": "Hồ bơi 25m cho người lớn và hồ nông 40cm cho bé, có cứu hộ suốt giờ mở cửa.", "excerpt": "Hai hồ bơi nằm cạnh nhau để ba mẹ vừa thư giãn vừa trông bé. Khăn tắm, phao tay trẻ em và kem chống nắng miễn phí.", "content": [ "Hồ bơi người lớn dài 25m, nước được lọc mặn nhẹ, không cay mắt. Ngay bên cạnh là hồ bơi trẻ em sâu 40cm, có cầu trượt nhỏ và vòi phun nước.", "Nhân viên cứu hộ trực suốt giờ mở cửa. Quầy bar cạnh hồ phục vụ nước ép trái cây và kem cho bé." ] },
-			"en": { "title": "Adults' pool & kids' pool", "hours": "6:00 am – 8:00 pm daily", "short": "A 25m pool for grown-ups and a 40cm-deep splash pool for little ones, with a lifeguard on duty.", "excerpt": "Two pools side by side so parents can relax and keep an eye on the kids. Free towels, kids' armbands and sunscreen.", "content": [ "The 25m adults' pool uses gentle saltwater filtration – no stinging eyes. Right next to it is a 40cm-deep kids' pool with a small slide and water jets.", "A lifeguard is on duty during opening hours, and the pool bar serves fresh juice and ice cream." ] }
+			"key": "pools",
+			"order": 1,
+			"image": "mk-4045",
+			"gallery": [
+				"mk-4045",
+				"mk-13195",
+				"mk-9902"
+			],
+			"video": "https://assets.mixkit.co/videos/13195/13195-360.mp4",
+			"vi": {
+				"title": "Hồ bơi người lớn & hồ bơi trẻ em",
+				"hours": "06:00 – 20:00 hằng ngày",
+				"short": "Hồ bơi 25m cho người lớn và hồ nông 40cm cho bé, có cứu hộ suốt giờ mở cửa.",
+				"excerpt": "Hai hồ bơi nằm cạnh nhau để ba mẹ vừa thư giãn vừa trông bé. Khăn tắm, phao tay trẻ em và kem chống nắng miễn phí.",
+				"content": [
+					"Hồ bơi người lớn dài 25m, nước được lọc mặn nhẹ, không cay mắt. Ngay bên cạnh là hồ bơi trẻ em sâu 40cm, có cầu trượt nhỏ và vòi phun nước.",
+					"Nhân viên cứu hộ trực suốt giờ mở cửa. Quầy bar cạnh hồ phục vụ nước ép trái cây và kem cho bé."
+				]
+			},
+			"en": {
+				"title": "Adults' pool & kids' pool",
+				"hours": "6:00 am – 8:00 pm daily",
+				"short": "A 25m pool for grown-ups and a 40cm-deep splash pool for little ones, with a lifeguard on duty.",
+				"excerpt": "Two pools side by side so parents can relax and keep an eye on the kids. Free towels, kids' armbands and sunscreen.",
+				"content": [
+					"The 25m adults' pool uses gentle saltwater filtration – no stinging eyes. Right next to it is a 40cm-deep kids' pool with a small slide and water jets.",
+					"A lifeguard is on duty during opening hours, and the pool bar serves fresh juice and ice cream."
+				]
+			}
 		},
 		{
-			"key": "kids-club", "order": 2, "image": "mk-42182", "gallery": [ "mk-42182", "mk-3469", "mk-15642" ], "video": "https://assets.mixkit.co/videos/47453/47453-360.mp4",
-			"vi": { "title": "Kids Club", "hours": "08:00 – 17:00 (bé 3–12 tuổi)", "short": "Bé chơi lego, vẽ tranh, làm bánh và học bơi cùng bảo mẫu – miễn phí cho khách lưu trú.", "excerpt": "Phòng chơi mát mẻ trong nhà và sân chơi ngoài trời có mái che. Lịch hoạt động mới mỗi ngày.", "content": [ "Kids Club có phòng chơi máy lạnh, góc đọc sách, khu xếp hình và sân chơi ngoài trời có mái che. Mỗi ngày có 3 hoạt động theo chủ đề: vẽ tranh biển, làm bánh dừa, trồng cây nhỏ.", "Bảo mẫu được đào tạo sơ cứu, tỉ lệ 1 bảo mẫu / 5 bé. Bé dưới 3 tuổi vui lòng đi cùng ba mẹ." ] },
-			"en": { "title": "Kids Club", "hours": "8:00 am – 5:00 pm (ages 3–12)", "short": "Lego, painting, baking and swimming games with our nannies – free for hotel guests.", "excerpt": "A cool indoor playroom plus a shaded outdoor playground, with a new activity schedule every day.", "content": [ "The Kids Club has an air-conditioned playroom, a reading nook, a building corner and a shaded outdoor playground. Each day brings three themed activities: sea painting, coconut cookies, planting seedlings.", "Our nannies are first-aid trained, with a 1:5 ratio. Children under 3 should be accompanied by a parent." ] }
+			"key": "kids-club",
+			"order": 2,
+			"image": "mk-42182",
+			"gallery": [
+				"mk-42182",
+				"mk-3469",
+				"mk-15642"
+			],
+			"video": "https://assets.mixkit.co/videos/47453/47453-360.mp4",
+			"vi": {
+				"title": "Kids Club",
+				"hours": "08:00 – 17:00 (bé 3–12 tuổi)",
+				"short": "Bé chơi lego, vẽ tranh, làm bánh và học bơi cùng bảo mẫu – miễn phí cho khách lưu trú.",
+				"excerpt": "Phòng chơi mát mẻ trong nhà và sân chơi ngoài trời có mái che. Lịch hoạt động mới mỗi ngày.",
+				"content": [
+					"Kids Club có phòng chơi máy lạnh, góc đọc sách, khu xếp hình và sân chơi ngoài trời có mái che. Mỗi ngày có 3 hoạt động theo chủ đề: vẽ tranh biển, làm bánh dừa, trồng cây nhỏ.",
+					"Bảo mẫu được đào tạo sơ cứu, tỉ lệ 1 bảo mẫu / 5 bé. Bé dưới 3 tuổi vui lòng đi cùng ba mẹ."
+				]
+			},
+			"en": {
+				"title": "Kids Club",
+				"hours": "8:00 am – 5:00 pm (ages 3–12)",
+				"short": "Lego, painting, baking and swimming games with our nannies – free for hotel guests.",
+				"excerpt": "A cool indoor playroom plus a shaded outdoor playground, with a new activity schedule every day.",
+				"content": [
+					"The Kids Club has an air-conditioned playroom, a reading nook, a building corner and a shaded outdoor playground. Each day brings three themed activities: sea painting, coconut cookies, planting seedlings.",
+					"Our nannies are first-aid trained, with a 1:5 ratio. Children under 3 should be accompanied by a parent."
+				]
+			}
 		},
 		{
-			"key": "restaurant", "order": 3, "image": "mk-15642", "gallery": [ "mk-15642", "mk-4866", "mk-4019" ], "video": "https://assets.mixkit.co/videos/15642/15642-360.mp4",
-			"vi": { "title": "Nhà hàng Grove Kitchen", "hours": "06:30 – 22:00 · Bữa sáng 06:30 – 10:00", "short": "Bữa sáng tự chọn, hải sản Phú Quốc và thực đơn trẻ em riêng với ghế ăn dặm.", "excerpt": "Ẩm thực Việt – Á – Âu tươi ngon, có thực đơn trẻ em và lựa chọn chay.", "content": [ "Buổi sáng là tiệc tự chọn với phở, bánh mì nướng tại chỗ, trái cây nhiệt đới và góc ăn dặm cho bé. Buổi tối có hải sản tươi từ chợ Dương Đông và món nướng trong vườn.", "Thực đơn trẻ em gồm cơm chiên, mì Ý sốt cà chua, cháo và sinh tố – phục vụ nhanh trong 10 phút. Có ghế ăn dặm, bát đĩa an toàn cho bé." ] },
-			"en": { "title": "Grove Kitchen restaurant", "hours": "6:30 am – 10:00 pm · Breakfast 6:30 – 10:00 am", "short": "Breakfast buffet, Phu Quoc seafood and a dedicated kids' menu with high chairs.", "excerpt": "Fresh Vietnamese, Asian and Western dishes, with a kids' menu and vegetarian options.", "content": [ "Breakfast is a buffet with pho, freshly baked bread, tropical fruit and a baby-food corner. In the evening enjoy fresh seafood from Duong Dong market and garden barbecue.", "The kids' menu includes fried rice, tomato pasta, rice porridge and smoothies – served within 10 minutes. High chairs and child-safe tableware available." ] }
+			"key": "restaurant",
+			"order": 3,
+			"image": "mk-15642",
+			"gallery": [
+				"mk-15642",
+				"mk-4866",
+				"mk-4019"
+			],
+			"video": "https://assets.mixkit.co/videos/15642/15642-360.mp4",
+			"vi": {
+				"title": "Nhà hàng Grove Kitchen",
+				"hours": "06:30 – 22:00 · Bữa sáng 06:30 – 10:00",
+				"short": "Bữa sáng tự chọn, hải sản Phú Quốc và thực đơn trẻ em riêng với ghế ăn dặm.",
+				"excerpt": "Ẩm thực Việt – Á – Âu tươi ngon, có thực đơn trẻ em và lựa chọn chay.",
+				"content": [
+					"Buổi sáng là tiệc tự chọn với phở, bánh mì nướng tại chỗ, trái cây nhiệt đới và góc ăn dặm cho bé. Buổi tối có hải sản tươi từ chợ Dương Đông và món nướng trong vườn.",
+					"Thực đơn trẻ em gồm cơm chiên, mì Ý sốt cà chua, cháo và sinh tố – phục vụ nhanh trong 10 phút. Có ghế ăn dặm, bát đĩa an toàn cho bé."
+				]
+			},
+			"en": {
+				"title": "Grove Kitchen restaurant",
+				"hours": "6:30 am – 10:00 pm · Breakfast 6:30 – 10:00 am",
+				"short": "Breakfast buffet, Phu Quoc seafood and a dedicated kids' menu with high chairs.",
+				"excerpt": "Fresh Vietnamese, Asian and Western dishes, with a kids' menu and vegetarian options.",
+				"content": [
+					"Breakfast is a buffet with pho, freshly baked bread, tropical fruit and a baby-food corner. In the evening enjoy fresh seafood from Duong Dong market and garden barbecue.",
+					"The kids' menu includes fried rice, tomato pasta, rice porridge and smoothies – served within 10 minutes. High chairs and child-safe tableware available."
+				]
+			}
 		},
 		{
-			"key": "garden", "order": 4, "image": "mk-32977", "gallery": [ "mk-32977", "mk-6213", "mk-4029" ], "video": "https://assets.mixkit.co/videos/32977/32977-360.mp4",
-			"vi": { "title": "Vườn nhiệt đới", "hours": "Mở cửa cả ngày", "short": "Hơn 2.000m² cây xanh, lối đi rợp bóng, võng thư giãn và góc chụp ảnh cho cả nhà.", "excerpt": "Trái tim của Sunny Grove: dừa, dâm bụt, sứ trắng và bãi cỏ cho bé chơi đùa.", "content": [ "Vườn được giữ lại từ khu đất cũ với những hàng dừa hơn 30 năm tuổi. Lối đi lát gạch đỏ dẫn tới võng thư giãn, chòi đọc sách và bãi cỏ rộng.", "Mỗi sáng thứ Bảy có hoạt động 'Bé làm nhà nông': tưới cây, hái rau thơm cho nhà bếp." ] },
-			"en": { "title": "Tropical garden", "hours": "Open all day", "short": "Over 2,000m² of greenery, shady paths, hammocks and photo spots for the whole family.", "excerpt": "The heart of Sunny Grove: coconut palms, hibiscus, frangipani and a lawn for the kids.", "content": [ "We kept the original garden with coconut palms over 30 years old. Red-brick paths lead to hammocks, a reading hut and a big lawn.", "Every Saturday morning kids can join 'Little Farmers': watering plants and picking herbs for the kitchen." ] }
+			"key": "garden",
+			"order": 4,
+			"image": "mk-32977",
+			"gallery": [
+				"mk-32977",
+				"mk-6213",
+				"mk-4029"
+			],
+			"video": "https://assets.mixkit.co/videos/32977/32977-360.mp4",
+			"vi": {
+				"title": "Vườn nhiệt đới",
+				"hours": "Mở cửa cả ngày",
+				"short": "Hơn 2.000m² cây xanh, lối đi rợp bóng, võng thư giãn và góc chụp ảnh cho cả nhà.",
+				"excerpt": "Trái tim của Sunny Grove: dừa, dâm bụt, sứ trắng và bãi cỏ cho bé chơi đùa.",
+				"content": [
+					"Vườn được giữ lại từ khu đất cũ với những hàng dừa hơn 30 năm tuổi. Lối đi lát gạch đỏ dẫn tới võng thư giãn, chòi đọc sách và bãi cỏ rộng.",
+					"Mỗi sáng thứ Bảy có hoạt động 'Bé làm nhà nông': tưới cây, hái rau thơm cho nhà bếp."
+				]
+			},
+			"en": {
+				"title": "Tropical garden",
+				"hours": "Open all day",
+				"short": "Over 2,000m² of greenery, shady paths, hammocks and photo spots for the whole family.",
+				"excerpt": "The heart of Sunny Grove: coconut palms, hibiscus, frangipani and a lawn for the kids.",
+				"content": [
+					"We kept the original garden with coconut palms over 30 years old. Red-brick paths lead to hammocks, a reading hut and a big lawn.",
+					"Every Saturday morning kids can join 'Little Farmers': watering plants and picking herbs for the kitchen."
+				]
+			}
 		},
 		{
-			"key": "airport", "order": 5, "image": "mk-36736", "gallery": [ "mk-36736", "mk-44364" ], "video": "",
-			"vi": { "title": "Đưa đón sân bay", "hours": "24/7 – đặt trước 24 giờ", "short": "Xe 7–16 chỗ đón tận sân bay Phú Quốc (20 phút), có ghế trẻ em. Miễn phí khi ở từ 3 đêm.", "excerpt": "Tài xế cầm bảng tên đón tại sảnh, hỗ trợ hành lý và xe đẩy em bé.", "content": [ "Sân bay quốc tế Phú Quốc cách khách sạn khoảng 20 phút đi xe. Chỉ cần gửi số hiệu chuyến bay khi đặt phòng, tài xế sẽ đón bạn tại sảnh đến.", "Xe có ghế ngồi trẻ em, nước suối và khăn lạnh. Miễn phí 2 chiều cho đặt phòng từ 3 đêm; giá xe lẻ: liên hệ lễ tân [CẦN THAY]." ] },
-			"en": { "title": "Airport transfer", "hours": "24/7 – book 24 hours ahead", "short": "7–16 seat vehicles from Phu Quoc airport (20 min) with child seats. Free for stays of 3+ nights.", "excerpt": "Your driver meets you at arrivals with a name sign and helps with luggage and strollers.", "content": [ "Phu Quoc International Airport is about 20 minutes away. Just send us your flight number when booking and our driver will meet you at arrivals.", "Vehicles have child seats, water and cold towels. Free return transfer for stays of 3+ nights; one-way price: ask our front desk [TO REPLACE]." ] }
+			"key": "airport",
+			"order": 5,
+			"image": "mk-36736",
+			"gallery": [
+				"mk-36736",
+				"mk-44364"
+			],
+			"video": "",
+			"vi": {
+				"title": "Đưa đón sân bay",
+				"hours": "24/7 – đặt trước 24 giờ",
+				"short": "Xe 7–16 chỗ đón tận sân bay Phú Quốc (20 phút), có ghế trẻ em. Miễn phí khi ở từ 3 đêm.",
+				"excerpt": "Tài xế cầm bảng tên đón tại sảnh, hỗ trợ hành lý và xe đẩy em bé.",
+				"content": [
+					"Sân bay quốc tế Phú Quốc cách khách sạn khoảng 20 phút đi xe. Chỉ cần gửi số hiệu chuyến bay khi đặt phòng, tài xế sẽ đón bạn tại sảnh đến.",
+					"Xe có ghế ngồi trẻ em, nước suối và khăn lạnh. Miễn phí 2 chiều cho đặt phòng từ 3 đêm; giá xe lẻ: liên hệ lễ tân [CẦN THAY]."
+				]
+			},
+			"en": {
+				"title": "Airport transfer",
+				"hours": "24/7 – book 24 hours ahead",
+				"short": "7–16 seat vehicles from Phu Quoc airport (20 min) with child seats. Free for stays of 3+ nights.",
+				"excerpt": "Your driver meets you at arrivals with a name sign and helps with luggage and strollers.",
+				"content": [
+					"Phu Quoc International Airport is about 20 minutes away. Just send us your flight number when booking and our driver will meet you at arrivals.",
+					"Vehicles have child seats, water and cold towels. Free return transfer for stays of 3+ nights; one-way price: ask our front desk [TO REPLACE]."
+				]
+			}
 		},
 		{
-			"key": "rental", "order": 6, "image": "mk-12975", "gallery": [ "mk-12975", "mk-37009" ], "video": "https://assets.mixkit.co/videos/12975/12975-360.mp4",
-			"vi": { "title": "Cho thuê xe máy & xe đạp", "hours": "07:00 – 21:00 tại lễ tân", "short": "Xe tay ga đời mới, xe đạp có ghế trẻ em, kèm mũ bảo hiểm cho cả nhà.", "excerpt": "Tự do khám phá đảo theo nhịp của bạn – có bản đồ gợi ý cung đường đẹp.", "content": [ "Xe máy tay ga được bảo dưỡng định kỳ, đổ đầy xăng khi giao. Xe đạp có ghế ngồi trẻ em và giỏ đựng đồ – lý tưởng để đạp ra chợ đêm buổi tối.", "Giá tham khảo: xe máy từ 150.000đ/ngày, xe đạp 50.000đ/ngày [CẦN THAY]. Vui lòng mang theo giấy phép lái xe." ] },
-			"en": { "title": "Motorbike & bicycle rental", "hours": "7:00 am – 9:00 pm at reception", "short": "New scooters and bicycles with child seats, helmets for the whole family included.", "excerpt": "Explore the island at your own pace – we'll give you a map of the prettiest routes.", "content": [ "Scooters are regularly serviced and delivered with a full tank. Bicycles have child seats and baskets – perfect for an evening ride to the night market.", "Guide prices: scooters from 150,000 VND/day, bicycles 50,000 VND/day [TO REPLACE]. Please bring your driving licence." ] }
+			"key": "rental",
+			"order": 6,
+			"image": "mk-12975",
+			"gallery": [
+				"mk-12975",
+				"mk-37009"
+			],
+			"video": "https://assets.mixkit.co/videos/12975/12975-360.mp4",
+			"vi": {
+				"title": "Cho thuê xe máy & xe đạp",
+				"hours": "07:00 – 21:00 tại lễ tân",
+				"short": "Xe tay ga đời mới, xe đạp có ghế trẻ em, kèm mũ bảo hiểm cho cả nhà.",
+				"excerpt": "Tự do khám phá đảo theo nhịp của bạn – có bản đồ gợi ý cung đường đẹp.",
+				"content": [
+					"Xe máy tay ga được bảo dưỡng định kỳ, đổ đầy xăng khi giao. Xe đạp có ghế ngồi trẻ em và giỏ đựng đồ – lý tưởng để đạp ra chợ đêm buổi tối.",
+					"Giá tham khảo: xe máy từ 150.000đ/ngày, xe đạp 50.000đ/ngày [CẦN THAY]. Vui lòng mang theo giấy phép lái xe."
+				]
+			},
+			"en": {
+				"title": "Motorbike & bicycle rental",
+				"hours": "7:00 am – 9:00 pm at reception",
+				"short": "New scooters and bicycles with child seats, helmets for the whole family included.",
+				"excerpt": "Explore the island at your own pace – we'll give you a map of the prettiest routes.",
+				"content": [
+					"Scooters are regularly serviced and delivered with a full tank. Bicycles have child seats and baskets – perfect for an evening ride to the night market.",
+					"Guide prices: scooters from 150,000 VND/day, bicycles 50,000 VND/day [TO REPLACE]. Please bring your driving licence."
+				]
+			}
 		},
 		{
-			"key": "island-tour", "order": 7, "image": "mk-8680", "gallery": [ "mk-8680", "mk-7313", "mk-44395" ], "video": "https://assets.mixkit.co/videos/8680/8680-360.mp4",
-			"vi": { "title": "Tour 4 đảo & lặn ngắm san hô", "hours": "Khởi hành 08:00 – về 16:00", "short": "Ca nô cao tốc đi Hòn Mây Rút, Hòn Gầm Ghì, Hòn Móng Tay – có áo phao trẻ em.", "excerpt": "Tour nhóm nhỏ, hướng dẫn viên nói tiếng Việt và tiếng Anh, bữa trưa hải sản trên đảo.", "content": [ "Tour đi bằng ca nô cao tốc, dừng ở 3–4 hòn đảo đẹp nhất Nam đảo để tắm biển và lặn ngắm san hô bằng ống thở.", "Áo phao, kính lặn cho trẻ em có sẵn. Phù hợp bé từ 5 tuổi. Giá tham khảo từ 750.000đ/người lớn [CẦN THAY]." ] },
-			"en": { "title": "4-island tour & snorkelling", "hours": "Departs 8:00 am – back 4:00 pm", "short": "Speedboat to May Rut, Gam Ghi and Mong Tay islands – with kids' life jackets.", "excerpt": "Small-group tour with Vietnamese and English-speaking guides and a seafood lunch on the island.", "content": [ "The speedboat stops at 3–4 of the most beautiful southern islands for swimming and snorkelling.", "Kids' life jackets and masks provided. Suitable for children from 5 years old. Guide price from 750,000 VND/adult [TO REPLACE]." ] }
+			"key": "island-tour",
+			"order": 7,
+			"image": "mk-8680",
+			"gallery": [
+				"mk-8680",
+				"mk-7313",
+				"mk-44395"
+			],
+			"video": "https://assets.mixkit.co/videos/8680/8680-360.mp4",
+			"vi": {
+				"title": "Tour 4 đảo & lặn ngắm san hô",
+				"hours": "Khởi hành 08:00 – về 16:00",
+				"short": "Ca nô cao tốc đi Hòn Mây Rút, Hòn Gầm Ghì, Hòn Móng Tay – có áo phao trẻ em.",
+				"excerpt": "Tour nhóm nhỏ, hướng dẫn viên nói tiếng Việt và tiếng Anh, bữa trưa hải sản trên đảo.",
+				"content": [
+					"Tour đi bằng ca nô cao tốc, dừng ở 3–4 hòn đảo đẹp nhất Nam đảo để tắm biển và lặn ngắm san hô bằng ống thở.",
+					"Áo phao, kính lặn cho trẻ em có sẵn. Phù hợp bé từ 5 tuổi. Giá tham khảo từ 750.000đ/người lớn [CẦN THAY]."
+				]
+			},
+			"en": {
+				"title": "4-island tour & snorkelling",
+				"hours": "Departs 8:00 am – back 4:00 pm",
+				"short": "Speedboat to May Rut, Gam Ghi and Mong Tay islands – with kids' life jackets.",
+				"excerpt": "Small-group tour with Vietnamese and English-speaking guides and a seafood lunch on the island.",
+				"content": [
+					"The speedboat stops at 3–4 of the most beautiful southern islands for swimming and snorkelling.",
+					"Kids' life jackets and masks provided. Suitable for children from 5 years old. Guide price from 750,000 VND/adult [TO REPLACE]."
+				]
+			}
 		}
 	],
 	"places": [
 		{
-			"key": "sunset-town", "order": 1, "image": "place-sunset-town",
-			"meta": { "sg_distance": 28, "sg_time": 40, "sg_mode": "car", "sg_map_url": "https://maps.google.com/?q=Sunset+Town+Phu+Quoc" },
-			"tags": [ "kids" ],
-			"vi": { "title": "Sunset Town & Cầu Hôn", "compare": "Không cần tới Ý?", "excerpt": "Thị trấn phong cách Địa Trung Hải và cây cầu ngắm hoàng hôn nổi tiếng nhất đảo.", "content": [ "Những dãy nhà màu pastel, tháp đồng hồ và quảng trường rộng khiến Sunset Town giống một góc nước Ý giữa Phú Quốc. Đi bộ ra Cầu Hôn lúc 17:30 để ngắm khoảnh khắc mặt trời lặn giữa hai nhịp cầu.", "Mẹo: mang theo xe đẩy cho bé vì khu vực khá rộng; nhiều quán kem và nước dừa dọc đường." ] },
-			"en": { "title": "Sunset Town & Kiss Bridge", "compare": "No need to fly to Italy?", "excerpt": "A Mediterranean-style town and the island's most famous sunset bridge.", "content": [ "Pastel houses, a clock tower and a wide piazza make Sunset Town feel like a corner of Italy in Phu Quoc. Walk to the Kiss Bridge around 5:30 pm to see the sun set between its two arches.", "Tip: bring a stroller – the area is large, with plenty of ice-cream and coconut stalls along the way." ] }
+			"key": "sunset-town",
+			"order": 1,
+			"image": "place-sunset-town",
+			"meta": {
+				"sg_distance": 28,
+				"sg_time": 40,
+				"sg_mode": "car",
+				"sg_map_url": "https://maps.google.com/?q=Sunset+Town+Phu+Quoc"
+			},
+			"tags": [
+				"kids"
+			],
+			"vi": {
+				"title": "Sunset Town & Cầu Hôn",
+				"compare": "Không cần tới Ý?",
+				"excerpt": "Thị trấn phong cách Địa Trung Hải và cây cầu ngắm hoàng hôn nổi tiếng nhất đảo.",
+				"content": [
+					"Những dãy nhà màu pastel, tháp đồng hồ và quảng trường rộng khiến Sunset Town giống một góc nước Ý giữa Phú Quốc. Đi bộ ra Cầu Hôn lúc 17:30 để ngắm khoảnh khắc mặt trời lặn giữa hai nhịp cầu.",
+					"Mẹo: mang theo xe đẩy cho bé vì khu vực khá rộng; nhiều quán kem và nước dừa dọc đường."
+				]
+			},
+			"en": {
+				"title": "Sunset Town & Kiss Bridge",
+				"compare": "No need to fly to Italy?",
+				"excerpt": "A Mediterranean-style town and the island's most famous sunset bridge.",
+				"content": [
+					"Pastel houses, a clock tower and a wide piazza make Sunset Town feel like a corner of Italy in Phu Quoc. Walk to the Kiss Bridge around 5:30 pm to see the sun set between its two arches.",
+					"Tip: bring a stroller – the area is large, with plenty of ice-cream and coconut stalls along the way."
+				]
+			}
 		},
 		{
-			"key": "kiss-show", "order": 2, "image": "place-kiss-show",
-			"meta": { "sg_distance": 28, "sg_time": 40, "sg_mode": "car", "sg_map_url": "https://maps.google.com/?q=Kiss+of+the+Sea+Phu+Quoc" },
-			"tags": [ "kids" ],
-			"vi": { "title": "Show Nụ Hôn Của Biển", "compare": "Không cần tới Dubai?", "excerpt": "Show nhạc nước, pháo hoa và laser trên biển – trẻ con người lớn đều mê.", "content": [ "Show diễn ra mỗi tối tại Sunset Town với màn nước, ánh sáng và pháo hoa kể chuyện tình yêu biển cả. Khán đài ngoài trời, bé ngồi cùng ba mẹ.", "Nên đặt vé trước và có mặt sớm 30 phút để chọn chỗ ở giữa." ] },
-			"en": { "title": "Kiss of the Sea show", "compare": "No need to fly to Dubai?", "excerpt": "A water, fireworks and laser show over the sea – kids and adults love it.", "content": [ "Every evening at Sunset Town, water screens, lights and fireworks tell a love story of the sea. Open-air seating, kids sit with their parents.", "Book tickets in advance and arrive 30 minutes early for central seats." ] }
+			"key": "kiss-show",
+			"order": 2,
+			"image": "place-kiss-show",
+			"meta": {
+				"sg_distance": 28,
+				"sg_time": 40,
+				"sg_mode": "car",
+				"sg_map_url": "https://maps.google.com/?q=Kiss+of+the+Sea+Phu+Quoc"
+			},
+			"tags": [
+				"kids"
+			],
+			"vi": {
+				"title": "Show Nụ Hôn Của Biển",
+				"compare": "Không cần tới Dubai?",
+				"excerpt": "Show nhạc nước, pháo hoa và laser trên biển – trẻ con người lớn đều mê.",
+				"content": [
+					"Show diễn ra mỗi tối tại Sunset Town với màn nước, ánh sáng và pháo hoa kể chuyện tình yêu biển cả. Khán đài ngoài trời, bé ngồi cùng ba mẹ.",
+					"Nên đặt vé trước và có mặt sớm 30 phút để chọn chỗ ở giữa."
+				]
+			},
+			"en": {
+				"title": "Kiss of the Sea show",
+				"compare": "No need to fly to Dubai?",
+				"excerpt": "A water, fireworks and laser show over the sea – kids and adults love it.",
+				"content": [
+					"Every evening at Sunset Town, water screens, lights and fireworks tell a love story of the sea. Open-air seating, kids sit with their parents.",
+					"Book tickets in advance and arrive 30 minutes early for central seats."
+				]
+			}
 		},
 		{
-			"key": "hon-thom", "order": 3, "image": "place-hon-thom",
-			"meta": { "sg_distance": 26, "sg_time": 35, "sg_mode": "car", "sg_map_url": "https://maps.google.com/?q=Hon+Thom+Cable+Car" },
-			"tags": [ "kids" ],
-			"vi": { "title": "Cáp treo Hòn Thơm", "compare": "Không cần tới Thụy Sĩ?", "excerpt": "Tuyến cáp treo vượt biển dài gần 8km, ngắm làng chài An Thới và các đảo nhỏ từ trên cao.", "content": [ "Cabin rộng, có máy lạnh, bé được ngồi cùng ba mẹ suốt hành trình khoảng 15 phút. Điểm đến là công viên nước và bãi biển trên đảo Hòn Thơm.", "Nên đi buổi sáng để tránh nắng gắt và hàng chờ dài." ] },
-			"en": { "title": "Hon Thom cable car", "compare": "No need to fly to Switzerland?", "excerpt": "A nearly 8km sea-crossing cable car with views over An Thoi fishing village and tiny islands.", "content": [ "Spacious air-conditioned cabins let kids sit with parents for the 15-minute ride. At the end: a water park and beach on Hon Thom island.", "Go in the morning to avoid the midday sun and long queues." ] }
+			"key": "hon-thom",
+			"order": 3,
+			"image": "place-hon-thom",
+			"meta": {
+				"sg_distance": 26,
+				"sg_time": 35,
+				"sg_mode": "car",
+				"sg_map_url": "https://maps.google.com/?q=Hon+Thom+Cable+Car"
+			},
+			"tags": [
+				"kids"
+			],
+			"vi": {
+				"title": "Cáp treo Hòn Thơm",
+				"compare": "Không cần tới Thụy Sĩ?",
+				"excerpt": "Tuyến cáp treo vượt biển dài gần 8km, ngắm làng chài An Thới và các đảo nhỏ từ trên cao.",
+				"content": [
+					"Cabin rộng, có máy lạnh, bé được ngồi cùng ba mẹ suốt hành trình khoảng 15 phút. Điểm đến là công viên nước và bãi biển trên đảo Hòn Thơm.",
+					"Nên đi buổi sáng để tránh nắng gắt và hàng chờ dài."
+				]
+			},
+			"en": {
+				"title": "Hon Thom cable car",
+				"compare": "No need to fly to Switzerland?",
+				"excerpt": "A nearly 8km sea-crossing cable car with views over An Thoi fishing village and tiny islands.",
+				"content": [
+					"Spacious air-conditioned cabins let kids sit with parents for the 15-minute ride. At the end: a water park and beach on Hon Thom island.",
+					"Go in the morning to avoid the midday sun and long queues."
+				]
+			}
 		},
 		{
-			"key": "grand-world", "order": 4, "image": "place-grand-world",
-			"meta": { "sg_distance": 12, "sg_time": 20, "sg_mode": "car", "sg_map_url": "https://maps.google.com/?q=Grand+World+Phu+Quoc" },
-			"tags": [ "near", "kids" ],
-			"vi": { "title": "Grand World", "compare": "Không cần tới Venice?", "excerpt": "Thành phố không ngủ với kênh đào, thuyền gondola và show diễn đường phố mỗi tối.", "content": [ "Đi thuyền gondola trên kênh Venice thu nhỏ, xem show 'Tinh hoa Việt Nam' và dạo phố đèn lồng. Nhiều khu vui chơi và quán ăn cho trẻ em.", "Buổi tối đông vui nhất – nhớ cho bé mặc đồ thoải mái và mang nước." ] },
-			"en": { "title": "Grand World", "compare": "No need to fly to Venice?", "excerpt": "The 'city that never sleeps' with canals, gondolas and street shows every evening.", "content": [ "Ride a gondola on a mini Venice canal, watch the 'Essence of Vietnam' show and stroll lantern-lit streets. Lots of play areas and kid-friendly food.", "Evenings are the liveliest – dress the kids comfortably and bring water." ] }
+			"key": "grand-world",
+			"order": 4,
+			"image": "place-grand-world",
+			"meta": {
+				"sg_distance": 12,
+				"sg_time": 20,
+				"sg_mode": "car",
+				"sg_map_url": "https://maps.google.com/?q=Grand+World+Phu+Quoc"
+			},
+			"tags": [
+				"near",
+				"kids"
+			],
+			"vi": {
+				"title": "Grand World",
+				"compare": "Không cần tới Venice?",
+				"excerpt": "Thành phố không ngủ với kênh đào, thuyền gondola và show diễn đường phố mỗi tối.",
+				"content": [
+					"Đi thuyền gondola trên kênh Venice thu nhỏ, xem show 'Tinh hoa Việt Nam' và dạo phố đèn lồng. Nhiều khu vui chơi và quán ăn cho trẻ em.",
+					"Buổi tối đông vui nhất – nhớ cho bé mặc đồ thoải mái và mang nước."
+				]
+			},
+			"en": {
+				"title": "Grand World",
+				"compare": "No need to fly to Venice?",
+				"excerpt": "The 'city that never sleeps' with canals, gondolas and street shows every evening.",
+				"content": [
+					"Ride a gondola on a mini Venice canal, watch the 'Essence of Vietnam' show and stroll lantern-lit streets. Lots of play areas and kid-friendly food.",
+					"Evenings are the liveliest – dress the kids comfortably and bring water."
+				]
+			}
 		},
 		{
-			"key": "safari", "order": 5, "image": "place-safari",
-			"meta": { "sg_distance": 15, "sg_time": 25, "sg_mode": "car", "sg_map_url": "https://maps.google.com/?q=Vinpearl+Safari+Phu+Quoc" },
-			"tags": [ "near", "kids" ],
-			"vi": { "title": "Vinpearl Safari", "compare": "Không cần tới Kenya?", "excerpt": "Vườn thú bán hoang dã lớn nhất Việt Nam – ngắm hươu cao cổ, tê giác từ xe buýt.", "content": [ "Ngồi xe buýt đi qua khu thú tự do, sau đó đi bộ thăm khu vườn thú mở và cho hươu cao cổ ăn. Bé sẽ nhớ mãi!", "Nên dành ít nhất nửa ngày, đi từ sáng sớm khi các con vật còn hoạt động nhiều." ] },
-			"en": { "title": "Vinpearl Safari", "compare": "No need to fly to Kenya?", "excerpt": "Vietnam's largest semi-wild safari park – see giraffes and rhinos from the bus.", "content": [ "Ride the bus through the open-range area, then walk the open zoo and feed the giraffes. Kids won't forget it!", "Allow at least half a day and go early, when the animals are most active." ] }
+			"key": "safari",
+			"order": 5,
+			"image": "place-safari",
+			"meta": {
+				"sg_distance": 15,
+				"sg_time": 25,
+				"sg_mode": "car",
+				"sg_map_url": "https://maps.google.com/?q=Vinpearl+Safari+Phu+Quoc"
+			},
+			"tags": [
+				"near",
+				"kids"
+			],
+			"vi": {
+				"title": "Vinpearl Safari",
+				"compare": "Không cần tới Kenya?",
+				"excerpt": "Vườn thú bán hoang dã lớn nhất Việt Nam – ngắm hươu cao cổ, tê giác từ xe buýt.",
+				"content": [
+					"Ngồi xe buýt đi qua khu thú tự do, sau đó đi bộ thăm khu vườn thú mở và cho hươu cao cổ ăn. Bé sẽ nhớ mãi!",
+					"Nên dành ít nhất nửa ngày, đi từ sáng sớm khi các con vật còn hoạt động nhiều."
+				]
+			},
+			"en": {
+				"title": "Vinpearl Safari",
+				"compare": "No need to fly to Kenya?",
+				"excerpt": "Vietnam's largest semi-wild safari park – see giraffes and rhinos from the bus.",
+				"content": [
+					"Ride the bus through the open-range area, then walk the open zoo and feed the giraffes. Kids won't forget it!",
+					"Allow at least half a day and go early, when the animals are most active."
+				]
+			}
 		},
 		{
-			"key": "bai-sao", "order": 6, "image": "place-bai-sao",
-			"meta": { "sg_distance": 25, "sg_time": 35, "sg_mode": "motorbike", "sg_map_url": "https://maps.google.com/?q=Bai+Sao+Phu+Quoc" },
-			"tags": [ "kids" ],
-			"vi": { "title": "Bãi Sao", "compare": "Không cần tới Maldives?", "excerpt": "Cát trắng mịn, nước xanh trong và sóng êm – bãi biển đẹp nhất Nam đảo.", "content": [ "Bãi Sao có bờ cát trắng mịn như kem và nước nông thoai thoải, rất an toàn cho bé tắm biển. Có nhiều quán nướng hải sản và ghế dù cho thuê.", "Đi bằng xe máy khoảng 35 phút theo đường ven biển – cung đường đẹp để chụp ảnh." ] },
-			"en": { "title": "Sao Beach", "compare": "No need to fly to the Maldives?", "excerpt": "Powder-white sand, clear water and gentle waves – the prettiest beach in the south.", "content": [ "Sao Beach has creamy white sand and gently sloping shallow water, very safe for little swimmers. Plenty of seafood grills and sunbeds for hire.", "About 35 minutes by motorbike along the coast – a lovely road for photos." ] }
+			"key": "bai-sao",
+			"order": 6,
+			"image": "place-bai-sao",
+			"meta": {
+				"sg_distance": 25,
+				"sg_time": 35,
+				"sg_mode": "motorbike",
+				"sg_map_url": "https://maps.google.com/?q=Bai+Sao+Phu+Quoc"
+			},
+			"tags": [
+				"kids"
+			],
+			"vi": {
+				"title": "Bãi Sao",
+				"compare": "Không cần tới Maldives?",
+				"excerpt": "Cát trắng mịn, nước xanh trong và sóng êm – bãi biển đẹp nhất Nam đảo.",
+				"content": [
+					"Bãi Sao có bờ cát trắng mịn như kem và nước nông thoai thoải, rất an toàn cho bé tắm biển. Có nhiều quán nướng hải sản và ghế dù cho thuê.",
+					"Đi bằng xe máy khoảng 35 phút theo đường ven biển – cung đường đẹp để chụp ảnh."
+				]
+			},
+			"en": {
+				"title": "Sao Beach",
+				"compare": "No need to fly to the Maldives?",
+				"excerpt": "Powder-white sand, clear water and gentle waves – the prettiest beach in the south.",
+				"content": [
+					"Sao Beach has creamy white sand and gently sloping shallow water, very safe for little swimmers. Plenty of seafood grills and sunbeds for hire.",
+					"About 35 minutes by motorbike along the coast – a lovely road for photos."
+				]
+			}
 		},
 		{
-			"key": "night-market", "order": 7, "image": "place-night-market",
-			"meta": { "sg_distance": 1.2, "sg_time": 15, "sg_mode": "walk", "sg_map_url": "https://maps.google.com/?q=Phu+Quoc+Night+Market" },
-			"tags": [ "walk", "near", "kids" ],
-			"vi": { "title": "Chợ đêm Phú Quốc", "compare": "", "excerpt": "Hải sản tươi, kem cuộn, đồ lưu niệm – chỉ 15 phút đi bộ từ khách sạn.", "content": [ "Chợ mở từ 17:00 đến nửa đêm với hàng trăm gian hàng hải sản tươi sống, kem cuộn, bánh tráng nướng và đồ lưu niệm làm từ ngọc trai.", "Đi bộ dọc đường Trần Hưng Đạo khoảng 15 phút, hoặc đạp xe 5 phút. Nhớ hỏi giá trước khi chọn hải sản." ] },
-			"en": { "title": "Phu Quoc Night Market", "compare": "", "excerpt": "Fresh seafood, rolled ice cream and souvenirs – just a 15-minute walk from the hotel.", "content": [ "Open from 5 pm to midnight with hundreds of stalls: live seafood, rolled ice cream, grilled rice paper and pearl souvenirs.", "A 15-minute walk along Tran Hung Dao street, or 5 minutes by bike. Always ask the price before choosing seafood." ] }
+			"key": "night-market",
+			"order": 7,
+			"image": "place-night-market",
+			"meta": {
+				"sg_distance": 1.2,
+				"sg_time": 15,
+				"sg_mode": "walk",
+				"sg_map_url": "https://maps.google.com/?q=Phu+Quoc+Night+Market"
+			},
+			"tags": [
+				"walk",
+				"near",
+				"kids"
+			],
+			"vi": {
+				"title": "Chợ đêm Phú Quốc",
+				"compare": "",
+				"excerpt": "Hải sản tươi, kem cuộn, đồ lưu niệm – chỉ 15 phút đi bộ từ khách sạn.",
+				"content": [
+					"Chợ mở từ 17:00 đến nửa đêm với hàng trăm gian hàng hải sản tươi sống, kem cuộn, bánh tráng nướng và đồ lưu niệm làm từ ngọc trai.",
+					"Đi bộ dọc đường Trần Hưng Đạo khoảng 15 phút, hoặc đạp xe 5 phút. Nhớ hỏi giá trước khi chọn hải sản."
+				]
+			},
+			"en": {
+				"title": "Phu Quoc Night Market",
+				"compare": "",
+				"excerpt": "Fresh seafood, rolled ice cream and souvenirs – just a 15-minute walk from the hotel.",
+				"content": [
+					"Open from 5 pm to midnight with hundreds of stalls: live seafood, rolled ice cream, grilled rice paper and pearl souvenirs.",
+					"A 15-minute walk along Tran Hung Dao street, or 5 minutes by bike. Always ask the price before choosing seafood."
+				]
+			}
 		},
 		{
-			"key": "dinh-cau", "order": 8, "image": "place-dinh-cau",
-			"meta": { "sg_distance": 1.5, "sg_time": 18, "sg_mode": "walk", "sg_map_url": "https://maps.google.com/?q=Dinh+Cau+Phu+Quoc" },
-			"tags": [ "walk", "near" ],
-			"vi": { "title": "Dinh Cậu", "compare": "", "excerpt": "Ngôi đền trên mỏm đá cửa sông Dương Đông – điểm ngắm hoàng hôn yên bình của người dân đảo.", "content": [ "Dinh Cậu là biểu tượng tâm linh của ngư dân Phú Quốc, nằm trên mỏm đá nhô ra biển. Bậc thang không quá cao, bé có thể tự leo cùng ba mẹ.", "Hoàng hôn ở đây yên tĩnh hơn Sunset Town – rất hợp cho buổi dạo mát trước giờ ăn tối ở chợ đêm gần đó." ] },
-			"en": { "title": "Dinh Cau Temple", "compare": "", "excerpt": "A temple on a rocky outcrop at the mouth of the Duong Dong river – a peaceful local sunset spot.", "content": [ "Dinh Cau is a spiritual landmark for Phu Quoc's fishermen, perched on rocks over the sea. The steps are gentle enough for kids to climb with parents.", "Sunsets here are quieter than at Sunset Town – perfect for a stroll before dinner at the nearby night market." ] }
+			"key": "dinh-cau",
+			"order": 8,
+			"image": "place-dinh-cau",
+			"meta": {
+				"sg_distance": 1.5,
+				"sg_time": 18,
+				"sg_mode": "walk",
+				"sg_map_url": "https://maps.google.com/?q=Dinh+Cau+Phu+Quoc"
+			},
+			"tags": [
+				"walk",
+				"near"
+			],
+			"vi": {
+				"title": "Dinh Cậu",
+				"compare": "",
+				"excerpt": "Ngôi đền trên mỏm đá cửa sông Dương Đông – điểm ngắm hoàng hôn yên bình của người dân đảo.",
+				"content": [
+					"Dinh Cậu là biểu tượng tâm linh của ngư dân Phú Quốc, nằm trên mỏm đá nhô ra biển. Bậc thang không quá cao, bé có thể tự leo cùng ba mẹ.",
+					"Hoàng hôn ở đây yên tĩnh hơn Sunset Town – rất hợp cho buổi dạo mát trước giờ ăn tối ở chợ đêm gần đó."
+				]
+			},
+			"en": {
+				"title": "Dinh Cau Temple",
+				"compare": "",
+				"excerpt": "A temple on a rocky outcrop at the mouth of the Duong Dong river – a peaceful local sunset spot.",
+				"content": [
+					"Dinh Cau is a spiritual landmark for Phu Quoc's fishermen, perched on rocks over the sea. The steps are gentle enough for kids to climb with parents.",
+					"Sunsets here are quieter than at Sunset Town – perfect for a stroll before dinner at the nearby night market."
+				]
+			}
 		}
 	],
 	"offers": [
 		{
-			"key": "family-combo", "order": 1, "image": "mk-26716", "valid_from": "today", "valid_to": "+6 months", "guest": [ "family" ],
-			"vi": { "title": "Combo gia đình 3 ngày 2 đêm", "price": "4.990.000đ / gia đình", "old_price": "5.900.000đ", "badge": "-15%", "excerpt": "Phòng Family Garden, bữa sáng, đưa đón sân bay và 1 buổi Kids Club cho bé.", "conditions": "Áp dụng 2 người lớn + 2 trẻ em dưới 12 tuổi, phòng Family Garden Room, 2 đêm liên tiếp. Không áp dụng dịp Lễ, Tết. Giá mẫu [CẦN THAY].", "content": [ "Gói nghỉ trọn vẹn cho cả nhà: 2 đêm tại Family Garden Room, bữa sáng tự chọn mỗi ngày, xe đón tiễn sân bay 2 chiều và một buổi Kids Club để ba mẹ có thời gian riêng.", "Tặng thêm: kem dừa cho bé và late check-out đến 14:00 (tùy tình trạng phòng)." ] },
-			"en": { "title": "Family combo – 3 days, 2 nights", "price": "4,990,000 VND / family", "old_price": "5,900,000 VND", "badge": "-15%", "excerpt": "Family Garden Room, breakfast, airport transfer and a Kids Club session.", "conditions": "For 2 adults + 2 children under 12, Family Garden Room, 2 consecutive nights. Not valid on public holidays or Tet. Sample price [TO REPLACE].", "content": [ "An all-in-one family break: 2 nights in the Family Garden Room, daily breakfast buffet, return airport transfer and a Kids Club session so parents get some time to themselves.", "Bonus: coconut ice cream for the kids and late check-out until 2 pm (subject to availability)." ] }
+			"key": "family-combo",
+			"order": 1,
+			"image": "mk-26716",
+			"valid_from": "today",
+			"valid_to": "+6 months",
+			"guest": [
+				"family"
+			],
+			"vi": {
+				"title": "Combo gia đình 3 ngày 2 đêm",
+				"price": "4.990.000đ / gia đình",
+				"old_price": "5.900.000đ",
+				"badge": "-15%",
+				"excerpt": "Phòng Family Garden, bữa sáng, đưa đón sân bay và 1 buổi Kids Club cho bé.",
+				"conditions": "Áp dụng 2 người lớn + 2 trẻ em dưới 12 tuổi, phòng Family Garden Room, 2 đêm liên tiếp. Không áp dụng dịp Lễ, Tết. Giá mẫu [CẦN THAY].",
+				"content": [
+					"Gói nghỉ trọn vẹn cho cả nhà: 2 đêm tại Family Garden Room, bữa sáng tự chọn mỗi ngày, xe đón tiễn sân bay 2 chiều và một buổi Kids Club để ba mẹ có thời gian riêng.",
+					"Tặng thêm: kem dừa cho bé và late check-out đến 14:00 (tùy tình trạng phòng)."
+				]
+			},
+			"en": {
+				"title": "Family combo – 3 days, 2 nights",
+				"price": "4,990,000 VND / family",
+				"old_price": "5,900,000 VND",
+				"badge": "-15%",
+				"excerpt": "Family Garden Room, breakfast, airport transfer and a Kids Club session.",
+				"conditions": "For 2 adults + 2 children under 12, Family Garden Room, 2 consecutive nights. Not valid on public holidays or Tet. Sample price [TO REPLACE].",
+				"content": [
+					"An all-in-one family break: 2 nights in the Family Garden Room, daily breakfast buffet, return airport transfer and a Kids Club session so parents get some time to themselves.",
+					"Bonus: coconut ice cream for the kids and late check-out until 2 pm (subject to availability)."
+				]
+			}
 		},
 		{
-			"key": "long-stay", "order": 2, "image": "mk-9902", "valid_from": "", "valid_to": "", "guest": [ "family", "couple", "friends" ],
-			"vi": { "title": "Ở dài ngày – giảm 20%", "price": "Giảm 20%", "old_price": "", "badge": "Ở từ 5 đêm", "excerpt": "Ở càng lâu càng tiết kiệm: giảm 20% cho kỳ nghỉ từ 5 đêm, mọi loại phòng.", "conditions": "Áp dụng khi ở từ 5 đêm liên tiếp, mọi loại phòng. Không cộng dồn với ưu đãi khác. Không áp dụng dịp Tết.", "content": [ "Phú Quốc đẹp nhất khi bạn không vội. Ở từ 5 đêm, cả nhà được giảm 20% tiền phòng, kèm giặt ủi miễn phí 1 lần mỗi tuần." ] },
-			"en": { "title": "Long stay – 20% off", "price": "20% off", "old_price": "", "badge": "5+ nights", "excerpt": "Stay longer, save more: 20% off any room for stays of 5 nights or more.", "conditions": "For stays of 5+ consecutive nights, any room type. Cannot be combined with other offers. Not valid during Tet.", "content": [ "Phu Quoc is best enjoyed slowly. Stay 5 nights or more and save 20% on your room, plus one free laundry service per week." ] }
+			"key": "long-stay",
+			"order": 2,
+			"image": "mk-9902",
+			"valid_from": "",
+			"valid_to": "",
+			"guest": [
+				"family",
+				"couple",
+				"friends"
+			],
+			"vi": {
+				"title": "Ở dài ngày – giảm 20%",
+				"price": "Giảm 20%",
+				"old_price": "",
+				"badge": "Ở từ 5 đêm",
+				"excerpt": "Ở càng lâu càng tiết kiệm: giảm 20% cho kỳ nghỉ từ 5 đêm, mọi loại phòng.",
+				"conditions": "Áp dụng khi ở từ 5 đêm liên tiếp, mọi loại phòng. Không cộng dồn với ưu đãi khác. Không áp dụng dịp Tết.",
+				"content": [
+					"Phú Quốc đẹp nhất khi bạn không vội. Ở từ 5 đêm, cả nhà được giảm 20% tiền phòng, kèm giặt ủi miễn phí 1 lần mỗi tuần."
+				]
+			},
+			"en": {
+				"title": "Long stay – 20% off",
+				"price": "20% off",
+				"old_price": "",
+				"badge": "5+ nights",
+				"excerpt": "Stay longer, save more: 20% off any room for stays of 5 nights or more.",
+				"conditions": "For stays of 5+ consecutive nights, any room type. Cannot be combined with other offers. Not valid during Tet.",
+				"content": [
+					"Phu Quoc is best enjoyed slowly. Stay 5 nights or more and save 20% on your room, plus one free laundry service per week."
+				]
+			}
 		},
 		{
-			"key": "early-bird", "order": 3, "image": "mk-4019", "valid_from": "today", "valid_to": "+12 months", "guest": [ "family", "couple", "friends" ],
-			"vi": { "title": "Đặt sớm – giảm 12%", "price": "Giảm 12%", "old_price": "", "badge": "Đặt sớm", "excerpt": "Lên kế hoạch trước 30 ngày để nhận giá tốt nhất và chọn phòng đẹp nhất.", "conditions": "Đặt trước ngày nhận phòng ít nhất 30 ngày. Đặt cọc 30%. Không hoàn tiền nếu hủy trong vòng 7 ngày trước ngày nhận phòng.", "content": [ "Gia đình thích lên lịch trước? Đặt sớm 30 ngày để nhận giảm 12% và được ưu tiên chọn phòng gần hồ bơi trẻ em." ] },
-			"en": { "title": "Early bird – 12% off", "price": "12% off", "old_price": "", "badge": "Early bird", "excerpt": "Plan 30 days ahead for the best rate and first pick of rooms.", "conditions": "Book at least 30 days before check-in. 30% deposit. Non-refundable if cancelled within 7 days of arrival.", "content": [ "Like to plan ahead? Book 30 days early to save 12% and get priority for rooms near the kids' pool." ] }
+			"key": "early-bird",
+			"order": 3,
+			"image": "mk-4019",
+			"valid_from": "today",
+			"valid_to": "+12 months",
+			"guest": [
+				"family",
+				"couple",
+				"friends"
+			],
+			"vi": {
+				"title": "Đặt sớm – giảm 12%",
+				"price": "Giảm 12%",
+				"old_price": "",
+				"badge": "Đặt sớm",
+				"excerpt": "Lên kế hoạch trước 30 ngày để nhận giá tốt nhất và chọn phòng đẹp nhất.",
+				"conditions": "Đặt trước ngày nhận phòng ít nhất 30 ngày. Đặt cọc 30%. Không hoàn tiền nếu hủy trong vòng 7 ngày trước ngày nhận phòng.",
+				"content": [
+					"Gia đình thích lên lịch trước? Đặt sớm 30 ngày để nhận giảm 12% và được ưu tiên chọn phòng gần hồ bơi trẻ em."
+				]
+			},
+			"en": {
+				"title": "Early bird – 12% off",
+				"price": "12% off",
+				"old_price": "",
+				"badge": "Early bird",
+				"excerpt": "Plan 30 days ahead for the best rate and first pick of rooms.",
+				"conditions": "Book at least 30 days before check-in. 30% deposit. Non-refundable if cancelled within 7 days of arrival.",
+				"content": [
+					"Like to plan ahead? Book 30 days early to save 12% and get priority for rooms near the kids' pool."
+				]
+			}
 		},
 		{
-			"key": "summer-expired", "order": 4, "image": "mk-44364", "valid_from": "2025-05-01", "valid_to": "2025-08-31", "guest": [ "family" ],
-			"vi": { "title": "Hè rực rỡ 2025 (đã hết hạn – tự ẩn)", "price": "Giảm 25%", "old_price": "", "badge": "Hè 2025", "excerpt": "Ưu đãi mẫu đã hết hạn để minh họa: ưu đãi quá hạn sẽ tự ẩn khỏi website.", "conditions": "Ví dụ ưu đãi hết hạn.", "content": [ "Ưu đãi này đã hết hạn nên không hiển thị trên website – chỉ còn trong trang quản trị để tham khảo." ] },
-			"en": { "title": "Summer 2025 (expired – hidden)", "price": "25% off", "old_price": "", "badge": "Summer 2025", "excerpt": "A sample expired offer: expired offers hide themselves automatically.", "conditions": "Example of an expired offer.", "content": [ "This offer has expired, so it no longer appears on the website – it stays in the admin for reference." ] }
+			"key": "summer-expired",
+			"order": 4,
+			"image": "mk-44364",
+			"valid_from": "2025-05-01",
+			"valid_to": "2025-08-31",
+			"guest": [
+				"family"
+			],
+			"vi": {
+				"title": "Hè rực rỡ 2025 (đã hết hạn – tự ẩn)",
+				"price": "Giảm 25%",
+				"old_price": "",
+				"badge": "Hè 2025",
+				"excerpt": "Ưu đãi mẫu đã hết hạn để minh họa: ưu đãi quá hạn sẽ tự ẩn khỏi website.",
+				"conditions": "Ví dụ ưu đãi hết hạn.",
+				"content": [
+					"Ưu đãi này đã hết hạn nên không hiển thị trên website – chỉ còn trong trang quản trị để tham khảo."
+				]
+			},
+			"en": {
+				"title": "Summer 2025 (expired – hidden)",
+				"price": "25% off",
+				"old_price": "",
+				"badge": "Summer 2025",
+				"excerpt": "A sample expired offer: expired offers hide themselves automatically.",
+				"conditions": "Example of an expired offer.",
+				"content": [
+					"This offer has expired, so it no longer appears on the website – it stays in the admin for reference."
+				]
+			}
 		}
 	],
 	"posts": [
 		{
-			"key": "itinerary", "image": "place-hon-thom", "category": "guide", "days_ago": 3,
-			"vi": { "title": "Lịch trình Phú Quốc 4 ngày 3 đêm cho gia đình có bé", "excerpt": "Gợi ý lịch trình nhẹ nhàng, không mệt cho bé: Nam đảo buổi sáng, nghỉ trưa ở khách sạn, chiều tối dạo phố.", "content": [ "Đi Phú Quốc cùng bé không cần chạy lịch dày đặc. Bí quyết là: điểm xa đi buổi sáng, trưa về nghỉ, chiều tối dạo nơi gần.", "## Ngày 1: Nhận phòng & làm quen", "Nhận phòng, cho bé tắm hồ bơi trẻ em, tối đi bộ ra chợ đêm ăn hải sản và kem cuộn.", "## Ngày 2: Nam đảo", "Sáng đi cáp treo Hòn Thơm, chiều ghé Sunset Town ngắm hoàng hôn ở Cầu Hôn và xem show Nụ Hôn Của Biển.", "## Ngày 3: Safari & Grand World", "Sáng ở Vinpearl Safari cho bé cho hươu cao cổ ăn, chiều tối đi thuyền gondola ở Grand World.", "## Ngày 4: Thư thả", "Buổi sáng ở Kids Club và vườn nhiệt đới, mua quà rồi ra sân bay." ] },
-			"en": { "title": "A 4-day Phu Quoc itinerary for families with little ones", "excerpt": "An easy-going plan kids won't find tiring: the south in the morning, a nap at the hotel, evening strolls.", "content": [ "Travelling to Phu Quoc with kids doesn't need a packed schedule. The trick: far places in the morning, rest at noon, nearby spots in the evening.", "## Day 1: Check in & settle", "Check in, splash in the kids' pool, then walk to the night market for seafood and rolled ice cream.", "## Day 2: The south", "Morning cable car to Hon Thom, then Sunset Town for the Kiss Bridge sunset and the Kiss of the Sea show.", "## Day 3: Safari & Grand World", "Feed the giraffes at Vinpearl Safari in the morning, gondola ride at Grand World in the evening.", "## Day 4: Slow morning", "Kids Club and the tropical garden, a little souvenir shopping, then off to the airport." ] }
+			"key": "itinerary",
+			"image": "place-hon-thom",
+			"category": "guide",
+			"days_ago": 3,
+			"vi": {
+				"title": "Lịch trình Phú Quốc 4 ngày 3 đêm cho gia đình có bé",
+				"excerpt": "Gợi ý lịch trình nhẹ nhàng, không mệt cho bé: Nam đảo buổi sáng, nghỉ trưa ở khách sạn, chiều tối dạo phố.",
+				"content": [
+					"Đi Phú Quốc cùng bé không cần chạy lịch dày đặc. Bí quyết là: điểm xa đi buổi sáng, trưa về nghỉ, chiều tối dạo nơi gần.",
+					"## Ngày 1: Nhận phòng & làm quen",
+					"Nhận phòng, cho bé tắm hồ bơi trẻ em, tối đi bộ ra chợ đêm ăn hải sản và kem cuộn.",
+					"## Ngày 2: Nam đảo",
+					"Sáng đi cáp treo Hòn Thơm, chiều ghé Sunset Town ngắm hoàng hôn ở Cầu Hôn và xem show Nụ Hôn Của Biển.",
+					"## Ngày 3: Safari & Grand World",
+					"Sáng ở Vinpearl Safari cho bé cho hươu cao cổ ăn, chiều tối đi thuyền gondola ở Grand World.",
+					"## Ngày 4: Thư thả",
+					"Buổi sáng ở Kids Club và vườn nhiệt đới, mua quà rồi ra sân bay."
+				]
+			},
+			"en": {
+				"title": "A 4-day Phu Quoc itinerary for families with little ones",
+				"excerpt": "An easy-going plan kids won't find tiring: the south in the morning, a nap at the hotel, evening strolls.",
+				"content": [
+					"Travelling to Phu Quoc with kids doesn't need a packed schedule. The trick: far places in the morning, rest at noon, nearby spots in the evening.",
+					"## Day 1: Check in & settle",
+					"Check in, splash in the kids' pool, then walk to the night market for seafood and rolled ice cream.",
+					"## Day 2: The south",
+					"Morning cable car to Hon Thom, then Sunset Town for the Kiss Bridge sunset and the Kiss of the Sea show.",
+					"## Day 3: Safari & Grand World",
+					"Feed the giraffes at Vinpearl Safari in the morning, gondola ride at Grand World in the evening.",
+					"## Day 4: Slow morning",
+					"Kids Club and the tropical garden, a little souvenir shopping, then off to the airport."
+				]
+			}
 		},
 		{
-			"key": "food", "image": "place-night-market", "category": "food", "days_ago": 10,
-			"vi": { "title": "7 món ngon Phú Quốc bé nào cũng mê", "excerpt": "Từ bún quậy, gỏi cá trích đến kem cuộn – những món dễ ăn, hợp khẩu vị trẻ em.", "content": [ "Ẩm thực Phú Quốc không chỉ có hải sản cay nồng. Rất nhiều món nhẹ nhàng, ngọt thanh mà bé ăn rất ngon miệng.", "- Bún quậy: sợi bún tươi, chả cá dai ngọt", "- Bánh canh ghẹ: nước dùng thanh, thịt ghẹ chắc", "- Kem cuộn chợ đêm: vừa ăn vừa xem làm kem", "- Nhum nướng mỡ hành (cho ba mẹ!)", "- Bánh tráng nướng", "- Sinh tố dừa, xoài", "- Gà nướng lá é", "Mẹo: gọi món ít cay và hỏi giá trước khi gọi hải sản tính theo cân." ] },
-			"en": { "title": "7 Phu Quoc dishes every kid loves", "excerpt": "From stirred noodles to rolled ice cream – easy, kid-friendly local flavours.", "content": [ "Phu Quoc food isn't only spicy seafood. Plenty of dishes are mild and sweet, and kids love them.", "- Bun quay: fresh noodles with springy fish cake", "- Crab noodle soup with a light broth", "- Rolled ice cream at the night market", "- Grilled sea urchin with scallion oil (for the parents!)", "- Grilled rice paper 'Vietnamese pizza'", "- Coconut and mango smoothies", "- Chicken grilled with basil leaves", "Tip: ask for 'less spicy' and check prices before ordering seafood sold by weight." ] }
+			"key": "food",
+			"image": "place-night-market",
+			"category": "food",
+			"days_ago": 10,
+			"vi": {
+				"title": "7 món ngon Phú Quốc bé nào cũng mê",
+				"excerpt": "Từ bún quậy, gỏi cá trích đến kem cuộn – những món dễ ăn, hợp khẩu vị trẻ em.",
+				"content": [
+					"Ẩm thực Phú Quốc không chỉ có hải sản cay nồng. Rất nhiều món nhẹ nhàng, ngọt thanh mà bé ăn rất ngon miệng.",
+					"- Bún quậy: sợi bún tươi, chả cá dai ngọt",
+					"- Bánh canh ghẹ: nước dùng thanh, thịt ghẹ chắc",
+					"- Kem cuộn chợ đêm: vừa ăn vừa xem làm kem",
+					"- Nhum nướng mỡ hành (cho ba mẹ!)",
+					"- Bánh tráng nướng",
+					"- Sinh tố dừa, xoài",
+					"- Gà nướng lá é",
+					"Mẹo: gọi món ít cay và hỏi giá trước khi gọi hải sản tính theo cân."
+				]
+			},
+			"en": {
+				"title": "7 Phu Quoc dishes every kid loves",
+				"excerpt": "From stirred noodles to rolled ice cream – easy, kid-friendly local flavours.",
+				"content": [
+					"Phu Quoc food isn't only spicy seafood. Plenty of dishes are mild and sweet, and kids love them.",
+					"- Bun quay: fresh noodles with springy fish cake",
+					"- Crab noodle soup with a light broth",
+					"- Rolled ice cream at the night market",
+					"- Grilled sea urchin with scallion oil (for the parents!)",
+					"- Grilled rice paper 'Vietnamese pizza'",
+					"- Coconut and mango smoothies",
+					"- Chicken grilled with basil leaves",
+					"Tip: ask for 'less spicy' and check prices before ordering seafood sold by weight."
+				]
+			}
 		},
 		{
-			"key": "sunset", "image": "blog-sunset", "category": "guide", "days_ago": 18,
-			"vi": { "title": "Ngắm hoàng hôn đẹp nhất Phú Quốc ở đâu?", "excerpt": "Cầu Hôn, Dinh Cậu hay bãi Dài – mỗi nơi một vẻ, chọn theo sức của bé.", "content": [ "Phú Quốc là một trong số ít nơi ở Việt Nam ngắm được mặt trời lặn xuống biển. Dưới đây là 3 điểm chúng tôi hay gợi ý cho khách.", "## Cầu Hôn – Sunset Town", "Rộng, đông vui, nhiều dịch vụ. Hợp với gia đình muốn kết hợp xem show buổi tối.", "## Dinh Cậu", "Gần khách sạn, yên tĩnh, đi bộ được. Hợp với buổi dạo mát trước bữa tối.", "## Bãi Dài", "Hoang sơ, bãi cát dài – cho những ai thích không gian riêng." ] },
-			"en": { "title": "Where to watch the best sunset in Phu Quoc", "excerpt": "Kiss Bridge, Dinh Cau or Long Beach – each has its charm, pick one that suits the kids.", "content": [ "Phu Quoc is one of the few places in Vietnam where you can watch the sun sink into the sea. Here are three spots we often recommend.", "## Kiss Bridge – Sunset Town", "Big, lively and full of services. Great if you want to stay for the evening show.", "## Dinh Cau", "Close to the hotel, quiet and walkable. Perfect for a pre-dinner stroll.", "## Long Beach", "Wild and long – for those who like a little space to themselves." ] }
+			"key": "sunset",
+			"image": "blog-sunset",
+			"category": "guide",
+			"days_ago": 18,
+			"vi": {
+				"title": "Ngắm hoàng hôn đẹp nhất Phú Quốc ở đâu?",
+				"excerpt": "Cầu Hôn, Dinh Cậu hay bãi Dài – mỗi nơi một vẻ, chọn theo sức của bé.",
+				"content": [
+					"Phú Quốc là một trong số ít nơi ở Việt Nam ngắm được mặt trời lặn xuống biển. Dưới đây là 3 điểm chúng tôi hay gợi ý cho khách.",
+					"## Cầu Hôn – Sunset Town",
+					"Rộng, đông vui, nhiều dịch vụ. Hợp với gia đình muốn kết hợp xem show buổi tối.",
+					"## Dinh Cậu",
+					"Gần khách sạn, yên tĩnh, đi bộ được. Hợp với buổi dạo mát trước bữa tối.",
+					"## Bãi Dài",
+					"Hoang sơ, bãi cát dài – cho những ai thích không gian riêng."
+				]
+			},
+			"en": {
+				"title": "Where to watch the best sunset in Phu Quoc",
+				"excerpt": "Kiss Bridge, Dinh Cau or Long Beach – each has its charm, pick one that suits the kids.",
+				"content": [
+					"Phu Quoc is one of the few places in Vietnam where you can watch the sun sink into the sea. Here are three spots we often recommend.",
+					"## Kiss Bridge – Sunset Town",
+					"Big, lively and full of services. Great if you want to stay for the evening show.",
+					"## Dinh Cau",
+					"Close to the hotel, quiet and walkable. Perfect for a pre-dinner stroll.",
+					"## Long Beach",
+					"Wild and long – for those who like a little space to themselves."
+				]
+			}
 		}
 	],
 	"pages": [
-		{ "key": "home", "pattern": "page-home", "vi": { "title": "Trang chủ", "slug": "trang-chu" }, "en": { "title": "Home", "slug": "home" } },
-		{ "key": "rooms", "pattern": "page-rooms", "vi": { "title": "Phòng & Giá", "slug": "phong-nghi" }, "en": { "title": "Rooms & Rates", "slug": "rooms" } },
-		{ "key": "amenities", "pattern": "page-amenities", "vi": { "title": "Tiện ích", "slug": "tien-ich" }, "en": { "title": "Amenities", "slug": "amenities" } },
-		{ "key": "offers", "pattern": "page-offers", "vi": { "title": "Ưu đãi", "slug": "uu-dai" }, "en": { "title": "Offers", "slug": "offers" } },
-		{ "key": "explore", "pattern": "page-explore", "vi": { "title": "Khám phá Phú Quốc", "slug": "kham-pha-phu-quoc" }, "en": { "title": "Explore Phu Quoc", "slug": "explore-phu-quoc" } },
-		{ "key": "blog", "pattern": "page-blog", "vi": { "title": "Blog", "slug": "blog" }, "en": { "title": "Blog", "slug": "blog-en" } },
-		{ "key": "contact", "pattern": "page-contact", "vi": { "title": "Liên hệ", "slug": "lien-he" }, "en": { "title": "Contact", "slug": "contact" } },
-		{ "key": "booking", "pattern": "page-booking", "vi": { "title": "Đặt phòng", "slug": "dat-phong" }, "en": { "title": "Book now", "slug": "book" } }
+		{
+			"key": "home",
+			"pattern": "page-home",
+			"vi": {
+				"title": "Trang chủ",
+				"slug": "trang-chu"
+			},
+			"en": {
+				"title": "Home",
+				"slug": "home"
+			}
+		},
+		{
+			"key": "rooms",
+			"pattern": "page-rooms",
+			"vi": {
+				"title": "Phòng & Giá",
+				"slug": "phong-nghi"
+			},
+			"en": {
+				"title": "Rooms & Rates",
+				"slug": "rooms"
+			}
+		},
+		{
+			"key": "amenities",
+			"pattern": "page-amenities",
+			"vi": {
+				"title": "Tiện ích",
+				"slug": "tien-ich"
+			},
+			"en": {
+				"title": "Amenities",
+				"slug": "amenities"
+			}
+		},
+		{
+			"key": "offers",
+			"pattern": "page-offers",
+			"vi": {
+				"title": "Ưu đãi",
+				"slug": "uu-dai"
+			},
+			"en": {
+				"title": "Offers",
+				"slug": "offers"
+			}
+		},
+		{
+			"key": "explore",
+			"pattern": "page-explore",
+			"vi": {
+				"title": "Khám phá Phú Quốc",
+				"slug": "kham-pha-phu-quoc"
+			},
+			"en": {
+				"title": "Explore Phu Quoc",
+				"slug": "explore-phu-quoc"
+			}
+		},
+		{
+			"key": "blog",
+			"pattern": "page-blog",
+			"vi": {
+				"title": "Blog",
+				"slug": "blog"
+			},
+			"en": {
+				"title": "Blog",
+				"slug": "blog-en"
+			}
+		},
+		{
+			"key": "contact",
+			"pattern": "page-contact",
+			"vi": {
+				"title": "Liên hệ",
+				"slug": "lien-he"
+			},
+			"en": {
+				"title": "Contact",
+				"slug": "contact"
+			}
+		},
+		{
+			"key": "booking",
+			"pattern": "page-booking",
+			"vi": {
+				"title": "Đặt phòng",
+				"slug": "dat-phong"
+			},
+			"en": {
+				"title": "Book now",
+				"slug": "book"
+			}
+		}
 	],
 	"menus": {
-		"primary": [ "rooms", "amenities", "offers", "explore", "blog", "contact" ],
-		"footer": [ "rooms", "amenities", "offers", "explore", "blog", "contact", "booking" ]
+		"primary": [
+			"rooms",
+			"amenities",
+			"offers",
+			"explore",
+			"blog",
+			"contact"
+		],
+		"footer": [
+			"rooms",
+			"amenities",
+			"offers",
+			"explore",
+			"blog",
+			"contact",
+			"booking"
+		]
 	},
-	"contact_form": {
-		"vi": { "title": "Form liên hệ (Tiếng Việt)", "form": "<label> Họ và tên *\n    [text* your-name autocomplete:name] </label>\n\n<label> Email *\n    [email* your-email autocomplete:email] </label>\n\n<label> Số điện thoại\n    [tel your-phone autocomplete:tel] </label>\n\n<label> Lời nhắn *\n    [textarea* your-message] </label>\n\n[submit \"Gửi lời nhắn\"]", "subject": "[Liên hệ website] [your-name]" },
-		"en": { "title": "Contact form (English)", "form": "<label> Full name *\n    [text* your-name autocomplete:name] </label>\n\n<label> Email *\n    [email* your-email autocomplete:email] </label>\n\n<label> Phone\n    [tel your-phone autocomplete:tel] </label>\n\n<label> Message *\n    [textarea* your-message] </label>\n\n[submit \"Send message\"]", "subject": "[Website contact – EN] [your-name]" }
-	}
+	"reviews": [
+		{
+			"key": "thu-ha",
+			"order": 1,
+			"rating": 5,
+			"source": "google",
+			"days_ago": 12,
+			"name": "Thu Hà",
+			"vi": {
+				"text": "Hai bé nhà mình mê Kids Club tới mức không muốn về. Phòng rộng, sạch, nhân viên siêu dễ thương!",
+				"from": "Hà Nội · gia đình 4 người"
+			},
+			"en": {
+				"text": "Our two kids loved the Kids Club so much they didn’t want to leave. Spacious, spotless rooms and the sweetest staff!",
+				"from": "Hanoi · family of 4"
+			}
+		},
+		{
+			"key": "emma-tom",
+			"order": 2,
+			"rating": 5,
+			"source": "booking",
+			"days_ago": 30,
+			"name": "Emma & Tom",
+			"vi": {
+				"text": "Khu vườn rất yên bình và hồ bơi trẻ em hoàn hảo cho bé mới biết đi. Chúng tôi chắc chắn sẽ quay lại.",
+				"from": "Melbourne · gia đình có bé nhỏ"
+			},
+			"en": {
+				"text": "The garden is so peaceful and the kids’ pool is perfect for toddlers. We would come back in a heartbeat.",
+				"from": "Melbourne · family with a toddler"
+			}
+		},
+		{
+			"key": "minh-quan",
+			"order": 3,
+			"rating": 5,
+			"source": "tripadvisor",
+			"days_ago": 45,
+			"name": "Minh Quân",
+			"vi": {
+				"text": "Gần biển, gần chợ đêm, có xe máy thuê ngay tại lễ tân. Cả nhóm đi chơi rất tiện.",
+				"from": "TP. Hồ Chí Minh · nhóm bạn"
+			},
+			"en": {
+				"text": "Close to the beach and the night market, with motorbikes to rent right at reception. So easy for our group to get around.",
+				"from": "Ho Chi Minh City · group of friends"
+			}
+		}
+	]
 }

@@ -212,6 +212,7 @@ function sgc_add_meta_boxes() {
 		'sg_amenity' => __( 'Thông tin tiện ích', 'sunny-grove-core' ),
 		'sg_place'   => __( 'Thông tin địa điểm', 'sunny-grove-core' ),
 		'sg_offer'   => __( 'Thông tin ưu đãi', 'sunny-grove-core' ),
+		'sg_review'  => __( 'Thông tin đánh giá', 'sunny-grove-core' ),
 	);
 	foreach ( sgc_meta_fields() as $post_type => $fields ) {
 		add_meta_box( 'sgc_fields', $titles[ $post_type ] ?? __( 'Thông tin', 'sunny-grove-core' ), 'sgc_render_meta_box', $post_type, 'normal', 'high' );

@@ -250,4 +250,18 @@
 			el( c.ToggleControl, { key: 'm', label: __( 'Hiện nút chỉ đường', 'sunny-grove-core' ), checked: a.showMap, onChange: function ( v ) { p.setAttributes( { showMap: v } ); } } )
 		];
 	} );
+
+	/* ---------- Đánh giá khách hàng ---------- */
+	ssrBlock( 'sunny-grove/reviews', function ( p ) {
+		var a = p.attributes;
+		var sources = ( window.sgcEditor && window.sgcEditor.reviewSources ) || {};
+		return [
+			el( c.RangeControl, { key: 'n', label: __( 'Số đánh giá hiển thị', 'sunny-grove-core' ), min: 1, max: 12, value: a.count, onChange: function ( v ) { p.setAttributes( { count: v } ); } } ),
+			el( c.SelectControl, { key: 's', label: __( 'Chỉ lấy từ nguồn', 'sunny-grove-core' ), value: a.source,
+				options: [ { value: '', label: __( 'Tất cả', 'sunny-grove-core' ) } ].concat( options( sources ) ),
+				onChange: function ( v ) { p.setAttributes( { source: v } ); } } ),
+			el( c.RangeControl, { key: 'r', label: __( 'Số sao tối thiểu', 'sunny-grove-core' ), min: 0, max: 5, value: a.minRating, onChange: function ( v ) { p.setAttributes( { minRating: v } ); } } ),
+			el( 'p', { key: 'h' }, __( 'Thêm/sửa đánh giá ở menu Đánh giá.', 'sunny-grove-core' ) )
+		];
+	} );
 }() );

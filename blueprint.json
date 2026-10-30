@@ -2,45 +2,76 @@
 	"$schema": "https://playground.wordpress.net/blueprint-schema.json",
 	"meta": {
 		"title": "Sunny Grove Hotel – Phú Quốc (demo)",
-		"description": "Block theme Sunny Grove + plugin Sunny Grove Core & Sunny Grove Booking, Polylang, Contact Form 7 và nội dung mẫu song ngữ Việt – Anh.",
+		"description": "Block theme Sunny Grove + plugin Sunny Grove Core & Sunny Grove Booking (đa ngôn ngữ, SEO, form liên hệ tự viết – không cần plugin bên thứ ba) và nội dung mẫu song ngữ Việt – Anh.",
 		"author": "fenix-147",
-		"categories": [ "Themes", "Hotel" ]
+		"categories": [
+			"Themes",
+			"Hotel"
+		]
 	},
 	"landingPage": "/",
-	"preferredVersions": { "php": "8.3", "wp": "latest" },
-	"features": { "networking": true },
+	"preferredVersions": {
+		"php": "8.3",
+		"wp": "latest"
+	},
+	"features": {
+		"networking": true
+	},
 	"login": true,
 	"siteOptions": {
 		"blogname": "Sunny Grove",
 		"permalink_structure": "/%postname%/"
 	},
 	"steps": [
-		{ "step": "setSiteLanguage", "language": "vi" },
 		{
-			"step": "installPlugin",
-			"pluginData": { "resource": "wordpress.org/plugins", "slug": "polylang" },
-			"options": { "activate": true }
-		},
-		{
-			"step": "installPlugin",
-			"pluginData": { "resource": "wordpress.org/plugins", "slug": "contact-form-7" },
-			"options": { "activate": true }
+			"step": "setSiteLanguage",
+			"language": "vi"
 		},
 		{
 			"step": "installTheme",
-			"themeData": { "resource": "git:directory", "url": "https://github.com/fenix-147/sunny-grove", "ref": "main", "refType": "branch", "path": "themes/sunny-grove" },
-			"options": { "activate": true, "targetFolderName": "sunny-grove" }
+			"themeData": {
+				"resource": "git:directory",
+				"url": "https://github.com/fenix-147/sunny-grove",
+				"ref": "main",
+				"refType": "branch",
+				"path": "themes/sunny-grove"
+			},
+			"options": {
+				"activate": true,
+				"targetFolderName": "sunny-grove"
+			}
 		},
 		{
 			"step": "installPlugin",
-			"pluginData": { "resource": "git:directory", "url": "https://github.com/fenix-147/sunny-grove", "ref": "main", "refType": "branch", "path": "plugins/sunny-grove-core" },
-			"options": { "activate": true, "targetFolderName": "sunny-grove-core" }
+			"pluginData": {
+				"resource": "git:directory",
+				"url": "https://github.com/fenix-147/sunny-grove",
+				"ref": "main",
+				"refType": "branch",
+				"path": "plugins/sunny-grove-core"
+			},
+			"options": {
+				"activate": true,
+				"targetFolderName": "sunny-grove-core"
+			}
 		},
 		{
 			"step": "installPlugin",
-			"pluginData": { "resource": "git:directory", "url": "https://github.com/fenix-147/sunny-grove", "ref": "main", "refType": "branch", "path": "plugins/sunny-grove-booking" },
-			"options": { "activate": true, "targetFolderName": "sunny-grove-booking" }
+			"pluginData": {
+				"resource": "git:directory",
+				"url": "https://github.com/fenix-147/sunny-grove",
+				"ref": "main",
+				"refType": "branch",
+				"path": "plugins/sunny-grove-booking"
+			},
+			"options": {
+				"activate": true,
+				"targetFolderName": "sunny-grove-booking"
+			}
 		},
-		{ "step": "wp-cli", "command": "wp sunny-grove demo import" }
+		{
+			"step": "wp-cli",
+			"command": "wp sunny-grove demo import"
+		}
 	]
 }

@@ -13,7 +13,7 @@ defined( 'ABSPATH' ) || exit;
  * @return string[]
  */
 function sgc_block_names() {
-	return array( 'video-banner', 'motion-media', 'media-gallery', 'term-filter', 'post-terms-list', 'hotel-info', 'menu', 'language-switcher', 'room-facts', 'place-facts' );
+	return array( 'video-banner', 'motion-media', 'media-gallery', 'term-filter', 'post-terms-list', 'hotel-info', 'menu', 'language-switcher', 'room-facts', 'place-facts', 'reviews' );
 }
 
 /**
@@ -99,6 +99,7 @@ function sgc_editor_data() {
 					'sg_place_tag'    => __( 'Nhãn lọc (Địa điểm)', 'sunny-grove-core' ),
 					'sg_room_feature' => __( 'Tiện nghi trong phòng', 'sunny-grove-core' ),
 				),
+				'reviewSources' => function_exists( 'sg_review_sources' ) ? sg_review_sources() : array(),
 			)
 		) . ';',
 		'before'

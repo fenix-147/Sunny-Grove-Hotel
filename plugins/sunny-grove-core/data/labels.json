@@ -21,6 +21,8 @@
 		"language": { "group": "general", "label": "Tên vùng chọn ngôn ngữ (cho trình đọc màn hình)", "vi": "Chọn ngôn ngữ", "en": "Choose language" },
 		"date_format": { "group": "general", "label": "Định dạng ngày (theo PHP: d/m/Y, M j, Y…)", "vi": "d/m/Y", "en": "M j, Y" },
 		"breadcrumb_home": { "group": "general", "label": "Đường dẫn phân cấp: tên trang chủ (cho Google)", "vi": "Trang chủ", "en": "Home" },
+		"review_rating": { "group": "general", "label": "Đánh giá: số sao cho trình đọc màn hình (%d = số sao)", "vi": "%d trên 5 sao", "en": "%d out of 5 stars" },
+		"review_source": { "group": "general", "label": "Đánh giá: nguồn (%s = Google, Booking.com…)", "vi": "qua %s", "en": "via %s" },
 		"gallery": { "group": "general", "label": "Tiêu đề thư viện ảnh thực tế", "vi": "Hình ảnh thực tế", "en": "Real photos" },
 		"gallery_open": { "group": "general", "label": "Thư viện ảnh: bấm để phóng to (cho trình đọc màn hình)", "vi": "Phóng to ảnh", "en": "Enlarge photo" },
 		"gallery_prev": { "group": "general", "label": "Thư viện ảnh: nút ảnh trước", "vi": "Ảnh trước", "en": "Previous photo" },

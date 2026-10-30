@@ -84,9 +84,6 @@ function sg_current_lang() {
 	if ( ! empty( $GLOBALS['sg_lang_override'] ) ) {
 		return $GLOBALS['sg_lang_override'];
 	}
-	if ( sg_i18n_legacy_active() && function_exists( 'pll_current_language' ) && pll_current_language() ) {
-		return pll_current_language();
-	}
 	return ! empty( $GLOBALS['sg_lang'] ) ? $GLOBALS['sg_lang'] : sg_default_lang();
 }
 
@@ -146,7 +143,7 @@ function sg_home_path() {
  * để code khác đọc REQUEST_URI trước đó vẫn thấy đúng địa chỉ thật.
  */
 function sg_i18n_detect() {
-	if ( sg_i18n_legacy_active() || is_admin() || ( defined( 'WP_CLI' ) && WP_CLI ) || empty( $_SERVER['REQUEST_URI'] ) ) {
+	if ( is_admin() || ( defined( 'WP_CLI' ) && WP_CLI ) || empty( $_SERVER['REQUEST_URI'] ) ) {
 		return;
 	}
 	$uri  = wp_unslash( $_SERVER['REQUEST_URI'] ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
@@ -161,9 +158,12 @@ function sg_i18n_detect() {
 			continue;
 		}
 		if ( preg_match( '#^' . preg_quote( $prefix, '#' ) . '(/|\?|$)#', $rest, $m ) ) {
-			$GLOBALS['sg_lang']             = $lang;
-			$GLOBALS['sg_i18n_request_uri'] = $uri;
-			$GLOBALS['sg_i18n_stripped']    = $home . ltrim( substr( $rest, strlen( $prefix ) ), '/' );
+			$GLOBALS['sg_lang'] = $lang;
+			// Giai đoạn chuyển đổi (Polylang còn bật): chỉ ghi nhận ngôn ngữ, để Polylang tự xử lý đường dẫn.
+			if ( ! sg_i18n_legacy_active() ) {
+				$GLOBALS['sg_i18n_request_uri'] = $uri;
+				$GLOBALS['sg_i18n_stripped']    = $home . ltrim( substr( $rest, strlen( $prefix ) ), '/' );
+			}
 			return;
 		}
 	}

@@ -1,0 +1,20 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "sunny-grove/reviews",
+	"title": "Đánh giá khách hàng",
+	"category": "sunny-grove",
+	"icon": "star-filled",
+	"description": "Hiện các đánh giá đã nhập ở menu Đánh giá (tên khách, số sao, nội dung song ngữ, nguồn).",
+	"keywords": [ "review", "đánh giá", "testimonial" ],
+	"textdomain": "sunny-grove-core",
+	"attributes": {
+		"count": { "type": "number", "default": 3 },
+		"source": { "type": "string", "default": "" },
+		"minRating": { "type": "number", "default": 0 }
+	},
+	"supports": { "html": false, "align": [ "wide", "full" ], "spacing": { "margin": true } },
+	"editorScript": "sgc-blocks-editor",
+	"style": "sgc-blocks",
+	"render": "file:./render.php"
+}

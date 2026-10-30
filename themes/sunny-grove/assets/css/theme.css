@@ -245,6 +245,12 @@ h1, h2, h3 { text-wrap: balance; }
 .sg-highlight p { margin-top: 0; color: color-mix(in srgb, var(--wp--preset--color--ink) 80%, transparent); }
 
 /* ---------- Đánh giá ---------- */
+/* Danh sách đánh giá (block Đánh giá khách hàng) */
+.sg-reviews { display: grid; gap: var(--wp--preset--spacing--40); grid-template-columns: repeat(auto-fill, minmax(min(100%, 18rem), 1fr)); }
+.sg-reviews .sg-review { margin: 0; display: flex; flex-direction: column; gap: .5rem; }
+.sg-review blockquote.sg-review__quote { margin: 0; padding: 0; border: 0; }
+.sg-review blockquote.sg-review__quote p { margin: 0; }
+.sg-review figcaption { margin-top: auto; }
 .sg-review .sg-stars { color: color-mix(in srgb, var(--wp--preset--color--accent) 80%, #000); letter-spacing: .15em; font-size: 1.1rem; margin: 0; }
 .sg-review .sg-review__quote { font-family: var(--wp--preset--font-family--heading); font-size: var(--wp--preset--font-size--large); line-height: 1.5; }
 .sg-review .sg-review__name { font-weight: 700; margin-bottom: 0; }

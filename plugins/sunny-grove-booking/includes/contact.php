@@ -78,6 +78,7 @@ function sgb_register_contact_block() {
 	);
 	register_block_type( SGB_DIR . 'blocks/contact-form' );
 	add_shortcode( 'sunny_grove_contact', 'sgb_render_contact_form' );
+	add_shortcode( 'sunny_grove_contact_form', 'sgb_render_contact_form' ); // Tên cũ (nội dung tạo trước khi bỏ Contact Form 7).
 }
 add_action( 'init', 'sgb_register_contact_block' );
 
