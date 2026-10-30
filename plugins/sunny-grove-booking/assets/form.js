@@ -158,31 +158,6 @@
 		}
 	}
 
-	var recaptchaLoaded = false;
-	function loadRecaptcha() {
-		if ( ! cfg.siteKey || recaptchaLoaded ) {
-			return;
-		}
-		recaptchaLoaded = true;
-		var s = document.createElement( 'script' );
-		s.src = 'https://www.google.com/recaptcha/api.js?render=' + encodeURIComponent( cfg.siteKey );
-		s.async = true;
-		document.head.appendChild( s );
-	}
-	function recaptchaToken() {
-		return new Promise( function ( resolve ) {
-			if ( ! cfg.siteKey || ! window.grecaptcha ) {
-				resolve( '' );
-				return;
-			}
-			window.grecaptcha.ready( function () {
-				window.grecaptcha.execute( cfg.siteKey, { action: 'booking' } ).then( resolve, function () {
-					resolve( '' );
-				} );
-			} );
-		} );
-	}
-
 	function initFull( form ) {
 		var wrap = form.closest( '.sgb-wrap' );
 		var success = wrap ? wrap.querySelector( '[data-sgb-success]' ) : null;
@@ -193,7 +168,6 @@
 		}
 		prefill( form );
 		initDates( form );
-		form.addEventListener( 'focusin', loadRecaptcha, { once: true } );
 
 		form.addEventListener( 'submit', function ( e ) {
 			e.preventDefault();
@@ -216,19 +190,16 @@
 					return r.json();
 				} )
 				.then( function ( tok ) {
-					return recaptchaToken().then( function ( captcha ) {
-						var data = {};
-						new FormData( form ).forEach( function ( v, k ) {
-							data[ k ] = v;
-						} );
-						data.sgb_nonce = tok.nonce;
-						data.sgb_recaptcha = captcha;
-						return fetch( cfg.rest + 'request', {
-							method: 'POST',
-							credentials: 'same-origin',
-							headers: { 'Content-Type': 'application/json' },
-							body: JSON.stringify( data )
-						} );
+					var data = {};
+					new FormData( form ).forEach( function ( v, k ) {
+						data[ k ] = v;
+					} );
+					data.sgb_nonce = tok.nonce;
+					return fetch( cfg.rest + 'request', {
+						method: 'POST',
+						credentials: 'same-origin',
+						headers: { 'Content-Type': 'application/json' },
+						body: JSON.stringify( data )
 					} );
 				} )
 				.then( function ( r ) {

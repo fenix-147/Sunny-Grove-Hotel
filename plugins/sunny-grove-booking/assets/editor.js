@@ -31,4 +31,20 @@
 			return null;
 		}
 	} );
+
+	wp.blocks.registerBlockType( 'sunny-grove-booking/contact-form', {
+		edit: function () {
+			return el( wp.element.Fragment, {},
+				el( be.InspectorControls, {},
+					el( c.PanelBody, { title: __( 'Form liên hệ', 'sunny-grove-booking' ), initialOpen: true },
+						el( 'p', {}, __( 'Tin nhắn của khách lưu ở menu Liên hệ. Sửa chữ trên form và nội dung email tại menu Đặt phòng → Cài đặt.', 'sunny-grove-booking' ) )
+					)
+				),
+				el( 'div', be.useBlockProps(), el( wp.serverSideRender, { block: 'sunny-grove-booking/contact-form' } ) )
+			);
+		},
+		save: function () {
+			return null;
+		}
+	} );
 }() );

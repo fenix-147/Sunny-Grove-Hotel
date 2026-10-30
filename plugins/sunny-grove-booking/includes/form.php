@@ -99,7 +99,6 @@ function sgb_localize( $lang ) {
 		'sgbForm',
 		array(
 			'rest'       => esc_url_raw( rest_url( 'sunny-grove-booking/v1/' ) ),
-			'siteKey'    => sgb_general( 'recaptcha_site' ),
 			'maxNights'  => (int) sgb_general( 'max_nights' ),
 			'texts'      => array(
 				'nights'     => sgb_text( 'nights', $lang ),
@@ -209,7 +208,6 @@ function sgb_render_form( $attributes ) {
 			<input type="hidden" name="sgb_lang" value="<?php echo esc_attr( $lang ); ?>">
 			<input type="hidden" name="sgb_ts" value="<?php echo esc_attr( (string) time() ); ?>">
 			<input type="hidden" name="sgb_source" value="<?php echo esc_url( get_permalink() ? get_permalink() : home_url( '/' ) ); ?>">
-			<input type="hidden" name="sgb_recaptcha" value="">
 			<div class="sgb-hp" aria-hidden="true">
 				<label for="<?php echo esc_attr( $uid ); ?>-web">Website</label>
 				<input type="text" id="<?php echo esc_attr( $uid ); ?>-web" name="sgb_website" tabindex="-1" autocomplete="off">

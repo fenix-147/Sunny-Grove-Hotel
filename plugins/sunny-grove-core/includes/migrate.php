@@ -605,6 +605,7 @@ function sg_migrate_apply( array $plan ) {
 		update_option( 'page_on_front', (int) $plan['front']['vi'] );
 		$log[] = sprintf( 'Đặt trang chủ = #%d.', $plan['front']['vi'] );
 	}
+	$log = array_merge( $log, sg_migrate_contact_forms() );
 	update_option( 'sg_i18n_merged_ids', array_values( array_map( 'intval', wp_list_pluck( $plan['posts'], 'en' ) ) ), false );
 	update_option(
 		'sg_i18n_migration',
@@ -668,3 +669,29 @@ function sg_migrate_hide_merged( $query ) {
 	}
 }
 add_action( 'pre_get_posts', 'sg_migrate_hide_merged' );
+
+/**
+ * Đổi form Contact Form 7 (shortcode) trong nội dung sang block "Form liên hệ" của Sunny Grove Booking.
+ *
+ * @param bool $dry Chỉ đếm, không ghi.
+ * @return string[] Nhật ký.
+ */
+function sg_migrate_contact_forms( $dry = false ) {
+	global $wpdb;
+	$like = '%' . $wpdb->esc_like( 'contact' ) . '%';
+	$rows = $wpdb->get_results( $wpdb->prepare( "SELECT ID, post_title, post_content FROM {$wpdb->posts} WHERE post_status NOT IN ('trash','auto-draft','inherit') AND post_content LIKE %s", $like ) ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery
+	$log  = array();
+	$re   = '~<!-- wp:shortcode -->\s*\[(?:sunny_grove_contact_form|contact-form-7)[^\]]*\]\s*<!-- /wp:shortcode -->|\[(?:sunny_grove_contact_form|contact-form-7)[^\]]*\]~';
+	foreach ( $rows as $row ) {
+		if ( ! preg_match( $re, $row->post_content ) ) {
+			continue;
+		}
+		$new = preg_replace( $re, '<!-- wp:sunny-grove-booking/contact-form {"align":"wide"} /-->', $row->post_content );
+		if ( ! $dry ) {
+			$wpdb->update( $wpdb->posts, array( 'post_content' => $new ), array( 'ID' => $row->ID ) ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery
+			clean_post_cache( (int) $row->ID );
+		}
+		$log[] = sprintf( '%s form liên hệ trong #%d "%s"', $dry ? 'Sẽ đổi' : 'Đã đổi', $row->ID, $row->post_title );
+	}
+	return $log;
+}

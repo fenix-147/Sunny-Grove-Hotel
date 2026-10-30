@@ -100,35 +100,46 @@ function sgb_ip_hash() {
 }
 
 /**
- * Kiểm tra reCAPTCHA v3 (nếu đã nhập khóa).
+ * Chống spam dùng chung cho mọi form (đặt phòng, liên hệ): nonce, honeypot, thời gian điền tối thiểu,
+ * giới hạn số lần gửi theo IP. Không dùng dịch vụ bên ngoài.
  *
- * @param string $token Mã từ trình duyệt.
- * @return bool
+ * @param array $data Dữ liệu thô.
+ * @return string Khóa lỗi (err_spam | err_rate) hoặc rỗng nếu hợp lệ.
  */
-function sgb_verify_recaptcha( $token ) {
-	$secret = sgb_general( 'recaptcha_secret' );
-	if ( ! $secret || ! sgb_general( 'recaptcha_site' ) ) {
-		return true;
+function sgb_spam_check( array $data ) {
+	$nonce = isset( $data['sgb_nonce'] ) ? sanitize_text_field( $data['sgb_nonce'] ) : '';
+	if ( ! wp_verify_nonce( $nonce, 'sgb_submit' ) ) {
+		return 'err_spam';
 	}
-	if ( ! $token ) {
-		return false;
+	if ( ! empty( $data['sgb_website'] ) ) {
+		return 'err_spam';
 	}
-	$response = wp_remote_post(
-		'https://www.google.com/recaptcha/api/siteverify',
-		array(
-			'timeout' => 8,
-			'body'    => array(
-				'secret'   => $secret,
-				'response' => $token,
-			),
-		)
-	);
-	if ( is_wp_error( $response ) ) {
-		return true; // Không chặn khách khi Google không phản hồi; honeypot + giới hạn tần suất vẫn hoạt động.
+	$ts = isset( $data['sgb_ts'] ) ? absint( $data['sgb_ts'] ) : 0;
+	if ( ! $ts || ( time() - $ts ) < max( 0, (int) sgb_general( 'min_seconds' ) ) ) {
+		return 'err_spam';
 	}
-	$body  = json_decode( wp_remote_retrieve_body( $response ), true );
-	$score = (float) str_replace( ',', '.', sgb_general( 'recaptcha_score' ) );
-	return ! empty( $body['success'] ) && ( ! isset( $body['score'] ) || (float) $body['score'] >= $score );
+	$limit = max( 1, (int) sgb_general( 'rate_limit' ) );
+	if ( (int) get_transient( sgb_rate_key() ) >= $limit ) {
+		return 'err_rate';
+	}
+	return '';
+}
+
+/**
+ * Khóa đếm số lần gửi của IP hiện tại.
+ *
+ * @return string
+ */
+function sgb_rate_key() {
+	return 'sgb_rl_' . substr( sgb_ip_hash(), 0, 20 );
+}
+
+/**
+ * Ghi nhận một lần gửi thành công (tính vào giới hạn theo giờ).
+ */
+function sgb_rate_hit() {
+	$key = sgb_rate_key();
+	set_transient( $key, (int) get_transient( $key ) + 1, HOUR_IN_SECONDS );
 }
 
 /**
@@ -150,30 +161,10 @@ function sgb_handle_submission( array $data ) {
 		);
 	};
 
-	// 1. Bảo mật: nonce, honeypot, thời gian điền form.
-	$nonce = isset( $data['sgb_nonce'] ) ? sanitize_text_field( $data['sgb_nonce'] ) : '';
-	if ( ! wp_verify_nonce( $nonce, 'sgb_submit' ) ) {
-		return $fail( 'err_spam' );
-	}
-	if ( ! empty( $data['sgb_website'] ) ) {
-		return $fail( 'err_spam' );
-	}
-	$ts = isset( $data['sgb_ts'] ) ? absint( $data['sgb_ts'] ) : 0;
-	if ( $ts && ( time() - $ts ) < max( 0, (int) sgb_general( 'min_seconds' ) ) ) {
-		return $fail( 'err_spam' );
-	}
-
-	// 2. Giới hạn tần suất theo IP.
-	$limit = max( 1, (int) sgb_general( 'rate_limit' ) );
-	$rkey  = 'sgb_rl_' . substr( sgb_ip_hash(), 0, 20 );
-	$count = (int) get_transient( $rkey );
-	if ( $count >= $limit ) {
-		return $fail( 'err_rate' );
-	}
-
-	// 3. reCAPTCHA (tùy chọn).
-	if ( ! sgb_verify_recaptcha( isset( $data['sgb_recaptcha'] ) ? sanitize_text_field( $data['sgb_recaptcha'] ) : '' ) ) {
-		return $fail( 'err_spam' );
+	// 1. Chống spam: nonce, honeypot, thời gian điền form, giới hạn theo IP.
+	$spam = sgb_spam_check( $data );
+	if ( $spam ) {
+		return $fail( $spam );
 	}
 
 	// 4. Làm sạch.
@@ -260,7 +251,7 @@ function sgb_handle_submission( array $data ) {
 	}
 
 	// 6. Lưu.
-	set_transient( $rkey, $count + 1, HOUR_IN_SECONDS );
+	sgb_rate_hit();
 	$post_id = wp_insert_post(
 		array(
 			'post_type'   => 'sgb_request',

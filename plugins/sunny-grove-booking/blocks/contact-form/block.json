@@ -1,0 +1,16 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "sunny-grove-booking/contact-form",
+	"title": "Form liên hệ",
+	"category": "widgets",
+	"icon": "email-alt",
+	"description": "Form liên hệ: họ tên, email, điện thoại/Zalo, nội dung. Tin nhắn lưu ở menu Liên hệ; chữ trên form và email sửa tại Đặt phòng → Cài đặt.",
+	"keywords": [ "contact", "liên hệ", "form", "email" ],
+	"textdomain": "sunny-grove-booking",
+	"attributes": {},
+	"supports": { "html": false, "align": [ "wide" ], "spacing": { "margin": true } },
+	"editorScript": "sgb-editor",
+	"style": "sgb-form",
+	"render": "file:./render.php"
+}

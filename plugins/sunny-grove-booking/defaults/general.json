@@ -1,20 +1,92 @@
 {
-	"notify_emails": { "label": "Email nhận thông báo yêu cầu mới", "type": "textarea", "value": "booking@sunnygrove.example", "help": "[CẦN THAY] Mỗi email một dòng hoặc cách nhau bằng dấu phẩy." },
-	"from_name": { "label": "Tên người gửi email", "type": "text", "value": "Sunny Grove Hotel", "help": "" },
-	"from_email": { "label": "Email người gửi", "type": "email", "value": "", "help": "Để trống = dùng email quản trị của WordPress. Nên dùng email cùng tên miền website để tránh vào thư rác." },
-	"booking_page": { "label": "Trang chứa form đặt phòng", "type": "page", "value": "", "help": "Khung tìm phòng ở trang chủ sẽ chuyển khách tới trang này (tự đổi theo ngôn ngữ)." },
-	"hotline": { "label": "Hotline hiển thị sau khi gửi", "type": "text", "value": "", "help": "Để trống = lấy từ Sunny Grove → Thông tin khách sạn (nếu có)." },
-	"zalo": { "label": "Số Zalo hiển thị sau khi gửi", "type": "text", "value": "", "help": "Để trống = lấy từ Sunny Grove → Thông tin khách sạn (nếu có)." },
-	"whatsapp": { "label": "Số WhatsApp hiển thị sau khi gửi", "type": "text", "value": "", "help": "Để trống = lấy từ Sunny Grove → Thông tin khách sạn (nếu có)." },
-	"country_code": { "label": "Mã quốc gia (tạo link WhatsApp từ số bắt đầu bằng 0)", "type": "text", "value": "84", "help": "" },
-	"require_email": { "label": "Bắt buộc nhập email", "type": "checkbox", "value": "1", "help": "Cần email để gửi xác nhận cho khách." },
-	"max_adults": { "label": "Số người lớn tối đa mỗi yêu cầu", "type": "number", "value": "12", "help": "" },
-	"max_children": { "label": "Số trẻ em tối đa mỗi yêu cầu", "type": "number", "value": "8", "help": "" },
-	"max_nights": { "label": "Số đêm tối đa", "type": "number", "value": "30", "help": "" },
-	"max_days_ahead": { "label": "Nhận đặt trước tối đa (ngày)", "type": "number", "value": "540", "help": "" },
-	"rate_limit": { "label": "Chống spam: số yêu cầu tối đa mỗi giờ từ một địa chỉ IP", "type": "number", "value": "5", "help": "" },
-	"min_seconds": { "label": "Chống spam: thời gian điền form tối thiểu (giây)", "type": "number", "value": "3", "help": "Robot thường gửi form ngay lập tức." },
-	"recaptcha_site": { "label": "reCAPTCHA v3 – Site key (tùy chọn)", "type": "text", "value": "", "help": "Để trống = chỉ dùng honeypot + giới hạn tần suất. Lấy khóa tại google.com/recaptcha/admin." },
-	"recaptcha_secret": { "label": "reCAPTCHA v3 – Secret key", "type": "password", "value": "", "help": "" },
-	"recaptcha_score": { "label": "reCAPTCHA – điểm tối thiểu (0–1)", "type": "text", "value": "0.5", "help": "" }
+	"notify_emails": {
+		"label": "Email nhận thông báo yêu cầu mới",
+		"type": "textarea",
+		"value": "booking@sunnygrove.example",
+		"help": "[CẦN THAY] Mỗi email một dòng hoặc cách nhau bằng dấu phẩy."
+	},
+	"from_name": {
+		"label": "Tên người gửi email",
+		"type": "text",
+		"value": "Sunny Grove Hotel",
+		"help": ""
+	},
+	"from_email": {
+		"label": "Email người gửi",
+		"type": "email",
+		"value": "",
+		"help": "Để trống = dùng email quản trị của WordPress. Nên dùng email cùng tên miền website để tránh vào thư rác."
+	},
+	"booking_page": {
+		"label": "Trang chứa form đặt phòng",
+		"type": "page",
+		"value": "",
+		"help": "Khung tìm phòng ở trang chủ sẽ chuyển khách tới trang này (tự đổi theo ngôn ngữ)."
+	},
+	"hotline": {
+		"label": "Hotline hiển thị sau khi gửi",
+		"type": "text",
+		"value": "",
+		"help": "Để trống = lấy từ Sunny Grove → Thông tin khách sạn (nếu có)."
+	},
+	"zalo": {
+		"label": "Số Zalo hiển thị sau khi gửi",
+		"type": "text",
+		"value": "",
+		"help": "Để trống = lấy từ Sunny Grove → Thông tin khách sạn (nếu có)."
+	},
+	"whatsapp": {
+		"label": "Số WhatsApp hiển thị sau khi gửi",
+		"type": "text",
+		"value": "",
+		"help": "Để trống = lấy từ Sunny Grove → Thông tin khách sạn (nếu có)."
+	},
+	"country_code": {
+		"label": "Mã quốc gia (tạo link WhatsApp từ số bắt đầu bằng 0)",
+		"type": "text",
+		"value": "84",
+		"help": ""
+	},
+	"require_email": {
+		"label": "Bắt buộc nhập email",
+		"type": "checkbox",
+		"value": "1",
+		"help": "Cần email để gửi xác nhận cho khách."
+	},
+	"max_adults": {
+		"label": "Số người lớn tối đa mỗi yêu cầu",
+		"type": "number",
+		"value": "12",
+		"help": ""
+	},
+	"max_children": {
+		"label": "Số trẻ em tối đa mỗi yêu cầu",
+		"type": "number",
+		"value": "8",
+		"help": ""
+	},
+	"max_nights": {
+		"label": "Số đêm tối đa",
+		"type": "number",
+		"value": "30",
+		"help": ""
+	},
+	"max_days_ahead": {
+		"label": "Nhận đặt trước tối đa (ngày)",
+		"type": "number",
+		"value": "540",
+		"help": ""
+	},
+	"rate_limit": {
+		"label": "Chống spam: số yêu cầu tối đa mỗi giờ từ một địa chỉ IP",
+		"type": "number",
+		"value": "5",
+		"help": ""
+	},
+	"min_seconds": {
+		"label": "Chống spam: thời gian điền form tối thiểu (giây)",
+		"type": "number",
+		"value": "3",
+		"help": "Robot thường gửi form ngay lập tức."
+	}
 }

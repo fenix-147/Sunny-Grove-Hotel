@@ -4,57 +4,376 @@
 		"messages": "Thông báo sau khi gửi",
 		"errors": "Thông báo lỗi",
 		"guest_email": "Email xác nhận gửi khách",
-		"admin_email": "Email thông báo gửi khách sạn"
+		"admin_email": "Email thông báo gửi khách sạn",
+		"contact": "Form liên hệ",
+		"contact_email": "Email của form liên hệ"
 	},
 	"fields": {
-		"compact_submit": { "group": "form", "label": "Nút của khung tìm phòng (trang chủ)", "vi": "Kiểm tra & đặt phòng", "en": "Check & book" },
-		"checkin": { "group": "form", "label": "Ngày nhận phòng", "vi": "Ngày nhận phòng", "en": "Check-in" },
-		"checkout": { "group": "form", "label": "Ngày trả phòng", "vi": "Ngày trả phòng", "en": "Check-out" },
-		"nights": { "group": "form", "label": "Số đêm ({n})", "vi": "{n} đêm", "en": "{n} night(s)" },
-		"room": { "group": "form", "label": "Loại phòng", "vi": "Loại phòng", "en": "Room type" },
-		"room_any": { "group": "form", "label": "Lựa chọn chưa chọn phòng", "vi": "Chưa chắc – nhờ khách sạn tư vấn", "en": "Not sure – please advise me" },
-		"adults": { "group": "form", "label": "Người lớn", "vi": "Người lớn", "en": "Adults" },
-		"children": { "group": "form", "label": "Trẻ em", "vi": "Trẻ em (dưới 12 tuổi)", "en": "Children (under 12)" },
-		"name": { "group": "form", "label": "Họ tên", "vi": "Họ và tên", "en": "Full name" },
-		"phone": { "group": "form", "label": "Số điện thoại", "vi": "Số điện thoại", "en": "Phone number" },
-		"contact_method": { "group": "form", "label": "Liên hệ qua", "vi": "Bạn muốn chúng tôi liên hệ qua", "en": "How should we contact you?" },
-		"method_phone": { "group": "form", "label": "Lựa chọn: điện thoại", "vi": "Gọi điện", "en": "Phone call" },
-		"method_zalo": { "group": "form", "label": "Lựa chọn: Zalo", "vi": "Zalo", "en": "Zalo" },
-		"method_whatsapp": { "group": "form", "label": "Lựa chọn: WhatsApp", "vi": "WhatsApp", "en": "WhatsApp" },
-		"contact_id": { "group": "form", "label": "Số Zalo/WhatsApp", "vi": "Số Zalo/WhatsApp (nếu khác số điện thoại)", "en": "Zalo/WhatsApp number (if different)" },
-		"email": { "group": "form", "label": "Email", "vi": "Email", "en": "Email" },
-		"note": { "group": "form", "label": "Ghi chú", "vi": "Ghi chú (giờ đến, nôi em bé, dị ứng…)", "en": "Notes (arrival time, baby cot, allergies…)" },
-		"required_hint": { "group": "form", "label": "Chú thích ô bắt buộc", "vi": "Ô có dấu * là bắt buộc.", "en": "Fields marked * are required." },
-		"privacy": { "group": "form", "label": "Ghi chú quyền riêng tư", "vi": "Thông tin của bạn chỉ dùng để liên hệ xác nhận đặt phòng. Chưa cần thanh toán – bạn có thể trả tại khách sạn hoặc chuyển khoản đặt cọc.", "en": "We only use your details to confirm your booking. No payment needed now – pay at the hotel or by bank-transfer deposit." },
-		"submit": { "group": "form", "label": "Nút gửi", "vi": "Gửi yêu cầu đặt phòng", "en": "Send booking request" },
-		"submitting": { "group": "form", "label": "Nút khi đang gửi", "vi": "Đang gửi…", "en": "Sending…" },
-
-		"success_title": { "group": "messages", "label": "Tiêu đề khi gửi thành công", "vi": "Cảm ơn {ten_khach}, Sunny Grove đã nhận yêu cầu!", "en": "Thank you {ten_khach}, we've got your request!" },
-		"success_message": { "group": "messages", "label": "Nội dung khi gửi thành công", "type": "textarea", "vi": "Mã yêu cầu của bạn: {ma_yeu_cau}. Chúng tôi sẽ liên hệ trong vòng 2 giờ (7:00–22:00) để xác nhận phòng và giá. Cần gấp? Gọi {hotline} hoặc nhắn Zalo {zalo}.", "en": "Your request number: {ma_yeu_cau}. We'll contact you within 2 hours (7am–10pm) to confirm the room and price. In a hurry? Call {hotline} or WhatsApp {whatsapp}." },
-		"btn_call": { "group": "messages", "label": "Nút gọi hotline", "vi": "Gọi {hotline}", "en": "Call {hotline}" },
-		"btn_zalo": { "group": "messages", "label": "Nút nhắn Zalo", "vi": "Nhắn Zalo", "en": "Message on Zalo" },
-		"btn_whatsapp": { "group": "messages", "label": "Nút nhắn WhatsApp", "vi": "Nhắn WhatsApp", "en": "Message on WhatsApp" },
-		"btn_again": { "group": "messages", "label": "Nút gửi yêu cầu khác", "vi": "Gửi thêm một yêu cầu", "en": "Send another request" },
-
-		"err_required": { "group": "errors", "label": "Thiếu thông tin bắt buộc", "vi": "Vui lòng điền ô này.", "en": "Please fill in this field." },
-		"err_dates": { "group": "errors", "label": "Ngày trả trước ngày nhận", "vi": "Ngày trả phòng phải sau ngày nhận phòng.", "en": "Check-out must be after check-in." },
-		"err_past": { "group": "errors", "label": "Ngày nhận đã qua", "vi": "Ngày nhận phòng không được ở quá khứ.", "en": "Check-in can't be in the past." },
-		"err_too_long": { "group": "errors", "label": "Quá số đêm / quá xa", "vi": "Khoảng thời gian này vượt giới hạn nhận đặt online, vui lòng gọi hotline.", "en": "These dates are outside our online booking window, please call us." },
-		"err_phone": { "group": "errors", "label": "Số điện thoại sai", "vi": "Số điện thoại chưa đúng (8–15 chữ số).", "en": "Please enter a valid phone number (8–15 digits)." },
-		"err_email": { "group": "errors", "label": "Email sai", "vi": "Email chưa đúng định dạng.", "en": "Please enter a valid email address." },
-		"err_guests": { "group": "errors", "label": "Số khách không hợp lệ", "vi": "Số khách không hợp lệ.", "en": "Invalid number of guests." },
-		"err_room": { "group": "errors", "label": "Phòng không hợp lệ", "vi": "Loại phòng không hợp lệ.", "en": "Invalid room type." },
-		"err_spam": { "group": "errors", "label": "Nghi là spam", "vi": "Không gửi được yêu cầu. Vui lòng thử lại hoặc gọi hotline {hotline}.", "en": "We couldn't send your request. Please try again or call {hotline}." },
-		"err_rate": { "group": "errors", "label": "Gửi quá nhiều", "vi": "Bạn đã gửi khá nhiều yêu cầu. Vui lòng thử lại sau hoặc gọi hotline {hotline}.", "en": "Too many requests. Please try again later or call {hotline}." },
-		"err_generic": { "group": "errors", "label": "Lỗi chung", "vi": "Có lỗi xảy ra. Vui lòng kiểm tra lại các ô được đánh dấu.", "en": "Something went wrong. Please check the highlighted fields." },
-		"err_network": { "group": "errors", "label": "Lỗi kết nối", "vi": "Mất kết nối. Vui lòng thử lại hoặc gọi hotline {hotline}.", "en": "Connection problem. Please try again or call {hotline}." },
-
-		"guest_subject": { "group": "guest_email", "label": "Tiêu đề", "vi": "Sunny Grove đã nhận yêu cầu đặt phòng {ma_yeu_cau}", "en": "We've received your booking request {ma_yeu_cau} – Sunny Grove" },
-		"guest_body": { "group": "guest_email", "label": "Nội dung", "type": "textarea", "vi": "Xin chào {ten_khach},\n\nCảm ơn bạn đã chọn Sunny Grove Hotel – Phú Quốc! Chúng tôi đã nhận yêu cầu đặt phòng của bạn:\n\n• Mã yêu cầu: {ma_yeu_cau}\n• Nhận phòng: {ngay_nhan}\n• Trả phòng: {ngay_tra} ({so_dem})\n• Loại phòng: {phong}\n• Số khách: {nguoi_lon} người lớn, {tre_em} trẻ em\n• Ghi chú: {ghi_chu}\n\nĐây chưa phải xác nhận đặt phòng. Nhân viên sẽ liên hệ qua {lien_he_qua} trong vòng 2 giờ (7:00–22:00) để xác nhận phòng trống và giá tốt nhất. Thanh toán tại khách sạn hoặc chuyển khoản đặt cọc.\n\nCần hỗ trợ ngay? Hotline: {hotline} · Zalo: {zalo}\n\nHẹn gặp cả nhà ở Phú Quốc!\nSunny Grove Hotel", "en": "Hello {ten_khach},\n\nThank you for choosing Sunny Grove Hotel – Phu Quoc! We've received your booking request:\n\n• Request number: {ma_yeu_cau}\n• Check-in: {ngay_nhan}\n• Check-out: {ngay_tra} ({so_dem})\n• Room type: {phong}\n• Guests: {nguoi_lon} adults, {tre_em} children\n• Notes: {ghi_chu}\n\nThis is not yet a confirmation. Our team will contact you via {lien_he_qua} within 2 hours (7am–10pm) to confirm availability and the best price. You can pay at the hotel or by bank-transfer deposit.\n\nNeed help now? Hotline: {hotline} · WhatsApp: {whatsapp}\n\nSee you in Phu Quoc!\nSunny Grove Hotel" },
-
-		"admin_subject": { "group": "admin_email", "label": "Tiêu đề", "vi": "[Yêu cầu mới {ma_yeu_cau}] {ten_khach} · {ngay_nhan} → {ngay_tra}", "en": "[New request {ma_yeu_cau}] {ten_khach} · {ngay_nhan} → {ngay_tra}" },
-		"admin_body": { "group": "admin_email", "label": "Nội dung", "type": "textarea", "vi": "Có yêu cầu đặt phòng mới (khách xem website bằng: {ngon_ngu}).\n\n• Mã: {ma_yeu_cau}\n• Khách: {ten_khach}\n• Điện thoại: {so_dien_thoai}\n• Liên hệ qua: {lien_he_qua} {so_lien_he}\n• Email: {email}\n• Nhận phòng: {ngay_nhan}\n• Trả phòng: {ngay_tra} ({so_dem})\n• Loại phòng: {phong}\n• Khách: {nguoi_lon} người lớn, {tre_em} trẻ em\n• Ghi chú: {ghi_chu}\n\nXem và cập nhật trạng thái: {link_quan_tri}", "en": "New booking request (guest language: {ngon_ngu}).\n\n• Number: {ma_yeu_cau}\n• Guest: {ten_khach}\n• Phone: {so_dien_thoai}\n• Contact via: {lien_he_qua} {so_lien_he}\n• Email: {email}\n• Check-in: {ngay_nhan}\n• Check-out: {ngay_tra} ({so_dem})\n• Room: {phong}\n• Guests: {nguoi_lon} adults, {tre_em} children\n• Notes: {ghi_chu}\n\nOpen and update the status: {link_quan_tri}" },
-		"date_format": { "group": "admin_email", "label": "Định dạng ngày trong email (PHP)", "vi": "d/m/Y (l)", "en": "D, M j, Y" },
-		"empty_value": { "group": "admin_email", "label": "Chữ hiển thị khi khách để trống", "vi": "(không có)", "en": "(none)" }
+		"compact_submit": {
+			"group": "form",
+			"label": "Nút của khung tìm phòng (trang chủ)",
+			"vi": "Kiểm tra & đặt phòng",
+			"en": "Check & book"
+		},
+		"checkin": {
+			"group": "form",
+			"label": "Ngày nhận phòng",
+			"vi": "Ngày nhận phòng",
+			"en": "Check-in"
+		},
+		"checkout": {
+			"group": "form",
+			"label": "Ngày trả phòng",
+			"vi": "Ngày trả phòng",
+			"en": "Check-out"
+		},
+		"nights": {
+			"group": "form",
+			"label": "Số đêm ({n})",
+			"vi": "{n} đêm",
+			"en": "{n} night(s)"
+		},
+		"room": {
+			"group": "form",
+			"label": "Loại phòng",
+			"vi": "Loại phòng",
+			"en": "Room type"
+		},
+		"room_any": {
+			"group": "form",
+			"label": "Lựa chọn chưa chọn phòng",
+			"vi": "Chưa chắc – nhờ khách sạn tư vấn",
+			"en": "Not sure – please advise me"
+		},
+		"adults": {
+			"group": "form",
+			"label": "Người lớn",
+			"vi": "Người lớn",
+			"en": "Adults"
+		},
+		"children": {
+			"group": "form",
+			"label": "Trẻ em",
+			"vi": "Trẻ em (dưới 12 tuổi)",
+			"en": "Children (under 12)"
+		},
+		"name": {
+			"group": "form",
+			"label": "Họ tên",
+			"vi": "Họ và tên",
+			"en": "Full name"
+		},
+		"phone": {
+			"group": "form",
+			"label": "Số điện thoại",
+			"vi": "Số điện thoại",
+			"en": "Phone number"
+		},
+		"contact_method": {
+			"group": "form",
+			"label": "Liên hệ qua",
+			"vi": "Bạn muốn chúng tôi liên hệ qua",
+			"en": "How should we contact you?"
+		},
+		"method_phone": {
+			"group": "form",
+			"label": "Lựa chọn: điện thoại",
+			"vi": "Gọi điện",
+			"en": "Phone call"
+		},
+		"method_zalo": {
+			"group": "form",
+			"label": "Lựa chọn: Zalo",
+			"vi": "Zalo",
+			"en": "Zalo"
+		},
+		"method_whatsapp": {
+			"group": "form",
+			"label": "Lựa chọn: WhatsApp",
+			"vi": "WhatsApp",
+			"en": "WhatsApp"
+		},
+		"contact_id": {
+			"group": "form",
+			"label": "Số Zalo/WhatsApp",
+			"vi": "Số Zalo/WhatsApp (nếu khác số điện thoại)",
+			"en": "Zalo/WhatsApp number (if different)"
+		},
+		"email": {
+			"group": "form",
+			"label": "Email",
+			"vi": "Email",
+			"en": "Email"
+		},
+		"note": {
+			"group": "form",
+			"label": "Ghi chú",
+			"vi": "Ghi chú (giờ đến, nôi em bé, dị ứng…)",
+			"en": "Notes (arrival time, baby cot, allergies…)"
+		},
+		"required_hint": {
+			"group": "form",
+			"label": "Chú thích ô bắt buộc",
+			"vi": "Ô có dấu * là bắt buộc.",
+			"en": "Fields marked * are required."
+		},
+		"privacy": {
+			"group": "form",
+			"label": "Ghi chú quyền riêng tư",
+			"vi": "Thông tin của bạn chỉ dùng để liên hệ xác nhận đặt phòng. Chưa cần thanh toán – bạn có thể trả tại khách sạn hoặc chuyển khoản đặt cọc.",
+			"en": "We only use your details to confirm your booking. No payment needed now – pay at the hotel or by bank-transfer deposit."
+		},
+		"submit": {
+			"group": "form",
+			"label": "Nút gửi",
+			"vi": "Gửi yêu cầu đặt phòng",
+			"en": "Send booking request"
+		},
+		"submitting": {
+			"group": "form",
+			"label": "Nút khi đang gửi",
+			"vi": "Đang gửi…",
+			"en": "Sending…"
+		},
+		"success_title": {
+			"group": "messages",
+			"label": "Tiêu đề khi gửi thành công",
+			"vi": "Cảm ơn {ten_khach}, Sunny Grove đã nhận yêu cầu!",
+			"en": "Thank you {ten_khach}, we've got your request!"
+		},
+		"success_message": {
+			"group": "messages",
+			"label": "Nội dung khi gửi thành công",
+			"type": "textarea",
+			"vi": "Mã yêu cầu của bạn: {ma_yeu_cau}. Chúng tôi sẽ liên hệ trong vòng 2 giờ (7:00–22:00) để xác nhận phòng và giá. Cần gấp? Gọi {hotline} hoặc nhắn Zalo {zalo}.",
+			"en": "Your request number: {ma_yeu_cau}. We'll contact you within 2 hours (7am–10pm) to confirm the room and price. In a hurry? Call {hotline} or WhatsApp {whatsapp}."
+		},
+		"btn_call": {
+			"group": "messages",
+			"label": "Nút gọi hotline",
+			"vi": "Gọi {hotline}",
+			"en": "Call {hotline}"
+		},
+		"btn_zalo": {
+			"group": "messages",
+			"label": "Nút nhắn Zalo",
+			"vi": "Nhắn Zalo",
+			"en": "Message on Zalo"
+		},
+		"btn_whatsapp": {
+			"group": "messages",
+			"label": "Nút nhắn WhatsApp",
+			"vi": "Nhắn WhatsApp",
+			"en": "Message on WhatsApp"
+		},
+		"btn_again": {
+			"group": "messages",
+			"label": "Nút gửi yêu cầu khác",
+			"vi": "Gửi thêm một yêu cầu",
+			"en": "Send another request"
+		},
+		"err_required": {
+			"group": "errors",
+			"label": "Thiếu thông tin bắt buộc",
+			"vi": "Vui lòng điền ô này.",
+			"en": "Please fill in this field."
+		},
+		"err_dates": {
+			"group": "errors",
+			"label": "Ngày trả trước ngày nhận",
+			"vi": "Ngày trả phòng phải sau ngày nhận phòng.",
+			"en": "Check-out must be after check-in."
+		},
+		"err_past": {
+			"group": "errors",
+			"label": "Ngày nhận đã qua",
+			"vi": "Ngày nhận phòng không được ở quá khứ.",
+			"en": "Check-in can't be in the past."
+		},
+		"err_too_long": {
+			"group": "errors",
+			"label": "Quá số đêm / quá xa",
+			"vi": "Khoảng thời gian này vượt giới hạn nhận đặt online, vui lòng gọi hotline.",
+			"en": "These dates are outside our online booking window, please call us."
+		},
+		"err_phone": {
+			"group": "errors",
+			"label": "Số điện thoại sai",
+			"vi": "Số điện thoại chưa đúng (8–15 chữ số).",
+			"en": "Please enter a valid phone number (8–15 digits)."
+		},
+		"err_email": {
+			"group": "errors",
+			"label": "Email sai",
+			"vi": "Email chưa đúng định dạng.",
+			"en": "Please enter a valid email address."
+		},
+		"err_guests": {
+			"group": "errors",
+			"label": "Số khách không hợp lệ",
+			"vi": "Số khách không hợp lệ.",
+			"en": "Invalid number of guests."
+		},
+		"err_room": {
+			"group": "errors",
+			"label": "Phòng không hợp lệ",
+			"vi": "Loại phòng không hợp lệ.",
+			"en": "Invalid room type."
+		},
+		"err_spam": {
+			"group": "errors",
+			"label": "Nghi là spam",
+			"vi": "Không gửi được yêu cầu. Vui lòng thử lại hoặc gọi hotline {hotline}.",
+			"en": "We couldn't send your request. Please try again or call {hotline}."
+		},
+		"err_rate": {
+			"group": "errors",
+			"label": "Gửi quá nhiều",
+			"vi": "Bạn đã gửi khá nhiều yêu cầu. Vui lòng thử lại sau hoặc gọi hotline {hotline}.",
+			"en": "Too many requests. Please try again later or call {hotline}."
+		},
+		"err_generic": {
+			"group": "errors",
+			"label": "Lỗi chung",
+			"vi": "Có lỗi xảy ra. Vui lòng kiểm tra lại các ô được đánh dấu.",
+			"en": "Something went wrong. Please check the highlighted fields."
+		},
+		"err_network": {
+			"group": "errors",
+			"label": "Lỗi kết nối",
+			"vi": "Mất kết nối. Vui lòng thử lại hoặc gọi hotline {hotline}.",
+			"en": "Connection problem. Please try again or call {hotline}."
+		},
+		"guest_subject": {
+			"group": "guest_email",
+			"label": "Tiêu đề",
+			"vi": "Sunny Grove đã nhận yêu cầu đặt phòng {ma_yeu_cau}",
+			"en": "We've received your booking request {ma_yeu_cau} – Sunny Grove"
+		},
+		"guest_body": {
+			"group": "guest_email",
+			"label": "Nội dung",
+			"type": "textarea",
+			"vi": "Xin chào {ten_khach},\n\nCảm ơn bạn đã chọn Sunny Grove Hotel – Phú Quốc! Chúng tôi đã nhận yêu cầu đặt phòng của bạn:\n\n• Mã yêu cầu: {ma_yeu_cau}\n• Nhận phòng: {ngay_nhan}\n• Trả phòng: {ngay_tra} ({so_dem})\n• Loại phòng: {phong}\n• Số khách: {nguoi_lon} người lớn, {tre_em} trẻ em\n• Ghi chú: {ghi_chu}\n\nĐây chưa phải xác nhận đặt phòng. Nhân viên sẽ liên hệ qua {lien_he_qua} trong vòng 2 giờ (7:00–22:00) để xác nhận phòng trống và giá tốt nhất. Thanh toán tại khách sạn hoặc chuyển khoản đặt cọc.\n\nCần hỗ trợ ngay? Hotline: {hotline} · Zalo: {zalo}\n\nHẹn gặp cả nhà ở Phú Quốc!\nSunny Grove Hotel",
+			"en": "Hello {ten_khach},\n\nThank you for choosing Sunny Grove Hotel – Phu Quoc! We've received your booking request:\n\n• Request number: {ma_yeu_cau}\n• Check-in: {ngay_nhan}\n• Check-out: {ngay_tra} ({so_dem})\n• Room type: {phong}\n• Guests: {nguoi_lon} adults, {tre_em} children\n• Notes: {ghi_chu}\n\nThis is not yet a confirmation. Our team will contact you via {lien_he_qua} within 2 hours (7am–10pm) to confirm availability and the best price. You can pay at the hotel or by bank-transfer deposit.\n\nNeed help now? Hotline: {hotline} · WhatsApp: {whatsapp}\n\nSee you in Phu Quoc!\nSunny Grove Hotel"
+		},
+		"admin_subject": {
+			"group": "admin_email",
+			"label": "Tiêu đề",
+			"vi": "[Yêu cầu mới {ma_yeu_cau}] {ten_khach} · {ngay_nhan} → {ngay_tra}",
+			"en": "[New request {ma_yeu_cau}] {ten_khach} · {ngay_nhan} → {ngay_tra}"
+		},
+		"admin_body": {
+			"group": "admin_email",
+			"label": "Nội dung",
+			"type": "textarea",
+			"vi": "Có yêu cầu đặt phòng mới (khách xem website bằng: {ngon_ngu}).\n\n• Mã: {ma_yeu_cau}\n• Khách: {ten_khach}\n• Điện thoại: {so_dien_thoai}\n• Liên hệ qua: {lien_he_qua} {so_lien_he}\n• Email: {email}\n• Nhận phòng: {ngay_nhan}\n• Trả phòng: {ngay_tra} ({so_dem})\n• Loại phòng: {phong}\n• Khách: {nguoi_lon} người lớn, {tre_em} trẻ em\n• Ghi chú: {ghi_chu}\n\nXem và cập nhật trạng thái: {link_quan_tri}",
+			"en": "New booking request (guest language: {ngon_ngu}).\n\n• Number: {ma_yeu_cau}\n• Guest: {ten_khach}\n• Phone: {so_dien_thoai}\n• Contact via: {lien_he_qua} {so_lien_he}\n• Email: {email}\n• Check-in: {ngay_nhan}\n• Check-out: {ngay_tra} ({so_dem})\n• Room: {phong}\n• Guests: {nguoi_lon} adults, {tre_em} children\n• Notes: {ghi_chu}\n\nOpen and update the status: {link_quan_tri}"
+		},
+		"date_format": {
+			"group": "admin_email",
+			"label": "Định dạng ngày trong email (PHP)",
+			"vi": "d/m/Y (l)",
+			"en": "D, M j, Y"
+		},
+		"empty_value": {
+			"group": "admin_email",
+			"label": "Chữ hiển thị khi khách để trống",
+			"vi": "(không có)",
+			"en": "(none)"
+		},
+		"contact_name": {
+			"group": "contact",
+			"label": "Ô họ tên",
+			"vi": "Họ và tên",
+			"en": "Your name"
+		},
+		"contact_email": {
+			"group": "contact",
+			"label": "Ô email",
+			"vi": "Email",
+			"en": "Email"
+		},
+		"contact_phone": {
+			"group": "contact",
+			"label": "Ô điện thoại",
+			"vi": "Điện thoại / Zalo (tùy chọn)",
+			"en": "Phone / WhatsApp (optional)"
+		},
+		"contact_message": {
+			"group": "contact",
+			"label": "Ô nội dung",
+			"vi": "Bạn cần chúng tôi hỗ trợ gì?",
+			"en": "How can we help?"
+		},
+		"contact_privacy": {
+			"group": "contact",
+			"label": "Dòng ghi chú dưới form",
+			"vi": "Thông tin của bạn chỉ dùng để trả lời lời nhắn này.",
+			"en": "We only use your details to reply to this message."
+		},
+		"contact_submit": {
+			"group": "contact",
+			"label": "Nút gửi",
+			"vi": "Gửi lời nhắn",
+			"en": "Send message"
+		},
+		"contact_submitting": {
+			"group": "contact",
+			"label": "Nút khi đang gửi",
+			"vi": "Đang gửi…",
+			"en": "Sending…"
+		},
+		"contact_success_title": {
+			"group": "contact",
+			"label": "Tiêu đề khi gửi thành công",
+			"vi": "Cảm ơn {ten_khach}, chúng tôi đã nhận được lời nhắn!",
+			"en": "Thank you {ten_khach}, we have received your message!"
+		},
+		"contact_success_message": {
+			"group": "contact",
+			"label": "Nội dung khi gửi thành công",
+			"type": "textarea",
+			"vi": "Sunny Grove sẽ trả lời qua email trong vòng 24 giờ. Cần gấp? Gọi hotline {hotline}.",
+			"en": "Sunny Grove will reply by email within 24 hours. In a hurry? Call {hotline}."
+		},
+		"contact_again": {
+			"group": "contact",
+			"label": "Nút gửi lời nhắn khác",
+			"vi": "Gửi lời nhắn khác",
+			"en": "Send another message"
+		},
+		"contact_admin_subject": {
+			"group": "contact_email",
+			"label": "Tiêu đề email gửi khách sạn",
+			"vi": "[Liên hệ mới] {ten_khach}",
+			"en": "[New message] {ten_khach}"
+		},
+		"contact_admin_body": {
+			"group": "contact_email",
+			"label": "Nội dung email gửi khách sạn",
+			"type": "textarea",
+			"vi": "Có lời nhắn mới từ website:\n\n• Họ tên: {ten_khach}\n• Email: {email}\n• Điện thoại: {dien_thoai}\n• Ngôn ngữ: {ngon_ngu}\n\nNội dung:\n{noi_dung}\n\nTrả lời: bấm \"Trả lời\" trong hộp thư để gửi thẳng cho khách. Xem tất cả tại {link_quan_tri}",
+			"en": "New message from the website:\n\n• Name: {ten_khach}\n• Email: {email}\n• Phone: {dien_thoai}\n• Language: {ngon_ngu}\n\nMessage:\n{noi_dung}\n\nReply directly to this email to answer the guest. All messages: {link_quan_tri}"
+		},
+		"contact_guest_subject": {
+			"group": "contact_email",
+			"label": "Tiêu đề email cảm ơn khách",
+			"vi": "Sunny Grove đã nhận được lời nhắn của bạn",
+			"en": "We have received your message – Sunny Grove"
+		},
+		"contact_guest_body": {
+			"group": "contact_email",
+			"label": "Nội dung email cảm ơn khách",
+			"type": "textarea",
+			"vi": "Xin chào {ten_khach},\n\nCảm ơn bạn đã liên hệ Sunny Grove Hotel – Phú Quốc. Chúng tôi đã nhận được lời nhắn:\n\n\"{noi_dung}\"\n\nNhân viên sẽ trả lời bạn trong vòng 24 giờ. Cần gấp? Hotline: {hotline} · Zalo: {zalo}\n\nSunny Grove Hotel",
+			"en": "Hello {ten_khach},\n\nThank you for contacting Sunny Grove Hotel – Phu Quoc. We have received your message:\n\n\"{noi_dung}\"\n\nOur team will reply within 24 hours. In a hurry? Hotline: {hotline} · WhatsApp: {whatsapp}\n\nSunny Grove Hotel"
+		},
+		"err_message_short": {
+			"group": "errors",
+			"label": "Nội dung quá ngắn",
+			"vi": "Vui lòng viết rõ hơn một chút (ít nhất 10 ký tự).",
+			"en": "Please tell us a little more (at least 10 characters)."
+		}
 	}
 }

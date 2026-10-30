@@ -31,8 +31,6 @@ echo sunny_grove_section_open(); // phpcs:ignore WordPress.Security.EscapeOutput
 <?php echo sunny_grove_section_close(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 <?php echo sunny_grove_section_open( 'white' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 <?php echo sunny_grove_section_head( __( 'Gửi lời nhắn', 'sunny-grove' ), __( 'Bạn cần tư vấn thêm?', 'sunny-grove' ), __( 'Để lại lời nhắn, chúng tôi sẽ phản hồi qua email hoặc điện thoại trong ngày.', 'sunny-grove' ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
-<!-- wp:shortcode -->
-[sunny_grove_contact_form]
-<!-- /wp:shortcode -->
+<!-- wp:sunny-grove-booking/contact-form {"align":"wide"} /-->
 <?php
 echo sunny_grove_section_close(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
