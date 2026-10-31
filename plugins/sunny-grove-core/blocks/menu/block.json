@@ -5,7 +5,7 @@
 	"title": "Menu song ngữ",
 	"category": "sunny-grove",
 	"icon": "menu",
-	"description": "Hiển thị menu tại vị trí đã chọn (Giao diện → Menu). Polylang tự đổi menu theo ngôn ngữ. Trên điện thoại có nút mở menu.",
+	"description": "Hiển thị menu tại vị trí đã chọn (Giao diện → Menu). Bản EN tự dùng \"Tên tiếng Anh\" của từng mục menu. Trên điện thoại có nút mở menu.",
 	"textdomain": "sunny-grove-core",
 	"attributes": {
 		"location": { "type": "string", "default": "primary" },

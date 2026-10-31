@@ -55,6 +55,7 @@ function sgb_register_block() {
 		)
 	);
 	wp_register_script( 'sgb-editor', SGB_URL . 'assets/editor.js', array( 'wp-blocks', 'wp-element', 'wp-block-editor', 'wp-components', 'wp-server-side-render', 'wp-i18n' ), SGB_VERSION, true );
+	wp_set_script_translations( 'sgb-editor', 'sunny-grove-booking', SGB_DIR . 'languages' );
 	register_block_type( SGB_DIR . 'blocks/booking-form' );
 	add_shortcode( 'sunny_grove_booking', 'sgb_shortcode' );
 }

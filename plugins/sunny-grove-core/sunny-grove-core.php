@@ -51,6 +51,7 @@ function sgc_activate() {
 	sgc_register_post_types();
 	sgc_seed_options();
 	sgc_add_roles();
+	sg_i18n_rewrite_rules(); // Luật đường dẫn bản EN (/en/rooms/…) phải có trước khi lưu lại.
 	flush_rewrite_rules();
 }
 register_activation_hook( __FILE__, 'sgc_activate' );

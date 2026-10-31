@@ -1,0 +1,197 @@
+{
+	"translation-revision-date": "2026-10-31 00:00+0000",
+	"generator": "sunny-grove/i18n-extract",
+	"domain": "messages",
+	"locale_data": {
+		"messages": {
+			"": {
+				"domain": "messages",
+				"lang": "en_US",
+				"plural-forms": "nplurals=2; plural=(n != 1);"
+			},
+			"Chưa có dữ liệu để hiển thị (xem ngoài website để kiểm tra).": [
+				"No data to display yet (view it on the website to check)."
+			],
+			"Cài đặt": [
+				"Settings"
+			],
+			"Tiêu đề lớn…": [
+				"Large heading…"
+			],
+			"Một câu mô tả ngắn…": [
+				"A short description…"
+			],
+			"Video & ảnh nền": [
+				"Video & background image"
+			],
+			"Ảnh poster hiện ngay khi tải trang (giúp trang nhanh), video sẽ tự chạy sau đó. Video nên là MP4, 10–20 giây, dưới 5MB.": [
+				"The poster image appears as soon as the page loads (keeps the page fast), then the video plays automatically. Use an MP4 of 10–20 seconds, under 5MB."
+			],
+			"Đổi ảnh poster": [
+				"Change poster image"
+			],
+			"Chọn ảnh poster": [
+				"Choose poster image"
+			],
+			"Video cho máy tính (link MP4)": [
+				"Desktop video (MP4 link)"
+			],
+			"Chọn video từ Thư viện": [
+				"Choose video from Media Library"
+			],
+			"Video nhẹ cho điện thoại (tùy chọn)": [
+				"Lightweight mobile video (optional)"
+			],
+			"Chọn video điện thoại": [
+				"Choose mobile video"
+			],
+			"Bố cục": [
+				"Layout"
+			],
+			"Độ tối lớp phủ (giúp chữ dễ đọc)": [
+				"Overlay darkness (makes text easier to read)"
+			],
+			"Chiều cao": [
+				"Height"
+			],
+			"Toàn màn hình": [
+				"Full screen"
+			],
+			"Lớn": [
+				"Large"
+			],
+			"Vừa": [
+				"Medium"
+			],
+			"Thấp": [
+				"Short"
+			],
+			"Vị trí chữ": [
+				"Text position"
+			],
+			"Giữa": [
+				"Center"
+			],
+			"Dưới": [
+				"Bottom"
+			],
+			"Tỉ lệ khung": [
+				"Aspect ratio"
+			],
+			"Bấm vào ảnh để mở chi tiết": [
+				"Click the image to open the details"
+			],
+			"Tự chạy video ngắn (nếu có)": [
+				"Autoplay short video (if available)"
+			],
+			"Hiện nhãn nổi bật (ưu đãi)": [
+				"Show highlight badge (offers)"
+			],
+			"Kiểu hiển thị": [
+				"Display style"
+			],
+			"Lưới": [
+				"Grid"
+			],
+			"Trượt ngang": [
+				"Horizontal slider"
+			],
+			"Số ảnh tối đa": [
+				"Maximum number of images"
+			],
+			"Hiện tiêu đề “Hình ảnh thực tế”": [
+				"Show the “Real photos” heading"
+			],
+			"Nhóm phân loại": [
+				"Taxonomy"
+			],
+			"Đặt block này ngay phía trên Query Loop cần lọc.": [
+				"Place this block directly above the Query Loop you want to filter."
+			],
+			"Kiểu": [
+				"Style"
+			],
+			"Danh sách có dấu tích": [
+				"Checklist"
+			],
+			"Thẻ nhỏ": [
+				"Small tags"
+			],
+			"Hiện tiêu đề": [
+				"Show heading"
+			],
+			"Tên khách sạn": [
+				"Hotel name"
+			],
+			"Giới thiệu ngắn": [
+				"Short introduction"
+			],
+			"Hotline": [
+				"Hotline"
+			],
+			"Địa chỉ": [
+				"Address"
+			],
+			"Giờ nhận / trả phòng": [
+				"Check-in / check-out times"
+			],
+			"Sửa nội dung tại menu Sunny Grove → Thông tin khách sạn.": [
+				"Edit the content under Sunny Grove → Hotel information."
+			],
+			"Danh sách": [
+				"List"
+			],
+			"Một hàng": [
+				"Single row"
+			],
+			"Nút bấm": [
+				"Buttons"
+			],
+			"Hiện bản đồ Google Maps": [
+				"Show Google Maps"
+			],
+			"Vị trí menu": [
+				"Menu location"
+			],
+			"Menu chính (đầu trang)": [
+				"Main menu (header)"
+			],
+			"Menu chân trang": [
+				"Footer menu"
+			],
+			"Nút mở menu trên điện thoại": [
+				"Mobile menu button"
+			],
+			"Sửa mục menu tại Giao diện → Menu (mỗi ngôn ngữ một menu).": [
+				"Edit menu items under Appearance → Menus (one menu per language)."
+			],
+			"Hiển thị": [
+				"Display"
+			],
+			"Gọn (dùng cho thẻ phòng)": [
+				"Compact (for room cards)"
+			],
+			"Hiện dòng so sánh vui": [
+				"Show fun comparison line"
+			],
+			"Hiện nút chỉ đường": [
+				"Show directions button"
+			],
+			"Số đánh giá hiển thị": [
+				"Number of reviews to show"
+			],
+			"Chỉ lấy từ nguồn": [
+				"Only from source"
+			],
+			"Tất cả": [
+				"All"
+			],
+			"Số sao tối thiểu": [
+				"Minimum rating"
+			],
+			"Thêm/sửa đánh giá ở menu Đánh giá.": [
+				"Add or edit reviews under the Reviews menu."
+			]
+		}
+	}
+}

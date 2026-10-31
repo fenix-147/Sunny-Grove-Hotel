@@ -1,6 +1,6 @@
 <?php
 /**
- * Menu theo vị trí, tương thích Polylang (mỗi ngôn ngữ một menu).
+ * Menu theo vị trí; bản EN dùng tên tiếng Anh của từng mục và đường dẫn /en/.
  *
  * @package SunnyGroveCore
  * @var array $attributes

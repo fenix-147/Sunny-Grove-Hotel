@@ -1,0 +1,35 @@
+{
+	"translation-revision-date": "2026-10-31 00:00+0000",
+	"generator": "sunny-grove/i18n-extract",
+	"domain": "messages",
+	"locale_data": {
+		"messages": {
+			"": {
+				"domain": "messages",
+				"lang": "en_US",
+				"plural-forms": "nplurals=2; plural=(n != 1);"
+			},
+			"Kiểu form": [
+				"Form type"
+			],
+			"Kiểu": [
+				"Style"
+			],
+			"Đầy đủ (trang Đặt phòng)": [
+				"Full (Booking page)"
+			],
+			"Gọn – chọn ngày & số khách (trang chủ)": [
+				"Compact – choose dates & guests (home page)"
+			],
+			"Sửa chữ trên form và nội dung email tại menu Đặt phòng → Cài đặt.": [
+				"Edit the form text and email content under Bookings → Settings."
+			],
+			"Form liên hệ": [
+				"Contact form"
+			],
+			"Tin nhắn của khách lưu ở menu Liên hệ. Sửa chữ trên form và nội dung email tại menu Đặt phòng → Cài đặt.": [
+				"Guest messages are saved under the Contact menu. Edit the form text and email content under Bookings → Settings."
+			]
+		}
+	}
+}

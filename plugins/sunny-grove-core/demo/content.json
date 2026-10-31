@@ -119,7 +119,7 @@
 				"en": "Smart TV",
 				"slug": {
 					"vi": "smart-tv",
-					"en": "smart-tv-en"
+					"en": "smart-tv"
 				}
 			},
 			{
@@ -1310,7 +1310,7 @@
 			},
 			"en": {
 				"title": "Blog",
-				"slug": "blog-en"
+				"slug": "blog"
 			}
 		},
 		{

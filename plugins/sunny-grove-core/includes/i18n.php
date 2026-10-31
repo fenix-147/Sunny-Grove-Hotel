@@ -302,8 +302,22 @@ function sg_i18n_request( $vars ) {
 
 	// Bài viết / loại nội dung: "name".
 	if ( ! empty( $vars['name'] ) ) {
-		$types = ! empty( $vars['post_type'] ) ? (array) $vars['post_type'] : array( 'post' );
+		// Với cấu trúc /%postname%/, "/en/contact/" khớp luật của bài viết (name=contact) – trang có slug EN riêng
+		// cũng phải tìm được, nên khi không rõ loại nội dung thì tìm cả bài viết lẫn trang.
+		$types = ! empty( $vars['post_type'] ) ? (array) $vars['post_type'] : array( 'post', 'page' );
 		$post  = sg_i18n_find_by_slug( $vars['name'], $types, $lang );
+		if ( $post && 'page' === $post->post_type && empty( $vars['post_type'] ) ) {
+			unset( $vars['name'] );
+			// Đường dẫn thật của trang (slug tiếng Việt, tính cả trang cha).
+			$vars['pagename'] = sg_with_lang(
+				sg_default_lang(),
+				static function () use ( $post ) {
+					return get_page_uri( $post );
+				},
+				false
+			);
+			return $vars;
+		}
 		if ( $post ) {
 			$vars['name'] = $post->post_name;
 			if ( 'post' !== $post->post_type ) {
@@ -660,6 +674,16 @@ function sg_i18n_redirects() {
 		return;
 	}
 	$lang = sg_current_lang();
+	// Bài EN cũ đã ghép vào bài chính nhưng chưa vào Thùng rác: chuyển sang bài chính ở bản EN.
+	$merged = is_singular() ? (int) get_post_meta( get_queried_object_id(), '_sg_i18n_merged_into', true ) : 0;
+	if ( $merged && 'publish' === get_post_status( $merged ) ) {
+		$to_lang = $lang !== sg_default_lang() ? $lang : ( sg_secondary_langs()[0] ?? $lang );
+		$target  = (int) get_option( 'page_on_front' ) === $merged ? sg_home_url( $to_lang ) : sg_permalink( $merged, $to_lang );
+		if ( $target ) {
+			wp_safe_redirect( $target, 301 );
+			exit;
+		}
+	}
 	if ( $lang !== sg_default_lang() && is_singular() && ! is_front_page() ) {
 		$expected = sg_permalink( get_queried_object_id(), $lang );
 		$exp_path = (string) wp_parse_url( $expected, PHP_URL_PATH );

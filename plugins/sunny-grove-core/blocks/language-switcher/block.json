@@ -5,7 +5,7 @@
 	"title": "Nút chuyển ngôn ngữ",
 	"category": "sunny-grove",
 	"icon": "translation",
-	"description": "Chuyển giữa Tiếng Việt và English (cần plugin Polylang). Dẫn tới bản dịch của trang đang xem.",
+	"description": "Chuyển giữa Tiếng Việt và English. Dẫn tới cùng trang ở ngôn ngữ kia.",
 	"textdomain": "sunny-grove-core",
 	"attributes": {
 		"display": { "type": "string", "default": "code", "enum": [ "code", "name" ] }

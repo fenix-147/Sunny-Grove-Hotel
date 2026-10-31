@@ -25,7 +25,7 @@ function sunny_grove_setup() {
 	add_theme_support( 'menus' );
 	add_editor_style( 'assets/css/theme.css' );
 
-	// Vị trí menu cổ điển: Polylang gán được mỗi ngôn ngữ một menu riêng.
+	// Vị trí menu cổ điển: một menu dùng cho cả 2 ngôn ngữ (mỗi mục có ô "Tên tiếng Anh").
 	register_nav_menus(
 		array(
 			'primary' => __( 'Menu chính (đầu trang)', 'sunny-grove' ),

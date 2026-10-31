@@ -26,6 +26,7 @@ require_once SGB_DIR . 'includes/submit.php';
 require_once SGB_DIR . 'includes/emails.php';
 require_once SGB_DIR . 'includes/admin.php';
 require_once SGB_DIR . 'includes/contact.php';
+require_once SGB_DIR . 'includes/smtp.php';
 
 /**
  * Kích hoạt: đăng ký loại nội dung, nạp mặc định, cấp quyền.

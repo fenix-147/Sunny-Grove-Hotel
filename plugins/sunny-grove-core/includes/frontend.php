@@ -1,6 +1,6 @@
 <?php
 /**
- * Phía khách: nút chat nổi, tự tạo ảnh WebP.
+ * Phía khách: nút chat nổi, tự tạo ảnh WebP, tải trước ảnh banner đầu trang.
  *
  * @package SunnyGroveCore
  */
@@ -69,3 +69,44 @@ function sgc_webp_output( $formats ) {
 	return $formats;
 }
 add_filter( 'image_editor_output_format', 'sgc_webp_output' );
+
+/**
+ * Tải trước ảnh nền của banner đầu trang (ảnh lớn nhất ở màn hình đầu tiên) để trang hiện nhanh hơn.
+ * Chỉ áp dụng khi banner là block đầu tiên có ảnh trong nội dung trang đang xem.
+ */
+function sgc_preload_hero() {
+	if ( ! is_singular() ) {
+		return;
+	}
+	$blocks = parse_blocks( (string) get_post_field( 'post_content', get_queried_object_id() ) );
+	$stack  = $blocks;
+	$poster = 0;
+	$guard  = 0;
+	while ( $stack && $guard++ < 40 ) {
+		$b = array_shift( $stack );
+		if ( 'sunny-grove/video-banner' === $b['blockName'] ) {
+			$poster = (int) ( $b['attrs']['posterId'] ?? 0 );
+			break;
+		}
+		if ( in_array( $b['blockName'], array( 'core/image', 'core/cover', 'sunny-grove/motion-media', 'sunny-grove/media-gallery' ), true ) ) {
+			return; // Ảnh khác đứng trước banner: không đoán, để trình duyệt tự xử lý.
+		}
+		if ( ! empty( $b['innerBlocks'] ) ) {
+			$stack = array_merge( $b['innerBlocks'], $stack );
+		}
+	}
+	if ( ! $poster || ! wp_attachment_is_image( $poster ) ) {
+		return;
+	}
+	$src = wp_get_attachment_image_src( $poster, 'full' );
+	if ( ! $src ) {
+		return;
+	}
+	$srcset = wp_get_attachment_image_srcset( $poster, 'full' );
+	printf(
+		'<link rel="preload" as="image" href="%1$s"%2$s fetchpriority="high">' . "\n",
+		esc_url( $src[0] ),
+		$srcset ? ' imagesrcset="' . esc_attr( $srcset ) . '" imagesizes="100vw"' : ''
+	);
+}
+add_action( 'wp_head', 'sgc_preload_hero', 1 );

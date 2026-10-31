@@ -27,7 +27,8 @@ function sgc_register_blocks() {
 		SGC_VERSION,
 		true
 	);
-	wp_register_style( 'sgc-blocks', SGC_URL . 'assets/blocks.css', array(), SGC_VERSION );
+	wp_set_script_translations( 'sgc-blocks-editor', 'sunny-grove-core', SGC_DIR . 'languages' );
+	wp_register_style( 'sgc-blocks',SGC_URL . 'assets/blocks.css', array(), SGC_VERSION );
 	wp_register_script(
 		'sgc-blocks-view',
 		SGC_URL . 'assets/blocks-view.js',
