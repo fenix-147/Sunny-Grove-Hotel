@@ -97,8 +97,14 @@ add_action( 'wp_login_failed', 'sg_security_login_failed' );
 
 /**
  * Đăng nhập đúng: xóa bộ đếm.
+ *
+ * Bỏ qua khi đang chạy wp-cron: lúc đó không phải người dùng đăng nhập (vd. môi trường thử
+ * tự đăng nhập trong lần gọi cron), nếu xóa sẽ làm mất các lần sai đã đếm.
  */
 function sg_security_login_ok() {
+	if ( wp_doing_cron() ) {
+		return;
+	}
 	delete_transient( 'sg_login_fail_' . sg_security_ip_key() );
 }
 add_action( 'wp_login', 'sg_security_login_ok' );

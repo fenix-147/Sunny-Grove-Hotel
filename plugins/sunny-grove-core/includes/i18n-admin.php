@@ -370,6 +370,84 @@ function sg_i18n_menu_item_save( $menu_id, $item_id ) {
 }
 add_action( 'wp_update_nav_menu_item', 'sg_i18n_menu_item_save', 10, 2 );
 
+/**
+ * Đổi các dạng mã hóa của dấu "&" (&#038;, &amp;…) về "&".
+ *
+ * @param string $title Tiêu đề.
+ * @return string
+ */
+function sg_menu_title_decode( $title ) {
+	return str_replace( array( '&amp;#038;', '&amp;#38;', '&#038;', '&#38;', '&amp;' ), '&', (string) $title );
+}
+
+/**
+ * Tiêu đề gốc (chưa qua bộ lọc the_title) của trang/bài mà mục menu trỏ tới.
+ *
+ * @param WP_Post|object $item Mục menu.
+ * @return string Rỗng nếu không phải mục trỏ tới bài/trang.
+ */
+function sg_menu_item_original_title( $item ) {
+	if ( 'post_type' !== ( $item->type ?? '' ) || empty( $item->object_id ) ) {
+		return '';
+	}
+	return (string) get_post_field( 'post_title', (int) $item->object_id, 'raw' );
+}
+
+/**
+ * Trang quản trị Menu: ô "Nhãn điều hướng" hiện đúng "Phòng & Giá".
+ *
+ * WordPress lấy tiêu đề trang qua the_title (đổi "&" thành "&#038;") rồi mã hóa thêm lần nữa
+ * khi in ra ô nhập, nên ô hiện "Phòng &#038; Giá". Bấm Lưu khi đó sẽ lưu luôn chuỗi lỗi này.
+ *
+ * @param WP_Post $item Mục menu.
+ * @return WP_Post
+ */
+function sg_menu_item_admin_title( $item ) {
+	if ( ! is_admin() || empty( $item->ID ) || ! isset( $item->post_title ) ) {
+		return $item;
+	}
+	if ( '' === (string) $item->post_title ) {
+		$original = sg_menu_item_original_title( $item );
+		if ( '' !== $original ) {
+			$item->title = $original;
+		}
+	} else {
+		$item->title = sg_menu_title_decode( $item->post_title );
+	}
+	return $item;
+}
+add_filter( 'wp_setup_nav_menu_item', 'sg_menu_item_admin_title', 5 );
+
+/**
+ * Khi lưu menu: không lưu nhãn bị mã hóa; nhãn trùng tiêu đề trang thì để trống
+ * (để nhãn tự theo tiêu đề trang như mặc định của WordPress).
+ *
+ * @param int $menu_id ID menu.
+ * @param int $item_id ID mục.
+ */
+function sg_menu_item_clean_title( $menu_id, $item_id ) {
+	$item = get_post( $item_id );
+	if ( ! $item || 'nav_menu_item' !== $item->post_type || '' === $item->post_title ) {
+		return;
+	}
+	$title    = sg_menu_title_decode( $item->post_title );
+	$original = sg_menu_item_original_title(
+		(object) array(
+			'type'      => get_post_meta( $item_id, '_menu_item_type', true ),
+			'object_id' => get_post_meta( $item_id, '_menu_item_object_id', true ),
+		)
+	);
+	if ( '' !== $original && sg_menu_title_decode( $original ) === $title ) {
+		$title = '';
+	}
+	if ( $title !== $item->post_title ) {
+		global $wpdb;
+		$wpdb->update( $wpdb->posts, array( 'post_title' => $title ), array( 'ID' => $item_id ) ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery
+		clean_post_cache( $item_id );
+	}
+}
+add_action( 'wp_update_nav_menu_item', 'sg_menu_item_clean_title', 20, 2 );
+
 /* -------------------------------------------------------------------------
  * Trình soạn thảo: nút gạt VI | EN và sửa bản dịch tại chỗ
  * ---------------------------------------------------------------------- */
