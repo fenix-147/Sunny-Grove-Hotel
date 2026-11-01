@@ -133,13 +133,6 @@ function sunny_grove_block_styles() {
 			'label' => __( 'Dòng nhỏ trên tiêu đề', 'sunny-grove' ),
 		)
 	);
-	register_block_style(
-		'core/list',
-		array(
-			'name'  => 'sg-checks',
-			'label' => __( 'Danh sách dấu tích', 'sunny-grove' ),
-		)
-	);
 }
 add_action( 'init', 'sunny_grove_block_styles' );
 

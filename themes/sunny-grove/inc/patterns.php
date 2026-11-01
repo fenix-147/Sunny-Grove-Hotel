@@ -307,6 +307,7 @@ function sunny_grove_room_card() {
 		. '<!-- wp:sunny-grove/post-terms-list {"taxonomy":"sg_guest_type","variant":"chips"} /-->' . "\n"
 		. '<!-- wp:post-title {"level":3,"isLink":true} /-->' . "\n"
 		. '<!-- wp:sunny-grove/room-facts {"compact":true} /-->' . "\n"
+		. '<!-- wp:sunny-grove/post-terms-list {"taxonomy":"sg_room_feature","variant":"compact","limit":4} /-->' . "\n"
 		. '<!-- wp:group {"className":"sg-card__footer","layout":{"type":"flex","flexWrap":"wrap","justifyContent":"space-between"}} --><div class="wp-block-group sg-card__footer">' . "\n"
 		. sunny_grove_bound_paragraph( 'meta', 'price', 'sg-price' )
 		. sunny_grove_buttons( array( array( '', '', true, array( 'text' => sunny_grove_bind( 'label', 'read_more' ), 'url' => sunny_grove_bind( 'meta', 'permalink' ) ) ) ), 'left' )

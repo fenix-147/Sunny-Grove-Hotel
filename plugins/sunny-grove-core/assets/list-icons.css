@@ -1,0 +1,49 @@
+/*
+ * Danh sách có biểu tượng: mỗi mục gạch đầu dòng có một icon riêng (thay chấm tròn).
+ * Màu icon lấy từ màu chính của theme (theme.json → primary) – đổi màu chính là icon đổi theo.
+ */
+
+/* ---------- Ngoài website: icon là <svg class="sg-li-icon"> chèn khi hiển thị ---------- */
+.sg-icon-list {
+	--sg-li-icon-size: 20px;
+	list-style: none;
+	padding-left: 0;
+}
+.sg-icon-list > li {
+	position: relative;
+	padding-left: calc(var(--sg-li-icon-size) + .65em);
+}
+.sg-icon-list > li + li { margin-top: .5rem; }
+.sg-icon-list > li > .sg-li-icon {
+	position: absolute;
+	left: 0;
+	/* Giữa dòng chữ đầu tiên (1lh = chiều cao một dòng), kể cả khi mục dài nhiều dòng. */
+	top: .2em;
+	top: calc((1lh - var(--sg-li-icon-size)) / 2);
+	width: var(--sg-li-icon-size);
+	height: var(--sg-li-icon-size);
+	color: var(--wp--preset--color--primary, #1FA3A3);
+}
+
+/* ---------- Trong trình soạn thảo: vẽ icon bằng mask (biến --sg-li-icon do script chọn icon gán) ---------- */
+.editor-styles-wrapper ul.wp-block-list {
+	list-style: none;
+	padding-left: 0;
+}
+.editor-styles-wrapper ul.wp-block-list > li {
+	position: relative;
+	padding-left: calc(20px + .65em);
+}
+.editor-styles-wrapper ul.wp-block-list > li + li { margin-top: .5rem; }
+.editor-styles-wrapper ul.wp-block-list > li::before {
+	content: "";
+	position: absolute;
+	left: 0;
+	top: .2em;
+	top: calc((1lh - 20px) / 2);
+	width: 20px;
+	height: 20px;
+	background-color: var(--wp--preset--color--primary, #1FA3A3);
+	-webkit-mask: var(--sg-li-icon, url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 19C5 11 10 5 19 5c0 9-6 14-14 14z'/%3E%3Cpath d='M5 19l8.5-8.5'/%3E%3C/svg%3E")) center / contain no-repeat;
+	mask: var(--sg-li-icon, url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 19C5 11 10 5 19 5c0 9-6 14-14 14z'/%3E%3Cpath d='M5 19l8.5-8.5'/%3E%3C/svg%3E")) center / contain no-repeat;
+}

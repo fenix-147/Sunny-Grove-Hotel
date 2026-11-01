@@ -185,6 +185,14 @@
 			"type": "textarea",
 			"vi": "Khu vườn xanh mát giữa đảo nắng – nơi cả nhà cùng nghỉ ngơi, vui chơi và lưu giữ kỷ niệm.",
 			"en": "A cool green garden on a sunny island – where the whole family rests, plays and makes memories."
+		},
+		"keep_phrases": {
+			"label": "Giữ liền cụm từ (không tách khi xuống dòng)",
+			"type": "textarea",
+			"rows": 6,
+			"help": "Mỗi dòng một cụm từ. Website không bao giờ ngắt dòng giữa các chữ trong cụm (VD: “kỳ nghỉ” không bị tách thành “kỳ / nghỉ”). Áp dụng cho mọi chữ trên website, kể cả Slogan, các ô trong trang này và Nhãn hiển thị.",
+			"vi": "Nắng đảo\nvườn xanh\nkỳ nghỉ\ntrọn vẹn\ncả nhà\nPhú Quốc\nSunny Grove\nKids Club\nTrẻ em\n(dưới 12 tuổi)\nngười lớn\nhồ bơi\nbữa sáng\nđặt phòng\nnhận phòng\ntrả phòng\nsân bay",
+			"en": "Sunny Grove\nPhu Quoc\nKids Club\n(under 12)\ngarden calm\nwhole family"
 		}
 	}
 }

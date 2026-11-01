@@ -22,20 +22,20 @@ echo sunny_grove_section_open(); // phpcs:ignore WordPress.Security.EscapeOutput
 <h3 class="wp-block-heading"><?php esc_html_e( 'Vì sao nên đặt trực tiếp?', 'sunny-grove' ); ?></h3>
 <!-- /wp:heading -->
 
-<!-- wp:list {"className":"is-style-sg-checks"} -->
-<ul class="wp-block-list is-style-sg-checks"><!-- wp:list-item -->
+<!-- wp:list -->
+<ul class="wp-block-list"><!-- wp:list-item {"sgIcon":"voucher"} -->
 <li><?php esc_html_e( 'Giá tốt nhất, không qua trung gian', 'sunny-grove' ); ?></li>
 <!-- /wp:list-item -->
 
-<!-- wp:list-item -->
+<!-- wp:list-item {"sgIcon":"phone"} -->
 <li><?php esc_html_e( 'Chưa cần thanh toán – chúng tôi gọi lại xác nhận', 'sunny-grove' ); ?></li>
 <!-- /wp:list-item -->
 
-<!-- wp:list-item -->
+<!-- wp:list-item {"sgIcon":"card"} -->
 <li><?php esc_html_e( 'Thanh toán tại khách sạn hoặc chuyển khoản đặt cọc', 'sunny-grove' ); ?></li>
 <!-- /wp:list-item -->
 
-<!-- wp:list-item -->
+<!-- wp:list-item {"sgIcon":"crib"} -->
 <li><?php esc_html_e( 'Nôi em bé, giường phụ được chuẩn bị sẵn', 'sunny-grove' ); ?></li>
 <!-- /wp:list-item --></ul>
 <!-- /wp:list -->

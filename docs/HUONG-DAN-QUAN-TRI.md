@@ -104,7 +104,7 @@ Website tự động: tải trước ảnh poster (trang hiện nhanh), chỉ t�
 - **Đoạn trích** (thanh bên phải): mô tả ngắn hiện trên thẻ phòng.
 - **Ảnh đại diện** (thanh bên phải): ảnh trên thẻ phòng.
 - **Nhóm khách**: tích *Gia đình / Cặp đôi / Nhóm bạn* – dùng cho bộ lọc ở trang Phòng & Giá.
-- **Tiện nghi trong phòng**: tích các tiện nghi (có thể thêm tiện nghi mới).
+- **Tiện nghi trong phòng**: tích các tiện nghi (có thể thêm tiện nghi mới). Mỗi tiện nghi có **icon riêng**, chọn 1 lần tại **Phòng → Tiện nghi trong phòng** → bấm tên tiện nghi → ô **Icon** (gõ "wifi", "bồn tắm"… để tìm) → **Cập nhật**. Icon tự hiện ở thẻ phòng và trang chi tiết phòng, cả bản tiếng Anh.
 - **Thứ tự** (mục *Thuộc tính trang*): số nhỏ hiện trước. 3 phòng đầu tiên hiện ở trang chủ.
 - Hộp **Thông tin phòng** ở dưới cùng:
 
@@ -216,6 +216,15 @@ Sửa xong bản tiếng Anh của block (dù chỉ để giữ nguyên chữ c�
 2. Thanh bên phải: **Chuyên mục** (Cẩm nang, Ẩm thực…), **Ảnh đại diện** (bắt buộc – hiện trên thẻ bài viết), **Đoạn trích** (1–2 câu tóm tắt).
 3. Ảnh trong bài: luôn điền **Văn bản thay thế (alt)** mô tả ảnh – tốt cho người khiếm thị và SEO. Ở chế độ EN có thể nhập alt và chú thích tiếng Anh.
 4. **Đăng** → bài tự hiện ở trang Blog. Gạt **EN** để dịch nếu muốn khách quốc tế đọc (chưa dịch thì bản EN hiện tiếng Việt).
+
+### Icon cho từng dòng của danh sách
+Mọi danh sách gạch đầu dòng (ở trang, phòng, ưu đãi, bài viết) hiện **một icon trước mỗi dòng** thay cho dấu chấm. Dòng nào chưa chọn icon sẽ dùng **icon lá**. Cách đổi:
+1. Gạt về **VI** (icon dùng chung cho cả 2 ngôn ngữ nên ở chế độ EN nút icon bị khóa).
+2. Bấm vào dòng muốn đổi → trên thanh công cụ nhỏ phía trên, bấm **nút icon** (hình icon đang dùng).
+3. Gõ vài chữ để tìm, tiếng Việt có dấu hoặc không dấu, hoặc tiếng Anh – ví dụ `bơi`, `boi`, `pool` đều ra **Hồ bơi** → bấm icon muốn dùng.
+4. Muốn quay về icon lá: mở lại bảng và bấm **Dùng icon mặc định (lá)**. Nhớ bấm **Lưu**.
+
+Danh sách đánh số (1, 2, 3…) vẫn giữ số, không dùng icon. Icon có màu chính của website – đổi màu chính (mục 4) thì icon đổi theo.
 
 ## 11. Quản lý yêu cầu đặt phòng
 

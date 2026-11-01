@@ -219,6 +219,10 @@ function sgc_demo_terms() {
 				$tid = (int) $res['term_id'];
 			}
 			update_term_meta( $tid, '_sgc_demo', 1 );
+			if ( in_array( $tax, sgc_icon_taxonomies(), true ) && ! get_term_meta( $tid, 'sg_icon', true ) ) {
+				$icon = $term['icon'] ?? sgc_icon_guess( $term['vi'] );
+				update_term_meta( $tid, 'sg_icon', $icon ? $icon : SGC_DEFAULT_ICON );
+			}
 			foreach ( sg_secondary_langs() as $lang ) {
 				if ( ! empty( $term[ $lang ] ) ) {
 					update_term_meta( $tid, sg_en_key( 'name', $lang ), $term[ $lang ] );
@@ -688,7 +692,8 @@ function sgc_demo_blocks( array $lines ) {
 		}
 		$out .= '<!-- wp:list --><ul class="wp-block-list">';
 		foreach ( $list as $item ) {
-			$out .= '<!-- wp:list-item --><li>' . esc_html( $item ) . '</li><!-- /wp:list-item -->';
+			$icon = sgc_icon_guess( $item );
+			$out .= '<!-- wp:list-item' . ( $icon ? ' {"sgIcon":"' . $icon . '"}' : '' ) . ' --><li>' . esc_html( $item ) . '</li><!-- /wp:list-item -->';
 		}
 		$out .= '</ul><!-- /wp:list -->' . "\n\n";
 		$list = array();

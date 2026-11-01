@@ -2,7 +2,7 @@
 /**
  * Plugin Name:       Sunny Grove Booking
  * Description:       Form "Yêu cầu đặt phòng" cho khách sạn: lưu yêu cầu trong trang quản trị, gửi email song ngữ cho khách và khách sạn, chống spam, song ngữ cùng Sunny Grove Core. Hoạt động độc lập với theme.
- * Version:           1.1.0
+ * Version:           1.1.1
  * Requires at least: 6.6
  * Requires PHP:      7.4
  * Author:            Sunny Grove
@@ -14,7 +14,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'SGB_VERSION', '1.1.0' );
+define( 'SGB_VERSION', '1.1.1' );
 define( 'SGB_FILE', __FILE__ );
 define( 'SGB_DIR', plugin_dir_path( __FILE__ ) );
 define( 'SGB_URL', plugin_dir_url( __FILE__ ) );

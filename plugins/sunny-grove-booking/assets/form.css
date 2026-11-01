@@ -112,8 +112,17 @@ textarea.sgb-input { min-height: 96px; resize: vertical; }
 }
 .sgb-compact .sgb-field--submit { grid-column: 1 / -1; justify-content: flex-end; }
 .sgb-compact .sgb-button { width: 100%; }
+/* Nhãn số khách luôn 1 dòng (VD: "Trẻ em (dưới 12 tuổi)"); điện thoại nhỏ: chữ nhãn nhỏ hơn một chút cho vừa cột. */
+.sgb-compact .sgb-field--num label { white-space: nowrap; }
+@media (max-width: 479px) {
+	.sgb-compact .sgb-field label { font-size: .8125rem; }
+}
+@media (max-width: 359px) {
+	.sgb-compact .sgb-field--num label { white-space: normal; }
+}
 @media (min-width: 860px) {
-	.sgb-compact { grid-template-columns: 1.2fr 1.2fr .7fr .7fr auto; align-items: end; padding: 1rem 1rem 1rem 1.25rem; }
+	/* Cột số khách rộng theo nhãn ("Trẻ em (dưới 12 tuổi)" luôn 1 dòng), cột ngày chia phần còn lại. */
+	.sgb-compact { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) max-content max-content auto; align-items: end; padding: 1rem 1rem 1rem 1.25rem; }
 	.sgb-compact .sgb-field--submit { grid-column: auto; }
 	.sgb-compact .sgb-button { width: auto; white-space: nowrap; }
 }

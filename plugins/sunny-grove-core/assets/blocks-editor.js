@@ -176,10 +176,11 @@
 		return [
 			taxSelect( p ),
 			el( c.SelectControl, {
-				key: 's', label: __( 'Kiểu', 'sunny-grove-core' ), value: a.variant,
-				options: options( { checks: __( 'Danh sách có dấu tích', 'sunny-grove-core' ), chips: __( 'Thẻ nhỏ', 'sunny-grove-core' ) } ),
+				key: 's', label: __( 'Kiểu', 'sunny-grove-core' ), value: a.variant === 'checks' ? 'icons' : a.variant,
+				options: options( { icons: __( 'Danh sách có biểu tượng', 'sunny-grove-core' ), compact: __( 'Dạng gọn có biểu tượng (thẻ phòng)', 'sunny-grove-core' ), chips: __( 'Thẻ nhỏ', 'sunny-grove-core' ) } ),
 				onChange: function ( v ) { p.setAttributes( { variant: v } ); }
 			} ),
+			el( c.RangeControl, { key: 'l', label: __( 'Số mục tối đa (0 = tất cả)', 'sunny-grove-core' ), min: 0, max: 20, value: a.limit || 0, onChange: function ( v ) { p.setAttributes( { limit: v || 0 } ); } } ),
 			el( c.ToggleControl, { key: 't', label: __( 'Hiện tiêu đề', 'sunny-grove-core' ), checked: a.showTitle, onChange: function ( v ) { p.setAttributes( { showTitle: v } ); } } )
 		];
 	} );

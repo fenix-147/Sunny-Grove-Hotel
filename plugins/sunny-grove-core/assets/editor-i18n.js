@@ -201,6 +201,16 @@
 				proxy = withCells( proxy, tr.cells );
 			}
 			function setAttributes( changes ) {
+				// Chữ nối dữ liệu (VD: Slogan): chuyển thẳng cho Block Bindings – nguồn tự lưu vào ô EN của cài đặt.
+				var boundChanges = {};
+				Object.keys( changes ).forEach( function ( a ) {
+					if ( bound[ a ] ) {
+						boundChanges[ a ] = changes[ a ];
+					}
+				} );
+				if ( Object.keys( boundChanges ).length ) {
+					props.setAttributes( boundChanges );
+				}
 				var next = Object.assign( {}, attrs[ ATTR ] || {} );
 				var touched = false;
 				Object.keys( s.fields ).forEach( function ( f ) {

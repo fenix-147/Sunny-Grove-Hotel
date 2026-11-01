@@ -85,6 +85,10 @@
 			<wp:meta_key><![CDATA[_sg_en_name]]></wp:meta_key>
 			<wp:meta_value><![CDATA[Private balcony]]></wp:meta_value>
 		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[sg_icon]]></wp:meta_key>
+			<wp:meta_value><![CDATA[balcony]]></wp:meta_value>
+		</wp:termmeta>
 	</wp:term>
 		<wp:term>
 		<wp:term_id>13</wp:term_id>
@@ -99,6 +103,10 @@
 		<wp:termmeta>
 			<wp:meta_key><![CDATA[_sg_en_name]]></wp:meta_key>
 			<wp:meta_value><![CDATA[Bathtub]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[sg_icon]]></wp:meta_key>
+			<wp:meta_value><![CDATA[bath]]></wp:meta_value>
 		</wp:termmeta>
 	</wp:term>
 		<wp:term>
@@ -129,6 +137,10 @@
 		<wp:termmeta>
 			<wp:meta_key><![CDATA[_sg_en_name]]></wp:meta_key>
 			<wp:meta_value><![CDATA[Sea-view window]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[sg_icon]]></wp:meta_key>
+			<wp:meta_value><![CDATA[beach]]></wp:meta_value>
 		</wp:termmeta>
 	</wp:term>
 		<wp:term>
@@ -175,6 +187,10 @@
 			<wp:meta_key><![CDATA[_sg_en_name]]></wp:meta_key>
 			<wp:meta_value><![CDATA[Kids' bunk bed]]></wp:meta_value>
 		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[sg_icon]]></wp:meta_key>
+			<wp:meta_value><![CDATA[bunk]]></wp:meta_value>
+		</wp:termmeta>
 	</wp:term>
 		<wp:term>
 		<wp:term_id>10</wp:term_id>
@@ -190,6 +206,10 @@
 			<wp:meta_key><![CDATA[_sg_en_name]]></wp:meta_key>
 			<wp:meta_value><![CDATA[In-room safe]]></wp:meta_value>
 		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[sg_icon]]></wp:meta_key>
+			<wp:meta_value><![CDATA[safe]]></wp:meta_value>
+		</wp:termmeta>
 	</wp:term>
 		<wp:term>
 		<wp:term_id>5</wp:term_id>
@@ -204,6 +224,10 @@
 		<wp:termmeta>
 			<wp:meta_key><![CDATA[_sg_en_name]]></wp:meta_key>
 			<wp:meta_value><![CDATA[Air conditioning]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[sg_icon]]></wp:meta_key>
+			<wp:meta_value><![CDATA[ac]]></wp:meta_value>
 		</wp:termmeta>
 	</wp:term>
 		<wp:term>
@@ -235,6 +259,10 @@
 			<wp:meta_key><![CDATA[_sg_en_name]]></wp:meta_key>
 			<wp:meta_value><![CDATA[Free baby cot]]></wp:meta_value>
 		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[sg_icon]]></wp:meta_key>
+			<wp:meta_value><![CDATA[crib]]></wp:meta_value>
+		</wp:termmeta>
 	</wp:term>
 		<wp:term>
 		<wp:term_id>19</wp:term_id>
@@ -265,6 +293,10 @@
 			<wp:meta_key><![CDATA[_sg_en_name]]></wp:meta_key>
 			<wp:meta_value><![CDATA[Smart TV]]></wp:meta_value>
 		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[sg_icon]]></wp:meta_key>
+			<wp:meta_value><![CDATA[tv]]></wp:meta_value>
+		</wp:termmeta>
 	</wp:term>
 		<wp:term>
 		<wp:term_id>15</wp:term_id>
@@ -279,6 +311,10 @@
 		<wp:termmeta>
 			<wp:meta_key><![CDATA[_sg_en_name]]></wp:meta_key>
 			<wp:meta_value><![CDATA[Sofa bed]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[sg_icon]]></wp:meta_key>
+			<wp:meta_value><![CDATA[sofa]]></wp:meta_value>
 		</wp:termmeta>
 	</wp:term>
 		<wp:term>
@@ -295,6 +331,10 @@
 			<wp:meta_key><![CDATA[_sg_en_name]]></wp:meta_key>
 			<wp:meta_value><![CDATA[Mini fridge]]></wp:meta_value>
 		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[sg_icon]]></wp:meta_key>
+			<wp:meta_value><![CDATA[fridge]]></wp:meta_value>
+		</wp:termmeta>
 	</wp:term>
 		<wp:term>
 		<wp:term_id>6</wp:term_id>
@@ -309,6 +349,10 @@
 		<wp:termmeta>
 			<wp:meta_key><![CDATA[_sg_en_name]]></wp:meta_key>
 			<wp:meta_value><![CDATA[Fast Wi-Fi]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[sg_icon]]></wp:meta_key>
+			<wp:meta_value><![CDATA[wifi]]></wp:meta_value>
 		</wp:termmeta>
 	</wp:term>
 		<wp:term>
@@ -339,6 +383,10 @@
 		<wp:termmeta>
 			<wp:meta_key><![CDATA[_sg_en_name]]></wp:meta_key>
 			<wp:meta_value><![CDATA[Kettle, tea & coffee]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[sg_icon]]></wp:meta_key>
+			<wp:meta_value><![CDATA[coffee]]></wp:meta_value>
 		</wp:termmeta>
 	</wp:term>
 			<wp:term><wp:term_id>23</wp:term_id><wp:term_taxonomy>nav_menu</wp:term_taxonomy><wp:term_slug><![CDATA[menu-chan-trang]]></wp:term_slug><wp:term_name><![CDATA[Menu chân trang]]></wp:term_name>
@@ -2466,16 +2514,16 @@
 <p class="sg-lead">“Grove” là lùm cây xanh mát. Chúng tôi giữ lại những tán dừa, bụi dâm bụt và lối đi rợp bóng để mỗi buổi sáng, cả nhà thức dậy với tiếng chim và mùi biển.</p>
 <!-- /wp:paragraph -->
 
-<!-- wp:list {"className":"is-style-sg-checks"} -->
-<ul class="wp-block-list is-style-sg-checks"><!-- wp:list-item {"sgEn":{"content":"Spacious rooms with extra beds and free baby cots","h":"d970dc99"}} -->
+<!-- wp:list -->
+<ul class="wp-block-list"><!-- wp:list-item {"sgEn":{"content":"Spacious rooms with extra beds and free baby cots","h":"d970dc99"},"sgIcon":"bed"} -->
 <li>Phòng rộng, có giường phụ và nôi em bé miễn phí</li>
 <!-- /wp:list-item -->
 
-<!-- wp:list-item {"sgEn":{"content":"A kids’ menu and a delicious breakfast every day","h":"0fd738a4"}} -->
+<!-- wp:list-item {"sgEn":{"content":"A kids’ menu and a delicious breakfast every day","h":"0fd738a4"},"sgIcon":"dining"} -->
 <li>Thực đơn trẻ em và bữa sáng ngon miệng mỗi ngày</li>
 <!-- /wp:list-item -->
 
-<!-- wp:list-item {"sgEn":{"content":"Friendly staff who speak Vietnamese and English","h":"416b0d20"}} -->
+<!-- wp:list-item {"sgEn":{"content":"Friendly staff who speak Vietnamese and English","h":"416b0d20"},"sgIcon":"greeting"} -->
 <li>Nhân viên thân thiện, nói tiếng Việt và tiếng Anh</li>
 <!-- /wp:list-item --></ul>
 <!-- /wp:list -->
@@ -2497,6 +2545,7 @@
 <!-- wp:sunny-grove/post-terms-list {"taxonomy":"sg_guest_type","variant":"chips"} /-->
 <!-- wp:post-title {"level":3,"isLink":true} /-->
 <!-- wp:sunny-grove/room-facts {"compact":true} /-->
+<!-- wp:sunny-grove/post-terms-list {"taxonomy":"sg_room_feature","variant":"compact","limit":4} /-->
 <!-- wp:group {"className":"sg-card__footer","layout":{"type":"flex","flexWrap":"wrap","justifyContent":"space-between"}} --><div class="wp-block-group sg-card__footer">
 <!-- wp:paragraph {"metadata":{"bindings":{"content":{"source":"sunny-grove/meta","args":{"key":"price"}}}},"className":"sg-price"} --><p class="sg-price"></p><!-- /wp:paragraph -->
 <!-- wp:buttons {"layout":{"type":"flex","justifyContent":"left"}} --><div class="wp-block-buttons"><!-- wp:button {"className":"is-style-outline","metadata":{"bindings":{"text":{"source":"sunny-grove/label","args":{"key":"read_more"}},"url":{"source":"sunny-grove/meta","args":{"key":"permalink"}}}}} --><div class="wp-block-button is-style-outline"><a class="wp-block-button__link wp-element-button"></a></div><!-- /wp:button --></div><!-- /wp:buttons -->
@@ -2641,6 +2690,7 @@
 <!-- wp:sunny-grove/post-terms-list {"taxonomy":"sg_guest_type","variant":"chips"} /-->
 <!-- wp:post-title {"level":3,"isLink":true} /-->
 <!-- wp:sunny-grove/room-facts {"compact":true} /-->
+<!-- wp:sunny-grove/post-terms-list {"taxonomy":"sg_room_feature","variant":"compact","limit":4} /-->
 <!-- wp:group {"className":"sg-card__footer","layout":{"type":"flex","flexWrap":"wrap","justifyContent":"space-between"}} --><div class="wp-block-group sg-card__footer">
 <!-- wp:paragraph {"metadata":{"bindings":{"content":{"source":"sunny-grove/meta","args":{"key":"price"}}}},"className":"sg-price"} --><p class="sg-price"></p><!-- /wp:paragraph -->
 <!-- wp:buttons {"layout":{"type":"flex","justifyContent":"left"}} --><div class="wp-block-buttons"><!-- wp:button {"className":"is-style-outline","metadata":{"bindings":{"text":{"source":"sunny-grove/label","args":{"key":"read_more"}},"url":{"source":"sunny-grove/meta","args":{"key":"permalink"}}}}} --><div class="wp-block-button is-style-outline"><a class="wp-block-button__link wp-element-button"></a></div><!-- /wp:button --></div><!-- /wp:buttons -->
@@ -3139,20 +3189,20 @@
 <h3 class="wp-block-heading">Vì sao nên đặt trực tiếp?</h3>
 <!-- /wp:heading -->
 
-<!-- wp:list {"className":"is-style-sg-checks"} -->
-<ul class="wp-block-list is-style-sg-checks"><!-- wp:list-item {"sgEn":{"content":"Best price, no middleman","h":"fbb0dad3"}} -->
+<!-- wp:list -->
+<ul class="wp-block-list"><!-- wp:list-item {"sgEn":{"content":"Best price, no middleman","h":"fbb0dad3"},"sgIcon":"voucher"} -->
 <li>Giá tốt nhất, không qua trung gian</li>
 <!-- /wp:list-item -->
 
-<!-- wp:list-item {"sgEn":{"content":"No payment now – we call you to confirm","h":"878b667d"}} -->
+<!-- wp:list-item {"sgEn":{"content":"No payment now – we call you to confirm","h":"878b667d"},"sgIcon":"phone"} -->
 <li>Chưa cần thanh toán – chúng tôi gọi lại xác nhận</li>
 <!-- /wp:list-item -->
 
-<!-- wp:list-item {"sgEn":{"content":"Pay at the hotel or by bank-transfer deposit","h":"c64c4c9d"}} -->
+<!-- wp:list-item {"sgEn":{"content":"Pay at the hotel or by bank-transfer deposit","h":"c64c4c9d"},"sgIcon":"card"} -->
 <li>Thanh toán tại khách sạn hoặc chuyển khoản đặt cọc</li>
 <!-- /wp:list-item -->
 
-<!-- wp:list-item {"sgEn":{"content":"Baby cots and extra beds ready on arrival","h":"bc5a72f9"}} -->
+<!-- wp:list-item {"sgEn":{"content":"Baby cots and extra beds ready on arrival","h":"bc5a72f9"},"sgIcon":"crib"} -->
 <li>Nôi em bé, giường phụ được chuẩn bị sẵn</li>
 <!-- /wp:list-item --></ul>
 <!-- /wp:list -->
@@ -5393,7 +5443,7 @@
 		<description></description>
 		<content:encoded><![CDATA[<!-- wp:paragraph {"sgEn":{"content":"Phu Quoc food isn\u0026#039;t only spicy seafood. Plenty of dishes are mild and sweet, and kids love them.","h":"9ce94667"}} --><p>Ẩm thực Phú Quốc không chỉ có hải sản cay nồng. Rất nhiều món nhẹ nhàng, ngọt thanh mà bé ăn rất ngon miệng.</p><!-- /wp:paragraph -->
 
-<!-- wp:list --><ul class="wp-block-list"><!-- wp:list-item {"sgEn":{"content":"Bun quay: fresh noodles with springy fish cake","h":"e294858b"}} --><li>Bún quậy: sợi bún tươi, chả cá dai ngọt</li><!-- /wp:list-item --><!-- wp:list-item {"sgEn":{"content":"Crab noodle soup with a light broth","h":"d635ddf0"}} --><li>Bánh canh ghẹ: nước dùng thanh, thịt ghẹ chắc</li><!-- /wp:list-item --><!-- wp:list-item {"sgEn":{"content":"Rolled ice cream at the night market","h":"a5f5c088"}} --><li>Kem cuộn chợ đêm: vừa ăn vừa xem làm kem</li><!-- /wp:list-item --><!-- wp:list-item {"sgEn":{"content":"Grilled sea urchin with scallion oil (for the parents!)","h":"3f49c65e"}} --><li>Nhum nướng mỡ hành (cho ba mẹ!)</li><!-- /wp:list-item --><!-- wp:list-item {"sgEn":{"content":"Grilled rice paper \u0026#039;Vietnamese pizza\u0026#039;","h":"5f5315fa"}} --><li>Bánh tráng nướng</li><!-- /wp:list-item --><!-- wp:list-item {"sgEn":{"content":"Coconut and mango smoothies","h":"98386efb"}} --><li>Sinh tố dừa, xoài</li><!-- /wp:list-item --><!-- wp:list-item {"sgEn":{"content":"Chicken grilled with basil leaves","h":"2f3463ab"}} --><li>Gà nướng lá é</li><!-- /wp:list-item --></ul><!-- /wp:list -->
+<!-- wp:list --><ul class="wp-block-list"><!-- wp:list-item {"sgEn":{"content":"Bun quay: fresh noodles with springy fish cake","h":"e294858b"},"sgIcon":"bowl"} --><li>Bún quậy: sợi bún tươi, chả cá dai ngọt</li><!-- /wp:list-item --><!-- wp:list-item {"sgEn":{"content":"Crab noodle soup with a light broth","h":"d635ddf0"},"sgIcon":"bowl"} --><li>Bánh canh ghẹ: nước dùng thanh, thịt ghẹ chắc</li><!-- /wp:list-item --><!-- wp:list-item {"sgEn":{"content":"Rolled ice cream at the night market","h":"a5f5c088"},"sgIcon":"icecream"} --><li>Kem cuộn chợ đêm: vừa ăn vừa xem làm kem</li><!-- /wp:list-item --><!-- wp:list-item {"sgEn":{"content":"Grilled sea urchin with scallion oil (for the parents!)","h":"3f49c65e"},"sgIcon":"fire"} --><li>Nhum nướng mỡ hành (cho ba mẹ!)</li><!-- /wp:list-item --><!-- wp:list-item {"sgEn":{"content":"Grilled rice paper \u0026#039;Vietnamese pizza\u0026#039;","h":"5f5315fa"},"sgIcon":"fire"} --><li>Bánh tráng nướng</li><!-- /wp:list-item --><!-- wp:list-item {"sgEn":{"content":"Coconut and mango smoothies","h":"98386efb"},"sgIcon":"juice"} --><li>Sinh tố dừa, xoài</li><!-- /wp:list-item --><!-- wp:list-item {"sgEn":{"content":"Chicken grilled with basil leaves","h":"2f3463ab"},"sgIcon":"fire"} --><li>Gà nướng lá é</li><!-- /wp:list-item --></ul><!-- /wp:list -->
 
 <!-- wp:paragraph {"sgEn":{"content":"Tip: ask for \u0026#039;less spicy\u0026#039; and check prices before ordering seafood sold by weight.","h":"685c64c6"}} --><p>Mẹo: gọi món ít cay và hỏi giá trước khi gọi hải sản tính theo cân.</p><!-- /wp:paragraph -->
 
@@ -5555,7 +5605,7 @@
 
 <!-- wp:heading {"sgEn":{"content":"Perfect for","h":"18aa6c90"}} --><h2 class="wp-block-heading">Phù hợp với</h2><!-- /wp:heading -->
 
-<!-- wp:list --><ul class="wp-block-list"><!-- wp:list-item {"sgEn":{"content":"Families of 2 adults and 2 children","h":"b3ac2123"}} --><li>Gia đình 2 người lớn và 2 trẻ em</li><!-- /wp:list-item --><!-- wp:list-item {"sgEn":{"content":"Families with toddlers who need a quiet space","h":"bc81b262"}} --><li>Gia đình có bé nhỏ cần không gian yên tĩnh</li><!-- /wp:list-item --><!-- wp:list-item {"sgEn":{"content":"Guests who love a morning garden stroll","h":"a0225a79"}} --><li>Khách thích dạo vườn buổi sáng</li><!-- /wp:list-item --></ul><!-- /wp:list -->
+<!-- wp:list --><ul class="wp-block-list"><!-- wp:list-item {"sgEn":{"content":"Families of 2 adults and 2 children","h":"b3ac2123"},"sgIcon":"family"} --><li>Gia đình 2 người lớn và 2 trẻ em</li><!-- /wp:list-item --><!-- wp:list-item {"sgEn":{"content":"Families with toddlers who need a quiet space","h":"bc81b262"},"sgIcon":"family"} --><li>Gia đình có bé nhỏ cần không gian yên tĩnh</li><!-- /wp:list-item --><!-- wp:list-item {"sgEn":{"content":"Guests who love a morning garden stroll","h":"a0225a79"},"sgIcon":"leaf"} --><li>Khách thích dạo vườn buổi sáng</li><!-- /wp:list-item --></ul><!-- /wp:list -->
 
 ]]></content:encoded>
 		<excerpt:encoded><![CDATA[Phòng gia đình 35m² nhìn ra vườn, có giường tầng cho bé – lựa chọn yêu thích của các gia đình trẻ.]]></excerpt:encoded>
@@ -5664,7 +5714,7 @@
 
 <!-- wp:heading {"sgEn":{"content":"Highlights","h":"058f7063"}} --><h2 class="wp-block-heading">Điểm cộng</h2><!-- /wp:heading -->
 
-<!-- wp:list --><ul class="wp-block-list"><!-- wp:list-item {"sgEn":{"content":"A bathtub for splash time","h":"4d9d9948"}} --><li>Bồn tắm cho bé nghịch nước</li><!-- /wp:list-item --><!-- wp:list-item {"sgEn":{"content":"Private balcony with child-safe door","h":"04a2ed22"}} --><li>Ban công riêng, cửa an toàn cho trẻ</li><!-- /wp:list-item --><!-- wp:list-item {"sgEn":{"content":"Sleeps 4 adults + 2 children","h":"a2160413"}} --><li>Ở được 4 người lớn + 2 trẻ em</li><!-- /wp:list-item --></ul><!-- /wp:list -->
+<!-- wp:list --><ul class="wp-block-list"><!-- wp:list-item {"sgEn":{"content":"A bathtub for splash time","h":"4d9d9948"},"sgIcon":"bath"} --><li>Bồn tắm cho bé nghịch nước</li><!-- /wp:list-item --><!-- wp:list-item {"sgEn":{"content":"Private balcony with child-safe door","h":"04a2ed22"},"sgIcon":"balcony"} --><li>Ban công riêng, cửa an toàn cho trẻ</li><!-- /wp:list-item --><!-- wp:list-item {"sgEn":{"content":"Sleeps 4 adults + 2 children","h":"a2160413"},"sgIcon":"family"} --><li>Ở được 4 người lớn + 2 trẻ em</li><!-- /wp:list-item --></ul><!-- /wp:list -->
 
 ]]></content:encoded>
 		<excerpt:encoded><![CDATA[Căn suite 55m² với 2 phòng ngủ riêng và ban công – rộng rãi cho đại gia đình hoặc ông bà đi cùng.]]></excerpt:encoded>
@@ -5780,7 +5830,7 @@
 
 <!-- wp:heading {"sgEn":{"content":"Tips","h":"961375ea"}} --><h2 class="wp-block-heading">Gợi ý</h2><!-- /wp:heading -->
 
-<!-- wp:list --><ul class="wp-block-list"><!-- wp:list-item {"sgEn":{"content":"Add a romantic dinner in the garden","h":"6da281e3"}} --><li>Đặt kèm bữa tối lãng mạn trong vườn</li><!-- /wp:list-item --><!-- wp:list-item {"sgEn":{"content":"Lovely for anniversaries and honeymoons","h":"81bfef5d"}} --><li>Phù hợp kỷ niệm ngày cưới, tuần trăng mật</li><!-- /wp:list-item --></ul><!-- /wp:list -->
+<!-- wp:list --><ul class="wp-block-list"><!-- wp:list-item {"sgEn":{"content":"Add a romantic dinner in the garden","h":"6da281e3"},"sgIcon":"dining"} --><li>Đặt kèm bữa tối lãng mạn trong vườn</li><!-- /wp:list-item --><!-- wp:list-item {"sgEn":{"content":"Lovely for anniversaries and honeymoons","h":"81bfef5d"},"sgIcon":"heart"} --><li>Phù hợp kỷ niệm ngày cưới, tuần trăng mật</li><!-- /wp:list-item --></ul><!-- /wp:list -->
 
 ]]></content:encoded>
 		<excerpt:encoded><![CDATA[Phòng đôi 30m² nhìn biển, ban công đón hoàng hôn – dành riêng cho hai người.]]></excerpt:encoded>
@@ -5890,7 +5940,7 @@
 
 <!-- wp:heading {"sgEn":{"content":"Great for","h":"18aa6c90"}} --><h2 class="wp-block-heading">Phù hợp với</h2><!-- /wp:heading -->
 
-<!-- wp:list --><ul class="wp-block-list"><!-- wp:list-item {"sgEn":{"content":"Groups of 4 friends","h":"da927fc5"}} --><li>Nhóm 4 người bạn</li><!-- /wp:list-item --><!-- wp:list-item {"sgEn":{"content":"Families with older kids","h":"ee6ef978"}} --><li>Gia đình có con lớn</li><!-- /wp:list-item --></ul><!-- /wp:list -->
+<!-- wp:list --><ul class="wp-block-list"><!-- wp:list-item {"sgEn":{"content":"Groups of 4 friends","h":"da927fc5"},"sgIcon":"users"} --><li>Nhóm 4 người bạn</li><!-- /wp:list-item --><!-- wp:list-item {"sgEn":{"content":"Families with older kids","h":"ee6ef978"},"sgIcon":"family"} --><li>Gia đình có con lớn</li><!-- /wp:list-item --></ul><!-- /wp:list -->
 
 ]]></content:encoded>
 		<excerpt:encoded><![CDATA[Phòng 40m² với 2 giường đôi cho nhóm 4 người – rộng, sáng và tiết kiệm.]]></excerpt:encoded>

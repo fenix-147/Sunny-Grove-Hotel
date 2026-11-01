@@ -2,7 +2,7 @@
 /**
  * Plugin Name:       Sunny Grove Core
  * Description:       Dữ liệu của khách sạn Sunny Grove: Phòng, Tiện ích, Địa điểm, Ưu đãi, thông tin liên hệ, nhãn hiển thị, các block động và nút chat nổi.
- * Version:           1.0.4
+ * Version:           1.0.5
  * Requires at least: 6.6
  * Requires PHP:      7.4
  * Author:            Sunny Grove
@@ -14,7 +14,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'SGC_VERSION', '1.0.4' );
+define( 'SGC_VERSION', '1.0.5' );
 define( 'SGC_FILE', __FILE__ );
 define( 'SGC_DIR', plugin_dir_path( __FILE__ ) );
 define( 'SGC_URL', plugin_dir_url( __FILE__ ) );
@@ -22,10 +22,13 @@ define( 'SGC_URL', plugin_dir_url( __FILE__ ) );
 require_once SGC_DIR . 'includes/helpers.php';
 require_once SGC_DIR . 'includes/i18n.php';
 require_once SGC_DIR . 'includes/icons.php';
+require_once SGC_DIR . 'includes/list-icons.php';
 require_once SGC_DIR . 'includes/post-types.php';
 require_once SGC_DIR . 'includes/meta.php';
 require_once SGC_DIR . 'includes/settings.php';
 require_once SGC_DIR . 'includes/bindings.php';
+require_once SGC_DIR . 'includes/bound-edit.php';
+require_once SGC_DIR . 'includes/text-wrap.php';
 require_once SGC_DIR . 'includes/blocks.php';
 require_once SGC_DIR . 'includes/query.php';
 require_once SGC_DIR . 'includes/editor.php';

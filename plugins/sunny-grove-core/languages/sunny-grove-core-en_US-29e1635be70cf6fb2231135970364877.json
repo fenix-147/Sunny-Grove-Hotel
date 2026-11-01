@@ -111,9 +111,6 @@
 			"Kiểu": [
 				"Style"
 			],
-			"Danh sách có dấu tích": [
-				"Checklist"
-			],
 			"Thẻ nhỏ": [
 				"Small tags"
 			],
@@ -191,6 +188,15 @@
 			],
 			"Thêm/sửa đánh giá ở menu Đánh giá.": [
 				"Add or edit reviews under the Reviews menu."
+			],
+			"Danh sách có biểu tượng": [
+				"Icon list"
+			],
+			"Dạng gọn có biểu tượng (thẻ phòng)": [
+				"Compact with icons (room card)"
+			],
+			"Số mục tối đa (0 = tất cả)": [
+				"Maximum items (0 = all)"
 			]
 		}
 	}

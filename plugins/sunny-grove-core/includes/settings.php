@@ -156,7 +156,7 @@ function sgc_settings_input( $name, $field, $value, $lang = '' ) {
 	$lang_att = $lang ? ' lang="' . esc_attr( sg_languages()[ $lang ]['locale'] ?? $lang ) . '"' : '';
 	switch ( $type ) {
 		case 'textarea':
-			printf( '<textarea name="%1$s" class="large-text" rows="3"%3$s>%2$s</textarea>', esc_attr( $name ), esc_textarea( $value ), $lang_att ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			printf( '<textarea name="%1$s" class="large-text" rows="%4$d"%3$s>%2$s</textarea>', esc_attr( $name ), esc_textarea( $value ), $lang_att, (int) ( $field['rows'] ?? 3 ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			break;
 		case 'checkbox':
 			printf( '<input type="hidden" name="%1$s" value="0"><label><input type="checkbox" name="%1$s" value="1" %2$s> %3$s</label>', esc_attr( $name ), checked( $value, '1', false ), esc_html__( 'Bật', 'sunny-grove-core' ) );
@@ -197,9 +197,10 @@ function sgc_settings_input( $name, $field, $value, $lang = '' ) {
  * @param string   $label  Tên trường.
  * @param callable $render Hàm in ô nhập cho một ngôn ngữ: fn( $lang ).
  * @param string   $help   Hướng dẫn.
+ * @param string   $id     Mã neo của hàng (để link "sửa tại đây" trong trình soạn thảo mở đúng ô).
  */
-function sgc_settings_bilingual_row( $label, $render, $help = '' ) {
-	echo '<tr><th scope="row">' . esc_html( $label );
+function sgc_settings_bilingual_row( $label, $render, $help = '', $id = '' ) {
+	echo '<tr' . ( $id ? ' id="' . esc_attr( $id ) . '" class="sgc-anchor"' : '' ) . '><th scope="row">' . esc_html( $label );
 	if ( $help ) {
 		echo '<p class="description">' . esc_html( $help ) . '</p>';
 	}
@@ -272,7 +273,8 @@ function sgc_render_hotel_page() {
 			static function ( $lang ) use ( $key, $field ) {
 				sgc_settings_input( 'sgc_i18n[' . $lang . '][' . $key . ']', $field, sgc_hotel( $key, $lang ), $lang );
 			},
-			$field['help'] ?? ''
+			$field['help'] ?? '',
+			'sgc-field-' . $key
 		);
 	}
 	echo '</table>';
@@ -280,7 +282,7 @@ function sgc_render_hotel_page() {
 	echo '<h2 class="sgc-group-title">' . esc_html__( 'Thông tin chung (dùng cho mọi ngôn ngữ)', 'sunny-grove-core' ) . '</h2>';
 	echo '<table class="form-table" role="presentation">';
 	foreach ( $hotel['general'] as $key => $field ) {
-		echo '<tr><th scope="row">' . esc_html( $field['label'] ) . '</th><td>';
+		echo '<tr id="sgc-field-' . esc_attr( $key ) . '" class="sgc-anchor"><th scope="row">' . esc_html( $field['label'] ) . '</th><td>';
 		sgc_settings_input( 'sgc_general[' . $key . ']', $field, sgc_hotel( $key ) );
 		echo '</td></tr>';
 	}
@@ -313,7 +315,9 @@ function sgc_render_labels_page() {
 				static function ( $lang ) use ( $key, $field, $labels ) {
 					$value = $labels[ $lang ][ $key ] ?? sgc_default_for_lang( $field, $lang );
 					sgc_settings_input( 'sgc_labels[' . $lang . '][' . $key . ']', array(), $value, $lang );
-				}
+				},
+				'',
+				'sgc-label-' . $key
 			);
 		}
 		echo '</table>';

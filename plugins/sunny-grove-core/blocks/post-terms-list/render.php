@@ -1,6 +1,7 @@
 <?php
 /**
  * Danh sách tiện nghi / nhãn của bài.
+ * Kiểu "icons" / "compact": mỗi mục có icon riêng (icon của tiện nghi, chưa chọn → lá). Kiểu "chips": thẻ nhỏ.
  *
  * @package SunnyGroveCore
  * @var array    $attributes
@@ -15,8 +16,13 @@ $sgc_terms   = $sgc_post_id && taxonomy_exists( $sgc_tax ) ? get_the_terms( $sgc
 if ( ! $sgc_terms || is_wp_error( $sgc_terms ) ) {
 	return;
 }
-$sgc_style = 'chips' === $attributes['variant'] ? 'chips' : 'checks';
-$sgc_wrap  = get_block_wrapper_attributes( array( 'class' => 'sg-terms sg-terms--' . $sgc_style ) );
+$sgc_limit = (int) ( $attributes['limit'] ?? 0 );
+if ( $sgc_limit > 0 ) {
+	$sgc_terms = array_slice( $sgc_terms, 0, $sgc_limit );
+}
+$sgc_style = in_array( $attributes['variant'], array( 'chips', 'compact' ), true ) ? $attributes['variant'] : 'icons';
+$sgc_class = 'sg-terms sg-terms--' . $sgc_style . ( 'compact' === $sgc_style ? ' sg-terms--icons' : '' );
+$sgc_wrap  = get_block_wrapper_attributes( array( 'class' => $sgc_class ) );
 ?>
 <div <?php echo $sgc_wrap; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
 	<?php if ( $attributes['showTitle'] && 'sg_room_feature' === $sgc_tax ) : ?>
@@ -26,10 +32,10 @@ $sgc_wrap  = get_block_wrapper_attributes( array( 'class' => 'sg-terms sg-terms-
 		<?php foreach ( $sgc_terms as $sgc_term ) : ?>
 			<li class="sg-terms__item">
 				<?php
-				if ( 'checks' === $sgc_style ) {
-					echo sgc_icon( 'check', 18 ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+				if ( 'chips' !== $sgc_style ) {
+					echo sgc_icon( sgc_term_icon( $sgc_term->term_id ), 'compact' === $sgc_style ? 18 : 20 ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 				}
-				echo esc_html( $sgc_term->name );
+				echo '<span>' . esc_html( $sgc_term->name ) . '</span>';
 				?>
 			</li>
 		<?php endforeach; ?>

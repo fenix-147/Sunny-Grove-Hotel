@@ -5,12 +5,13 @@
 	"title": "Danh sách tiện nghi / nhãn",
 	"category": "sunny-grove",
 	"icon": "yes-alt",
-	"description": "Hiển thị các mục đã tích (ví dụ tiện nghi trong phòng, nhãn địa điểm) dưới dạng danh sách có dấu tích hoặc thẻ nhỏ.",
+	"description": "Hiển thị các mục đã tích (ví dụ tiện nghi trong phòng, nhãn địa điểm) dưới dạng danh sách có biểu tượng hoặc thẻ nhỏ.",
 	"textdomain": "sunny-grove-core",
 	"usesContext": [ "postId", "postType" ],
 	"attributes": {
 		"taxonomy": { "type": "string", "default": "sg_room_feature" },
-		"variant": { "type": "string", "default": "checks", "enum": [ "checks", "chips" ] },
+		"variant": { "type": "string", "default": "icons", "enum": [ "icons", "compact", "chips", "checks" ] },
+		"limit": { "type": "integer", "default": 0 },
 		"showTitle": { "type": "boolean", "default": false }
 	},
 	"supports": { "html": false, "spacing": { "margin": true } },

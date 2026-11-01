@@ -1,0 +1,13 @@
+/*
+ * Khung soạn thảo: block lấy chữ từ cài đặt / thông tin bài (Block Bindings) có viền nét đứt.
+ * - Xanh ngọc: gõ trực tiếp được (lưu ngược về cài đặt khi bấm Lưu).
+ * - Cam: chỉ xem – bấm block để thấy link "sửa tại đây".
+ */
+.sg-bound {
+	outline: 1.5px dashed rgba(217, 119, 6, .8);
+	outline-offset: 3px;
+	border-radius: 2px;
+}
+.sg-bound.sg-bound--editable { outline-color: rgba(31, 163, 163, .95); }
+/* Khi đang chọn block, WordPress tự vẽ viền chọn – giữ nét đứt mờ đi để không chồng nhau. */
+.sg-bound.is-selected { outline-offset: 6px; }

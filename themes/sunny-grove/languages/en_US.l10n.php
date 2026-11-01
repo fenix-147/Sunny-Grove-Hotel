@@ -35,7 +35,6 @@ return array(
 		'Chúng tôi luôn ở đây' => 'We are always here for you',
 		'Có mặt lúc 17:30 để chọn chỗ đẹp, sau đó xem show Nụ Hôn Của Biển.' => 'Arrive by 5:30 pm for a good spot, then stay for the Kiss of the Sea show.',
 		'Combo gia đình, ở dài ngày và đặt sớm – áp dụng khi đặt trực tiếp với Sunny Grove.' => 'Family combos, long-stay and early-bird deals – when you book directly with Sunny Grove.',
-		'Danh sách dấu tích' => 'Check list',
 		'Đặt phòng' => 'Book now',
 		'Đặt trực tiếp với khách sạn để có giá tốt nhất và quà nhỏ cho bé.' => 'Book direct for the best rate and a little gift for the kids.',
 		'Để lại lời nhắn, chúng tôi sẽ phản hồi qua email hoặc điện thoại trong ngày.' => 'Leave us a message and we will reply by email or phone the same day.',

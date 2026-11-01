@@ -41,16 +41,16 @@ echo sunny_grove_section_open(); // phpcs:ignore WordPress.Security.EscapeOutput
 <p class="sg-lead"><?php esc_html_e( '“Grove” là lùm cây xanh mát. Chúng tôi giữ lại những tán dừa, bụi dâm bụt và lối đi rợp bóng để mỗi buổi sáng, cả nhà thức dậy với tiếng chim và mùi biển.', 'sunny-grove' ); ?></p>
 <!-- /wp:paragraph -->
 
-<!-- wp:list {"className":"is-style-sg-checks"} -->
-<ul class="wp-block-list is-style-sg-checks"><!-- wp:list-item -->
+<!-- wp:list -->
+<ul class="wp-block-list"><!-- wp:list-item {"sgIcon":"bed"} -->
 <li><?php esc_html_e( 'Phòng rộng, có giường phụ và nôi em bé miễn phí', 'sunny-grove' ); ?></li>
 <!-- /wp:list-item -->
 
-<!-- wp:list-item -->
+<!-- wp:list-item {"sgIcon":"dining"} -->
 <li><?php esc_html_e( 'Thực đơn trẻ em và bữa sáng ngon miệng mỗi ngày', 'sunny-grove' ); ?></li>
 <!-- /wp:list-item -->
 
-<!-- wp:list-item -->
+<!-- wp:list-item {"sgIcon":"greeting"} -->
 <li><?php esc_html_e( 'Nhân viên thân thiện, nói tiếng Việt và tiếng Anh', 'sunny-grove' ); ?></li>
 <!-- /wp:list-item --></ul>
 <!-- /wp:list -->
