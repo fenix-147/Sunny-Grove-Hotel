@@ -16,7 +16,7 @@ echo sunny_grove_banner( // phpcs:ignore WordPress.Security.EscapeOutput.OutputN
 		'media'   => 'banner-rooms',
 		'video'   => 'video:rooms',
 		'eyebrow' => __( 'Phòng & Giá', 'sunny-grove' ),
-		'title'   => __( 'Ngủ ngon giữa vườn xanh', 'sunny-grove' ),
+		'title'   => __( 'Ngủ ngon|giữa vườn xanh', 'sunny-grove' ),
 		'text'    => __( 'Chọn nhóm khách để xem phòng phù hợp. Giá đã gồm bữa sáng cho cả nhà.', 'sunny-grove' ),
 	)
 );

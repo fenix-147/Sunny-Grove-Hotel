@@ -16,7 +16,7 @@ echo sunny_grove_banner( // phpcs:ignore WordPress.Security.EscapeOutput.OutputN
 		'media'   => 'banner-amenities',
 		'video'   => 'video:amenities',
 		'eyebrow' => __( 'Tiện ích', 'sunny-grove' ),
-		'title'   => __( 'Ngày nào cũng có trò vui', 'sunny-grove' ),
+		'title'   => __( 'Ngày nào cũng|có trò vui', 'sunny-grove' ),
 		'text'    => __( 'Hồ bơi, Kids Club, nhà hàng, vườn nhiệt đới và các dịch vụ giúp chuyến đi nhẹ nhàng hơn.', 'sunny-grove' ),
 	)
 );

@@ -13,7 +13,7 @@ echo sunny_grove_section_open( '', 'sg-section--tight' ); // phpcs:ignore WordPr
 ?>
 <!-- wp:sunny-grove/term-filter {"taxonomy":"sg_guest_type","align":"wide"} /-->
 <?php
-echo sunny_grove_query_open( 'sg_room', 30, array( 'type' => 'default' ), 'sg-grid' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+echo sunny_grove_query_open( 'sg_room', 30, array( 'type' => 'default' ), 'sg-grid sg-grid--rooms' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 echo sunny_grove_room_card(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 echo sunny_grove_query_close(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 echo sunny_grove_section_close(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped

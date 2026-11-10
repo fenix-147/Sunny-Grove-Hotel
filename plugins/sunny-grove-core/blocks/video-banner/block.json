@@ -14,6 +14,7 @@
 		"posterId": { "type": "number", "default": 0 },
 		"posterUrl": { "type": "string", "default": "" },
 		"overlay": { "type": "number", "default": 35 },
+		"focalPoint": { "type": "object", "default": { "x": 0.5, "y": 0.65 } },
 		"height": { "type": "string", "default": "large", "enum": [ "full", "large", "medium", "small" ] },
 		"contentPosition": { "type": "string", "default": "center", "enum": [ "center", "bottom" ] },
 		"align": { "type": "string", "default": "full" }

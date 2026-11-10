@@ -27,9 +27,15 @@ $sgc_img   = get_the_post_thumbnail(
 );
 // Nhãn trên ảnh: ưu đãi ("-15%"), "Thân thiện với bé" (phòng có chỗ cho trẻ em) hoặc khoảng cách (địa điểm).
 $sgc_badge      = '';
-$sgc_badge_type = in_array( $attributes['badgeType'] ?? 'offer', array( 'offer', 'kids', 'distance' ), true ) ? $attributes['badgeType'] : 'offer';
+$sgc_badge_type = in_array( $attributes['badgeType'] ?? 'offer', array( 'offer', 'kids', 'distance', 'type' ), true ) ? $attributes['badgeType'] : 'offer';
 if ( $attributes['showBadge'] ) {
-	if ( 'kids' === $sgc_badge_type ) {
+	if ( 'type' === $sgc_badge_type ) {
+		// Nhãn loại phòng (Gia đình / Cặp đôi / Nhóm bạn) – nền đặc theo "Màu nhãn" của danh mục, chữ trắng.
+		$sgc_types = get_the_terms( $sgc_post_id, 'sg_guest_type' );
+		if ( $sgc_types && ! is_wp_error( $sgc_types ) ) {
+			$sgc_badge = implode( '', array_map( 'sgc_term_badge_html', $sgc_types ) );
+		}
+	} elseif ( 'kids' === $sgc_badge_type ) {
 		$sgc_badge = (int) get_post_meta( $sgc_post_id, 'sg_children', true ) > 0 ? sgc_label( 'kid_friendly' ) : '';
 	} elseif ( 'distance' === $sgc_badge_type ) {
 		$sgc_badge = implode( ' · ', array_filter( array( sgc_meta_value( $sgc_post_id, 'distance' ), sgc_meta_value( $sgc_post_id, 'travel' ) ) ) );
@@ -52,7 +58,9 @@ $sgc_link = $attributes['isLink'] ? ' href="' . esc_url( get_permalink( $sgc_pos
 	<?php if ( $sgc_video ) : ?>
 		<video class="sg-media__video" muted loop playsinline preload="none" tabindex="-1" aria-hidden="true" data-src="<?php echo esc_url( $sgc_video ); ?>"></video>
 	<?php endif; ?>
-	<?php if ( $sgc_badge ) : ?>
+	<?php if ( $sgc_badge && 'type' === $sgc_badge_type ) : ?>
+		<span class="sg-media__types"><?php echo $sgc_badge; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- dựng bằng sgc_term_badge_html(). ?></span>
+	<?php elseif ( $sgc_badge ) : ?>
 		<span class="sg-media__badge sg-media__badge--<?php echo esc_attr( $sgc_badge_type ); ?>"><?php echo esc_html( $sgc_badge ); ?></span>
 	<?php endif; ?>
 </<?php echo $sgc_tag; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>

@@ -42,12 +42,17 @@ strong, b { font-weight: 700; }
 /* Đoạn văn nối dữ liệu nhưng không có giá trị → ẩn (chỉ ngoài website). */
 :where(body:not(.editor-styles-wrapper)) p:empty { display: none; }
 
-/* Focus rõ ràng cho người dùng bàn phím */
+/* Viền mảnh màu rêu đậm chỉ khi điều hướng bằng phím Tab (bắt buộc cho người dùng bàn phím);
+   bấm chuột hoặc chạm thì không hiện viền, không nháy xanh trên điện thoại. */
+html { -webkit-tap-highlight-color: transparent; }
 :where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
 	outline: 2px solid var(--wp--preset--color--primary);
 	outline-offset: 3px;
 	border-radius: 4px;
 }
+:focus:not(:focus-visible) { outline: none; }
+.sg-has-hero .sg-header:not(.is-scrolled) :focus-visible,
+:where(.sg-banner, .has-ink-background-color, .sg-dark) :focus-visible { outline-color: currentColor; }
 
 .wp-site-blocks > * + * { margin-block-start: 0; }
 .wp-block-post-content > .alignfull { margin-block-start: 0 !important; margin-block-end: 0 !important; }
@@ -220,6 +225,10 @@ h1, h2, h3 { text-wrap: balance; }
 	color: var(--wp--preset--color--white);
 }
 .sg-has-hero .sg-header::before { opacity: 0; }
+/* Đầu trang nằm trên ảnh: dải tối mờ riêng để chữ trắng đạt tương phản cả khi phía sau là trời sáng. */
+.sg-has-hero .sg-header:not(.is-scrolled) { background-image: linear-gradient(180deg, rgba(var(--sg-shade), .55) 0%, rgba(var(--sg-shade), .4) 70%, rgba(var(--sg-shade), 0) 100%); }
+.sg-has-hero .sg-header:not(.is-scrolled) .sg-header__cta .wp-block-button__link { background: rgba(var(--sg-shade), .3); }
+html.sg-menu-open .sg-has-hero .sg-header { background-image: none; }
 .sg-has-hero .sg-header.is-scrolled,
 html.sg-menu-open .sg-has-hero .sg-header { color: var(--wp--preset--color--ink); }
 .sg-has-hero .sg-header.is-scrolled::before,
@@ -510,6 +519,8 @@ html.sg-menu-open .sg-header { box-shadow: none; }
 	scrollbar-width: none;
 }
 .is-style-sg-carousel .wp-block-post-template::-webkit-scrollbar { display: none; }
+.is-style-sg-carousel .wp-block-post-template { cursor: grab; }
+.is-style-sg-carousel .wp-block-post-template.is-dragging { cursor: grabbing; scroll-snap-type: none; user-select: none; }
 .is-style-sg-carousel .wp-block-post-template > li { flex: 0 0 min(84%, 340px); scroll-snap-align: start; margin: 0; }
 .sg-carousel-nav { display: flex; justify-content: flex-end; gap: 10px; margin-bottom: 1rem; }
 .sg-carousel-nav button {
@@ -613,31 +624,34 @@ body:not(.sg-has-hero) main.wp-block-group:first-of-type { scroll-margin-top: va
    ========================================================= */
 /* Tiêu đề khối căn giữa → nội dung cách 56px */
 .sg-section > .wp-block-heading.has-text-align-center { margin-bottom: 0; }
-.sg-section > .wp-block-heading.has-text-align-center + * { margin-top: 56px !important; }
+.sg-section > .wp-block-heading.has-text-align-center + * { margin-top: clamp(24px, 4vh, 40px) !important; }
 /* Hàng tiêu đề chia đôi: tiêu đề trái, chip lọc / nút trượt phải */
-.sg-head-split { gap: 24px !important; margin-bottom: 56px !important; }
+.sg-head-split { gap: 24px !important; margin-bottom: clamp(24px, 4vh, 40px) !important; }
 .sg-head-split .wp-block-heading { margin: 0; }
 .sg-head-split .sg-filter { margin: 0; }
 .sg-head-split .sg-carousel-nav { margin: 0; }
 .sg-link-more { margin-top: 0; }
 
-/* ---------- Hero ---------- */
+/* ---------- Hero ----------
+   Vừa một màn hình: chiều cao theo nội dung – khoảng cách từ đầu trang tới dòng eyebrow tối đa 12vh, chữ căn đáy,
+   thanh đặt phòng đè lên mép dưới. Cỡ chữ co theo chiều cao màn hình (theme.json → huge) nên tổng chiều cao
+   hero luôn ≤ 100svh − đầu trang, kể cả màn hình laptop thấp (1366×657). */
 .sg-banner.sg-hero {
-	min-height: 860px;
-	--sg-banner-toggle-bottom: 112px;
+	min-height: 0;
+	max-height: none;
 	align-items: flex-end;
 }
 .sg-hero .sg-banner__content {
 	max-width: none;
 	box-sizing: border-box;
-	padding: calc(var(--sg-header-height) + 24px) max(var(--wp--style--root--padding-left, 20px), calc((100% - var(--wp--style--global--wide-size)) / 2)) 176px;
+	padding: calc(var(--sg-header-height) + min(10vh, 110px)) max(var(--wp--style--root--padding-left, 20px), calc((100% - var(--wp--style--global--wide-size)) / 2)) calc(88px + clamp(24px, 4vh, 40px));
 	text-align: left;
 	text-shadow: 0 1px 24px rgba(0, 0, 0, .18);
 }
 .sg-hero .sg-banner__content > * { margin-left: 0; margin-right: 0; }
-.sg-hero .is-style-sg-eyebrow { margin-bottom: 18px !important; }
+.sg-hero .is-style-sg-eyebrow { margin-bottom: clamp(10px, 1.8vh, 18px) !important; }
 .sg-hero h1 { max-width: 900px; margin: 0; letter-spacing: -.01em; }
-.sg-hero .sg-lead { max-width: 520px; margin-top: 22px; font-size: 1.125rem; font-weight: 500; color: inherit; }
+.sg-hero .sg-lead { max-width: 520px; margin-top: clamp(12px, 2.2vh, 22px); font-size: clamp(1rem, calc(.85rem + .45vh), 1.125rem); font-weight: 500; color: inherit; }
 .sg-hero .sg-banner__poster { animation: sg-hero-kenburns 24s ease-in-out infinite alternate; }
 @keyframes sg-hero-kenburns {
 	from { transform: scale(1.02); }
@@ -652,10 +666,9 @@ body:not(.sg-has-hero) main.wp-block-group:first-of-type { scroll-margin-top: va
 	from { opacity: 0; transform: translateY(24px); }
 	to { opacity: 1; transform: none; }
 }
-@media (max-width: 781px) {
-	.sg-banner.sg-hero { min-height: 620px; --sg-banner-toggle-bottom: 112px; }
-	.sg-hero .sg-banner__content { padding-bottom: 172px; }
-	.sg-hero .sg-lead { font-size: 1rem; }
+@media (max-width: 859px) {
+	/* Thanh đặt phòng 2 hàng đè 96px lên hero */
+	.sg-hero .sg-banner__content { padding-top: calc(var(--sg-header-height) + clamp(24px, 8vh, 72px)); padding-bottom: calc(96px + 24px); }
 }
 
 /* Thanh đặt phòng nổi đè lên mép dưới hero */
@@ -692,7 +705,7 @@ body:not(.sg-has-hero) main.wp-block-group:first-of-type { scroll-margin-top: va
 .sg-story__media { position: relative; padding-bottom: 60px; }
 .sg-story__media > * { margin: 0 !important; }
 .sg-story__arch { max-width: 440px; margin-left: auto !important; overflow: hidden; border-radius: 999px 999px 28px 28px; }
-.sg-story__arch img { border-radius: 999px 999px 28px 28px !important; aspect-ratio: 4 / 5; }
+.sg-story__arch img { border-radius: 999px 999px 28px 28px !important; aspect-ratio: 4 / 5; max-height: min(56vh, 480px); width: 100%; object-fit: cover; }
 .sg-story__circle {
 	position: absolute;
 	left: 0;
@@ -732,7 +745,10 @@ body:not(.sg-has-hero) main.wp-block-group:first-of-type { scroll-margin-top: va
 }
 
 /* ---------- Thẻ phòng: ảnh khung vòm, so le ---------- */
-.sg-media--arch { border-radius: var(--wp--custom--radius--arch) !important; }
+/* Ảnh vòm: không cao quá min(56vh, 480px) VÀ phần màn hình còn lại sau tiêu đề khối + chữ của thẻ, để cả khối Phòng nghỉ vừa một màn hình
+   (1366×657: ảnh ~250px). Vẫn giữ dáng vòm, ảnh cắt vừa khung. Thẻ giữa so le ít đi khi màn hình thấp. */
+:root { --sg-stagger: clamp(0px, calc(100vh - 700px), 64px); }
+.sg-media--arch { border-radius: var(--wp--custom--radius--arch) !important; max-height: min(56vh, 480px, max(210px, calc(100svh - var(--sg-header-height) - 368px - var(--sg-stagger)))); }
 .sg-media__badge--kids,
 .sg-media__badge--distance {
 	top: auto;
@@ -744,7 +760,7 @@ body:not(.sg-has-hero) main.wp-block-group:first-of-type { scroll-margin-top: va
 	font-weight: 600;
 }
 .sg-media__badge--kids { color: var(--wp--preset--color--primary); }
-.sg-media__badge--distance { top: 16px; bottom: auto; padding: 6px 12px; color: var(--wp--preset--color--ink); }
+.sg-media__badge--distance { top: 16px; bottom: auto; padding: 6px 12px; color: var(--wp--preset--color--ink); max-width: calc(100% - 32px); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .sg-card--room .sg-card__body { padding-top: 24px; gap: 4px; }
 .sg-card--room .wp-block-post-title { font-size: var(--wp--preset--font-size--x-large); line-height: 1.2; }
 .sg-card--room .sg-meta-line { margin-bottom: 10px !important; }
@@ -767,7 +783,7 @@ body:not(.sg-has-hero) main.wp-block-group:first-of-type { scroll-margin-top: va
 .sg-grid--rooms .sg-card__body > .sg-card__footer { margin-top: 0 !important; }
 @media (min-width: 960px) {
 	/* Thẻ giữa thấp hơn 64px (so le) */
-	.sg-grid--rooms .wp-block-post-template > li:nth-child(3n+2 of :not([style*="display: none"])) { margin-top: 64px !important; }
+	.sg-grid--rooms .wp-block-post-template > li:nth-child(3n+2 of :not([style*="display: none"])) { margin-top: var(--sg-stagger) !important; }
 }
 @media (max-width: 959px) {
 	/* Máy tính bảng: vẫn 3 cột (không so le), chữ nhỏ lại */
@@ -804,7 +820,8 @@ body:not(.sg-has-hero) main.wp-block-group:first-of-type { scroll-margin-top: va
 .sg-bento .wp-block-post-template {
 	display: grid;
 	grid-template-columns: repeat(4, minmax(0, 1fr));
-	grid-template-rows: 300px 300px;
+	/* Hàng co theo chiều cao màn hình để cả khối vừa một màn hình (300px ở màn hình cao, ~165px ở 1366×657). */
+	grid-template-rows: repeat(2, clamp(160px, calc((100svh - var(--sg-header-height) - 262px) / 2), 300px));
 	gap: 20px;
 	list-style: none;
 	margin: 0;
@@ -832,7 +849,8 @@ body:not(.sg-has-hero) main.wp-block-group:first-of-type { scroll-margin-top: va
 	content: "";
 	position: absolute;
 	inset: 0;
-	background: linear-gradient(180deg, rgba(var(--sg-shade), 0) 40%, rgba(var(--sg-shade), .68) 100%);
+	/* Vùng chữ ở chân ô đủ tối để chữ trắng đạt tương phản (đo bằng .dev/check-image-text.mjs). */
+	background: linear-gradient(180deg, rgba(var(--sg-shade), .05) 0%, rgba(var(--sg-shade), .2) 30%, rgba(var(--sg-shade), .62) 55%, rgba(var(--sg-shade), .85) 100%);
 	pointer-events: none;
 }
 .sg-tile__body { position: absolute; z-index: 1; left: 24px; right: 24px; bottom: 20px; }
@@ -849,7 +867,7 @@ body:not(.sg-has-hero) main.wp-block-group:first-of-type { scroll-margin-top: va
 .sg-bento li:nth-child(n+2 of :not([style*="display: none"])) .sg-tile__hours,
 .sg-bento li:nth-child(n+3 of :not([style*="display: none"])) .sg-tile__text { display: none; }
 .sg-bento li:nth-child(1 of :not([style*="display: none"])):nth-last-child(3 of :not([style*="display: none"])) ~ li .sg-tile__text { display: block; }
-.sg-bento__more { margin-top: 32px !important; }
+.sg-bento__more { margin-top: 16px !important; }
 @media (max-width: 959px) {
 	.sg-bento .wp-block-post-template { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: none; grid-auto-rows: auto; gap: 12px; }
 	.sg-bento .wp-block-post-template > li { height: 170px; }
@@ -879,7 +897,8 @@ body:not(.sg-has-hero) main.wp-block-group:first-of-type { scroll-margin-top: va
 	scroll-padding-inline: max(var(--wp--style--root--padding-left, 20px), calc((100% - var(--wp--style--global--wide-size)) / 2));
 	padding-block: 0 8px !important;
 }
-.sg-carousel--bleed .wp-block-post-template > li { flex: 0 0 340px; }
+/* Thẻ hẹp lại khi màn hình thấp để cả khối (tiêu đề + ảnh 4:5 + tên) vừa một màn hình. */
+.sg-carousel--bleed .wp-block-post-template > li { flex: 0 0 clamp(200px, calc((100svh - var(--sg-header-height) - 318px) * .8), 340px); }
 :where(.has-ink-background-color, .sg-dark) .sg-card--place { color: var(--wp--preset--color--sand); }
 .sg-card--place .sg-media { border-radius: var(--wp--custom--radius--medium); }
 .sg-card--place .sg-card__body { padding-top: 18px; gap: 2px; }
@@ -900,16 +919,16 @@ body:not(.sg-has-hero) main.wp-block-group:first-of-type { scroll-margin-top: va
 .sg-offer-list .wp-block-post-template > li { margin: 0 !important; border-bottom: 1px solid var(--sg-line); }
 .sg-offer-row {
 	display: grid !important;
-	grid-template-columns: 120px minmax(0, 1fr) auto;
+	grid-template-columns: clamp(88px, 14vh, 120px) minmax(0, 1fr) auto;
 	gap: 28px;
 	align-items: center;
-	padding: 28px 0;
+	padding: clamp(14px, 2.6vh, 28px) 0;
 	height: auto;
 }
 .sg-offer-row > * { margin: 0 !important; }
 .sg-offer-row .sg-offer-row__img { border-radius: var(--wp--custom--radius--small); }
 .sg-offer-row__body > * { margin: 0 !important; }
-.sg-offer-row .wp-block-post-title { margin-bottom: 4px !important; font-size: 1.75rem; line-height: 1.2; }
+.sg-offer-row .wp-block-post-title { margin-bottom: 4px !important; font-size: clamp(1.375rem, calc(1rem + 1.2vh), 1.75rem); line-height: 1.2; }
 .sg-offer-row .wp-block-post-title a::after { content: ""; position: absolute; inset: 0; z-index: 1; }
 .sg-offer-row .wp-block-post-excerpt { font-size: .9375rem; color: var(--sg-muted); }
 .sg-offer-row .wp-block-post-excerpt p { margin: 0; }

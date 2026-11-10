@@ -146,7 +146,7 @@ textarea.sgb-input { min-height: 96px; resize: vertical; }
 	box-shadow: none;
 }
 .sgb-compact .sgb-input:focus { box-shadow: none; }
-.sgb-compact .sgb-field:focus-within { outline: 2px solid var(--sgb-primary); outline-offset: -2px; border-radius: 14px; }
+.sgb-compact .sgb-field:has(:focus-visible) { outline: 2px solid var(--sgb-primary); outline-offset: -2px; border-radius: 14px; }
 .sgb-compact input[type="date"] { min-width: 0; width: 100%; }
 .sgb-compact input[type="date"]::-webkit-date-and-time-value { text-align: left; }
 .sgb-compact input[type="date"]::-webkit-calendar-picker-indicator { margin-left: 2px; padding: 0; opacity: .6; cursor: pointer; }

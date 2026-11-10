@@ -59,6 +59,54 @@
 	var icon = function ( d ) {
 		return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="' + d + '"/></svg>';
 	};
+	/* Kéo băng chuyền bằng chuột (vẫn bấm được thẻ khi không kéo) và phím ←/→ */
+	function dragScroll( el, stepFn ) {
+		var down = false, moved = false, startX = 0, startLeft = 0;
+		el.addEventListener( 'pointerdown', function ( e ) {
+			if ( e.pointerType === 'mouse' && e.button === 0 && el.scrollWidth > el.clientWidth ) {
+				down = true;
+				moved = false;
+				startX = e.clientX;
+				startLeft = el.scrollLeft;
+			}
+		} );
+		window.addEventListener( 'pointermove', function ( e ) {
+			if ( ! down ) {
+				return;
+			}
+			var dx = e.clientX - startX;
+			if ( ! moved && Math.abs( dx ) > 5 ) {
+				moved = true;
+				el.classList.add( 'is-dragging' );
+			}
+			if ( moved ) {
+				el.scrollLeft = startLeft - dx;
+			}
+		} );
+		window.addEventListener( 'pointerup', function () {
+			if ( down ) {
+				down = false;
+				el.classList.remove( 'is-dragging' );
+			}
+		} );
+		el.addEventListener( 'click', function ( e ) {
+			if ( moved ) {
+				e.preventDefault();
+				e.stopPropagation();
+				moved = false;
+			}
+		}, true );
+		el.addEventListener( 'dragstart', function ( e ) {
+			e.preventDefault();
+		} );
+		el.addEventListener( 'keydown', function ( e ) {
+			if ( e.key === 'ArrowRight' || e.key === 'ArrowLeft' ) {
+				e.preventDefault();
+				el.scrollBy( { left: ( e.key === 'ArrowRight' ? 1 : -1 ) * stepFn(), behavior: reduce ? 'auto' : 'smooth' } );
+			}
+		} );
+	}
+
 	function initCarousel( query ) {
 		var track = query.querySelector( '.wp-block-post-template' );
 		if ( ! track || query.querySelector( '.sg-carousel-nav' ) ) {
@@ -100,6 +148,7 @@
 		next.addEventListener( 'click', function () {
 			track.scrollBy( { left: step(), behavior: reduce ? 'auto' : 'smooth' } );
 		} );
+		dragScroll( track, step );
 		track.addEventListener( 'scroll', update, { passive: true } );
 		window.addEventListener( 'resize', update );
 		query.addEventListener( 'sg:filtered', function () {

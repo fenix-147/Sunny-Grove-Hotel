@@ -76,7 +76,7 @@
 			var set = props.setAttributes;
 			var blockProps = be.useBlockProps( {
 				className: 'sg-banner sg-banner--' + a.height + ' sg-banner--' + a.contentPosition,
-				style: { '--sg-overlay': a.overlay / 100 }
+				style: { '--sg-overlay': a.overlay / 100, '--sg-media-pos': Math.round( ( a.focalPoint || {} ).x * 100 ) + '% ' + Math.round( ( a.focalPoint || {} ).y * 100 ) + '%' }
 			} );
 			var inner = be.useInnerBlocksProps( { className: 'sg-banner__content' }, {
 				template: [
@@ -91,13 +91,19 @@
 						mediaButton( a.posterId ? __( 'Đổi ảnh poster', 'sunny-grove-core' ) : __( 'Chọn ảnh poster', 'sunny-grove-core' ), 'image', function ( m ) {
 							set( { posterId: m.id, posterUrl: m.url } );
 						}, a.posterId ),
+						a.posterUrl && c.FocalPointPicker && el( c.FocalPointPicker, {
+							label: __( 'Vị trí khung hình (bấm vào phần muốn giữ khi ảnh/video bị cắt cho vừa màn hình)', 'sunny-grove-core' ),
+							url: a.posterUrl,
+							value: a.focalPoint || { x: 0.5, y: 0.65 },
+							onChange: function ( v ) { set( { focalPoint: v } ); }
+						} ),
 						el( c.TextControl, { label: __( 'Video cho máy tính (link MP4)', 'sunny-grove-core' ), value: a.videoUrl, onChange: function ( v ) { set( { videoUrl: v } ); } } ),
 						mediaButton( __( 'Chọn video từ Thư viện', 'sunny-grove-core' ), 'video', function ( m ) { set( { videoUrl: m.url } ); }, null ),
 						el( c.TextControl, { label: __( 'Video nhẹ cho điện thoại (tùy chọn)', 'sunny-grove-core' ), value: a.videoMobileUrl, onChange: function ( v ) { set( { videoMobileUrl: v } ); } } ),
 						mediaButton( __( 'Chọn video điện thoại', 'sunny-grove-core' ), 'video', function ( m ) { set( { videoMobileUrl: m.url } ); }, null )
 					),
 					el( c.PanelBody, { title: __( 'Bố cục', 'sunny-grove-core' ), initialOpen: false },
-						el( c.RangeControl, { label: __( 'Độ tối lớp phủ (giúp chữ dễ đọc)', 'sunny-grove-core' ), min: 0, max: 90, value: a.overlay, onChange: function ( v ) { set( { overlay: v } ); } } ),
+						el( c.RangeControl, { label: __( 'Độ tối lớp phủ (giúp chữ dễ đọc) – vùng có chữ luôn tối ít nhất 45%', 'sunny-grove-core' ), min: 0, max: 90, value: a.overlay, onChange: function ( v ) { set( { overlay: v } ); } } ),
 						el( c.SelectControl, {
 							label: __( 'Chiều cao', 'sunny-grove-core' ), value: a.height,
 							options: options( { full: __( 'Toàn màn hình', 'sunny-grove-core' ), large: __( 'Lớn', 'sunny-grove-core' ), medium: __( 'Vừa', 'sunny-grove-core' ), small: __( 'Thấp', 'sunny-grove-core' ) } ),
@@ -137,7 +143,7 @@
 			el( c.ToggleControl, { key: 'b', label: __( 'Hiện nhãn trên ảnh', 'sunny-grove-core' ), checked: a.showBadge, onChange: function ( v ) { p.setAttributes( { showBadge: v } ); } } ),
 			a.showBadge && el( c.SelectControl, {
 				key: 'bt', label: __( 'Nội dung nhãn', 'sunny-grove-core' ), value: a.badgeType,
-				options: options( { offer: __( 'Nhãn ưu đãi (VD: -15%)', 'sunny-grove-core' ), kids: __( 'Thân thiện với bé (phòng có trẻ em)', 'sunny-grove-core' ), distance: __( 'Khoảng cách (địa điểm)', 'sunny-grove-core' ) } ),
+				options: options( { offer: __( 'Nhãn ưu đãi (VD: -15%)', 'sunny-grove-core' ), kids: __( 'Thân thiện với bé (phòng có trẻ em)', 'sunny-grove-core' ), distance: __( 'Khoảng cách (địa điểm)', 'sunny-grove-core' ), type: __( 'Loại phòng (Gia đình / Cặp đôi…) – màu theo danh mục', 'sunny-grove-core' ) } ),
 				onChange: function ( v ) { p.setAttributes( { badgeType: v } ); }
 			} )
 		];

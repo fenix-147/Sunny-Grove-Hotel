@@ -16,7 +16,7 @@ echo sunny_grove_banner( // phpcs:ignore WordPress.Security.EscapeOutput.OutputN
 		'media'   => 'banner-offers',
 		'video'   => 'video:offers',
 		'eyebrow' => __( 'Ưu đãi & Combo', 'sunny-grove' ),
-		'title'   => __( 'Nhiều niềm vui hơn, chi phí nhẹ hơn', 'sunny-grove' ),
+		'title'   => __( 'Nhiều niềm vui hơn,|chi phí nhẹ hơn', 'sunny-grove' ),
 		'text'    => __( 'Combo gia đình, ở dài ngày và đặt sớm – áp dụng khi đặt trực tiếp với Sunny Grove.', 'sunny-grove' ),
 	)
 );

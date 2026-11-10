@@ -13,7 +13,7 @@
 		"isLink": { "type": "boolean", "default": true },
 		"showVideo": { "type": "boolean", "default": true },
 		"showBadge": { "type": "boolean", "default": false },
-		"badgeType": { "type": "string", "default": "offer", "enum": [ "offer", "kids", "distance" ] },
+		"badgeType": { "type": "string", "default": "offer", "enum": [ "offer", "kids", "distance", "type" ] },
 		"sizes": { "type": "string", "default": "(min-width: 1024px) 33vw, (min-width: 600px) 50vw, 100vw" }
 	},
 	"supports": { "html": false, "spacing": { "margin": true } },

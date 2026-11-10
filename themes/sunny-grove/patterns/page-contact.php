@@ -17,7 +17,7 @@ echo sunny_grove_banner( // phpcs:ignore WordPress.Security.EscapeOutput.OutputN
 		'video'   => 'video:contact',
 		'height'  => 'small',
 		'eyebrow' => __( 'Liên hệ', 'sunny-grove' ),
-		'title'   => __( 'Chúng tôi luôn ở đây', 'sunny-grove' ),
+		'title'   => __( 'Chúng tôi|luôn ở đây', 'sunny-grove' ),
 		'text'    => __( 'Hỏi gì cũng được – từ đón sân bay, nôi em bé đến tour câu cá.', 'sunny-grove' ),
 	)
 );

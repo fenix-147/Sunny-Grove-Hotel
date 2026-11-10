@@ -14,7 +14,7 @@ echo sunny_grove_banner( // phpcs:ignore WordPress.Security.EscapeOutput.OutputN
 		'media'   => 'banner-rooms',
 		'video'   => 'video:rooms',
 		'eyebrow' => __( 'Sunny Grove', 'sunny-grove' ),
-		'title'   => __( 'Tiêu đề trang', 'sunny-grove' ),
+		'title'   => __( 'Tiêu đề trang|vế in nghiêng', 'sunny-grove' ),
 		'text'    => __( 'Một câu giới thiệu ngắn, ấm áp về nội dung trang.', 'sunny-grove' ),
 	)
 );

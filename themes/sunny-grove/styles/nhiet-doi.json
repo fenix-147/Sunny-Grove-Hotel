@@ -16,7 +16,8 @@
 				{ "slug": "ink", "name": "Chữ đậm", "color": "#1E2A2B" },
 				{ "slug": "muted", "name": "Chữ phụ", "color": "#3D4A4B" },
 				{ "slug": "line", "name": "Viền", "color": "#E3D8C4" },
-				{ "slug": "line-soft", "name": "Viền nhạt", "color": "#EFE5D3" }
+				{ "slug": "line-soft", "name": "Viền nhạt", "color": "#EFE5D3" },
+				{ "slug": "gold", "name": "Vàng đồng (nhãn Nhóm bạn – chữ trắng)", "color": "#8A6A1F" }
 			]
 		},
 		"typography": {

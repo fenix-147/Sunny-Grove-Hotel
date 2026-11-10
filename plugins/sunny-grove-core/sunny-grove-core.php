@@ -23,6 +23,7 @@ require_once SGC_DIR . 'includes/helpers.php';
 require_once SGC_DIR . 'includes/i18n.php';
 require_once SGC_DIR . 'includes/icons.php';
 require_once SGC_DIR . 'includes/list-icons.php';
+require_once SGC_DIR . 'includes/term-colors.php';
 require_once SGC_DIR . 'includes/post-types.php';
 require_once SGC_DIR . 'includes/meta.php';
 require_once SGC_DIR . 'includes/settings.php';

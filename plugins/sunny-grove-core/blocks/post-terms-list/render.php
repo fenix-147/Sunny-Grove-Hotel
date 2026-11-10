@@ -21,7 +21,9 @@ if ( $sgc_limit > 0 ) {
 	$sgc_terms = array_slice( $sgc_terms, 0, $sgc_limit );
 }
 $sgc_style = in_array( $attributes['variant'], array( 'chips', 'compact' ), true ) ? $attributes['variant'] : 'icons';
-$sgc_class = 'sg-terms sg-terms--' . $sgc_style . ( 'compact' === $sgc_style ? ' sg-terms--icons' : '' );
+// Danh mục có màu nhãn (loại phòng) ở kiểu "chips": nhãn nền đặc, chữ trắng.
+$sgc_badges = 'chips' === $sgc_style && in_array( $sgc_tax, sgc_color_taxonomies(), true );
+$sgc_class  = 'sg-terms sg-terms--' . $sgc_style . ( 'compact' === $sgc_style ? ' sg-terms--icons' : '' ) . ( $sgc_badges ? ' sg-terms--badges' : '' );
 $sgc_wrap  = get_block_wrapper_attributes( array( 'class' => $sgc_class ) );
 ?>
 <div <?php echo $sgc_wrap; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
@@ -35,7 +37,7 @@ $sgc_wrap  = get_block_wrapper_attributes( array( 'class' => $sgc_class ) );
 				if ( 'chips' !== $sgc_style ) {
 					echo sgc_icon( sgc_term_icon( $sgc_term->term_id ), 'compact' === $sgc_style ? 18 : 20 ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 				}
-				echo '<span>' . esc_html( $sgc_term->name ) . '</span>';
+				echo $sgc_badges ? sgc_term_badge_html( $sgc_term ) : '<span>' . esc_html( $sgc_term->name ) . '</span>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 				?>
 			</li>
 		<?php endforeach; ?>

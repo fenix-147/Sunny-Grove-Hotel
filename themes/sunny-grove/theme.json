@@ -24,7 +24,8 @@
 				{ "slug": "ink", "name": "Than ấm (chữ chính, nền khối tối)", "color": "#26251F" },
 				{ "slug": "muted", "name": "Chữ phụ", "color": "#46423B" },
 				{ "slug": "line", "name": "Viền", "color": "#DDD5C8" },
-				{ "slug": "line-soft", "name": "Viền nhạt", "color": "#ECE6DC" }
+				{ "slug": "line-soft", "name": "Viền nhạt", "color": "#ECE6DC" },
+				{ "slug": "gold", "name": "Vàng đồng (nhãn Nhóm bạn – chữ trắng)", "color": "#8A6A1F" }
 			],
 			"gradients": [
 				{ "slug": "hero-fade", "name": "Phủ ảnh: tối dần xuống dưới", "gradient": "linear-gradient(180deg, rgba(20,22,18,.45) 0%, rgba(20,22,18,.05) 30%, rgba(20,22,18,.15) 55%, rgba(20,22,18,.72) 100%)" },
@@ -83,8 +84,8 @@
 				{ "slug": "medium", "name": "Nội dung", "size": "1.0625rem", "fluid": { "min": "1rem", "max": "1.0625rem" } },
 				{ "slug": "large", "name": "Đoạn dẫn", "size": "1.1875rem", "fluid": { "min": "1.0625rem", "max": "1.1875rem" } },
 				{ "slug": "x-large", "name": "Tên phòng, tên địa điểm", "size": "1.875rem", "fluid": { "min": "1.75rem", "max": "1.875rem" } },
-				{ "slug": "xx-large", "name": "Tiêu đề khối", "size": "3.625rem", "fluid": { "min": "2.375rem", "max": "3.625rem" } },
-				{ "slug": "huge", "name": "Tiêu đề hero", "size": "5.25rem", "fluid": { "min": "2.625rem", "max": "5.25rem" } }
+				{ "slug": "xx-large", "name": "Tiêu đề khối", "size": "clamp(2.5rem, calc(5.2vh + 1.2vw), 3.625rem)", "fluid": false },
+				{ "slug": "huge", "name": "Tiêu đề hero", "size": "clamp(2.625rem, calc(4.6vh + 2.4vw), 5.25rem)", "fluid": false }
 			]
 		},
 		"spacing": {
@@ -96,7 +97,7 @@
 				{ "slug": "40", "name": "S", "size": "clamp(1rem, 2.2vw, 1.5rem)" },
 				{ "slug": "50", "name": "M", "size": "clamp(1.5rem, 3.2vw, 2.5rem)" },
 				{ "slug": "60", "name": "L", "size": "clamp(2rem, 4vw, 3.5rem)" },
-				{ "slug": "70", "name": "Khoảng cách giữa các khối", "size": "clamp(4rem, 9vw, 8.125rem)" },
+				{ "slug": "70", "name": "Khoảng cách giữa các khối", "size": "clamp(4rem, 10vh, 7.5rem)" },
 				{ "slug": "80", "name": "2XL", "size": "clamp(5rem, 11vw, 10rem)" }
 			]
 		},
@@ -143,7 +144,7 @@
 				"color": { "text": "var(--wp--custom--link--color)" },
 				"typography": { "textDecoration": "none" },
 				":hover": { "color": { "text": "var(--wp--preset--color--ink)" } },
-				":focus": { "outline": { "color": "var(--wp--preset--color--primary)", "offset": "3px", "style": "solid", "width": "2px" } }
+				":focus-visible": { "outline": { "color": "var(--wp--preset--color--primary)", "offset": "3px", "style": "solid", "width": "2px" } }
 			},
 			"heading": {
 				"color": { "text": "var(--wp--preset--color--ink)" },
@@ -159,7 +160,7 @@
 				"spacing": { "padding": { "top": "0.9rem", "bottom": "0.9rem", "left": "2rem", "right": "2rem" } },
 				"typography": { "fontFamily": "var(--wp--preset--font-family--body)", "fontSize": "1rem", "fontWeight": "600", "lineHeight": "1.3", "textDecoration": "none" },
 				":hover": { "color": { "background": "var(--wp--preset--color--primary-dark)", "text": "var(--wp--preset--color--white)" } },
-				":focus": { "outline": { "color": "var(--wp--preset--color--ink)", "offset": "3px", "style": "solid", "width": "2px" } }
+				":focus-visible": { "outline": { "color": "var(--wp--preset--color--ink)", "offset": "3px", "style": "solid", "width": "2px" } }
 			},
 			"caption": { "typography": { "fontSize": "var(--wp--preset--font-size--small)" }, "color": { "text": "var(--wp--preset--color--muted)" } }
 		},

@@ -250,6 +250,61 @@
 	var ICON_NEXT = icon( 'M9 5l7 7-7 7' );
 	var ICON_CLOSE = icon( 'M6 6l12 12M18 6L6 18' );
 
+	/* Vùng cuộn ngang: kéo bằng chuột (vẫn bấm được ảnh/link khi không kéo), phím ←/→. Thanh cuộn ẩn bằng CSS. */
+	function dragScroll( el, stepFn ) {
+		var down = false;
+		var moved = false;
+		var startX = 0;
+		var startLeft = 0;
+		el.addEventListener( 'pointerdown', function ( e ) {
+			if ( e.pointerType !== 'mouse' || e.button !== 0 || el.scrollWidth <= el.clientWidth ) {
+				return;
+			}
+			down = true;
+			moved = false;
+			startX = e.clientX;
+			startLeft = el.scrollLeft;
+		} );
+		window.addEventListener( 'pointermove', function ( e ) {
+			if ( ! down ) {
+				return;
+			}
+			var dx = e.clientX - startX;
+			if ( ! moved && Math.abs( dx ) > 5 ) {
+				moved = true;
+				el.classList.add( 'is-dragging' );
+			}
+			if ( moved ) {
+				el.scrollLeft = startLeft - dx;
+			}
+		} );
+		window.addEventListener( 'pointerup', function () {
+			if ( down ) {
+				down = false;
+				el.classList.remove( 'is-dragging' );
+			}
+		} );
+		// Vừa kéo xong thì không tính là bấm (không mở ảnh / link).
+		el.addEventListener( 'click', function ( e ) {
+			if ( moved ) {
+				e.preventDefault();
+				e.stopPropagation();
+				moved = false;
+			}
+		}, true );
+		el.addEventListener( 'dragstart', function ( e ) {
+			e.preventDefault();
+		} );
+		el.addEventListener( 'keydown', function ( e ) {
+			if ( e.key !== 'ArrowRight' && e.key !== 'ArrowLeft' ) {
+				return;
+			}
+			e.preventDefault();
+			var s = stepFn ? stepFn() : el.clientWidth * 0.8;
+			el.scrollBy( { left: e.key === 'ArrowRight' ? s : -s, behavior: reduce.matches ? 'auto' : 'smooth' } );
+		} );
+	}
+
 	function initScroller( gallery ) {
 		var list = gallery.querySelector( '.sg-gallery__list' );
 		if ( ! list || list.children.length < 2 ) {
@@ -285,9 +340,40 @@
 		next.addEventListener( 'click', function () {
 			list.scrollBy( { left: step(), behavior: behavior } );
 		} );
-		list.addEventListener( 'scroll', update, { passive: true } );
+		// Chấm nhỏ báo vị trí ảnh (bấm để tới ảnh đó).
+		var dots = document.createElement( 'div' );
+		dots.className = 'sg-gallery__dots';
+		Array.prototype.forEach.call( list.children, function ( item, i ) {
+			var d = document.createElement( 'button' );
+			d.type = 'button';
+			d.className = 'sg-gallery__dot';
+			d.setAttribute( 'aria-label', ( strings.galCount || '{n} / {tong}' ).replace( '{n}', i + 1 ).replace( '{tong}', list.children.length ) );
+			d.addEventListener( 'click', function () {
+				list.scrollTo( { left: item.offsetLeft - list.offsetLeft, behavior: behavior } );
+			} );
+			dots.appendChild( d );
+		} );
+		gallery.appendChild( dots );
+		function updateDots() {
+			var max = list.scrollWidth - list.clientWidth;
+			var idx = list.scrollLeft >= max - 2 ? list.children.length - 1 : Math.round( list.scrollLeft / step() );
+			Array.prototype.forEach.call( dots.children, function ( d, i ) {
+				d.classList.toggle( 'is-active', i === idx );
+				if ( i === idx ) {
+					d.setAttribute( 'aria-current', 'true' );
+				} else {
+					d.removeAttribute( 'aria-current' );
+				}
+			} );
+		}
+		dragScroll( list, step );
+		list.addEventListener( 'scroll', function () {
+			update();
+			updateDots();
+		}, { passive: true } );
 		window.addEventListener( 'resize', update );
 		update();
+		updateDots();
 	}
 
 	var lightbox = null;
@@ -533,6 +619,9 @@
 		document.querySelectorAll( '.sg-banner' ).forEach( initBanner );
 		document.querySelectorAll( '.sg-media__video' ).forEach( initCardVideo );
 		document.querySelectorAll( '.sg-filter' ).forEach( initFilter );
+		document.querySelectorAll( '.sg-filter__chips' ).forEach( function ( el ) {
+			dragScroll( el );
+		} );
 		document.querySelectorAll( '.sg-menu.has-toggle' ).forEach( initMenu );
 	}
 

@@ -18,11 +18,14 @@ $sgc_position = 'bottom' === $attributes['contentPosition'] ? 'bottom' : 'center
 $sgc_overlay  = max( 0, min( 90, (int) $attributes['overlay'] ) ) / 100;
 $sgc_video    = sgc_video_src( $attributes['videoUrl'] );
 $sgc_mobile   = sgc_video_src( $attributes['videoMobileUrl'] );
+// Vị trí khung hình (phần ảnh/video giữ lại khi cắt cho vừa khung) – mặc định giữa, 65% từ trên xuống (bớt phần trời trống).
+$sgc_focal    = (array) ( $attributes['focalPoint'] ?? array() );
+$sgc_pos      = round( 100 * max( 0, min( 1, (float) ( $sgc_focal['x'] ?? 0.5 ) ) ) ) . '% ' . round( 100 * max( 0, min( 1, (float) ( $sgc_focal['y'] ?? 0.65 ) ) ) ) . '%';
 
 $sgc_wrapper = get_block_wrapper_attributes(
 	array(
 		'class' => 'sg-banner sg-banner--' . $sgc_height . ' sg-banner--' . $sgc_position,
-		'style' => '--sg-overlay:' . $sgc_overlay . ';',
+		'style' => '--sg-overlay:' . $sgc_overlay . ';--sg-media-pos:' . $sgc_pos . ';',
 	)
 );
 

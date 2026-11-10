@@ -17,7 +17,7 @@ echo sunny_grove_banner( // phpcs:ignore WordPress.Security.EscapeOutput.OutputN
 		'video'   => 'video:blog',
 		'height'  => 'small',
 		'eyebrow' => __( 'Blog', 'sunny-grove' ),
-		'title'   => __( 'Cẩm nang Phú Quốc cho gia đình', 'sunny-grove' ),
+		'title'   => __( 'Cẩm nang Phú Quốc|cho gia đình', 'sunny-grove' ),
 		'text'    => __( 'Lịch trình gợi ý, món ngon cho bé và những góc chụp ảnh đẹp nhất đảo.', 'sunny-grove' ),
 	)
 );

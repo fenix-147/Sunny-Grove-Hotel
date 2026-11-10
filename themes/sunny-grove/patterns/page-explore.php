@@ -16,7 +16,7 @@ echo sunny_grove_banner( // phpcs:ignore WordPress.Security.EscapeOutput.OutputN
 		'media'   => 'banner-explore',
 		'video'   => 'video:explore',
 		'eyebrow' => __( 'Khám phá Phú Quốc', 'sunny-grove' ),
-		'title'   => __( 'Cả hòn đảo là sân chơi', 'sunny-grove' ),
+		'title'   => __( 'Cả hòn đảo|là sân chơi', 'sunny-grove' ),
 		'text'    => __( 'Biển xanh, cáp treo vượt biển, safari và phố đêm – tất cả chỉ cách Sunny Grove một chuyến xe ngắn.', 'sunny-grove' ),
 	)
 );
