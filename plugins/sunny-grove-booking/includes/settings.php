@@ -168,3 +168,29 @@ function sgb_booking_page_url( $lang = '' ) {
 	}
 	return function_exists( 'sg_permalink' ) ? sg_permalink( $page_id, $lang ? $lang : sgb_current_lang() ) : (string) get_permalink( $page_id );
 }
+
+/**
+ * Nâng cấp chữ đã lưu khi đổi giao diện "Resort boutique" (chạy một lần): chữ còn đúng mặc định cũ → dùng mặc định mới.
+ * Chữ chủ web đã tự sửa giữ nguyên.
+ */
+function sgb_texts_upgrade() {
+	if ( (int) get_option( 'sgb_texts_version', 1 ) >= 2 ) {
+		return;
+	}
+	$retired = array( 'compact_submit' => array( 'Kiểm tra & đặt phòng', 'Check & book' ) );
+	$texts   = (array) get_option( 'sgb_texts', array() );
+	$changed = false;
+	foreach ( $texts as $lang => $values ) {
+		foreach ( $retired as $key => $old ) {
+			if ( isset( $values[ $key ] ) && in_array( $values[ $key ], $old, true ) ) {
+				unset( $texts[ $lang ][ $key ] );
+				$changed = true;
+			}
+		}
+	}
+	if ( $changed ) {
+		update_option( 'sgb_texts', $texts );
+	}
+	update_option( 'sgb_texts_version', 2, true );
+}
+add_action( 'init', 'sgb_texts_upgrade', 5 );

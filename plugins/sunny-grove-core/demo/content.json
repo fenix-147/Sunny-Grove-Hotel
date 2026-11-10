@@ -2,9 +2,9 @@
 	"_note": "Nội dung mẫu song ngữ. Ảnh: Mixkit (giấy phép Mixkit, miễn phí) và Wikimedia Commons (CC, xem media/commons-credits.json). Video: Mixkit, phát trực tiếp từ assets.mixkit.co. Tất cả là hình minh họa – CẦN THAY bằng hình/video thật của khách sạn.",
 	"media": {
 		"hero": {
-			"file": "mk-44364",
-			"vi": "Bờ biển nhiệt đới hàng dừa nhìn từ trên cao",
-			"en": "Palm-fringed tropical beach from above"
+			"file": "blog-sunset",
+			"vi": "Hàng dừa và hoàng hôn trên biển Phú Quốc",
+			"en": "Palm trees and sunset over the sea in Phu Quoc"
 		},
 		"story": {
 			"file": "mk-6213",
@@ -50,6 +50,21 @@
 			"file": "mk-9902",
 			"vi": "Khu nghỉ dưỡng có hồ bơi cạnh biển",
 			"en": "Resort pool by the sea"
+		},
+		"story-arch": {
+			"file": "mk-3469",
+			"vi": "Hai bé chơi đùa bên đài phun nước",
+			"en": "Two children playing by the fountain"
+		},
+		"story-circle": {
+			"file": "mk-4866",
+			"vi": "Bữa sáng với bánh sừng bò và nước cam",
+			"en": "Breakfast with croissants and orange juice"
+		},
+		"pause": {
+			"file": "mk-7313",
+			"vi": "Biển xanh và đảo nhỏ ngoài khơi Phú Quốc",
+			"en": "Blue sea and a small island off Phu Quoc"
 		}
 	},
 	"videos": {

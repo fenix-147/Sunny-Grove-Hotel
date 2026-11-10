@@ -42,6 +42,7 @@ require_once SGC_DIR . 'includes/migrate.php';
 require_once SGC_DIR . 'includes/frontend.php';
 require_once SGC_DIR . 'includes/roles.php';
 require_once SGC_DIR . 'includes/demo.php';
+require_once SGC_DIR . 'includes/layout.php';
 
 if ( defined( 'WP_CLI' ) && WP_CLI ) {
 	require_once SGC_DIR . 'includes/cli.php';

@@ -161,8 +161,17 @@
 			}
 			node = node.nextElementSibling;
 		}
-		var parent = filter.parentElement;
-		return parent ? parent.querySelector( '.wp-block-query' ) : null;
+		// Bộ lọc nằm trong hàng tiêu đề: tìm danh sách trong khối cha gần nhất (dừng ở ranh giới khối .sg-section).
+		for ( var parent = filter.parentElement; parent && parent !== document.body; parent = parent.parentElement ) {
+			var found = parent.querySelector( '.wp-block-query' );
+			if ( found ) {
+				return found;
+			}
+			if ( parent.classList.contains( 'sg-section' ) ) {
+				break;
+			}
+		}
+		return null;
 	}
 
 	function initFilter( filter ) {
@@ -396,7 +405,129 @@
 		} );
 	}
 
+	/* ---------- Đánh giá trình chiếu ----------
+	   Tự chuyển (≥ 6 giây), dừng khi rê chuột / focus bên trong, nút Tạm dừng/Phát (WCAG 2.2.2),
+	   chấm chuyển, vuốt trái/phải trên điện thoại. Bật giảm chuyển động → không tự chạy. */
+	function initReviews( root ) {
+		var slides = root.querySelectorAll( '.sg-review--slide' );
+		var dots = root.querySelectorAll( '.sg-reviews__dot' );
+		var toggle = root.querySelector( '.sg-reviews__toggle' );
+		var track = root.querySelector( '.sg-reviews__track' );
+		if ( slides.length < 2 || ! track ) {
+			return;
+		}
+		root.classList.add( 'is-ready' );
+		var current = 0;
+		var timer = null;
+		var userPaused = reduce.matches; // Giảm chuyển động: bắt đầu ở trạng thái dừng.
+		var hover = false;
+		var interval = Math.max( 6000, parseInt( root.getAttribute( 'data-interval' ), 10 ) || 7000 );
+
+		function show( i ) {
+			current = ( i + slides.length ) % slides.length;
+			slides.forEach( function ( s, k ) {
+				var on = k === current;
+				s.classList.toggle( 'is-active', on );
+				if ( on ) {
+					s.removeAttribute( 'aria-hidden' );
+				} else {
+					s.setAttribute( 'aria-hidden', 'true' );
+				}
+			} );
+			dots.forEach( function ( d, k ) {
+				d.classList.toggle( 'is-active', k === current );
+				if ( k === current ) {
+					d.setAttribute( 'aria-current', 'true' );
+				} else {
+					d.removeAttribute( 'aria-current' );
+				}
+			} );
+		}
+		function stop() {
+			window.clearInterval( timer );
+			timer = null;
+		}
+		function sync() {
+			var running = ! userPaused && ! hover && ! document.hidden;
+			stop();
+			if ( running ) {
+				timer = window.setInterval( function () {
+					show( current + 1 );
+				}, interval );
+			}
+			// Đang tự chạy: không đọc to mỗi lần chuyển; đã dừng: đọc khi người dùng tự chuyển.
+			track.setAttribute( 'aria-live', running ? 'off' : 'polite' );
+			if ( toggle ) {
+				toggle.classList.toggle( 'is-paused', userPaused );
+				toggle.setAttribute( 'aria-label', toggle.getAttribute( userPaused ? 'data-label-play' : 'data-label-pause' ) );
+			}
+		}
+		dots.forEach( function ( d ) {
+			d.addEventListener( 'click', function () {
+				show( parseInt( d.getAttribute( 'data-index' ), 10 ) || 0 );
+				sync();
+			} );
+		} );
+		if ( toggle ) {
+			toggle.addEventListener( 'click', function () {
+				userPaused = ! userPaused;
+				sync();
+			} );
+		}
+		root.addEventListener( 'mouseenter', function () {
+			hover = true;
+			sync();
+		} );
+		root.addEventListener( 'mouseleave', function () {
+			hover = false;
+			sync();
+		} );
+		root.addEventListener( 'focusin', function () {
+			hover = true;
+			sync();
+		} );
+		root.addEventListener( 'focusout', function ( e ) {
+			if ( ! root.contains( e.relatedTarget ) ) {
+				hover = false;
+				sync();
+			}
+		} );
+		document.addEventListener( 'visibilitychange', sync );
+		// Vuốt trên điện thoại
+		var startX = null;
+		var startY = 0;
+		track.addEventListener( 'touchstart', function ( e ) {
+			startX = e.touches[ 0 ].clientX;
+			startY = e.touches[ 0 ].clientY;
+		}, { passive: true } );
+		track.addEventListener( 'touchend', function ( e ) {
+			if ( null === startX ) {
+				return;
+			}
+			var dx = e.changedTouches[ 0 ].clientX - startX;
+			var dy = e.changedTouches[ 0 ].clientY - startY;
+			startX = null;
+			if ( Math.abs( dx ) > 40 && Math.abs( dx ) > Math.abs( dy ) ) {
+				show( current + ( dx < 0 ? 1 : -1 ) );
+				sync();
+			}
+		} );
+		root.addEventListener( 'keydown', function ( e ) {
+			if ( e.key === 'ArrowRight' || e.key === 'ArrowLeft' ) {
+				show( current + ( e.key === 'ArrowRight' ? 1 : -1 ) );
+				var dot = dots[ current ];
+				if ( dot && root.contains( document.activeElement ) && document.activeElement.classList.contains( 'sg-reviews__dot' ) ) {
+					dot.focus();
+				}
+				sync();
+			}
+		} );
+		show( 0 );
+		sync();
+	}
+
 	function init() {
+		document.querySelectorAll( '.sg-reviews--slider' ).forEach( initReviews );
 		document.querySelectorAll( '.sg-gallery--scroller' ).forEach( initScroller );
 		document.querySelectorAll( '.sg-gallery' ).forEach( initLightbox );
 		document.querySelectorAll( '.sg-banner' ).forEach( initBanner );

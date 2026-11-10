@@ -20,8 +20,8 @@ add_action( 'wp_enqueue_scripts', 'sgc_chat_assets' );
 
 /**
  * Nút chat nổi Zalo / WhatsApp / Gọi.
- * Máy tính: cột nút tròn ở góc màn hình. Điện thoại (dưới 600px): gộp vào thanh cuối màn hình,
- * nút "Chat" mở danh sách (theme vẽ thanh và nút Đặt phòng, xem theme.css → .sg-mobile-cta).
+ * Một nút "Chat với chúng tôi" (điện thoại: "Chat" trong thanh cuối màn hình) – bấm mở danh sách Zalo / WhatsApp / Gọi.
+ * Theme vẽ thanh cuối màn hình và nút Đặt phòng (theme.css → .sg-mobile-cta).
  */
 function sgc_render_chat() {
 	if ( '1' !== sgc_hotel( 'chat_enabled' ) ) {
@@ -44,8 +44,9 @@ function sgc_render_chat() {
 	$side = 'left' === sgc_hotel( 'chat_side' ) ? 'left' : 'right';
 	echo '<div class="sg-chat sg-chat--' . esc_attr( $side ) . '" role="complementary" aria-label="' . esc_attr( sgc_label( 'chat_toggle' ) ) . '">';
 	printf(
-		'<button type="button" class="sg-chat__toggle" aria-expanded="false" aria-controls="sg-chat-list">%1$s<span>%2$s</span></button>',
-		sgc_icon( 'chat', 22 ), // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		'<button type="button" class="sg-chat__toggle" aria-expanded="false" aria-controls="sg-chat-list">%1$s<span class="sg-chat__text sg-chat__text--wide">%2$s</span><span class="sg-chat__text sg-chat__text--narrow">%3$s</span></button>',
+		sgc_icon( 'chat', 20 ), // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		esc_html( sgc_label( 'chat_button_desktop' ) ),
 		esc_html( sgc_label( 'chat_button' ) )
 	);
 	echo '<ul class="sg-chat__list" id="sg-chat-list">';
@@ -55,7 +56,7 @@ function sgc_render_chat() {
 			esc_attr( $b[0] ),
 			esc_url( $b[1] ),
 			$b[3] ? ' target="_blank" rel="noopener"' : '',
-			sgc_icon( $b[0], 24 ), // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			sgc_icon( $b[0], 20 ), // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			esc_html( $b[2] )
 		);
 	}

@@ -31,3 +31,9 @@
 .sgc-anchor { scroll-margin-top: 80px; }
 .sgc-anchor:target > th, .sgc-anchor:target > td { background: #e6f6f6; }
 .sgc-anchor:target > th { box-shadow: inset 4px 0 0 #147C7C; }
+
+/* Áp dụng bố cục mới */
+.sgc-layout-box { max-width: 900px; }
+.sgc-layout-table td, .sgc-layout-table th { vertical-align: top; }
+.sgc-layout-warn { color: #9a6700; font-weight: 700; }
+.sgc-layout-list li { margin-bottom: .4em; }

@@ -167,19 +167,19 @@ function sgb_render_form( $attributes ) {
 		<form class="sgb-form sgb-form--compact" method="get" action="<?php echo esc_url( $action ); ?>" data-sgb="compact">
 			<div class="sgb-compact">
 				<div class="sgb-field">
-					<label for="<?php echo esc_attr( $uid ); ?>-in"><?php echo esc_html( $t( 'checkin' ) ); ?></label>
+					<label for="<?php echo esc_attr( $uid ); ?>-in"><?php echo esc_html( $t( 'compact_checkin' ) ); ?></label>
 					<input class="sgb-input" type="date" id="<?php echo esc_attr( $uid ); ?>-in" name="checkin" min="<?php echo esc_attr( $today ); ?>" required data-sgb-checkin>
 				</div>
 				<div class="sgb-field">
-					<label for="<?php echo esc_attr( $uid ); ?>-out"><?php echo esc_html( $t( 'checkout' ) ); ?></label>
+					<label for="<?php echo esc_attr( $uid ); ?>-out"><?php echo esc_html( $t( 'compact_checkout' ) ); ?></label>
 					<input class="sgb-input" type="date" id="<?php echo esc_attr( $uid ); ?>-out" name="checkout" min="<?php echo esc_attr( $tomorrow ); ?>" required data-sgb-checkout>
 				</div>
 				<div class="sgb-field sgb-field--num">
-					<label for="<?php echo esc_attr( $uid ); ?>-a"><?php echo esc_html( $t( 'adults' ) ); ?></label>
+					<label for="<?php echo esc_attr( $uid ); ?>-a"><?php echo esc_html( $t( 'compact_adults' ) ); ?></label>
 					<?php echo sgb_number_select( 'adults', $uid . '-a', 1, $max_a, 2 ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 				</div>
 				<div class="sgb-field sgb-field--num">
-					<label for="<?php echo esc_attr( $uid ); ?>-c"><?php echo esc_html( $t( 'children' ) ); ?></label>
+					<label for="<?php echo esc_attr( $uid ); ?>-c"><?php echo esc_html( $t( 'compact_children' ) ); ?></label>
 					<?php echo sgb_number_select( 'children', $uid . '-c', 0, $max_c, 0 ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 				</div>
 				<div class="sgb-field sgb-field--submit">

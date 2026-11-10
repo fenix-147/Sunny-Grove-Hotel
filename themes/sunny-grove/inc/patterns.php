@@ -57,10 +57,13 @@ function sunny_grove_banner( array $args ) {
 			'level'        => 1,
 			'text'         => '',
 			'inner'        => '',
+			'class'        => '',
+			'align'        => 'center',
 		)
 	);
 
 	$poster = sunny_grove_media( $a['media'] );
+	$center = 'left' !== $a['align'];
 	$attrs  = array(
 		'videoUrl'        => $a['video'] ? sunny_grove_media( $a['video'] )['url'] : '',
 		'videoMobileUrl'  => $a['video_mobile'] ? sunny_grove_media( $a['video_mobile'] )['url'] : '',
@@ -70,24 +73,31 @@ function sunny_grove_banner( array $args ) {
 		'height'          => $a['height'],
 		'contentPosition' => $a['position'],
 	);
+	if ( $a['class'] ) {
+		$attrs['className'] = $a['class'];
+	}
 
 	$inner = '';
 	if ( $a['eyebrow'] ) {
-		$inner .= '<!-- wp:paragraph {"align":"center","className":"is-style-sg-eyebrow"} --><p class="has-text-align-center is-style-sg-eyebrow">' . esc_html( $a['eyebrow'] ) . '</p><!-- /wp:paragraph -->' . "\n";
+		$inner .= sunny_grove_eyebrow( $a['eyebrow'], $center );
 	}
 	if ( $a['title'] || $a['title_bind'] ) {
 		$level  = max( 1, min( 3, (int) $a['level'] ) );
-		$hattrs = array( 'textAlign' => 'center' );
+		$hattrs = $center ? array( 'textAlign' => 'center' ) : array();
 		if ( 2 !== $level ) {
 			$hattrs['level'] = $level;
 		}
 		if ( $a['title_bind'] ) {
 			$hattrs['metadata'] = array( 'bindings' => array( 'content' => sunny_grove_bind( $a['title_bind'][0], $a['title_bind'][1] ) ) );
 		}
-		$inner .= '<!-- wp:heading ' . sunny_grove_attrs( $hattrs ) . ' --><h' . $level . ' class="wp-block-heading has-text-align-center">' . ( $a['title_bind'] ? '' : esc_html( $a['title'] ) ) . '</h' . $level . '><!-- /wp:heading -->' . "\n";
+		$hattrs = $hattrs ? $hattrs : null;
+		$title  = $a['title_bind'] ? '' : sunny_grove_accent_html( $a['title'] );
+		$inner .= '<!-- wp:heading ' . ( $hattrs ? sunny_grove_attrs( $hattrs ) . ' ' : '' ) . '--><h' . $level . ' class="wp-block-heading' . ( $center ? ' has-text-align-center' : '' ) . '">' . $title . '</h' . $level . '><!-- /wp:heading -->' . "\n";
 	}
 	if ( $a['text'] ) {
-		$inner .= '<!-- wp:paragraph {"align":"center","className":"sg-lead"} --><p class="has-text-align-center sg-lead">' . esc_html( $a['text'] ) . '</p><!-- /wp:paragraph -->' . "\n";
+		$inner .= $center
+			? '<!-- wp:paragraph {"align":"center","className":"sg-lead"} --><p class="has-text-align-center sg-lead">' . esc_html( $a['text'] ) . '</p><!-- /wp:paragraph -->' . "\n"
+			: '<!-- wp:paragraph {"className":"sg-lead"} --><p class="sg-lead">' . esc_html( $a['text'] ) . '</p><!-- /wp:paragraph -->' . "\n";
 	}
 	$inner .= $a['inner'];
 
@@ -105,13 +115,130 @@ function sunny_grove_banner( array $args ) {
 function sunny_grove_section_head( $eyebrow, $title, $text = '' ) {
 	$out = '';
 	if ( $eyebrow ) {
-		$out .= '<!-- wp:paragraph {"align":"center","className":"is-style-sg-eyebrow"} --><p class="has-text-align-center is-style-sg-eyebrow">' . esc_html( $eyebrow ) . '</p><!-- /wp:paragraph -->' . "\n";
+		$out .= sunny_grove_eyebrow( $eyebrow, true );
 	}
-	$out .= '<!-- wp:heading {"textAlign":"center"} --><h2 class="wp-block-heading has-text-align-center">' . esc_html( $title ) . '</h2><!-- /wp:heading -->' . "\n";
+	$out .= sunny_grove_heading( $title, 2, true );
 	if ( $text ) {
 		$out .= '<!-- wp:paragraph {"align":"center","className":"sg-lead"} --><p class="has-text-align-center sg-lead">' . esc_html( $text ) . '</p><!-- /wp:paragraph -->' . "\n";
 	}
 	return $out;
+}
+
+/**
+ * Chữ tiêu đề có "vế nghiêng": phần sau dấu "|" được bọc <em class="sg-accent"> (nút "Vế nghiêng" trên thanh công cụ).
+ * VD: "Chọn góc nghỉ|hợp với nhà mình".
+ *
+ * @param string $text Chữ (đã dịch), có thể chứa một dấu "|".
+ * @return string HTML an toàn.
+ */
+function sunny_grove_accent_html( $text ) {
+	$parts = explode( '|', (string) $text, 2 );
+	return esc_html( trim( $parts[0] ) ) . ( isset( $parts[1] ) ? ' <em class="sg-accent">' . esc_html( trim( $parts[1] ) ) . '</em>' : '' );
+}
+
+/**
+ * Tiêu đề khối (có vế nghiêng).
+ *
+ * @param string $text   Chữ, vế nghiêng sau dấu "|".
+ * @param int    $level  Cấp tiêu đề.
+ * @param bool   $center Căn giữa.
+ * @param string $class  Class thêm.
+ * @return string
+ */
+function sunny_grove_heading( $text, $level = 2, $center = false, $class = '' ) {
+	$attrs = array();
+	if ( $center ) {
+		$attrs['textAlign'] = 'center';
+	}
+	if ( 2 !== $level ) {
+		$attrs['level'] = $level;
+	}
+	if ( $class ) {
+		$attrs['className'] = $class;
+	}
+	$classes = trim( 'wp-block-heading' . ( $center ? ' has-text-align-center' : '' ) . ( $class ? ' ' . $class : '' ) );
+	return '<!-- wp:heading ' . ( $attrs ? sunny_grove_attrs( $attrs ) . ' ' : '' ) . '--><h' . (int) $level . ' class="' . esc_attr( $classes ) . '">' . sunny_grove_accent_html( $text ) . '</h' . (int) $level . '><!-- /wp:heading -->' . "\n";
+}
+
+/**
+ * Dòng nhỏ chữ hoa phía trên tiêu đề (eyebrow).
+ *
+ * @param string $text   Chữ.
+ * @param bool   $center Căn giữa.
+ * @return string
+ */
+function sunny_grove_eyebrow( $text, $center = false ) {
+	return $center
+		? '<!-- wp:paragraph {"align":"center","className":"is-style-sg-eyebrow"} --><p class="has-text-align-center is-style-sg-eyebrow">' . esc_html( $text ) . '</p><!-- /wp:paragraph -->' . "\n"
+		: '<!-- wp:paragraph {"className":"is-style-sg-eyebrow"} --><p class="is-style-sg-eyebrow">' . esc_html( $text ) . '</p><!-- /wp:paragraph -->' . "\n";
+}
+
+/**
+ * Đoạn văn thường.
+ *
+ * @param string $text  Chữ.
+ * @param string $class Class.
+ * @param bool   $center Căn giữa.
+ * @return string
+ */
+function sunny_grove_paragraph( $text, $class = '', $center = false ) {
+	$attrs = array();
+	if ( $center ) {
+		$attrs['align'] = 'center';
+	}
+	if ( $class ) {
+		$attrs['className'] = $class;
+	}
+	$classes = trim( ( $center ? 'has-text-align-center ' : '' ) . $class );
+	return '<!-- wp:paragraph ' . ( $attrs ? sunny_grove_attrs( $attrs ) . ' ' : '' ) . '--><p' . ( $classes ? ' class="' . esc_attr( $classes ) . '"' : '' ) . '>' . wp_kses( $text, array( 'a' => array( 'href' => true, 'class' => true ) ) ) . '</p><!-- /wp:paragraph -->' . "\n";
+}
+
+/**
+ * Ảnh (core/image) lấy từ ảnh mẫu theo khóa, có kiểu khối (vòm, tròn…).
+ *
+ * @param string $key   Khóa ảnh mẫu.
+ * @param string $alt   Chữ thay thế.
+ * @param string $style Kiểu khối: sg-arch | sg-circle | ''.
+ * @param string $class Class thêm.
+ * @return string
+ */
+function sunny_grove_image( $key, $alt, $style = '', $class = '' ) {
+	$img   = sunny_grove_media( $key );
+	$cls   = trim( ( $style ? 'is-style-' . $style . ' ' : '' ) . $class );
+	$attrs = array(
+		'sizeSlug'        => 'large',
+		'linkDestination' => 'none',
+	);
+	if ( $img['id'] ) {
+		$attrs = array( 'id' => (int) $img['id'] ) + $attrs;
+	}
+	if ( $cls ) {
+		$attrs['className'] = $cls;
+	}
+	return '<!-- wp:image ' . sunny_grove_attrs( $attrs ) . ' --><figure class="wp-block-image size-large' . ( $cls ? ' ' . esc_attr( $cls ) : '' ) . '"><img src="' . esc_url( $img['url'] ) . '" alt="' . esc_attr( $alt ) . '"' . ( $img['id'] ? ' class="wp-image-' . (int) $img['id'] . '"' : '' ) . '/></figure><!-- /wp:image -->' . "\n";
+}
+
+/**
+ * Mở một nhóm (group) với class và bố cục.
+ *
+ * @param string $class  Class.
+ * @param array  $layout Bố cục block.
+ * @param string $tag    Thẻ HTML.
+ * @return string
+ */
+function sunny_grove_group_open( $class, array $layout = array( 'type' => 'default' ), $tag = 'div' ) {
+	$attrs = array(
+		'className' => trim( str_replace( 'alignwide', '', $class ) ),
+		'layout'    => $layout,
+	);
+	// Class "alignwide" → thuộc tính căn rộng của block (để trình soạn thảo hiển thị đúng bề ngang).
+	if ( false !== strpos( $class, 'alignwide' ) ) {
+		$attrs = array( 'align' => 'wide' ) + $attrs;
+	}
+	if ( 'div' !== $tag ) {
+		$attrs = array( 'tagName' => $tag ) + $attrs;
+	}
+	return '<!-- wp:group ' . sunny_grove_attrs( $attrs ) . ' --><' . $tag . ' class="wp-block-group ' . esc_attr( $class ) . '">' . "\n";
 }
 
 /**
@@ -302,15 +429,13 @@ function sunny_grove_group_close() {
  */
 function sunny_grove_room_card() {
 	return sunny_grove_card_open( 'room' )
-		. '<!-- wp:sunny-grove/motion-media {"aspectRatio":"4/3","showVideo":false} /-->' . "\n"
+		. '<!-- wp:sunny-grove/motion-media {"aspectRatio":"3/4","showVideo":false,"showBadge":true,"badgeType":"kids","className":"sg-media--arch"} /-->' . "\n"
 		. sunny_grove_card_body_open()
-		. '<!-- wp:sunny-grove/post-terms-list {"taxonomy":"sg_guest_type","variant":"chips"} /-->' . "\n"
 		. '<!-- wp:post-title {"level":3,"isLink":true} /-->' . "\n"
-		. '<!-- wp:sunny-grove/room-facts {"compact":true} /-->' . "\n"
-		. '<!-- wp:sunny-grove/post-terms-list {"taxonomy":"sg_room_feature","variant":"compact","limit":4} /-->' . "\n"
-		. '<!-- wp:group {"className":"sg-card__footer","layout":{"type":"flex","flexWrap":"wrap","justifyContent":"space-between"}} --><div class="wp-block-group sg-card__footer">' . "\n"
-		. sunny_grove_bound_paragraph( 'meta', 'price', 'sg-price' )
-		. sunny_grove_buttons( array( array( '', '', true, array( 'text' => sunny_grove_bind( 'label', 'read_more' ), 'url' => sunny_grove_bind( 'meta', 'permalink' ) ) ) ), 'left' )
+		. sunny_grove_bound_paragraph( 'meta', 'facts_line', 'sg-meta-line' )
+		. '<!-- wp:group {"className":"sg-card__footer","layout":{"type":"flex","flexWrap":"nowrap","justifyContent":"space-between"}} --><div class="wp-block-group sg-card__footer">' . "\n"
+		. sunny_grove_bound_paragraph( 'meta', 'price', 'sg-price-line' )
+		. sunny_grove_bound_paragraph( 'label', 'view_room', 'sg-card__more' )
 		. sunny_grove_group_close()
 		. sunny_grove_group_close()
 		. sunny_grove_group_close();
@@ -339,12 +464,46 @@ function sunny_grove_amenity_card() {
  */
 function sunny_grove_place_card() {
 	return sunny_grove_card_open( 'place' )
-		. '<!-- wp:sunny-grove/motion-media {"aspectRatio":"4/3"} /-->' . "\n"
+		. '<!-- wp:sunny-grove/motion-media {"aspectRatio":"4/5","showBadge":true,"badgeType":"distance"} /-->' . "\n"
 		. sunny_grove_card_body_open()
 		. sunny_grove_bound_paragraph( 'meta', 'compare', 'sg-compare' )
 		. '<!-- wp:post-title {"level":3,"isLink":true} /-->' . "\n"
-		. '<!-- wp:post-excerpt {"excerptLength":18} /-->' . "\n"
-		. '<!-- wp:sunny-grove/place-facts {"showCompare":false} /-->' . "\n"
+		. sunny_grove_group_close()
+		. sunny_grove_group_close();
+}
+
+/**
+ * Ô tiện ích dạng bento: ảnh phủ kín ô, chữ trắng trên ảnh (giờ mở cửa, tên, mô tả ngắn – ô nhỏ chỉ hiện tên).
+ *
+ * @return string
+ */
+function sunny_grove_amenity_tile() {
+	return '<!-- wp:group {"className":"sg-card sg-tile","layout":{"type":"default"}} --><div class="wp-block-group sg-card sg-tile">' . "\n"
+		. '<!-- wp:sunny-grove/motion-media {"aspectRatio":"1/1","className":"sg-tile__media"} /-->' . "\n"
+		. '<!-- wp:group {"className":"sg-tile__body","layout":{"type":"default"}} --><div class="wp-block-group sg-tile__body">' . "\n"
+		. sunny_grove_bound_paragraph( 'meta', 'hours', 'sg-tile__hours' )
+		. '<!-- wp:post-title {"level":3,"isLink":true} /-->' . "\n"
+		. sunny_grove_bound_paragraph( 'meta', 'short', 'sg-tile__text' )
+		. sunny_grove_group_close()
+		. sunny_grove_group_close();
+}
+
+/**
+ * Hàng ưu đãi (danh sách kẻ dòng): ảnh vuông nhỏ · tên + mô tả · giá cũ / giá ưu đãi hoặc "giảm x%".
+ *
+ * @return string
+ */
+function sunny_grove_offer_row() {
+	return '<!-- wp:group {"className":"sg-card sg-card--offer sg-offer-row","layout":{"type":"default"}} --><div class="wp-block-group sg-card sg-card--offer sg-offer-row">' . "\n"
+		. '<!-- wp:sunny-grove/motion-media {"aspectRatio":"1/1","showVideo":false,"className":"sg-offer-row__img","sizes":"240px"} /-->' . "\n"
+		. '<!-- wp:group {"className":"sg-offer-row__body","layout":{"type":"default"}} --><div class="wp-block-group sg-offer-row__body">' . "\n"
+		. '<!-- wp:post-title {"level":3,"isLink":true} /-->' . "\n"
+		. '<!-- wp:post-excerpt {"excerptLength":24} /-->' . "\n"
+		. sunny_grove_bound_paragraph( 'meta', 'valid_until', 'sg-meta-line' )
+		. sunny_grove_group_close()
+		. '<!-- wp:group {"className":"sg-offer-row__deal","layout":{"type":"default"}} --><div class="wp-block-group sg-offer-row__deal">' . "\n"
+		. sunny_grove_bound_paragraph( 'meta', 'deal_note', 'sg-deal__note' )
+		. sunny_grove_bound_paragraph( 'meta', 'deal_value', 'sg-offer-price' )
 		. sunny_grove_group_close()
 		. sunny_grove_group_close();
 }

@@ -12,8 +12,32 @@
 		"compact_submit": {
 			"group": "form",
 			"label": "Nút của khung tìm phòng (trang chủ)",
-			"vi": "Kiểm tra & đặt phòng",
-			"en": "Check & book"
+			"vi": "Xem phòng trống",
+			"en": "Check availability"
+		},
+		"compact_checkin": {
+			"group": "form",
+			"label": "Thanh đặt phòng (trang chủ): nhãn ngày nhận phòng",
+			"vi": "Nhận phòng",
+			"en": "Check-in"
+		},
+		"compact_checkout": {
+			"group": "form",
+			"label": "Thanh đặt phòng (trang chủ): nhãn ngày trả phòng",
+			"vi": "Trả phòng",
+			"en": "Check-out"
+		},
+		"compact_adults": {
+			"group": "form",
+			"label": "Thanh đặt phòng (trang chủ): nhãn người lớn",
+			"vi": "Người lớn",
+			"en": "Adults"
+		},
+		"compact_children": {
+			"group": "form",
+			"label": "Thanh đặt phòng (trang chủ): nhãn trẻ em",
+			"vi": "Trẻ em",
+			"en": "Children"
 		},
 		"checkin": {
 			"group": "form",

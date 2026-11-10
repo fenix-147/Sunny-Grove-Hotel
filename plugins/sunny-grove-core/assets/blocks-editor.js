@@ -129,12 +129,17 @@
 		return [
 			el( c.SelectControl, {
 				key: 'r', label: __( 'Tỉ lệ khung', 'sunny-grove-core' ), value: a.aspectRatio,
-				options: options( { '4/3': '4:3', '3/2': '3:2', '16/9': '16:9', '1/1': '1:1', '3/4': '3:4' } ),
+				options: options( { '4/3': '4:3', '3/2': '3:2', '16/9': '16:9', '1/1': '1:1', '3/4': '3:4', '4/5': '4:5' } ),
 				onChange: function ( v ) { p.setAttributes( { aspectRatio: v } ); }
 			} ),
 			el( c.ToggleControl, { key: 'l', label: __( 'Bấm vào ảnh để mở chi tiết', 'sunny-grove-core' ), checked: a.isLink, onChange: function ( v ) { p.setAttributes( { isLink: v } ); } } ),
 			el( c.ToggleControl, { key: 'v', label: __( 'Tự chạy video ngắn (nếu có)', 'sunny-grove-core' ), checked: a.showVideo, onChange: function ( v ) { p.setAttributes( { showVideo: v } ); } } ),
-			el( c.ToggleControl, { key: 'b', label: __( 'Hiện nhãn nổi bật (ưu đãi)', 'sunny-grove-core' ), checked: a.showBadge, onChange: function ( v ) { p.setAttributes( { showBadge: v } ); } } )
+			el( c.ToggleControl, { key: 'b', label: __( 'Hiện nhãn trên ảnh', 'sunny-grove-core' ), checked: a.showBadge, onChange: function ( v ) { p.setAttributes( { showBadge: v } ); } } ),
+			a.showBadge && el( c.SelectControl, {
+				key: 'bt', label: __( 'Nội dung nhãn', 'sunny-grove-core' ), value: a.badgeType,
+				options: options( { offer: __( 'Nhãn ưu đãi (VD: -15%)', 'sunny-grove-core' ), kids: __( 'Thân thiện với bé (phòng có trẻ em)', 'sunny-grove-core' ), distance: __( 'Khoảng cách (địa điểm)', 'sunny-grove-core' ) } ),
+				onChange: function ( v ) { p.setAttributes( { badgeType: v } ); }
+			} )
 		];
 	} );
 
@@ -263,6 +268,10 @@
 				options: [ { value: '', label: __( 'Tất cả', 'sunny-grove-core' ) } ].concat( options( sources ) ),
 				onChange: function ( v ) { p.setAttributes( { source: v } ); } } ),
 			el( c.RangeControl, { key: 'r', label: __( 'Số sao tối thiểu', 'sunny-grove-core' ), min: 0, max: 5, value: a.minRating, onChange: function ( v ) { p.setAttributes( { minRating: v } ); } } ),
+			el( c.SelectControl, { key: 'l', label: __( 'Kiểu hiển thị', 'sunny-grove-core' ), value: a.layout,
+				options: options( { grid: __( 'Lưới thẻ', 'sunny-grove-core' ), slider: __( 'Trình chiếu – 1 đánh giá lớn, tự chuyển', 'sunny-grove-core' ) } ),
+				onChange: function ( v ) { p.setAttributes( { layout: v } ); } } ),
+			a.layout === 'slider' && el( c.RangeControl, { key: 'i', label: __( 'Thời gian mỗi đánh giá (giây, tối thiểu 6)', 'sunny-grove-core' ), min: 6, max: 15, value: a.interval, onChange: function ( v ) { p.setAttributes( { interval: v } ); } } ),
 			el( 'p', { key: 'h' }, __( 'Thêm/sửa đánh giá ở menu Đánh giá.', 'sunny-grove-core' ) )
 		];
 	} );

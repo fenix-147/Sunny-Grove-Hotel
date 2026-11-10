@@ -193,13 +193,70 @@
 			"vi": "Khu vườn xanh mát giữa đảo nắng – nơi cả nhà cùng nghỉ ngơi, vui chơi và lưu giữ kỷ niệm.",
 			"en": "A cool green garden on a sunny island – where the whole family rests, plays and makes memories."
 		},
+		"stat_1_number": {
+			"label": "Con số 1 (khối Câu chuyện trang chủ)",
+			"type": "text",
+			"help": "Ba con số nổi bật dưới đoạn giới thiệu, ví dụ 2.000 – m² – vườn nhiệt đới. Để trống cả 3 ô thì con số đó không hiện.",
+			"vi": "2.000",
+			"en": "2,000"
+		},
+		"stat_1_unit": {
+			"label": "Con số 1: đơn vị (chữ nhỏ cạnh số, có thể để trống)",
+			"type": "text",
+			"vi": "m²",
+			"en": "m²"
+		},
+		"stat_1_label": {
+			"label": "Con số 1: chú thích",
+			"type": "text",
+			"vi": "vườn nhiệt đới",
+			"en": "tropical garden"
+		},
+		"stat_2_number": {
+			"label": "Con số 2 (khối Câu chuyện trang chủ)",
+			"type": "text",
+			"help": "",
+			"vi": "5",
+			"en": "5"
+		},
+		"stat_2_unit": {
+			"label": "Con số 2: đơn vị (chữ nhỏ cạnh số, có thể để trống)",
+			"type": "text",
+			"vi": " phút",
+			"en": " min"
+		},
+		"stat_2_label": {
+			"label": "Con số 2: chú thích",
+			"type": "text",
+			"vi": "đi bộ ra biển",
+			"en": "walk to the beach"
+		},
+		"stat_3_number": {
+			"label": "Con số 3 (khối Câu chuyện trang chủ)",
+			"type": "text",
+			"help": "",
+			"vi": "3–12",
+			"en": "3–12"
+		},
+		"stat_3_unit": {
+			"label": "Con số 3: đơn vị (chữ nhỏ cạnh số, có thể để trống)",
+			"type": "text",
+			"vi": "",
+			"en": ""
+		},
+		"stat_3_label": {
+			"label": "Con số 3: chú thích",
+			"type": "text",
+			"vi": "tuổi chơi Kids Club miễn phí",
+			"en": "year-olds play free at Kids Club"
+		},
 		"keep_phrases": {
 			"label": "Giữ liền cụm từ (không tách khi xuống dòng)",
 			"type": "textarea",
 			"rows": 6,
 			"help": "Mỗi dòng một cụm từ. Website không bao giờ ngắt dòng giữa các chữ trong cụm (VD: “kỳ nghỉ” không bị tách thành “kỳ / nghỉ”). Áp dụng cho mọi chữ trên website, kể cả Slogan, các ô trong trang này và Nhãn hiển thị.",
-			"vi": "Nắng đảo\nvườn xanh\nkỳ nghỉ\ntrọn vẹn\ncả nhà\nPhú Quốc\nSunny Grove\nKids Club\nTrẻ em\n(dưới 12 tuổi)\nngười lớn\nhồ bơi\nbữa sáng\nđặt phòng\nnhận phòng\ntrả phòng\nsân bay",
-			"en": "Sunny Grove\nPhu Quoc\nKids Club\n(under 12)\ngarden calm\nwhole family"
+			"vi": "Nắng đảo\nvườn xanh\nchỉ vài bước chân\nkỳ nghỉ\ntrọn vẹn\ncả nhà\nPhú Quốc\nSunny Grove\nKids Club\nTrẻ em\n(dưới 12 tuổi)\nngười lớn\nhồ bơi\nbữa sáng\nđặt phòng\nnhận phòng\ntrả phòng\nsân bay\nxác nhận",
+			"en": "Sunny Grove\nPhu Quoc\nKids Club\n(under 12)\ngarden calm\nwhole family\na few steps"
 		}
 	}
 }

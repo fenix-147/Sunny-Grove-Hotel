@@ -1,5 +1,5 @@
-/* Sunny Grove – nút "Chat" trên điện thoại: bấm để mở/đóng danh sách Zalo, WhatsApp, Gọi.
-   Đóng bằng phím Esc hoặc bấm ra ngoài. Máy tính không dùng nút này (danh sách luôn hiện). */
+/* Sunny Grove – nút "Chat": bấm để mở/đóng danh sách Zalo, WhatsApp, Gọi.
+   Đóng bằng phím Esc hoặc bấm ra ngoài. Dùng cho cả máy tính và điện thoại. */
 ( function () {
 	'use strict';
 
@@ -38,18 +38,6 @@
 				setOpen( false );
 			}
 		} );
-		// Chuyển sang màn hình rộng (xoay máy, đổi cỡ cửa sổ) → bỏ trạng thái mở.
-		if ( window.matchMedia ) {
-			var wide = window.matchMedia( '(min-width: 600px)' );
-			var reset = function () {
-				if ( wide.matches ) {
-					setOpen( false );
-				}
-			};
-			if ( wide.addEventListener ) {
-				wide.addEventListener( 'change', reset );
-			}
-		}
 	}
 
 	if ( document.readyState === 'loading' ) {

@@ -25,7 +25,18 @@ $sgc_img   = get_the_post_thumbnail(
 		'alt'     => '',
 	)
 );
-$sgc_badge = $attributes['showBadge'] ? sg_meta_tr( $sgc_post_id, 'sg_badge' ) : '';
+// Nhãn trên ảnh: ưu đãi ("-15%"), "Thân thiện với bé" (phòng có chỗ cho trẻ em) hoặc khoảng cách (địa điểm).
+$sgc_badge      = '';
+$sgc_badge_type = in_array( $attributes['badgeType'] ?? 'offer', array( 'offer', 'kids', 'distance' ), true ) ? $attributes['badgeType'] : 'offer';
+if ( $attributes['showBadge'] ) {
+	if ( 'kids' === $sgc_badge_type ) {
+		$sgc_badge = (int) get_post_meta( $sgc_post_id, 'sg_children', true ) > 0 ? sgc_label( 'kid_friendly' ) : '';
+	} elseif ( 'distance' === $sgc_badge_type ) {
+		$sgc_badge = implode( ' · ', array_filter( array( sgc_meta_value( $sgc_post_id, 'distance' ), sgc_meta_value( $sgc_post_id, 'travel' ) ) ) );
+	} else {
+		$sgc_badge = sg_meta_tr( $sgc_post_id, 'sg_badge' );
+	}
+}
 
 $sgc_wrapper = get_block_wrapper_attributes(
 	array(
@@ -42,6 +53,6 @@ $sgc_link = $attributes['isLink'] ? ' href="' . esc_url( get_permalink( $sgc_pos
 		<video class="sg-media__video" muted loop playsinline preload="none" tabindex="-1" aria-hidden="true" data-src="<?php echo esc_url( $sgc_video ); ?>"></video>
 	<?php endif; ?>
 	<?php if ( $sgc_badge ) : ?>
-		<span class="sg-media__badge"><?php echo esc_html( $sgc_badge ); ?></span>
+		<span class="sg-media__badge sg-media__badge--<?php echo esc_attr( $sgc_badge_type ); ?>"><?php echo esc_html( $sgc_badge ); ?></span>
 	<?php endif; ?>
 </<?php echo $sgc_tag; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>

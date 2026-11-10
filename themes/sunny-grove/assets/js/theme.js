@@ -13,6 +13,8 @@
 		}
 		var update = function () {
 			header.classList.toggle( 'is-scrolled', window.scrollY > 8 );
+			// Đã cuộn qua màn hình đầu (hero + thanh đặt phòng) → hiện nút chat nổi trên máy tính.
+			document.documentElement.classList.toggle( 'sg-past-hero', window.scrollY > Math.max( 200, window.innerHeight * 0.6 ) );
 		};
 		update();
 		window.addEventListener( 'scroll', update, { passive: true } );
@@ -55,7 +57,7 @@
 
 	/* Băng chuyền: thêm nút trái/phải, vẫn vuốt được trên điện thoại */
 	var icon = function ( d ) {
-		return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="' + d + '"/></svg>';
+		return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="' + d + '"/></svg>';
 	};
 	function initCarousel( query ) {
 		var track = query.querySelector( '.wp-block-post-template' );
@@ -65,9 +67,17 @@
 		var nav = document.createElement( 'div' );
 		nav.className = 'sg-carousel-nav';
 		nav.innerHTML =
-			'<button type="button" class="sg-carousel-prev" aria-label="' + ( strings.prev || '' ) + '">' + icon( 'M15 5l-7 7 7 7' ) + '</button>' +
-			'<button type="button" class="sg-carousel-next" aria-label="' + ( strings.next || '' ) + '">' + icon( 'M9 5l7 7-7 7' ) + '</button>';
-		query.insertBefore( nav, track );
+			'<button type="button" class="sg-carousel-prev" aria-label="' + ( strings.prev || '' ) + '">' + icon( 'M19 12H5M11 6l-6 6 6 6' ) + '</button>' +
+			'<button type="button" class="sg-carousel-next" aria-label="' + ( strings.next || '' ) + '">' + icon( 'M5 12h14M13 6l6 6-6 6' ) + '</button>';
+		// Khối có hàng tiêu đề chia đôi (.sg-head-split): nút trượt nằm bên phải tiêu đề như mẫu thiết kế.
+		var section = query.closest( '.sg-section' );
+		var slot = section && section.querySelector( '.sg-head-split' );
+		if ( slot ) {
+			nav.classList.add( 'is-in-head' );
+			slot.appendChild( nav );
+		} else {
+			query.insertBefore( nav, track );
+		}
 		var prev = nav.querySelector( '.sg-carousel-prev' );
 		var next = nav.querySelector( '.sg-carousel-next' );
 

@@ -51,6 +51,23 @@ function sgc_meta_value( $post_id, $key ) {
 		case 'area':
 			$n = $get( 'sg_area' );
 			return '' !== $n ? sgc_label( 'area', array( 'n' => sgc_number( $n ) ) ) : '';
+		case 'facts_line':
+			// Một dòng thông tin cho thẻ phòng: "2 người lớn · 2 trẻ em · 35 m² · Nhìn ra vườn".
+			return implode( ' · ', array_filter( array( sgc_meta_value( $post_id, 'adults' ), sgc_meta_value( $post_id, 'children' ), sgc_meta_value( $post_id, 'area' ), sgc_meta_value( $post_id, 'view' ) ) ) );
+		case 'deal_note':
+			// Dòng nhỏ phía trên mức ưu đãi: giá cũ (gạch ngang – class sg-deal--old) hoặc chữ "giảm" khi mức ưu đãi là phần trăm.
+			$old = $get( 'sg_old_price' );
+			if ( $old ) {
+				return (string) $old;
+			}
+			return sgc_offer_percent( $post_id ) ? sgc_label( 'offer_save' ) : '';
+		case 'deal_value':
+			// Mức ưu đãi lớn: giá ưu đãi khi có giá cũ; nếu không: phần trăm giảm (tìm trong ô Giá rồi ô Nhãn); không có thì ô Giá.
+			if ( $get( 'sg_old_price' ) ) {
+				return (string) $get( 'sg_price' );
+			}
+			$percent = sgc_offer_percent( $post_id );
+			return $percent ? $percent : (string) $get( 'sg_price' );
 		case 'bed':
 			return (string) $get( 'sg_bed' );
 		case 'view':
@@ -227,3 +244,54 @@ function sgc_enqueue_binding_editor() {
 	sgc_binding_editor_script();
 }
 add_action( 'enqueue_block_editor_assets', 'sgc_enqueue_binding_editor' );
+
+/**
+ * Hoàn thiện đoạn văn nối dữ liệu sau khi dựng (giá trị nối dữ liệu luôn là chữ thường, không chứa thẻ HTML):
+ * - Giá phòng ("Từ 1.290.000đ / đêm"): in đậm phần số tiền.
+ * - Dòng nhỏ của ưu đãi: là giá cũ → thêm class sg-deal--old để gạch ngang.
+ *
+ * @param string   $content  HTML block.
+ * @param array    $parsed   Block.
+ * @param WP_Block $instance Đối tượng block (có context postId).
+ * @return string
+ */
+function sgc_bound_paragraph_extras( $content, $parsed, $instance ) {
+	$key = $parsed['attrs']['metadata']['bindings']['content']['args']['key'] ?? '';
+	if ( 'sunny-grove/meta' !== ( $parsed['attrs']['metadata']['bindings']['content']['source'] ?? '' ) || ! in_array( $key, array( 'price', 'deal_note' ), true ) ) {
+		return $content;
+	}
+	$post_id = (int) ( $instance->context['postId'] ?? get_the_ID() );
+	if ( 'price' === $key ) {
+		$price = get_post_meta( $post_id, 'sg_price_from', true );
+		if ( '' === $price ) {
+			return $content;
+		}
+		$amount = esc_html( sgc_number( $price ) );
+		// Số tiền + đơn vị dính liền phía sau (đ, VND…) nếu có.
+		return preg_replace( '/' . preg_quote( $amount, '/' ) . '(\s?(?:đ|₫|VND|USD))?/u', '<strong>$0</strong>', $content, 1 );
+	}
+	if ( get_post_meta( $post_id, 'sg_old_price', true ) ) {
+		$p = new WP_HTML_Tag_Processor( $content );
+		if ( $p->next_tag( 'p' ) ) {
+			$p->add_class( 'sg-deal--old' );
+			return $p->get_updated_html();
+		}
+	}
+	return $content;
+}
+add_filter( 'render_block_core/paragraph', 'sgc_bound_paragraph_extras', 20, 3 );
+
+/**
+ * Phần trăm giảm của ưu đãi (VD "20%"), tìm trong ô Giá ("Giảm 20%") rồi ô Nhãn ("-15%"); không có thì rỗng.
+ *
+ * @param int $post_id ID ưu đãi.
+ * @return string
+ */
+function sgc_offer_percent( $post_id ) {
+	foreach ( array( 'sg_price', 'sg_badge' ) as $meta ) {
+		if ( preg_match( '/(\d+(?:[.,]\d+)?)\s?%/u', (string) sg_meta_tr( $post_id, $meta ), $m ) ) {
+			return $m[1] . '%';
+		}
+	}
+	return '';
+}

@@ -493,6 +493,7 @@ function sgc_demo_import() {
 			)
 		);
 		sgc_demo_save_english( $id, $page[ $en ] ?? $page['vi'] );
+		sgc_layout_remember( $id );
 	}
 	sgc_demo_log( 'Đã tạo ' . count( $data['pages'] ) . ' trang (mỗi trang chứa cả hai ngôn ngữ).' );
 
@@ -748,6 +749,8 @@ function sgc_demo_page() {
 	submit_button( __( 'Nhập nội dung mẫu', 'sunny-grove-core' ), 'primary', 'submit', false );
 	echo '</form></div>';
 
+	sgc_layout_box();
+
 	echo '<div class="sgc-demo-box"><h2>' . esc_html__( 'Xóa nội dung mẫu', 'sunny-grove-core' ) . '</h2>';
 	echo '<p>' . esc_html__( 'Xóa mọi phòng, trang, ảnh, bài viết, đánh giá được tạo bởi nội dung mẫu. Nội dung bạn tự tạo không bị ảnh hưởng. Không thể hoàn tác – hãy sao lưu trước.', 'sunny-grove-core' ) . '</p>';
 	echo '<form method="post" action="' . esc_url( admin_url( 'admin-post.php' ) ) . '" onsubmit="return confirm(\'' . esc_js( __( 'Xóa toàn bộ nội dung mẫu?', 'sunny-grove-core' ) ) . '\');">';
@@ -769,6 +772,8 @@ function sgc_demo_action() {
 	if ( 'remove' === $do ) {
 		/* translators: %d: số mục */
 		$log = array( sprintf( __( 'Đã xóa %d mục nội dung mẫu.', 'sunny-grove-core' ), sgc_demo_remove() ) );
+	} elseif ( 'apply_layout' === $do ) {
+		$log = sgc_layout_apply_from_request();
 	} else {
 		$log = sgc_demo_import();
 	}

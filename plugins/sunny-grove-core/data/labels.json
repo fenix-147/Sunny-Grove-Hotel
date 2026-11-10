@@ -11,6 +11,8 @@
 	"fields": {
 		"book_now": { "group": "general", "label": "Nút Đặt phòng ở đầu trang", "vi": "Đặt phòng", "en": "Book now" },
 		"read_more": { "group": "general", "label": "Nút xem chi tiết", "vi": "Xem chi tiết", "en": "View details" },
+		"view_room": { "group": "room", "label": "Thẻ phòng: link xem phòng", "vi": "Xem phòng →", "en": "View room →" },
+		"kid_friendly": { "group": "room", "label": "Nhãn trên ảnh phòng có chỗ cho trẻ em", "vi": "Thân thiện với bé", "en": "Kid-friendly" },
 		"filter_all": { "group": "general", "label": "Bộ lọc: tất cả", "vi": "Tất cả", "en": "All" },
 		"carousel_prev": { "group": "general", "label": "Băng chuyền: nút trước (cho trình đọc màn hình)", "vi": "Xem mục trước", "en": "Previous" },
 		"carousel_next": { "group": "general", "label": "Băng chuyền: nút sau (cho trình đọc màn hình)", "vi": "Xem mục tiếp theo", "en": "Next" },
@@ -23,6 +25,10 @@
 		"breadcrumb_home": { "group": "general", "label": "Đường dẫn phân cấp: tên trang chủ (cho Google)", "vi": "Trang chủ", "en": "Home" },
 		"review_rating": { "group": "general", "label": "Đánh giá: số sao cho trình đọc màn hình (%d = số sao)", "vi": "%d trên 5 sao", "en": "%d out of 5 stars" },
 		"review_source": { "group": "general", "label": "Đánh giá: nguồn (%s = Google, Booking.com…)", "vi": "qua %s", "en": "via %s" },
+		"reviews_label": { "group": "general", "label": "Đánh giá trình chiếu: tên vùng (cho trình đọc màn hình)", "vi": "Đánh giá của khách", "en": "Guest reviews" },
+		"review_go": { "group": "general", "label": "Đánh giá trình chiếu: chấm chuyển ({n} = số thứ tự)", "vi": "Xem đánh giá {n}", "en": "Show review {n}" },
+		"review_pause": { "group": "general", "label": "Đánh giá trình chiếu: nút tạm dừng", "vi": "Tạm dừng tự chuyển", "en": "Pause auto-play" },
+		"review_play": { "group": "general", "label": "Đánh giá trình chiếu: nút phát", "vi": "Tiếp tục tự chuyển", "en": "Resume auto-play" },
 		"gallery": { "group": "general", "label": "Tiêu đề thư viện ảnh thực tế", "vi": "Hình ảnh thực tế", "en": "Real photos" },
 		"gallery_open": { "group": "general", "label": "Thư viện ảnh: bấm để phóng to (cho trình đọc màn hình)", "vi": "Phóng to ảnh", "en": "Enlarge photo" },
 		"gallery_prev": { "group": "general", "label": "Thư viện ảnh: nút ảnh trước", "vi": "Ảnh trước", "en": "Previous photo" },
@@ -55,6 +61,7 @@
 		"offer_until": { "group": "offer", "label": "Thời hạn ưu đãi ({ngay})", "vi": "Áp dụng đến {ngay}", "en": "Valid until {ngay}" },
 		"offer_conditions": { "group": "offer", "label": "Tiêu đề điều kiện", "vi": "Điều kiện áp dụng", "en": "Terms" },
 		"offer_book": { "group": "offer", "label": "Nút đặt ưu đãi", "vi": "Nhận ưu đãi này", "en": "Get this offer" },
+		"offer_save": { "group": "offer", "label": "Chữ nhỏ trên mức giảm giá (VD: giảm 20%)", "vi": "giảm", "en": "save" },
 		"offer_note": { "group": "offer", "label": "Ghi chú tự điền vào form đặt phòng ({ten} = tên ưu đãi)", "vi": "Tôi muốn đặt ưu đãi: {ten}", "en": "I'd like to book the offer: {ten}" },
 		"offers_empty": { "group": "offer", "label": "Thông báo khi chưa có ưu đãi", "vi": "Hiện chưa có ưu đãi mới. Gọi hotline để nhận giá tốt nhất nhé!", "en": "No offers right now. Call us for the best rate!" },
 		"other_offers": { "group": "offer", "label": "Tiêu đề các ưu đãi khác", "vi": "Ưu đãi khác", "en": "More offers" },
@@ -81,6 +88,8 @@
 		"menu_hotline": { "group": "contact", "label": "Menu điện thoại: chữ trước số hotline", "vi": "Hotline", "en": "Hotline" },
 		"chat_toggle": { "group": "contact", "label": "Nút mở khung chat nổi", "vi": "Liên hệ nhanh", "en": "Quick contact" },
 		"chat_button": { "group": "contact", "label": "Nút Chat ở thanh cuối màn hình (điện thoại)", "vi": "Chat", "en": "Chat" },
+		"chat_button_desktop": { "group": "contact", "label": "Nút chat nổi trên máy tính", "vi": "Chat với chúng tôi", "en": "Chat with us" },
+		"zalo_cta": { "group": "contact", "label": "Nút nhắn Zalo (lời mời cuối trang chủ)", "vi": "Nhắn Zalo cho chúng tôi", "en": "Message us on Zalo" },
 		"map_title": { "group": "contact", "label": "Tiêu đề bản đồ (cho trình đọc màn hình)", "vi": "Bản đồ đường tới Sunny Grove", "en": "Map to Sunny Grove" },
 		"open_in_maps": { "group": "contact", "label": "Nút mở bản đồ lớn", "vi": "Mở trong Google Maps", "en": "Open in Google Maps" }
 	}

@@ -11,10 +11,13 @@
 	"attributes": {
 		"count": { "type": "number", "default": 3 },
 		"source": { "type": "string", "default": "" },
-		"minRating": { "type": "number", "default": 0 }
+		"minRating": { "type": "number", "default": 0 },
+		"layout": { "type": "string", "default": "grid", "enum": [ "grid", "slider" ] },
+		"interval": { "type": "number", "default": 7 }
 	},
 	"supports": { "html": false, "align": [ "wide", "full" ], "spacing": { "margin": true } },
 	"editorScript": "sgc-blocks-editor",
+	"viewScript": "sgc-blocks-view",
 	"style": "sgc-blocks",
 	"render": "file:./render.php"
 }

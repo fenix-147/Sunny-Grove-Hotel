@@ -87,10 +87,11 @@
 .sg-banner--bottom .sg-banner__content { padding-bottom: var(--wp--preset--spacing--70, 5rem); }
 .sg-banner__content > * { margin-left: auto; margin-right: auto; }
 .sg-banner__content :where(h1, h2, h3, p) { color: inherit; }
+/* Nút tạm dừng video: góc trái dưới, thẳng hàng với lề nội dung (không chồng lên nút chat ở góc phải). */
 .sg-banner__toggle {
 	position: absolute;
-	right: var(--wp--preset--spacing--40, 1.25rem);
-	bottom: var(--wp--preset--spacing--40, 1.25rem);
+	left: max(var(--wp--style--root--padding-left, 1.25rem), calc((100% - var(--wp--style--global--wide-size, 1144px)) / 2));
+	bottom: var(--sg-banner-toggle-bottom, 24px);
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
@@ -428,7 +429,7 @@ html.sg-lightbox-open { overflow: hidden; }
 .sg-contact--plain .sg-contact__link { min-height: 0; line-height: 2.1; }
 .sg-contact--plain .sg-contact__text { min-height: 0; }
 .sg-contact--plain .sg-contact__value { font-weight: 500; }
-@media (pointer: coarse) { .sg-contact--plain a.sg-contact__link, .sg-contact--plain .sg-contact__app { min-height: 44px; display: inline-flex; align-items: center; } }
+@media (max-width: 959px), (pointer: coarse) { .sg-contact--plain a.sg-contact__link, .sg-contact--plain .sg-contact__app { min-height: 44px; display: inline-flex; align-items: center; } }
 .sg-contact--inline .sg-contact__list { display: flex; flex-wrap: wrap; gap: .75rem 1.5rem; }
 .sg-contact--buttons .sg-contact__list { display: flex; flex-wrap: wrap; gap: .75rem; }
 .sg-contact--buttons .sg-contact__link {

@@ -101,34 +101,77 @@ textarea.sgb-input { min-height: 96px; resize: vertical; }
 .sgb-success__actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 1rem; }
 .sgb-hp { position: absolute !important; left: -9999px !important; width: 1px; height: 1px; overflow: hidden; }
 
-/* Kiểu Gọn: khung tìm phòng trên ảnh/video */
-.sgb-form--compact { width: 100%; max-width: 980px; margin: var(--wp--preset--spacing--50, 2rem) auto 0; text-align: left; text-shadow: none; }
+/* Kiểu Gọn: thanh đặt phòng trắng (nhãn chữ hoa nhỏ, ô không viền ngăn bằng đường kẻ).
+   Máy tính: 4 ô + nút trên một hàng. Điện thoại / máy tính bảng hẹp: lưới 2 cột, nút ở hàng cuối. */
+.sgb-form--compact { width: 100%; margin: 0; text-align: left; text-shadow: none; }
 .sgb-compact {
 	display: grid;
-	gap: .75rem;
-	grid-template-columns: 1fr 1fr;
-	padding: 1rem;
-	border-radius: var(--wp--custom--radius--large, 24px);
-	background: color-mix(in srgb, var(--sgb-bg) 94%, transparent);
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 0;
+	padding: 8px;
+	border-radius: 22px;
+	background: var(--sgb-bg);
 	color: var(--sgb-ink);
-	box-shadow: 0 18px 50px rgba(0, 0, 0, .18);
-	backdrop-filter: blur(8px);
+	box-shadow: var(--wp--preset--shadow--float, 0 24px 60px rgba(38, 37, 31, .12));
 }
-.sgb-compact .sgb-field--submit { grid-column: 1 / -1; justify-content: flex-end; }
-.sgb-compact .sgb-button { width: 100%; }
-/* Nhãn số khách luôn 1 dòng (VD: "Trẻ em (dưới 12 tuổi)"); điện thoại nhỏ: chữ nhãn nhỏ hơn một chút cho vừa cột. */
-.sgb-compact .sgb-field--num label { white-space: nowrap; }
-@media (max-width: 479px) {
-	.sgb-compact .sgb-field label { font-size: .875rem; }
+.sgb-compact .sgb-field {
+	gap: 2px;
+	padding: 12px 14px;
+	border-color: var(--wp--preset--color--line-soft, #ECE6DC);
+	border-style: solid;
+	border-width: 0;
+	min-width: 0;
+}
+.sgb-compact .sgb-field:nth-child(1), .sgb-compact .sgb-field:nth-child(3) { border-right-width: 1px; }
+.sgb-compact .sgb-field:nth-child(1), .sgb-compact .sgb-field:nth-child(2) { border-bottom-width: 1px; }
+.sgb-compact .sgb-field label {
+	font-size: .6875rem;
+	font-weight: 600;
+	letter-spacing: .14em;
+	line-height: 1.5;
+	text-transform: uppercase;
+	color: var(--sgb-muted);
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.sgb-compact .sgb-input {
+	min-height: 32px;
+	padding: 0;
+	border: 0;
+	border-radius: 0;
+	background: transparent;
+	font-size: max(16px, 1rem);
+	font-weight: 500;
+	box-shadow: none;
+}
+.sgb-compact .sgb-input:focus { box-shadow: none; }
+.sgb-compact .sgb-field:focus-within { outline: 2px solid var(--sgb-primary); outline-offset: -2px; border-radius: 14px; }
+.sgb-compact input[type="date"] { min-width: 0; width: 100%; }
+.sgb-compact input[type="date"]::-webkit-date-and-time-value { text-align: left; }
+.sgb-compact input[type="date"]::-webkit-calendar-picker-indicator { margin-left: 2px; padding: 0; opacity: .6; cursor: pointer; }
+.sgb-compact .sgb-field--submit { grid-column: 1 / -1; padding: 8px 0 0; border: 0 !important; }
+.sgb-compact .sgb-button { width: 100%; min-height: 54px; border-radius: 16px; }
+.sgb-compact .sgb-button::after {
+	content: "";
+	width: 18px;
+	height: 18px;
+	background: currentColor;
+	-webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14M13 6l6 6-6 6'/%3E%3C/svg%3E") center / contain no-repeat;
+	mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14M13 6l6 6-6 6'/%3E%3C/svg%3E") center / contain no-repeat;
 }
 @media (max-width: 359px) {
-	.sgb-compact .sgb-field--num label { white-space: normal; }
+	.sgb-compact .sgb-field { padding: 10px 10px; }
+	.sgb-compact .sgb-field label { letter-spacing: .08em; }
 }
 @media (min-width: 860px) {
-	/* Cột số khách rộng theo nhãn ("Trẻ em (dưới 12 tuổi)" luôn 1 dòng), cột ngày chia phần còn lại. */
-	.sgb-compact { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) max-content max-content auto; align-items: end; padding: 1rem 1rem 1rem 1.25rem; }
-	.sgb-compact .sgb-field--submit { grid-column: auto; }
-	.sgb-compact .sgb-button { width: auto; white-space: nowrap; }
+	.sgb-compact { grid-template-columns: repeat(4, minmax(0, 1fr)) auto; align-items: stretch; padding: 10px; border-radius: 24px; }
+	.sgb-compact .sgb-field { padding: 14px 22px; border-width: 0 !important; }
+	.sgb-compact .sgb-field:not(.sgb-field--submit):not(:nth-child(4)) { border-right-width: 1px !important; }
+	.sgb-compact .sgb-field label { font-size: .75rem; letter-spacing: .16em; }
+	.sgb-compact .sgb-input { font-size: 1.0625rem; }
+	.sgb-compact .sgb-field--submit { grid-column: auto; padding: 0; }
+	.sgb-compact .sgb-button { width: auto; height: 100%; min-height: 64px; padding: 0 34px; white-space: nowrap; }
 }
 @media (prefers-reduced-motion: reduce) {
 	.sgb-button, .sgb-input, .sgb-choice span { transition: none; }

@@ -489,3 +489,33 @@ function sgc_labels_upgrade() {
 	update_option( 'sgc_labels_version', 2, true );
 }
 add_action( 'init', 'sgc_labels_upgrade', 5 );
+
+/**
+ * Thêm cụm từ "giữ liền" mới vào danh sách chủ web đã lưu (chạy một lần, chỉ thêm – không xóa cụm nào).
+ */
+function sgc_keep_phrases_upgrade() {
+	if ( (int) get_option( 'sgc_keep_version', 1 ) >= 2 ) {
+		return;
+	}
+	$add  = array(
+		'vi' => array( 'chỉ vài bước chân', 'xác nhận' ),
+		'en' => array( 'a few steps' ),
+	);
+	$i18n = (array) get_option( 'sgc_hotel_i18n', array() );
+	foreach ( $add as $lang => $phrases ) {
+		$current = (string) ( $i18n[ $lang ]['keep_phrases'] ?? '' );
+		if ( '' === trim( $current ) ) {
+			continue; // Chưa lưu → đang dùng danh sách mặc định (đã có cụm mới).
+		}
+		$lines = preg_split( '/\R/u', $current );
+		foreach ( $phrases as $phrase ) {
+			if ( ! in_array( $phrase, array_map( 'trim', $lines ), true ) ) {
+				$lines[] = $phrase;
+			}
+		}
+		$i18n[ $lang ]['keep_phrases'] = implode( "\n", $lines );
+	}
+	update_option( 'sgc_hotel_i18n', $i18n );
+	update_option( 'sgc_keep_version', 2, true );
+}
+add_action( 'init', 'sgc_keep_phrases_upgrade', 5 );

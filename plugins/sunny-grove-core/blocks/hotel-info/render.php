@@ -57,6 +57,12 @@ if ( 'plain' === $sgc_layout ) {
 			unset( $sgc_items[ $sgc_i ] );
 		}
 	}
+	// Giờ nhận / trả phòng: mỗi phần (ngăn bằng "·") một dòng.
+	foreach ( $sgc_items as $sgc_i => $sgc_item ) {
+		if ( 'checkin' === $sgc_item['class'] && false !== strpos( $sgc_item['text'], '·' ) ) {
+			$sgc_items[ $sgc_i ]['html'] = implode( '<br>', array_map( 'esc_html', array_map( 'trim', explode( '·', $sgc_item['text'] ) ) ) );
+		}
+	}
 	if ( $sgc_apps ) {
 		$sgc_items[ $sgc_pos ] = array( 'class' => 'apps', 'html' => implode( ' <span aria-hidden="true">·</span> ', $sgc_apps ), 'text' => 'apps' );
 		ksort( $sgc_items );

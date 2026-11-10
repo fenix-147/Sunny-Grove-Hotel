@@ -173,6 +173,9 @@ function sg_render_reviews( $attributes ) {
 	if ( ! $reviews ) {
 		return '';
 	}
+	if ( 'slider' === ( $attributes['layout'] ?? 'grid' ) ) {
+		return sg_render_reviews_slider( $reviews, $attributes );
+	}
 	$out = '';
 	foreach ( $reviews as $review ) {
 		$rating = max( 1, min( 5, (int) get_post_meta( $review->ID, 'sg_rating', true ) ) );
@@ -187,4 +190,49 @@ function sg_render_reviews( $attributes ) {
 			. '</figcaption></figure>';
 	}
 	return '<div ' . get_block_wrapper_attributes( array( 'class' => 'sg-reviews' ) ) . '>' . $out . '</div>';
+}
+
+/**
+ * Đánh giá dạng trình chiếu: một trích dẫn lớn căn giữa, chấm chuyển, nút Tạm dừng/Phát (WCAG 2.2.2).
+ * Tự chuyển sau mỗi ≥ 6 giây, dừng khi rê chuột/đặt focus, vuốt được trên điện thoại (assets/blocks-view.js).
+ * Không có JavaScript: hiện tất cả đánh giá lần lượt từ trên xuống.
+ *
+ * @param WP_Post[] $reviews    Đánh giá.
+ * @param array     $attributes Thuộc tính block.
+ * @return string
+ */
+function sg_render_reviews_slider( array $reviews, array $attributes ) {
+	$total    = count( $reviews );
+	$interval = max( 6, min( 15, (int) ( $attributes['interval'] ?? 7 ) ) );
+	$slides   = '';
+	$dots     = '';
+	foreach ( array_values( $reviews ) as $i => $review ) {
+		$source = sg_review_sources()[ get_post_meta( $review->ID, 'sg_source', true ) ] ?? '';
+		$from   = sg_meta_tr( $review->ID, 'sg_review_from' );
+		$slides .= '<figure class="sg-review sg-review--slide' . ( 0 === $i ? ' is-active' : '' ) . '" role="group" aria-roledescription="slide" aria-label="' . esc_attr( ( $i + 1 ) . ' / ' . $total ) . '"' . ( 0 === $i ? '' : ' aria-hidden="true"' ) . '>'
+			. '<blockquote class="sg-review__quote"><p>' . esc_html( sg_meta_tr( $review->ID, 'sg_review_text' ) ) . '</p></blockquote>'
+			. '<figcaption><p class="sg-review__name">' . esc_html( get_the_title( $review ) ) . '</p>'
+			. '<p class="sg-review__from">' . esc_html( implode( ' · ', array_filter( array( $from, $source ? sprintf( sgc_label( 'review_source' ), $source ) : '' ) ) ) ) . '</p>'
+			. '</figcaption></figure>';
+		$dots   .= '<button type="button" class="sg-reviews__dot' . ( 0 === $i ? ' is-active' : '' ) . '" data-index="' . (int) $i . '" aria-label="' . esc_attr( sgc_label( 'review_go', array( 'n' => $i + 1 ) ) ) . '"' . ( 0 === $i ? ' aria-current="true"' : '' ) . '></button>';
+	}
+	$quote_icon = '<svg class="sg-reviews__mark" width="40" height="32" viewBox="0 0 40 32" aria-hidden="true" focusable="false"><path fill="currentColor" d="M0 32V19C0 8 6 1.5 16 0l1.5 3.5C11 5.5 8.5 9.5 8.5 15H16v17H0zm22 0V19C22 8 28 1.5 38 0l1.5 3.5C33 5.5 30.5 9.5 30.5 15H38v17H22z"/></svg>';
+	$controls   = '';
+	if ( $total > 1 ) {
+		$controls = '<div class="sg-reviews__controls">'
+			. '<div class="sg-reviews__dots">' . $dots . '</div>'
+			. '<button type="button" class="sg-reviews__toggle" aria-label="' . esc_attr( sgc_label( 'review_pause' ) ) . '" data-label-pause="' . esc_attr( sgc_label( 'review_pause' ) ) . '" data-label-play="' . esc_attr( sgc_label( 'review_play' ) ) . '">'
+			. '<span class="sg-reviews__icon-pause">' . sgc_icon( 'pause', 18 ) . '</span><span class="sg-reviews__icon-play">' . sgc_icon( 'play', 18 ) . '</span>'
+			. '</button></div>';
+	}
+	$wrap = get_block_wrapper_attributes(
+		array(
+			'class'                => 'sg-reviews sg-reviews--slider',
+			'role'                 => 'region',
+			'aria-roledescription' => 'carousel',
+			'aria-label'           => sgc_label( 'reviews_label' ),
+			'data-interval'        => (string) ( $interval * 1000 ),
+		)
+	);
+	return '<div ' . $wrap . '>' . $quote_icon . '<div class="sg-reviews__track" aria-live="off">' . $slides . '</div>' . $controls . '</div>';
 }
