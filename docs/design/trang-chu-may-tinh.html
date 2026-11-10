@@ -1,0 +1,395 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<title>Sunny Grove – Trang chủ</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&amp;family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F8F5EF}
+a{color:#3F5B4B}a:hover{color:#26251F}
+.wrap{max-width:1240px;margin:0 auto;padding:0 48px;box-sizing:border-box}
+.serif{font-family:'Cormorant Garamond',Georgia,serif}
+.ulink{text-decoration:none;background:linear-gradient(currentColor,currentColor) 0 100%/0 1px no-repeat;transition:background-size .5s cubic-bezier(.22,.61,.36,1);padding-bottom:3px}
+.ulink:hover{background-size:100% 1px}
+.zoom{overflow:hidden}
+.zoom img{transition:transform 1.2s cubic-bezier(.22,.61,.36,1)}
+.zoom:hover img{transform:scale(1.04)}
+.hero-img{animation:kb 24s ease-in-out infinite alternate}
+@keyframes kb{from{transform:scale(1.02)}to{transform:scale(1.12) translate(-1.5%,-1%)}}
+.rise{animation:rise 1.2s cubic-bezier(.22,.61,.36,1) both}
+.rise2{animation:rise 1.2s .2s cubic-bezier(.22,.61,.36,1) both}
+.rise3{animation:rise 1.2s .4s cubic-bezier(.22,.61,.36,1) both}
+@keyframes rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+.btn-p{transition:background .3s,transform .3s}
+.btn-p:hover{background:#2F4639 !important;transform:translateY(-1px)}
+.btn-o{transition:background .3s,color .3s}
+.btn-o:hover{background:#26251F !important;color:#fff !important}
+.hs{scrollbar-width:none}.hs::-webkit-scrollbar{display:none}
+body *{font-weight:500}
+.serif,.serif *,h1,h2,h1 em,h2 em{font-weight:600 !important}
+[style*="font-weight: 300"]{font-weight:400 !important}
+[style*="font-weight: 500"]:not(.serif){font-weight:600 !important}
+strong,[style*="font-weight: 600"]:not(.serif){font-weight:700 !important}
+[style*="color: #5F5A52"]{color:#46423B !important}
+@media (prefers-reduced-motion:reduce){.hero-img,.rise,.rise2,.rise3{animation:none}.zoom img{transition:none}}
+@media (max-width:960px){
+.wrap{padding:0 20px}
+.nav-links{display:none !important}
+.g2{grid-template-columns:minmax(0,1fr) !important}
+.g3{grid-template-columns:minmax(0,1fr) !important}
+.g4{grid-template-columns:repeat(2,minmax(0,1fr)) !important}
+.bento{grid-template-columns:minmax(0,1fr) !important;grid-template-rows:none !important}
+.bento > *{grid-column:auto !important;grid-row:auto !important;min-height:280px}
+.bk{grid-template-columns:repeat(2,minmax(0,1fr)) !important}
+.bk > a{grid-column:1 / -1}
+.offer{grid-template-columns:minmax(0,1fr) !important}
+.hero-h{font-size:46px !important}
+.h2{font-size:40px !important}
+}
+</style>
+</helmet>
+<div style="font-family: 'Be Vietnam Pro', system-ui, sans-serif; color: #26251F; background: #F8F5EF; font-size: 17px; line-height: 1.7; overflow: hidden;">
+
+<!-- HERO -->
+<section style="position: relative; height: 860px; color: #FFFFFF; overflow: hidden;">
+<img class="hero-img" src="/_blob/56bdf68c87910fb84a9af2afb65d1268" alt="Hàng dừa và hoàng hôn trên biển Phú Quốc" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;">
+<div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(20,22,18,.45) 0%, rgba(20,22,18,.05) 30%, rgba(20,22,18,.15) 55%, rgba(20,22,18,.72) 100%);"></div>
+
+<header class="wrap" style="position: relative; display: flex; align-items: center; justify-content: space-between; gap: 24px; height: 96px;">
+<a href="#" style="display: flex; flex-direction: column; line-height: 1; color: #FFFFFF; text-decoration: none;">
+<span class="serif" style="font-size: 30px; font-weight: 500; letter-spacing: .01em;">Sunny Grove</span>
+<span style="font-size: 10px; letter-spacing: .42em; margin-top: 6px; opacity: .85;">PHÚ QUỐC</span>
+</a>
+<nav class="nav-links" aria-label="Menu chính" style="display: flex; gap: 36px; font-size: 15px;">
+<a class="ulink" href="#" style="color: #FFFFFF;">Phòng nghỉ</a>
+<a class="ulink" href="#" style="color: #FFFFFF;">Tiện ích</a>
+<a class="ulink" href="#" style="color: #FFFFFF;">Ưu đãi</a>
+<a class="ulink" href="#" style="color: #FFFFFF;">Khám phá đảo</a>
+<a class="ulink" href="#" style="color: #FFFFFF;">Liên hệ</a>
+</nav>
+<div style="display: flex; align-items: center; gap: 18px;">
+<span style="font-size: 13px; letter-spacing: .12em;"><a href="#" style="color: #FFFFFF; text-decoration: none; font-weight: 600;">VI</a> <span style="opacity: .5;">/</span> <a href="#" style="color: #FFFFFF; text-decoration: none; opacity: .75;">EN</a></span>
+<a class="btn-o" href="#" style="display: inline-flex; align-items: center; min-height: 46px; padding: 0 24px; border: 1px solid rgba(255,255,255,.75); border-radius: 999px; color: #FFFFFF; text-decoration: none; font-size: 14px; font-weight: 500;">Đặt phòng</a>
+</div>
+</header>
+
+<div class="wrap" style="position: absolute; left: 0; right: 0; bottom: 150px;">
+<p class="rise" style="margin: 0 0 18px; font-size: 12px; letter-spacing: .32em; text-transform: uppercase;">Khu nghỉ dưỡng gia đình · Dương Đông, Phú Quốc</p>
+<h1 class="serif hero-h rise2" style="margin: 0; font-size: 84px; line-height: 1.02; font-weight: 400; letter-spacing: -.01em; max-width: 900px;">Nắng đảo, vườn xanh –<br><em style="font-weight: 400; color: #F1DDCB;">kỳ nghỉ trọn vẹn cho cả nhà</em></h1>
+<p class="rise3" style="margin: 22px 0 0; max-width: 520px; font-size: 18px; font-weight: 300; opacity: .95; width: 575px">Vườn nhiệt đới mát lành, hồ bơi cho bé và biển xanh chỉ vài bước chân.</p>
+</div>
+</section>
+
+<!-- THANH ĐẶT PHÒNG -->
+<div class="wrap" style="position: relative; margin-top: -88px;">
+<form class="bk" style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)) auto; gap: 0; align-items: stretch; background: #FFFFFF; border-radius: 24px; box-shadow: 0 24px 60px rgba(38,37,31,.12); padding: 10px;">
+<label style="display: flex; flex-direction: column; gap: 2px; padding: 14px 22px; border-right: 1px solid #ECE6DC;">
+<span style="font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: #5F5A52;">Nhận phòng</span>
+<input type="text" value="Th 6, 20/11" aria-label="Ngày nhận phòng" style="border: 0; padding: 0; font: inherit; font-size: 17px; font-weight: 500; color: #26251F; background: transparent; outline-offset: 4px;">
+</label>
+<label style="display: flex; flex-direction: column; gap: 2px; padding: 14px 22px; border-right: 1px solid #ECE6DC;">
+<span style="font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: #5F5A52;">Trả phòng</span>
+<input type="text" value="CN, 22/11" aria-label="Ngày trả phòng" style="border: 0; padding: 0; font: inherit; font-size: 17px; font-weight: 500; color: #26251F; background: transparent;">
+</label>
+<label style="display: flex; flex-direction: column; gap: 2px; padding: 14px 22px; border-right: 1px solid #ECE6DC;">
+<span style="font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: #5F5A52;">Người lớn</span>
+<input type="text" value="2 người lớn" aria-label="Số người lớn" style="border: 0; padding: 0; font: inherit; font-size: 17px; font-weight: 500; color: #26251F; background: transparent;">
+</label>
+<label style="display: flex; flex-direction: column; gap: 2px; padding: 14px 22px;">
+<span style="font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: #5F5A52;">Trẻ em</span>
+<input type="text" value="2 bé (4 và 7 tuổi)" aria-label="Số trẻ em" style="border: 0; padding: 0; font: inherit; font-size: 17px; font-weight: 500; color: #26251F; background: transparent;">
+</label>
+<a class="btn-p" href="#" style="display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 64px; padding: 0 34px; border-radius: 16px; background: #3F5B4B; color: #FFFFFF; text-decoration: none; font-size: 16px; font-weight: 500;">Xem phòng trống
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+</form>
+</div>
+
+<!-- CÂU CHUYỆN -->
+<section class="wrap" style="padding-top: 140px; padding-bottom: 130px;">
+<div class="g2" style="display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 96px; align-items: center;">
+<div>
+<p style="margin: 0 0 22px; font-size: 12px; letter-spacing: .32em; text-transform: uppercase; color: #3F5B4B; font-weight: 500;">Câu chuyện Grove</p>
+<h2 class="serif h2" style="margin: 0 0 28px; font-size: 58px; line-height: 1.08; font-weight: 400;">Một khu vườn xanh<br><em style="color: #9C5A3C;">giữa đảo nắng</em></h2>
+<p style="margin: 0 0 22px; font-size: 19px; color: #46423B; max-width: 520px;">“Grove” là lùm cây xanh mát. Chúng tôi giữ lại những tán dừa, bụi dâm bụt và lối đi rợp bóng để mỗi buổi sáng, cả nhà thức dậy với tiếng chim và mùi biển.</p>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; margin: 44px 0 40px; padding-top: 32px; border-top: 1px solid #DDD5C8; max-width: 540px;">
+<div><p class="serif" style="margin: 0; font-size: 40px; line-height: 1;">2.000<span style="font-size: 22px;">m²</span></p><p style="margin: 8px 0 0; font-size: 14px; color: #5F5A52;">vườn nhiệt đới</p></div>
+<div><p class="serif" style="margin: 0; font-size: 40px; line-height: 1;">5<span style="font-size: 22px;"> phút</span></p><p style="margin: 8px 0 0; font-size: 14px; color: #5F5A52;">đi bộ ra biển</p></div>
+<div><p class="serif" style="margin: 0; font-size: 40px; line-height: 1;">3–12</p><p style="margin: 8px 0 0; font-size: 14px; color: #5F5A52;">tuổi chơi Kids Club miễn phí</p></div>
+</div>
+<a class="ulink" href="#" style="font-size: 15px; font-weight: 500; color: #26251F;">Tìm hiểu về Sunny Grove →</a>
+</div>
+<div style="position: relative; padding-bottom: 60px;">
+<div class="zoom" style="border-radius: 999px 999px 28px 28px; aspect-ratio: 4 / 5; max-width: 440px; margin-left: auto;">
+<img src="/_blob/fb35429928dfb756cfffc3acb7895d80" alt="Hai bé chơi đùa bên đài phun nước" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+</div>
+<div class="zoom" style="position: absolute; left: 0; bottom: 0; width: 220px; aspect-ratio: 1 / 1; border-radius: 50%; border: 10px solid #F8F5EF;">
+<img src="/_blob/069711dd78f40a5619c487df391fc592" alt="Bữa sáng với bánh sừng bò và nước cam" style="width: 100%; height: 100%; object-fit: cover; display: block; border-radius: 50%;">
+</div>
+</div>
+</div>
+</section>
+
+<!-- TRẢI NGHIỆM -->
+<section style="background: #EFE9DF; padding: 110px 0;">
+<div class="wrap">
+<div class="g4" style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0;">
+<div style="padding: 0 32px 0 0; border-right: 1px solid #D9D0C2;">
+<svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#3F5B4B" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8" cy="6" r="2.2"></circle><circle cx="16" cy="7.5" r="1.8"></circle><path d="M4.5 20v-5a3.5 3.5 0 0 1 7 0v5M13.5 20v-3.5a2.5 2.5 0 0 1 5 0V20"></path></svg>
+<p class="serif" style="margin: 22px 0 8px; font-size: 26px; line-height: 1.2;">Kids Club</p>
+<p style="margin: 0; font-size: 15px; color: #5F5A52;">Bé vui chơi cùng bảo mẫu, ba mẹ thảnh thơi thư giãn.</p>
+</div>
+<div style="padding: 0 32px; border-right: 1px solid #D9D0C2;">
+<svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#3F5B4B" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 17c1.5 0 1.5 1 3 1s1.5-1 3-1 1.5 1 3 1 1.5-1 3-1 1.5 1 3 1 1.5-1 3-1M3 13c1.5 0 1.5 1 3 1s1.5-1 3-1 1.5 1 3 1 1.5-1 3-1 1.5 1 3 1 1.5-1 3-1M8 13V5a2 2 0 0 1 4 0M16 13V5a2 2 0 0 0-4 0"></path></svg>
+<p class="serif" style="margin: 22px 0 8px; font-size: 26px; line-height: 1.2;">Hồ bơi cho bé</p>
+<p style="margin: 0; font-size: 15px; color: #5F5A52;">Hồ nông 40cm, có cứu hộ, ngay cạnh hồ người lớn.</p>
+</div>
+<div style="padding: 0 32px; border-right: 1px solid #D9D0C2;">
+<svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#3F5B4B" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="17" cy="6" r="2.5"></circle><path d="M2 19c2 0 2-1.2 4-1.2s2 1.2 4 1.2 2-1.2 4-1.2 2 1.2 4 1.2 2-1.2 4-1.2M5 15l5-8 4 6"></path></svg>
+<p class="serif" style="margin: 22px 0 8px; font-size: 26px; line-height: 1.2;">Gần biển</p>
+<p style="margin: 0; font-size: 15px; color: #5F5A52;">Chỉ 5 phút đi bộ là tới bãi cát và hoàng hôn.</p>
+</div>
+<div style="padding: 0 0 0 32px;">
+<svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#3F5B4B" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 14h18v3a1 1 0 0 1-1 1h-1M3 14V9a2 2 0 0 1 2-2h11l4 4v3M3 14v3a1 1 0 0 0 1 1h1"></path><circle cx="7.5" cy="18" r="1.8"></circle><circle cx="16.5" cy="18" r="1.8"></circle></svg>
+<p class="serif" style="margin: 22px 0 8px; font-size: 26px; line-height: 1.2;">Đưa đón sân bay</p>
+<p style="margin: 0; font-size: 15px; color: #5F5A52;">Miễn phí khi ở từ 3 đêm, có ghế ngồi cho bé.</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- PHÒNG NGHỈ -->
+<section class="wrap" style="padding-top: 130px; padding-bottom: 130px;">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 24px; margin-bottom: 56px;">
+<div>
+<p style="margin: 0 0 18px; font-size: 12px; letter-spacing: .32em; text-transform: uppercase; color: #3F5B4B; font-weight: 500;">Phòng nghỉ</p>
+<h2 class="serif h2" style="margin: 0; font-size: 58px; line-height: 1.08; font-weight: 400;">Chọn góc nghỉ<br><em style="color: #9C5A3C;">hợp với nhà mình</em></h2>
+</div>
+<div style="display: flex; gap: 8px; flex-wrap: wrap;">
+<a href="#" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 20px; border-radius: 999px; background: #26251F; color: #FFFFFF; text-decoration: none; font-size: 14px;">Tất cả</a>
+<a href="#" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 20px; border-radius: 999px; border: 1px solid #D9D0C2; color: #26251F; text-decoration: none; font-size: 14px;">Gia đình</a>
+<a href="#" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 20px; border-radius: 999px; border: 1px solid #D9D0C2; color: #26251F; text-decoration: none; font-size: 14px;">Cặp đôi</a>
+<a href="#" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 20px; border-radius: 999px; border: 1px solid #D9D0C2; color: #26251F; text-decoration: none; font-size: 14px;">Nhóm bạn</a>
+</div>
+</div>
+<div class="g3" style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px;">
+<a href="#" style="display: block; color: #26251F; text-decoration: none;">
+<div class="zoom" style="border-radius: 200px 200px 20px 20px; aspect-ratio: 3 / 4; position: relative;">
+<img src="/_blob/fc41c2aaab68e36b4dffa2f08dde5ede" alt="Phòng Family Garden với giường đôi và bàn nhỏ" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+<span style="position: absolute; left: 16px; bottom: 16px; padding: 6px 14px; border-radius: 999px; background: rgba(248,245,239,.92); font-size: 13px; color: #3F5B4B; font-weight: 500;">Thân thiện với bé</span>
+</div>
+<p class="serif" style="margin: 24px 0 4px; font-size: 30px; line-height: 1.2;">Family Garden Room</p>
+<p style="margin: 0 0 14px; font-size: 15px; color: #5F5A52;">2 người lớn · 2 trẻ em · 35 m² · Nhìn ra vườn</p>
+<p style="margin: 0; display: flex; justify-content: space-between; align-items: baseline; border-top: 1px solid #DDD5C8; padding-top: 14px; font-size: 15px;"><span>Từ <strong style="font-weight: 600;">1.290.000đ</strong> / đêm</span><span class="ulink" style="font-weight: 500;">Xem phòng →</span></p>
+</a>
+<a href="#" style="display: block; color: #26251F; text-decoration: none; margin-top: 64px;">
+<div class="zoom" style="border-radius: 200px 200px 20px 20px; aspect-ratio: 3 / 4; position: relative;">
+<img src="/_blob/81896736eb4acf7076320937fc4b187e" alt="Hồ bơi và chòi nghỉ nhìn từ ban công Family Suite" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+<span style="position: absolute; left: 16px; bottom: 16px; padding: 6px 14px; border-radius: 999px; background: rgba(248,245,239,.92); font-size: 13px; color: #3F5B4B; font-weight: 500;">Thân thiện với bé</span>
+</div>
+<p class="serif" style="margin: 24px 0 4px; font-size: 30px; line-height: 1.2;">Family Suite 2 phòng ngủ</p>
+<p style="margin: 0 0 14px; font-size: 15px; color: #5F5A52;">4 người lớn · 2 trẻ em · 55 m² · Ban công hồ bơi</p>
+<p style="margin: 0; display: flex; justify-content: space-between; align-items: baseline; border-top: 1px solid #DDD5C8; padding-top: 14px; font-size: 15px;"><span>Từ <strong style="font-weight: 600;">2.190.000đ</strong> / đêm</span><span class="ulink" style="font-weight: 500;">Xem phòng →</span></p>
+</a>
+<a href="#" style="display: block; color: #26251F; text-decoration: none;">
+<div class="zoom" style="border-radius: 200px 200px 20px 20px; aspect-ratio: 3 / 4;">
+<img src="/_blob/559df2217dbebd47bafb57ca26631c1a" alt="Hoàng hôn trên biển nhìn từ phòng Couple Deluxe" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+</div>
+<p class="serif" style="margin: 24px 0 4px; font-size: 30px; line-height: 1.2;">Couple Deluxe Sea View</p>
+<p style="margin: 0 0 14px; font-size: 15px; color: #5F5A52;">2 người lớn · 30 m² · Nhìn ra biển</p>
+<p style="margin: 0; display: flex; justify-content: space-between; align-items: baseline; border-top: 1px solid #DDD5C8; padding-top: 14px; font-size: 15px;"><span>Từ <strong style="font-weight: 600;">1.490.000đ</strong> / đêm</span><span class="ulink" style="font-weight: 500;">Xem phòng →</span></p>
+</a>
+</div>
+</section>
+
+<!-- KHOẢNG LẶNG -->
+<section style="position: relative; height: 560px; color: #FFFFFF; display: flex; align-items: center; justify-content: center; text-align: center; overflow: hidden;">
+<img src="/_blob/ba1b98716a472f25e3605c067eea8fb4" alt="Biển xanh và đảo nhỏ ngoài khơi Phú Quốc" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;">
+<div style="position: absolute; inset: 0; background: rgba(20,22,18,.38);"></div>
+<div class="wrap" style="position: relative; max-width: 900px;">
+<p class="serif" style="margin: 0; font-size: 46px; line-height: 1.25; font-style: italic; font-weight: 400;">“Ở đây, một ngày bắt đầu bằng tiếng sóng và kết thúc bằng tiếng cười của bọn trẻ.”</p>
+<p style="margin: 26px 0 0; font-size: 12px; letter-spacing: .32em; text-transform: uppercase;">Sunny Grove · Phú Quốc</p>
+</div>
+</section>
+
+<!-- TIỆN ÍCH (BENTO) -->
+<section class="wrap" style="padding-top: 130px; padding-bottom: 130px;">
+<div style="text-align: center; margin-bottom: 56px;">
+<p style="margin: 0 0 18px; font-size: 12px; letter-spacing: .32em; text-transform: uppercase; color: #3F5B4B; font-weight: 500;">Tiện ích</p>
+<h2 class="serif h2" style="margin: 0; font-size: 58px; line-height: 1.08; font-weight: 400;">Cả nhà đều có<br><em style="color: #9C5A3C;">niềm vui riêng</em></h2>
+</div>
+<div class="bento" style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); grid-template-rows: 300px 300px; gap: 20px;">
+<a class="zoom" href="#" style="grid-column: 1 / 3; grid-row: 1 / 3; position: relative; border-radius: 24px; color: #FFFFFF; text-decoration: none; display: block;">
+<img src="/_blob/4987f37d64efe00655b6c1ade12f2d0e" alt="Mặt nước hồ bơi trong xanh" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+<div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(20,22,18,0) 45%, rgba(20,22,18,.65) 100%);"></div>
+<div style="position: absolute; left: 32px; right: 32px; bottom: 30px;">
+<p style="margin: 0 0 6px; font-size: 13px; letter-spacing: .14em; text-transform: uppercase; opacity: .9;">06:00 – 20:00</p>
+<p class="serif" style="margin: 0 0 6px; font-size: 36px; line-height: 1.15;">Hồ bơi người lớn &amp; hồ bơi trẻ em</p>
+<p style="margin: 0; font-size: 15px; opacity: .95; max-width: 420px;">Hồ 25m cho người lớn, hồ nông 40cm cho bé, cứu hộ suốt giờ mở cửa.</p>
+</div>
+</a>
+<a class="zoom" href="#" style="grid-column: 3 / 5; position: relative; border-radius: 24px; color: #FFFFFF; text-decoration: none; display: block;">
+<img src="/_blob/8b517ded19a41018819182de6ebe224f" alt="Toàn cảnh khu nghỉ dưỡng và bãi biển nhìn từ trên cao" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+<div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(20,22,18,0) 40%, rgba(20,22,18,.6) 100%);"></div>
+<div style="position: absolute; left: 28px; bottom: 24px;">
+<p class="serif" style="margin: 0; font-size: 30px; line-height: 1.15;">Vườn nhiệt đới</p>
+<p style="margin: 0; font-size: 14px; opacity: .95;">Hơn 2.000m² cây xanh, võng và lối đi rợp bóng</p>
+</div>
+</a>
+<a class="zoom" href="#" style="position: relative; border-radius: 24px; color: #FFFFFF; text-decoration: none; display: block;">
+<img src="/_blob/069711dd78f40a5619c487df391fc592" alt="Bữa sáng ở nhà hàng Grove Kitchen" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+<div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(20,22,18,0) 35%, rgba(20,22,18,.65) 100%);"></div>
+<p class="serif" style="position: absolute; left: 24px; bottom: 20px; margin: 0; font-size: 26px; line-height: 1.15;">Grove Kitchen</p>
+</a>
+<a class="zoom" href="#" style="position: relative; border-radius: 24px; color: #FFFFFF; text-decoration: none; display: block;">
+<img src="/_blob/1a55d0a01c84362309cf67485f251031" alt="Du khách đi xe máy trên con đường rợp bóng dừa" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+<div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(20,22,18,0) 35%, rgba(20,22,18,.65) 100%);"></div>
+<p class="serif" style="position: absolute; left: 24px; bottom: 20px; margin: 0; font-size: 26px; line-height: 1.15;">Thuê xe &amp; tour đảo</p>
+</a>
+</div>
+</section>
+
+<!-- KHÁM PHÁ -->
+<section style="background: #26251F; color: #F8F5EF; padding: 120px 0;">
+<div class="wrap">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 24px; margin-bottom: 48px;">
+<div>
+<p style="margin: 0 0 18px; font-size: 12px; letter-spacing: .32em; text-transform: uppercase; color: #BFD0C3; font-weight: 500;">Khám phá Phú Quốc</p>
+<h2 class="serif h2" style="margin: 0; font-size: 58px; line-height: 1.08; font-weight: 400;">Hôm nay<br><em style="color: #F1DDCB;">cả nhà đi đâu?</em></h2>
+</div>
+<div style="display: flex; gap: 10px;">
+<button type="button" aria-label="Địa điểm trước" style="width: 52px; height: 52px; border-radius: 50%; border: 1px solid rgba(248,245,239,.35); background: transparent; color: #F8F5EF; display: inline-flex; align-items: center; justify-content: center; cursor: pointer;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"></path></svg></button>
+<button type="button" aria-label="Địa điểm tiếp theo" style="width: 52px; height: 52px; border-radius: 50%; border: 0; background: #F8F5EF; color: #26251F; display: inline-flex; align-items: center; justify-content: center; cursor: pointer;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></button>
+</div>
+</div>
+</div>
+<div class="hs" style="display: flex; gap: 24px; overflow-x: auto; padding: 0 max(48px, calc((100% - 1144px) / 2)); scroll-snap-type: x mandatory;">
+<a href="#" style="flex: 0 0 340px; scroll-snap-align: start; color: #F8F5EF; text-decoration: none;">
+<div class="zoom" style="border-radius: 20px; aspect-ratio: 4 / 5; position: relative;">
+<img src="/_blob/f333565b725cb35cf758faf233b79521" alt="Cầu Hôn và thị trấn Sunset Town lúc hoàng hôn" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+<span style="position: absolute; top: 16px; left: 16px; padding: 6px 12px; border-radius: 999px; background: rgba(248,245,239,.92); color: #26251F; font-size: 13px; font-weight: 500;">28 km · 40 phút ô tô</span>
+</div>
+<p class="serif" style="margin: 18px 0 2px; font-size: 16px; font-style: italic; color: #F1DDCB;">Không cần tới Ý?</p>
+<p class="serif" style="margin: 0; font-size: 28px; line-height: 1.2;">Sunset Town &amp; Cầu Hôn</p>
+</a>
+<a href="#" style="flex: 0 0 340px; scroll-snap-align: start; color: #F8F5EF; text-decoration: none;">
+<div class="zoom" style="border-radius: 20px; aspect-ratio: 4 / 5; position: relative;">
+<img src="/_blob/9d939a7796a2f68993598eeed706948f" alt="Cáp treo Hòn Thơm trên làng chài An Thới" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+<span style="position: absolute; top: 16px; left: 16px; padding: 6px 12px; border-radius: 999px; background: rgba(248,245,239,.92); color: #26251F; font-size: 13px; font-weight: 500;">26 km · 35 phút ô tô</span>
+</div>
+<p class="serif" style="margin: 18px 0 2px; font-size: 16px; font-style: italic; color: #F1DDCB;">Không cần tới Thụy Sĩ?</p>
+<p class="serif" style="margin: 0; font-size: 28px; line-height: 1.2;">Cáp treo Hòn Thơm</p>
+</a>
+<a href="#" style="flex: 0 0 340px; scroll-snap-align: start; color: #F8F5EF; text-decoration: none;">
+<div class="zoom" style="border-radius: 20px; aspect-ratio: 4 / 5; position: relative;">
+<img src="/_blob/baeaa438d5dd1159afe85c4c7b701470" alt="Bãi Sao cát trắng nước trong" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+<span style="position: absolute; top: 16px; left: 16px; padding: 6px 12px; border-radius: 999px; background: rgba(248,245,239,.92); color: #26251F; font-size: 13px; font-weight: 500;">25 km · 35 phút xe máy</span>
+</div>
+<p class="serif" style="margin: 18px 0 2px; font-size: 16px; font-style: italic; color: #F1DDCB;">Không cần tới Maldives?</p>
+<p class="serif" style="margin: 0; font-size: 28px; line-height: 1.2;">Bãi Sao</p>
+</a>
+<a href="#" style="flex: 0 0 340px; scroll-snap-align: start; color: #F8F5EF; text-decoration: none;">
+<div class="zoom" style="border-radius: 20px; aspect-ratio: 4 / 5; position: relative;">
+<img src="/_blob/9ea6b69cb8ab8ba377d56e7b223889d6" alt="Cổng vào Vinpearl Safari Phú Quốc" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+<span style="position: absolute; top: 16px; left: 16px; padding: 6px 12px; border-radius: 999px; background: rgba(248,245,239,.92); color: #26251F; font-size: 13px; font-weight: 500;">15 km · 25 phút ô tô</span>
+</div>
+<p class="serif" style="margin: 18px 0 2px; font-size: 16px; font-style: italic; color: #F1DDCB;">Không cần tới Kenya?</p>
+<p class="serif" style="margin: 0; font-size: 28px; line-height: 1.2;">Vinpearl Safari</p>
+</a>
+</div>
+</section>
+
+<!-- ƯU ĐÃI -->
+<section class="wrap" style="padding-top: 130px; padding-bottom: 110px;">
+<div class="g2" style="display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.6fr); gap: 80px; align-items: start;">
+<div>
+<p style="margin: 0 0 18px; font-size: 12px; letter-spacing: .32em; text-transform: uppercase; color: #3F5B4B; font-weight: 500;">Ưu đãi</p>
+<h2 class="serif h2" style="margin: 0 0 22px; font-size: 58px; line-height: 1.08; font-weight: 400;">Đặt trực tiếp,<br><em style="color: #9C5A3C;">nhận nhiều hơn</em></h2>
+<p style="margin: 0; font-size: 17px; color: #5F5A52; max-width: 360px;">Giá tốt nhất khi đặt thẳng với khách sạn, kèm một món quà nhỏ cho bé.</p>
+</div>
+<div style="border-top: 1px solid #DDD5C8;">
+<a href="#" class="offer" style="display: grid; grid-template-columns: 120px minmax(0, 1fr) auto; gap: 28px; align-items: center; padding: 28px 0; border-bottom: 1px solid #DDD5C8; color: #26251F; text-decoration: none;">
+<div class="zoom" style="border-radius: 14px; aspect-ratio: 1 / 1;"><img src="/_blob/fc41c2aaab68e36b4dffa2f08dde5ede" alt="Phòng Family Garden" style="width: 100%; height: 100%; object-fit: cover; display: block;"></div>
+<div><p class="serif" style="margin: 0 0 4px; font-size: 28px; line-height: 1.2;">Combo gia đình 3 ngày 2 đêm</p><p style="margin: 0; font-size: 15px; color: #5F5A52;">Phòng Family Garden, bữa sáng, đưa đón sân bay và 1 buổi Kids Club. Đến 30/04/2027.</p></div>
+<div style="text-align: right;"><p style="margin: 0; font-size: 14px; color: #5F5A52; text-decoration: line-through;">5.900.000đ</p><p class="serif" style="margin: 0; font-size: 30px; line-height: 1.1; color: #9C5A3C;">4.990.000đ</p></div>
+</a>
+<a href="#" class="offer" style="display: grid; grid-template-columns: 120px minmax(0, 1fr) auto; gap: 28px; align-items: center; padding: 28px 0; border-bottom: 1px solid #DDD5C8; color: #26251F; text-decoration: none;">
+<div class="zoom" style="border-radius: 14px; aspect-ratio: 1 / 1;"><img src="/_blob/8b517ded19a41018819182de6ebe224f" alt="Khu nghỉ dưỡng nhìn từ trên cao" style="width: 100%; height: 100%; object-fit: cover; display: block;"></div>
+<div><p class="serif" style="margin: 0 0 4px; font-size: 28px; line-height: 1.2;">Ở dài ngày</p><p style="margin: 0; font-size: 15px; color: #5F5A52;">Từ 5 đêm trở lên, áp dụng cho mọi loại phòng.</p></div>
+<div style="text-align: right;"><p style="margin: 0; font-size: 14px; color: #5F5A52;">giảm</p><p class="serif" style="margin: 0; font-size: 30px; line-height: 1.1; color: #9C5A3C;">20%</p></div>
+</a>
+<a href="#" class="offer" style="display: grid; grid-template-columns: 120px minmax(0, 1fr) auto; gap: 28px; align-items: center; padding: 28px 0; border-bottom: 1px solid #DDD5C8; color: #26251F; text-decoration: none;">
+<div class="zoom" style="border-radius: 14px; aspect-ratio: 1 / 1;"><img src="/_blob/559df2217dbebd47bafb57ca26631c1a" alt="Hoàng hôn trên biển" style="width: 100%; height: 100%; object-fit: cover; display: block;"></div>
+<div><p class="serif" style="margin: 0 0 4px; font-size: 28px; line-height: 1.2;">Đặt sớm</p><p style="margin: 0; font-size: 15px; color: #5F5A52;">Đặt trước 30 ngày để có giá tốt và phòng đẹp nhất. Đến 30/10/2027.</p></div>
+<div style="text-align: right;"><p style="margin: 0; font-size: 14px; color: #5F5A52;">giảm</p><p class="serif" style="margin: 0; font-size: 30px; line-height: 1.1; color: #9C5A3C;">12%</p></div>
+</a>
+</div>
+</div>
+</section>
+
+<!-- ĐÁNH GIÁ -->
+<section style="background: #EFE9DF; padding: 120px 0;">
+<div class="wrap" style="max-width: 980px; text-align: center;">
+<svg width="40" height="32" viewBox="0 0 40 32" fill="#8AA190" aria-hidden="true"><path d="M0 32V19C0 8 6 1.5 16 0l1.5 3.5C11 5.5 8.5 9.5 8.5 15H16v17H0zm22 0V19C22 8 28 1.5 38 0l1.5 3.5C33 5.5 30.5 9.5 30.5 15H38v17H22z"></path></svg>
+<p class="serif" style="margin: 28px 0 32px; font-size: 40px; line-height: 1.3; font-weight: 400;">Hai bé nhà mình mê Kids Club tới mức không muốn về. Phòng rộng, sạch, nhân viên siêu dễ thương!</p>
+<p style="margin: 0; font-size: 15px; font-weight: 600;">Chị Thu Hà</p>
+<p style="margin: 2px 0 0; font-size: 14px; color: #5F5A52;">Hà Nội · gia đình 4 người · đánh giá trên Google</p>
+<div style="display: flex; justify-content: center; gap: 10px; margin-top: 36px;" aria-hidden="true">
+<span style="width: 28px; height: 4px; border-radius: 4px; background: #3F5B4B;"></span>
+<span style="width: 10px; height: 4px; border-radius: 4px; background: #CFC6B8;"></span>
+<span style="width: 10px; height: 4px; border-radius: 4px; background: #CFC6B8;"></span>
+</div>
+</div>
+</section>
+
+<!-- LỜI MỜI + CHÂN TRANG -->
+<section class="wrap" style="padding-top: 130px; padding-bottom: 110px; text-align: center;">
+<h2 class="serif h2" style="margin: 0 0 20px; font-size: 64px; line-height: 1.08; font-weight: 400;">Hẹn gặp cả nhà<br><em style="color: #9C5A3C;">ở Sunny Grove</em></h2>
+<p style="margin: 0 auto 36px; max-width: 520px; color: #5F5A52;">Gửi yêu cầu trong 1 phút, chúng tôi gọi lại xác nhận ngay trong ngày.</p>
+<div style="display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;">
+<a class="btn-p" href="#" style="display: inline-flex; align-items: center; min-height: 56px; padding: 0 32px; border-radius: 999px; background: #3F5B4B; color: #FFFFFF; text-decoration: none; font-weight: 500;">Đặt phòng</a>
+<a class="btn-o" href="#" style="display: inline-flex; align-items: center; min-height: 56px; padding: 0 32px; border-radius: 999px; border: 1px solid #26251F; color: #26251F; text-decoration: none; font-weight: 500;">Nhắn Zalo cho chúng tôi</a>
+</div>
+</section>
+
+<footer style="border-top: 1px solid #DDD5C8;">
+<div class="wrap g4" style="display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 40px; padding-top: 64px; padding-bottom: 40px; font-size: 15px;">
+<div>
+<p class="serif" style="margin: 0; font-size: 30px; line-height: 1;">Sunny Grove</p>
+<p style="margin: 14px 0 0; color: #5F5A52; max-width: 280px;">Khu vườn xanh giữa đảo nắng – nơi cả nhà cùng nghỉ ngơi, vui chơi và lưu giữ kỷ niệm.</p>
+</div>
+<div>
+<p style="margin: 0 0 14px; font-size: 12px; letter-spacing: .24em; text-transform: uppercase; color: #3F5B4B; font-weight: 500;">Khám phá</p>
+<p style="margin: 0; line-height: 2.1;"><a class="ulink" href="#" style="color: #26251F;">Phòng nghỉ</a><br><a class="ulink" href="#" style="color: #26251F;">Tiện ích</a><br><a class="ulink" href="#" style="color: #26251F;">Ưu đãi</a><br><a class="ulink" href="#" style="color: #26251F;">Blog</a></p>
+</div>
+<div>
+<p style="margin: 0 0 14px; font-size: 12px; letter-spacing: .24em; text-transform: uppercase; color: #3F5B4B; font-weight: 500;">Liên hệ</p>
+<p style="margin: 0; line-height: 2.1;">[HOTLINE]<br>[EMAIL]<br>Zalo · WhatsApp</p>
+</div>
+<div>
+<p style="margin: 0 0 14px; font-size: 12px; letter-spacing: .24em; text-transform: uppercase; color: #3F5B4B; font-weight: 500;">Địa chỉ</p>
+<p style="margin: 0; color: #5F5A52;">[ĐỊA CHỈ], Dương Đông, Phú Quốc<br>Nhận phòng 14:00 · Trả phòng 12:00</p>
+</div>
+</div>
+<div class="wrap" style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; padding-top: 22px; padding-bottom: 32px; border-top: 1px solid #E6DFD3; font-size: 13px; color: #5F5A52;">
+<span>© 2026 Sunny Grove Hotel · Phú Quốc</span>
+<span>Ảnh minh họa: Wikimedia Commons (CC BY-SA) và thư viện ảnh miễn phí</span>
+</div>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":6200}}'>
+class Component extends DCLogic {
+renderVals() {
+return {};
+}
+}
+</script>
+</body>
+</html>

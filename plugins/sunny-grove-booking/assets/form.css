@@ -4,7 +4,7 @@
  */
 .sgb-block,
 .sgb-wrap {
-	--sgb-primary: var(--wp--preset--color--primary, #1fa3a3);
+	--sgb-primary: var(--wp--preset--color--primary-dark, #147c7c);
 	--sgb-accent: var(--wp--preset--color--accent, #f6b93b);
 	--sgb-ink: var(--wp--preset--color--ink, #1e2a2b);
 	--sgb-bg: var(--wp--preset--color--white, #fff);
@@ -115,7 +115,7 @@ textarea.sgb-input { min-height: 96px; resize: vertical; }
 /* Nhãn số khách luôn 1 dòng (VD: "Trẻ em (dưới 12 tuổi)"); điện thoại nhỏ: chữ nhãn nhỏ hơn một chút cho vừa cột. */
 .sgb-compact .sgb-field--num label { white-space: nowrap; }
 @media (max-width: 479px) {
-	.sgb-compact .sgb-field label { font-size: .8125rem; }
+	.sgb-compact .sgb-field label { font-size: .875rem; }
 }
 @media (max-width: 359px) {
 	.sgb-compact .sgb-field--num label { white-space: normal; }

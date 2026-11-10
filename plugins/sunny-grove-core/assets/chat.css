@@ -1,7 +1,10 @@
+/* Chiều cao thanh nút cuối màn hình trên điện thoại (dùng chung với theme: nút Đặt phòng bên trái, nút Chat bên phải). */
+:root { --sg-bar-h: 64px; }
+
 .sg-chat {
 	position: fixed;
 	bottom: max(16px, env(safe-area-inset-bottom));
-	z-index: 90;
+	z-index: 91;
 }
 .sg-chat--right { right: 16px; }
 .sg-chat--left { left: 16px; }
@@ -21,8 +24,8 @@
 }
 .sg-chat__btn:hover, .sg-chat__btn:focus-visible { transform: translateY(-2px) scale(1.04); box-shadow: 0 12px 28px rgba(30, 42, 43, .28); }
 .sg-chat__btn--zalo { background: #0068ff; }
-.sg-chat__btn--whatsapp { background: #1f8f4e; }
-.sg-chat__btn--phone { background: var(--wp--preset--color--primary, #1fa3a3); }
+.sg-chat__btn--whatsapp { background: #1a7a43; }
+.sg-chat__btn--phone { background: var(--wp--preset--color--primary-dark, #147C7C); }
 .sg-chat__label {
 	position: absolute;
 	right: calc(100% + 10px);
@@ -32,7 +35,7 @@
 	border-radius: 8px;
 	background: var(--wp--preset--color--ink, #1e2a2b);
 	color: #fff;
-	font-size: .8125rem;
+	font-size: .875rem;
 	font-weight: 600;
 	white-space: nowrap;
 	opacity: 0;
@@ -41,12 +44,87 @@
 }
 .sg-chat--left .sg-chat__label { right: auto; left: calc(100% + 10px); }
 .sg-chat__btn:hover .sg-chat__label, .sg-chat__btn:focus-visible .sg-chat__label { opacity: 1; }
-@media (max-width: 600px) {
+
+/* Nút "Chat" chỉ dùng trên điện thoại */
+.sg-chat__toggle { display: none; }
+
+@media (max-width: 599px) {
+	/* Trình duyệt tắt JS: cột nút tròn nằm phía trên thanh cuối màn hình. */
+	.sg-chat { bottom: calc(var(--sg-bar-h) + env(safe-area-inset-bottom, 0px) + 12px); }
 	.sg-chat__btn { width: 48px; height: 48px; }
 	.sg-chat__label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); padding: 0; }
+	/* Menu điện thoại đang mở → ẩn. */
+	html.sg-menu-open .sg-chat { display: none; }
+}
+/* Có JS (đa số trường hợp): nút "Chat" nằm bên phải thanh cuối màn hình, bấm mở danh sách (assets/chat.js).
+   Dùng (scripting: enabled) thay vì chờ JS gắn class → thanh hiện đúng ngay khi tải trang, không bị giật. */
+@media (max-width: 599px) and (scripting: enabled) {
+	/* Thanh nằm trong đầu trang (lớp z-index 100) → nút Chat phải nằm trên lớp đó. */
+	.sg-chat,
+	.sg-chat--left {
+		z-index: 101;
+		left: auto;
+		right: 16px;
+		bottom: calc(env(safe-area-inset-bottom, 0px) + (var(--sg-bar-h) - 48px) / 2);
+	}
+	.sg-chat__toggle {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		gap: .45rem;
+		width: 116px;
+		height: 48px;
+		padding: 0 1rem;
+		border: 0;
+		border-radius: 999px;
+		background: var(--wp--preset--color--primary-dark, #147C7C);
+		color: #fff;
+		font: inherit;
+		font-size: 1rem;
+		font-weight: 700;
+		cursor: pointer;
+		-webkit-tap-highlight-color: transparent;
+	}
+	.sg-chat__toggle:focus-visible { outline: 3px solid var(--wp--preset--color--ink, #1e2a2b); outline-offset: 2px; }
+	.sg-chat__list {
+		position: absolute;
+		right: 0;
+		bottom: calc(100% + 12px);
+		align-items: flex-end;
+		visibility: hidden;
+		opacity: 0;
+		transform: translateY(8px);
+		transition: opacity .18s ease, transform .18s ease, visibility 0s linear .18s;
+	}
+	.sg-chat.is-open .sg-chat__list {
+		visibility: visible;
+		opacity: 1;
+		transform: none;
+		transition: opacity .18s ease, transform .18s ease;
+	}
+	/* Trong danh sách: nút dạng viên thuốc có chữ, dễ bấm. */
+	.sg-chat__btn {
+		width: auto;
+		min-width: 160px;
+		justify-content: flex-start;
+		gap: .6rem;
+		padding: 0 1.1rem 0 .85rem;
+	}
+	.sg-chat__label {
+		position: static;
+		width: auto;
+		height: auto;
+		overflow: visible;
+		clip: auto;
+		transform: none;
+		padding: 0;
+		background: none;
+		font-size: 1rem;
+		opacity: 1;
+	}
 }
 @media (prefers-reduced-motion: reduce) {
-	.sg-chat__btn { transition: none; }
+	.sg-chat__btn, .sg-chat__list { transition: none !important; }
 }
 @media print { .sg-chat { display: none; } }
 /* Nút Gọi chỉ hiện trên điện thoại / máy tính bảng (máy tính có chuột không gọi được). */

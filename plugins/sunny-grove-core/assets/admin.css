@@ -5,7 +5,7 @@
 .sgc-gallery-preview { display: flex; flex-wrap: wrap; gap: 8px; margin: 8px 0; }
 .sgc-thumb { display: inline-flex; width: 80px; height: 80px; border-radius: 8px; overflow: hidden; background: #f0f0f1; align-items: center; justify-content: center; }
 .sgc-thumb img { width: 80px; height: 80px; object-fit: cover; }
-.sgc-thumb--video .dashicons { font-size: 32px; width: 32px; height: 32px; color: #1FA3A3; }
+.sgc-thumb--video .dashicons { font-size: 32px; width: 32px; height: 32px; color: #147C7C; }
 .sgc-settings .form-table th { width: 240px; }
 .sgc-settings .nav-tab-wrapper { margin-bottom: 16px; }
 .sgc-settings textarea.large-text { min-height: 80px; }
@@ -30,4 +30,4 @@
 /* Ô được mở từ nút "Sửa tại đây" trong trình soạn thảo */
 .sgc-anchor { scroll-margin-top: 80px; }
 .sgc-anchor:target > th, .sgc-anchor:target > td { background: #e6f6f6; }
-.sgc-anchor:target > th { box-shadow: inset 4px 0 0 #1FA3A3; }
+.sgc-anchor:target > th { box-shadow: inset 4px 0 0 #147C7C; }

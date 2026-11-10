@@ -75,15 +75,16 @@ function sgb_email_vars( $post_id, $lang ) {
  * @return string
  */
 function sgb_email_html( $text, $title ) {
-	$primary = '#1FA3A3';
+	// Thanh tiêu đề chữ trắng → dùng màu xanh đậm (primary-dark) để đạt tương phản ≥ 4.5:1.
+	$primary = '#147C7C';
 	if ( function_exists( 'wp_get_global_settings' ) ) {
 		foreach ( (array) wp_get_global_settings( array( 'color', 'palette', 'theme' ) ) as $color ) {
-			if ( isset( $color['slug'], $color['color'] ) && 'primary' === $color['slug'] ) {
+			if ( isset( $color['slug'], $color['color'] ) && 'primary-dark' === $color['slug'] ) {
 				$primary = $color['color'];
 			}
 		}
 	}
-	$primary = sanitize_hex_color( $primary ) ? $primary : '#1FA3A3';
+	$primary = sanitize_hex_color( $primary ) ? $primary : '#147C7C';
 	$body    = make_clickable( nl2br( esc_html( $text ) ) );
 
 	return '<!doctype html><html><body style="margin:0;padding:24px;background:#f7f1e6;font-family:Arial,Helvetica,sans-serif;color:#1e2a2b;">'

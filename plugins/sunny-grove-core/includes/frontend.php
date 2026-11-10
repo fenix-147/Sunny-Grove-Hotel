@@ -8,17 +8,20 @@
 defined( 'ABSPATH' ) || exit;
 
 /**
- * Nạp CSS nút chat khi được bật.
+ * Nạp CSS/JS nút chat khi được bật (JS chỉ dùng cho nút "Chat" mở danh sách trên điện thoại).
  */
 function sgc_chat_assets() {
 	if ( '1' === sgc_hotel( 'chat_enabled' ) ) {
 		wp_enqueue_style( 'sgc-chat', SGC_URL . 'assets/chat.css', array(), SGC_VERSION );
+		wp_enqueue_script( 'sgc-chat', SGC_URL . 'assets/chat.js', array(), SGC_VERSION, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 	}
 }
 add_action( 'wp_enqueue_scripts', 'sgc_chat_assets' );
 
 /**
  * Nút chat nổi Zalo / WhatsApp / Gọi.
+ * Máy tính: cột nút tròn ở góc màn hình. Điện thoại (dưới 600px): gộp vào thanh cuối màn hình,
+ * nút "Chat" mở danh sách (theme vẽ thanh và nút Đặt phòng, xem theme.css → .sg-mobile-cta).
  */
 function sgc_render_chat() {
 	if ( '1' !== sgc_hotel( 'chat_enabled' ) ) {
@@ -39,7 +42,13 @@ function sgc_render_chat() {
 		return;
 	}
 	$side = 'left' === sgc_hotel( 'chat_side' ) ? 'left' : 'right';
-	echo '<div class="sg-chat sg-chat--' . esc_attr( $side ) . '" role="complementary" aria-label="' . esc_attr( sgc_label( 'chat_toggle' ) ) . '"><ul class="sg-chat__list">';
+	echo '<div class="sg-chat sg-chat--' . esc_attr( $side ) . '" role="complementary" aria-label="' . esc_attr( sgc_label( 'chat_toggle' ) ) . '">';
+	printf(
+		'<button type="button" class="sg-chat__toggle" aria-expanded="false" aria-controls="sg-chat-list">%1$s<span>%2$s</span></button>',
+		sgc_icon( 'chat', 22 ), // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		esc_html( sgc_label( 'chat_button' ) )
+	);
+	echo '<ul class="sg-chat__list" id="sg-chat-list">';
 	foreach ( $buttons as $b ) {
 		printf(
 			'<li><a class="sg-chat__btn sg-chat__btn--%1$s" href="%2$s"%3$s>%4$s<span class="sg-chat__label">%5$s</span></a></li>',

@@ -14,6 +14,9 @@
 .sg-lang,
 .sg-menu {
 	--sg-primary: var(--wp--preset--color--primary, #1fa3a3);
+	/* Màu đậm cho icon và nền có chữ trắng (đạt tương phản WCAG AA); màu chính chỉ dùng cho viền/trang trí. */
+	--sg-primary-dark: var(--wp--preset--color--primary-dark, #147C7C);
+	--sg-link: var(--wp--custom--link--color, #156f6f);
 	--sg-secondary: var(--wp--preset--color--secondary, #5e9c76);
 	--sg-accent: var(--wp--preset--color--accent, #f6b93b);
 	--sg-sand: var(--wp--preset--color--sand, #f7f1e6);
@@ -36,11 +39,11 @@
 	isolation: isolate;
 	margin-block-start: 0;
 }
-/* Chia cho --sg-zoom (theme thu nhỏ trang) để banner vẫn cao theo đúng màn hình. */
-.sg-banner--full { min-height: calc(100svh / var(--sg-zoom, 1)); }
-.sg-banner--large { min-height: min(calc(86svh / var(--sg-zoom, 1)), 820px); }
-.sg-banner--medium { min-height: min(calc(62svh / var(--sg-zoom, 1)), 560px); }
-.sg-banner--small { min-height: min(calc(44svh / var(--sg-zoom, 1)), 400px); }
+/* "Toàn màn hình" chừa 12% phía dưới để khách thấy ngay còn nội dung bên dưới. */
+.sg-banner--full { min-height: 88svh; }
+.sg-banner--large { min-height: min(80svh, 760px); }
+.sg-banner--medium { min-height: min(62svh, 560px); }
+.sg-banner--small { min-height: min(44svh, 400px); }
 .sg-banner--bottom { align-items: flex-end; }
 .sg-banner__media {
 	position: absolute;
@@ -219,7 +222,7 @@
 }
 .sg-gallery__nav:hover:not(:disabled),
 .sg-lightbox__btn:hover {
-	background: var(--sg-primary);
+	background: var(--sg-primary-dark);
 	color: #fff;
 }
 .sg-gallery__nav:focus-visible,
@@ -241,12 +244,13 @@
 /* Khung phóng to ảnh */
 .sg-lightbox {
 	--sg-primary: var(--wp--preset--color--primary, #1fa3a3);
+	--sg-primary-dark: var(--wp--preset--color--primary-dark, #147C7C);
 	--sg-accent: var(--wp--preset--color--accent, #f6b93b);
 	--sg-ink: var(--wp--preset--color--ink, #1e2a2b);
-	width: calc(100vw / var(--sg-zoom, 1));
+	width: 100vw;
 	max-width: none;
-	height: calc(100vh / var(--sg-zoom, 1));
-	height: calc(100dvh / var(--sg-zoom, 1));
+	height: 100vh;
+	height: 100dvh;
 	max-height: none;
 	margin: 0;
 	padding: 0;
@@ -316,8 +320,8 @@ html.sg-lightbox-open { overflow: hidden; }
 }
 .sg-filter__chip:hover { border-color: var(--sg-primary); transform: translateY(-1px); }
 .sg-filter__chip.is-active {
-	background: var(--sg-primary);
-	border-color: var(--sg-primary);
+	background: var(--sg-primary-dark);
+	border-color: var(--sg-primary-dark);
 	color: var(--sg-white);
 }
 .wp-block-post[hidden] { display: none !important; }
@@ -338,7 +342,7 @@ html.sg-lightbox-open { overflow: hidden; }
 	align-items: center;
 	gap: .4rem;
 }
-.sg-facts .sg-icon { color: var(--sg-primary); flex: none; }
+.sg-facts .sg-icon { color: var(--sg-primary-dark); flex: none; }
 .sg-place { display: grid; gap: .75rem; }
 .sg-place__compare {
 	margin: 0;
@@ -353,7 +357,7 @@ html.sg-lightbox-open { overflow: hidden; }
 	justify-self: start;
 	min-height: 44px;
 	font-weight: 600;
-	color: var(--sg-primary);
+	color: var(--sg-link);
 	text-decoration: none;
 }
 .sg-place__map:hover { text-decoration: underline; }
@@ -374,7 +378,7 @@ html.sg-lightbox-open { overflow: hidden; }
 	height: 20px;
 	margin-top: .15em;
 	margin-top: calc((1lh - 20px) / 2);
-	color: var(--wp--preset--color--primary, #1FA3A3);
+	color: var(--sg-primary-dark);
 }
 /* Dạng gọn trong thẻ phòng */
 .sg-terms--compact .sg-terms__list { display: flex; flex-wrap: wrap; gap: .35rem 1rem; }
@@ -404,7 +408,7 @@ html.sg-lightbox-open { overflow: hidden; }
 	height: 40px;
 	border-radius: 999px;
 	background: color-mix(in srgb, var(--sg-primary) 14%, transparent);
-	color: var(--sg-primary);
+	color: var(--sg-primary-dark);
 }
 .sg-contact__text { display: flex; flex-direction: column; justify-content: center; min-height: 40px; }
 .sg-contact__label { font-size: var(--wp--preset--font-size--small, .8125rem); opacity: .75; }
@@ -448,7 +452,7 @@ html.sg-lightbox-open { overflow: hidden; }
 	letter-spacing: .04em;
 }
 .sg-lang__link:hover { background: color-mix(in srgb, var(--sg-primary) 12%, transparent); }
-.sg-lang__link.is-current { background: var(--sg-primary); color: var(--sg-white); }
+.sg-lang__link.is-current { background: var(--sg-primary-dark); color: var(--sg-white); }
 
 /* ---------- Menu ---------- */
 .sg-menu__list { display: flex; gap: .25rem 1.5rem; list-style: none; margin: 0; padding: 0; flex-wrap: wrap; }

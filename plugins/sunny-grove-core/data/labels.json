@@ -77,6 +77,7 @@
 		"footer_menu_title": { "group": "contact", "label": "Chân trang: tiêu đề cột menu", "vi": "Khám phá", "en": "Explore" },
 		"footer_contact_title": { "group": "contact", "label": "Chân trang: tiêu đề cột liên hệ", "vi": "Liên hệ", "en": "Contact" },
 		"chat_toggle": { "group": "contact", "label": "Nút mở khung chat nổi", "vi": "Liên hệ nhanh", "en": "Quick contact" },
+		"chat_button": { "group": "contact", "label": "Nút Chat ở thanh cuối màn hình (điện thoại)", "vi": "Chat", "en": "Chat" },
 		"map_title": { "group": "contact", "label": "Tiêu đề bản đồ (cho trình đọc màn hình)", "vi": "Bản đồ đường tới Sunny Grove", "en": "Map to Sunny Grove" },
 		"open_in_maps": { "group": "contact", "label": "Nút mở bản đồ lớn", "vi": "Mở trong Google Maps", "en": "Open in Google Maps" }
 	}

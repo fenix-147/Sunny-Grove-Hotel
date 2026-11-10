@@ -13,7 +13,8 @@
 			"defaultGradients": false,
 			"defaultDuotone": false,
 			"palette": [
-				{ "slug": "primary", "name": "Xanh ngọc biển (chính)", "color": "#1FA3A3" },
+				{ "slug": "primary", "name": "Xanh ngọc biển (nền lớn, viền, trang trí)", "color": "#1FA3A3" },
+				{ "slug": "primary-dark", "name": "Xanh ngọc đậm (icon, nền nút chữ trắng)", "color": "#147C7C" },
 				{ "slug": "secondary", "name": "Xanh lá vườn (phụ)", "color": "#5E9C76" },
 				{ "slug": "accent", "name": "Vàng nắng (nút đặt phòng)", "color": "#F6B93B" },
 				{ "slug": "sand", "name": "Cát (nền sáng)", "color": "#F7F1E6" },
@@ -77,9 +78,9 @@
 				{ "slug": "30", "name": "XS", "size": "clamp(0.75rem, 1.5vw, 1rem)" },
 				{ "slug": "40", "name": "S", "size": "clamp(1rem, 2.5vw, 1.5rem)" },
 				{ "slug": "50", "name": "M", "size": "clamp(1.5rem, 3.5vw, 2.5rem)" },
-				{ "slug": "60", "name": "L", "size": "clamp(2.25rem, 5vw, 4rem)" },
-				{ "slug": "70", "name": "XL", "size": "clamp(3rem, 7vw, 6rem)" },
-				{ "slug": "80", "name": "2XL", "size": "clamp(4rem, 10vw, 8rem)" }
+				{ "slug": "60", "name": "L", "size": "clamp(2.25rem, 4.5vw, 3.25rem)" },
+				{ "slug": "70", "name": "XL", "size": "clamp(3rem, 6vw, 4.5rem)" },
+				{ "slug": "80", "name": "2XL", "size": "clamp(4rem, 8vw, 6rem)" }
 			]
 		},
 		"shadow": {
@@ -92,9 +93,9 @@
 		"custom": {
 			"radius": { "small": "10px", "medium": "16px", "large": "28px", "pill": "999px" },
 			"headerHeight": "72px",
-			"pageScale": "0.8",
+			"pageScale": "1",
 			"motion": { "ease": "cubic-bezier(.22, .61, .36, 1)", "duration": "0.7s" },
-			"link": { "color": "color-mix(in srgb, var(--wp--preset--color--primary) 68%, #000)" },
+			"link": { "color": "#156F6F" },
 			"eyebrow": { "color": "color-mix(in srgb, var(--wp--preset--color--secondary) 62%, #000)" }
 		},
 		"blocks": {
@@ -123,7 +124,7 @@
 				"color": { "text": "var(--wp--custom--link--color)" },
 				"typography": { "textDecoration": "underline" },
 				":hover": { "color": { "text": "var(--wp--preset--color--ink)" } },
-				":focus": { "outline": { "color": "var(--wp--preset--color--primary)", "offset": "3px", "style": "solid", "width": "2px" } }
+				":focus": { "outline": { "color": "var(--wp--preset--color--primary-dark)", "offset": "3px", "style": "solid", "width": "2px" } }
 			},
 			"heading": {
 				"color": { "text": "var(--wp--preset--color--ink)" },

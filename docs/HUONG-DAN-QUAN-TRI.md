@@ -89,7 +89,9 @@ Website tự động: tải trước ảnh poster (trang hiện nhanh), chỉ t�
 *(Cần tài khoản Quản trị viên.)*
 
 1. **Giao diện → Trình chỉnh sửa → Phong cách** (biểu tượng nửa hình tròn).
-2. **Màu sắc → Bảng màu:** bấm vào màu muốn đổi, ví dụ **Xanh ngọc biển (chính)** → chọn màu mới → **Lưu**. Toàn bộ website (nút, liên kết, bộ lọc, form đặt phòng, email) đổi theo.
+2. **Màu sắc → Bảng màu:** bấm vào màu muốn đổi, ví dụ **Xanh ngọc biển** → chọn màu mới → **Lưu**. Toàn bộ website đổi theo.
+   - **Xanh ngọc biển** chỉ dùng cho nền lớn, viền, trang trí (không chứa chữ).
+   - **Xanh ngọc đậm** dùng cho icon, nút có chữ trắng (ngôn ngữ đang chọn, bộ lọc, nút Gọi, nút Chat, tiêu đề email). Nếu đổi màu này, chọn màu **đủ đậm** để chữ trắng trên nó vẫn dễ đọc (tương phản ≥ 4.5:1 – kiểm tra nhanh tại <https://webaim.org/resources/contrastchecker/>).
    - **Vàng nắng** là màu nút “Đặt phòng”.
    - **Cát** là màu nền chính.
 3. Muốn thử nhanh một bộ màu khác: trong **Phong cách → Duyệt phong cách**, chọn **Hoàng hôn**.
@@ -270,7 +272,8 @@ Chữ trong ngoặc nhọn như `{ten_khach}`, `{ngay_nhan}`, `{phong}`, `{ma_ye
 
 ![Ô Tên hiển thị (English) của mục menu](images/menu-ten-tieng-anh.png)
 
-**Nút chat nổi** (Zalo, WhatsApp, Gọi): bật/tắt **từng nút** và chọn góc trái/phải tại **Sunny Grove → Thông tin khách sạn**. Số điện thoại lấy từ các ô Zalo/WhatsApp/Hotline. Nút **Gọi** chỉ hiện trên điện thoại. Nút chat không tải script bên ngoài nên không làm chậm website.
+**Nút chat nổi** (Zalo, WhatsApp, Gọi): bật/tắt **từng nút** và chọn góc trái/phải tại **Sunny Grove → Thông tin khách sạn**. Số điện thoại lấy từ các ô Zalo/WhatsApp/Hotline. Nút **Gọi** chỉ hiện trên điện thoại.
+Trên điện thoại (màn hình dưới 600px), nút **Đặt phòng** và các nút chat gộp thành **một thanh cố định ở cuối màn hình**: bên trái là nút Đặt phòng màu vàng, bên phải là nút **Chat** – bấm vào sẽ mở danh sách Zalo, WhatsApp, Gọi. Chữ trên nút Chat sửa ở nhãn **“Nút Chat ở thanh cuối màn hình”**. Nút chat không tải script bên ngoài nên không làm chậm website.
 
 **Nhãn hiển thị:** **Sunny Grove → Nhãn hiển thị** – các chữ dùng chung như nút “Đặt phòng”, “Xem chi tiết”, “Chỉ đường”, “từ khách sạn”, trang 404, dòng bản quyền… mỗi dòng có 2 ô Tiếng Việt | English.
 
