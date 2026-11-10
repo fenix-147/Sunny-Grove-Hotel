@@ -9,7 +9,7 @@
 	"textdomain": "sunny-grove-core",
 	"attributes": {
 		"fields": { "type": "array", "default": [ "phone", "zalo", "whatsapp", "email", "address" ], "items": { "type": "string" } },
-		"layout": { "type": "string", "default": "list", "enum": [ "list", "inline", "buttons" ] },
+		"layout": { "type": "string", "default": "list", "enum": [ "list", "inline", "buttons", "plain" ] },
 		"showMap": { "type": "boolean", "default": false }
 	},
 	"supports": { "html": false, "align": [ "wide", "full" ], "spacing": { "margin": true }, "color": { "text": true, "link": true } },

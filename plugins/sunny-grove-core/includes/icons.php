@@ -60,7 +60,7 @@ function sgc_icon( $name, $size = 20, $class = '' ) {
 		return '';
 	}
 	return sprintf(
-		'<svg class="sg-icon sg-icon--%1$s%4$s" width="%2$d" height="%2$d" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">%3$s</svg>',
+		'<svg class="sg-icon sg-icon--%1$s%4$s" width="%2$d" height="%2$d" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">%3$s</svg>',
 		esc_attr( $name ),
 		(int) $size,
 		$icons[ $name ]['d'],

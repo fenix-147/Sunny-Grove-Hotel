@@ -44,5 +44,20 @@ $sgc_wrap   = get_block_wrapper_attributes(
 	<?php endif; ?>
 	<div class="sg-menu__panel" id="<?php echo esc_attr( $sgc_id ); ?>">
 		<?php echo $sgc_menu; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+		<?php
+		// Cuối menu điện thoại: nút Đặt phòng + hotline (chỉ hiện khi menu mở trên màn hình hẹp).
+		if ( $sgc_toggle && ! empty( $attributes['panelExtras'] ) ) :
+			$sgc_book  = sgc_hotel_value( 'booking_url' );
+			$sgc_phone = sgc_hotel( 'phone' );
+			?>
+			<div class="sg-menu__extras">
+				<?php if ( $sgc_book ) : ?>
+					<a class="sg-menu__book wp-element-button" href="<?php echo esc_url( $sgc_book ); ?>"><?php echo esc_html( sgc_label( 'book_now' ) ); ?></a>
+				<?php endif; ?>
+				<?php if ( $sgc_phone ) : ?>
+					<a class="sg-menu__phone" href="<?php echo esc_url( sgc_hotel_value( 'tel_url' ) ); ?>"><?php echo sgc_icon( 'phone', 20 ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?><span><?php echo esc_html( sgc_label( 'menu_hotline' ) ); ?> <strong><?php echo esc_html( $sgc_phone ); ?></strong></span></a>
+				<?php endif; ?>
+			</div>
+		<?php endif; ?>
 	</div>
 </nav>

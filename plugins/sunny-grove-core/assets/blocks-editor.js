@@ -212,7 +212,7 @@
 		} );
 		list.push( el( c.SelectControl, {
 			key: 'l', label: __( 'Kiểu hiển thị', 'sunny-grove-core' ), value: a.layout,
-			options: options( { list: __( 'Danh sách', 'sunny-grove-core' ), inline: __( 'Một hàng', 'sunny-grove-core' ), buttons: __( 'Nút bấm', 'sunny-grove-core' ) } ),
+			options: options( { list: __( 'Danh sách', 'sunny-grove-core' ), inline: __( 'Một hàng', 'sunny-grove-core' ), buttons: __( 'Nút bấm', 'sunny-grove-core' ), plain: __( 'Chữ thường (không icon, không nhãn)', 'sunny-grove-core' ) } ),
 			onChange: function ( v ) { p.setAttributes( { layout: v } ); }
 		} ) );
 		list.push( el( c.ToggleControl, { key: 'm', label: __( 'Hiện bản đồ Google Maps', 'sunny-grove-core' ), checked: a.showMap, onChange: function ( v ) { p.setAttributes( { showMap: v } ); } } ) );
@@ -228,6 +228,7 @@
 				onChange: function ( v ) { p.setAttributes( { location: v } ); }
 			} ),
 			el( c.ToggleControl, { key: 't', label: __( 'Nút mở menu trên điện thoại', 'sunny-grove-core' ), checked: a.mobileToggle, onChange: function ( v ) { p.setAttributes( { mobileToggle: v } ); } } ),
+			a.mobileToggle && el( c.ToggleControl, { key: 'x', label: __( 'Cuối menu điện thoại: nút Đặt phòng + hotline', 'sunny-grove-core' ), checked: a.panelExtras, onChange: function ( v ) { p.setAttributes( { panelExtras: v } ); } } ),
 			el( 'p', { key: 'h' }, __( 'Sửa mục menu tại Giao diện → Menu (mỗi ngôn ngữ một menu).', 'sunny-grove-core' ) )
 		];
 	} );

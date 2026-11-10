@@ -9,7 +9,8 @@
 	"textdomain": "sunny-grove-core",
 	"attributes": {
 		"location": { "type": "string", "default": "primary" },
-		"mobileToggle": { "type": "boolean", "default": true }
+		"mobileToggle": { "type": "boolean", "default": true },
+		"panelExtras": { "type": "boolean", "default": false }
 	},
 	"supports": { "html": false, "spacing": { "margin": true } },
 	"editorScript": "sgc-blocks-editor",

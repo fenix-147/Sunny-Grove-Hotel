@@ -1,18 +1,22 @@
 <!-- wp:group {"className":"sg-header__inner","layout":{"type":"flex","flexWrap":"nowrap","justifyContent":"space-between"}} -->
-<div class="wp-block-group sg-header__inner"><!-- wp:group {"className":"sg-header__brand","layout":{"type":"flex","flexWrap":"nowrap"}} -->
+<div class="wp-block-group sg-header__inner"><!-- wp:group {"className":"sg-header__brand","layout":{"type":"flex","orientation":"vertical","flexWrap":"nowrap"}} -->
 <div class="wp-block-group sg-header__brand"><!-- wp:site-logo {"width":150,"shouldSyncIcon":false} /-->
 
-<!-- wp:site-title {"level":0} /--></div>
+<!-- wp:site-title {"level":0} /-->
+
+<!-- wp:paragraph {"className":"sg-brand__tag","metadata":{"bindings":{"content":{"source":"sunny-grove/hotel","args":{"key":"brand_tagline"}}}}} -->
+<p class="sg-brand__tag"></p>
+<!-- /wp:paragraph --></div>
 <!-- /wp:group -->
 
-<!-- wp:sunny-grove/menu {"location":"primary"} /-->
+<!-- wp:sunny-grove/menu {"location":"primary","panelExtras":true} /-->
 
 <!-- wp:group {"className":"sg-header__actions","layout":{"type":"flex","flexWrap":"nowrap"}} -->
 <div class="wp-block-group sg-header__actions"><!-- wp:sunny-grove/language-switcher /-->
 
 <!-- wp:buttons {"className":"sg-header__cta"} -->
-<div class="wp-block-buttons sg-header__cta"><!-- wp:button {"metadata":{"bindings":{"text":{"source":"sunny-grove/label","args":{"key":"book_now"}},"url":{"source":"sunny-grove/hotel","args":{"key":"booking_url"}}}}} -->
-<div class="wp-block-button"><a class="wp-block-button__link wp-element-button"></a></div>
+<div class="wp-block-buttons sg-header__cta"><!-- wp:button {"className":"is-style-outline","metadata":{"bindings":{"text":{"source":"sunny-grove/label","args":{"key":"book_now"}},"url":{"source":"sunny-grove/hotel","args":{"key":"booking_url"}}}}} -->
+<div class="wp-block-button is-style-outline"><a class="wp-block-button__link wp-element-button"></a></div>
 <!-- /wp:button --></div>
 <!-- /wp:buttons --></div>
 <!-- /wp:group --></div>

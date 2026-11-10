@@ -73,10 +73,10 @@ function sunny_grove_assets() {
 add_action( 'wp_enqueue_scripts', 'sunny_grove_assets' );
 
 /**
- * Tải trước 2 file font dùng ngay ở màn hình đầu tiên (chữ Việt nội dung + tiêu đề) để chữ hiện nhanh, không nhảy.
+ * Tải trước 4 file font dùng ngay ở màn hình đầu tiên (chữ Việt nội dung + tiêu đề) để chữ hiện nhanh, không nhảy.
  */
 function sunny_grove_preload_fonts() {
-	$fonts = array( 'be-vietnam-pro-latin-400-normal.woff2', 'be-vietnam-pro-vietnamese-400-normal.woff2', 'lora-latin-wght-normal.woff2' );
+	$fonts = array( 'be-vietnam-pro-latin-500-normal.woff2', 'be-vietnam-pro-vietnamese-500-normal.woff2', 'cormorant-garamond-latin-600-normal.woff2', 'cormorant-garamond-vietnamese-600-normal.woff2' );
 	foreach ( $fonts as $font ) {
 		printf(
 			'<link rel="preload" href="%s" as="font" type="font/woff2" crossorigin>' . "\n",
@@ -127,6 +127,20 @@ function sunny_grove_block_styles() {
 		)
 	);
 	register_block_style(
+		'core/image',
+		array(
+			'name'  => 'sg-arch',
+			'label' => __( 'Khung vòm', 'sunny-grove' ),
+		)
+	);
+	register_block_style(
+		'core/image',
+		array(
+			'name'  => 'sg-circle',
+			'label' => __( 'Tròn', 'sunny-grove' ),
+		)
+	);
+	register_block_style(
 		'core/paragraph',
 		array(
 			'name'  => 'sg-eyebrow',
@@ -155,3 +169,55 @@ function sunny_grove_plugin_notice() {
 	echo '<div class="notice notice-warning"><p>' . esc_html__( 'Theme Sunny Grove cần plugin “Sunny Grove Core” để hiển thị phòng, địa điểm, ưu đãi và thông tin liên hệ. Hãy cài và kích hoạt plugin này.', 'sunny-grove' ) . '</p></div>';
 }
 add_action( 'admin_notices', 'sunny_grove_plugin_notice' );
+
+/**
+ * Trang mở đầu bằng banner ảnh/video → đầu trang trong suốt, chữ trắng, chồng lên ảnh (khi cuộn đổi sang nền kem).
+ * Trang không có banner: đầu trang nền kem ngay từ đầu.
+ *
+ * @return bool
+ */
+function sunny_grove_has_hero() {
+	if ( ! is_singular() ) {
+		return false;
+	}
+	$post = get_post();
+	if ( ! $post || ! has_blocks( $post->post_content ) ) {
+		return false;
+	}
+	foreach ( parse_blocks( $post->post_content ) as $block ) {
+		if ( empty( $block['blockName'] ) ) {
+			continue; // Khoảng trắng giữa các block.
+		}
+		return 'sunny-grove/video-banner' === $block['blockName'];
+	}
+	return false;
+}
+
+/**
+ * Class trên <body>: sg-has-hero khi trang mở đầu bằng banner.
+ *
+ * @param string[] $classes Class.
+ * @return string[]
+ */
+function sunny_grove_body_class( $classes ) {
+	if ( sunny_grove_has_hero() ) {
+		$classes[] = 'sg-has-hero';
+	}
+	return $classes;
+}
+add_filter( 'body_class', 'sunny_grove_body_class' );
+
+/**
+ * Trình soạn thảo: nút "Vế nghiêng" trên thanh công cụ chữ (tiêu đề có vế thứ hai in nghiêng màu đất nung).
+ */
+function sunny_grove_editor_assets() {
+	wp_enqueue_script(
+		'sunny-grove-formats',
+		get_template_directory_uri() . '/assets/js/editor-formats.js',
+		array( 'wp-rich-text', 'wp-block-editor', 'wp-element', 'wp-i18n' ),
+		SUNNY_GROVE_VERSION,
+		true
+	);
+	wp_set_script_translations( 'sunny-grove-formats', 'sunny-grove', get_template_directory() . '/languages' );
+}
+add_action( 'enqueue_block_editor_assets', 'sunny_grove_editor_assets' );

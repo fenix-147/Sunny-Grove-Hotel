@@ -75,19 +75,19 @@ function sgb_email_vars( $post_id, $lang ) {
  * @return string
  */
 function sgb_email_html( $text, $title ) {
-	// Thanh tiêu đề chữ trắng → dùng màu xanh đậm (primary-dark) để đạt tương phản ≥ 4.5:1.
-	$primary = '#147C7C';
+	// Thanh tiêu đề chữ trắng trên màu rêu đậm (primary) – tương phản ≥ 4.5:1.
+	$primary = '#3F5B4B';
 	if ( function_exists( 'wp_get_global_settings' ) ) {
 		foreach ( (array) wp_get_global_settings( array( 'color', 'palette', 'theme' ) ) as $color ) {
-			if ( isset( $color['slug'], $color['color'] ) && 'primary-dark' === $color['slug'] ) {
+			if ( isset( $color['slug'], $color['color'] ) && 'primary' === $color['slug'] ) {
 				$primary = $color['color'];
 			}
 		}
 	}
-	$primary = sanitize_hex_color( $primary ) ? $primary : '#147C7C';
+	$primary = sanitize_hex_color( $primary ) ? $primary : '#3F5B4B';
 	$body    = make_clickable( nl2br( esc_html( $text ) ) );
 
-	return '<!doctype html><html><body style="margin:0;padding:24px;background:#f7f1e6;font-family:Arial,Helvetica,sans-serif;color:#1e2a2b;">'
+	return '<!doctype html><html><body style="margin:0;padding:24px;background:#f8f5ef;font-family:Arial,Helvetica,sans-serif;color:#26251f;">'
 		. '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:600px;margin:0 auto;background:#ffffff;border-radius:16px;overflow:hidden;">'
 		. '<tr><td style="background:' . esc_attr( $primary ) . ';color:#ffffff;padding:20px 28px;font-size:18px;font-weight:bold;">' . esc_html( $title ) . '</td></tr>'
 		. '<tr><td style="padding:28px;font-size:15px;line-height:1.65;">' . $body . '</td></tr>'

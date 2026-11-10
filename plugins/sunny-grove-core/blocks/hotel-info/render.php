@@ -43,8 +43,25 @@ $sgc_items  = array_filter(
 		return '' !== trim( (string) $item['text'] );
 	}
 );
-$sgc_layout = in_array( $attributes['layout'], array( 'list', 'inline', 'buttons' ), true ) ? $attributes['layout'] : 'list';
+$sgc_layout = in_array( $attributes['layout'], array( 'list', 'inline', 'buttons', 'plain' ), true ) ? $attributes['layout'] : 'list';
 $sgc_wrap   = get_block_wrapper_attributes( array( 'class' => 'sg-contact sg-contact--' . $sgc_layout ) );
+
+// Kiểu "Chữ thường": Zalo và WhatsApp gộp thành một dòng "Zalo · WhatsApp" (tên ứng dụng làm link, không lặp lại số điện thoại).
+if ( 'plain' === $sgc_layout ) {
+	$sgc_apps = array();
+	$sgc_pos  = null;
+	foreach ( $sgc_items as $sgc_i => $sgc_item ) {
+		if ( in_array( $sgc_item['class'], array( 'zalo', 'whatsapp' ), true ) && ! empty( $sgc_item['url'] ) ) {
+			$sgc_apps[] = sprintf( '<a class="sg-contact__app" href="%1$s" target="_blank" rel="noopener">%2$s</a>', esc_url( $sgc_item['url'] ), 'zalo' === $sgc_item['class'] ? 'Zalo' : 'WhatsApp' );
+			$sgc_pos    = null === $sgc_pos ? $sgc_i : $sgc_pos;
+			unset( $sgc_items[ $sgc_i ] );
+		}
+	}
+	if ( $sgc_apps ) {
+		$sgc_items[ $sgc_pos ] = array( 'class' => 'apps', 'html' => implode( ' <span aria-hidden="true">·</span> ', $sgc_apps ), 'text' => 'apps' );
+		ksort( $sgc_items );
+	}
+}
 ?>
 <div <?php echo $sgc_wrap; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
 	<?php if ( $sgc_items ) : ?>
@@ -52,6 +69,10 @@ $sgc_wrap   = get_block_wrapper_attributes( array( 'class' => 'sg-contact sg-con
 			<?php foreach ( $sgc_items as $sgc_item ) : ?>
 				<li class="sg-contact__item sg-contact__item--<?php echo esc_attr( $sgc_item['class'] ); ?>">
 					<?php
+					if ( isset( $sgc_item['html'] ) ) {
+						echo '<span class="sg-contact__text"><span class="sg-contact__value">' . $sgc_item['html'] . '</span></span></li>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- đã escape ở trên.
+						continue;
+					}
 					$sgc_inner = '';
 					if ( ! empty( $sgc_item['icon'] ) ) {
 						$sgc_inner .= '<span class="sg-contact__icon">' . sgc_icon( $sgc_item['icon'], 20 ) . '</span>';

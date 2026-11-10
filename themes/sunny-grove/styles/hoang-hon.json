@@ -5,13 +5,18 @@
 	"settings": {
 		"color": {
 			"palette": [
-				{ "slug": "primary", "name": "Cam hoàng hôn (chính)", "color": "#E07A4F" },
-				{ "slug": "secondary", "name": "Xanh lá vườn (phụ)", "color": "#5E9C76" },
-				{ "slug": "accent", "name": "Vàng nắng (nút đặt phòng)", "color": "#F6B93B" },
-				{ "slug": "sand", "name": "Cát (nền sáng)", "color": "#FBF4EC" },
-				{ "slug": "sand-deep", "name": "Cát đậm (nền khối xen kẽ)", "color": "#F3E3D2" },
-				{ "slug": "ink", "name": "Chữ đậm", "color": "#2B2220" },
-				{ "slug": "white", "name": "Trắng", "color": "#FFFFFF" }
+				{ "slug": "sand", "name": "Kem hồng (nền chính)", "color": "#FBF4EC" },
+				{ "slug": "sand-deep", "name": "Cát hồng (nền khối xen kẽ)", "color": "#F3E3D2" },
+				{ "slug": "white", "name": "Trắng", "color": "#FFFFFF" },
+				{ "slug": "primary", "name": "Nâu hoàng hôn (nút chính, chữ nhấn)", "color": "#8A4A2F" },
+				{ "slug": "primary-dark", "name": "Nâu hoàng hôn đậm (khi rê chuột)", "color": "#6E3923" },
+				{ "slug": "secondary", "name": "Cam đào (chỉ trang trí)", "color": "#E0A27F" },
+				{ "slug": "accent", "name": "Đỏ đất (vế nghiêng, giá ưu đãi)", "color": "#A23F2A" },
+				{ "slug": "peach", "name": "Hồng đào (vế nghiêng trên nền tối)", "color": "#F6D2B8" },
+				{ "slug": "ink", "name": "Nâu than (chữ chính, nền tối)", "color": "#2B2220" },
+				{ "slug": "muted", "name": "Chữ phụ", "color": "#4A3D38" },
+				{ "slug": "line", "name": "Viền", "color": "#E6D3C2" },
+				{ "slug": "line-soft", "name": "Viền nhạt", "color": "#F0E4D7" }
 			]
 		}
 	}

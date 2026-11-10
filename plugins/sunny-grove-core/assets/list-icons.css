@@ -22,7 +22,7 @@
 	top: calc((1lh - var(--sg-li-icon-size)) / 2);
 	width: var(--sg-li-icon-size);
 	height: var(--sg-li-icon-size);
-	color: var(--wp--preset--color--primary-dark, #147C7C);
+	color: var(--wp--preset--color--primary, #3F5B4B);
 }
 
 /* ---------- Trong trình soạn thảo: vẽ icon bằng mask (biến --sg-li-icon do script chọn icon gán) ---------- */
@@ -43,7 +43,7 @@
 	top: calc((1lh - 20px) / 2);
 	width: 20px;
 	height: 20px;
-	background-color: var(--wp--preset--color--primary-dark, #147C7C);
-	-webkit-mask: var(--sg-li-icon, url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 19C5 11 10 5 19 5c0 9-6 14-14 14z'/%3E%3Cpath d='M5 19l8.5-8.5'/%3E%3C/svg%3E")) center / contain no-repeat;
-	mask: var(--sg-li-icon, url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 19C5 11 10 5 19 5c0 9-6 14-14 14z'/%3E%3Cpath d='M5 19l8.5-8.5'/%3E%3C/svg%3E")) center / contain no-repeat;
+	background-color: var(--wp--preset--color--primary, #3F5B4B);
+	-webkit-mask: var(--sg-li-icon, url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 19C5 11 10 5 19 5c0 9-6 14-14 14z'/%3E%3Cpath d='M5 19l8.5-8.5'/%3E%3C/svg%3E")) center / contain no-repeat;
+	mask: var(--sg-li-icon, url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 19C5 11 10 5 19 5c0 9-6 14-14 14z'/%3E%3Cpath d='M5 19l8.5-8.5'/%3E%3C/svg%3E")) center / contain no-repeat;
 }

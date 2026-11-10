@@ -458,3 +458,34 @@ function sgc_share_contact_info( $info, $lang = '' ) {
 	return $info;
 }
 add_filter( 'sgb_contact_info', 'sgc_share_contact_info', 10, 2 );
+
+/**
+ * Nâng cấp nhãn đã lưu khi đổi giao diện "Resort boutique" (chạy một lần).
+ * Chỉ bỏ những nhãn còn đúng chữ mặc định cũ (để dùng chữ mặc định mới); nhãn chủ web đã tự sửa giữ nguyên.
+ */
+function sgc_labels_upgrade() {
+	if ( (int) get_option( 'sgc_labels_version', 1 ) >= 2 ) {
+		return;
+	}
+	$retired = array(
+		'copyright' => array(
+			'© {nam} Sunny Grove Hotel – Phú Quốc. Ảnh và video minh họa – sẽ thay bằng hình thật.',
+			'© {nam} Sunny Grove Hotel – Phu Quoc. Illustrative photos and videos – to be replaced with real ones.',
+		),
+	);
+	$labels  = (array) get_option( 'sgc_labels', array() );
+	$changed = false;
+	foreach ( $labels as $lang => $values ) {
+		foreach ( $retired as $key => $old_values ) {
+			if ( isset( $values[ $key ] ) && in_array( $values[ $key ], $old_values, true ) ) {
+				unset( $labels[ $lang ][ $key ] );
+				$changed = true;
+			}
+		}
+	}
+	if ( $changed ) {
+		update_option( 'sgc_labels', $labels );
+	}
+	update_option( 'sgc_labels_version', 2, true );
+}
+add_action( 'init', 'sgc_labels_upgrade', 5 );

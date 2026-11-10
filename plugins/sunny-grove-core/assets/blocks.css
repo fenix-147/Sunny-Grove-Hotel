@@ -13,17 +13,23 @@
 .sg-terms,
 .sg-lang,
 .sg-menu {
-	--sg-primary: var(--wp--preset--color--primary, #1fa3a3);
-	/* Màu đậm cho icon và nền có chữ trắng (đạt tương phản WCAG AA); màu chính chỉ dùng cho viền/trang trí. */
-	--sg-primary-dark: var(--wp--preset--color--primary-dark, #147C7C);
-	--sg-link: var(--wp--custom--link--color, #156f6f);
-	--sg-secondary: var(--wp--preset--color--secondary, #5e9c76);
-	--sg-accent: var(--wp--preset--color--accent, #f6b93b);
-	--sg-sand: var(--wp--preset--color--sand, #f7f1e6);
-	--sg-ink: var(--wp--preset--color--ink, #1e2a2b);
+	/* Rêu đậm: nút, icon, chữ nhấn (chữ trắng trên nền này đạt tương phản). Rêu hover: khi rê chuột. */
+	--sg-primary: var(--wp--preset--color--primary, #3F5B4B);
+	--sg-primary-dark: var(--wp--preset--color--primary-dark, #2F4639);
+	--sg-link: var(--wp--custom--link--color, #3F5B4B);
+	/* Xô thơm: chỉ trang trí – không dùng cho chữ/icon nhỏ, không đặt chữ trắng lên. */
+	--sg-secondary: var(--wp--preset--color--secondary, #8AA190);
+	/* Đất nung: vế nghiêng, giá ưu đãi (chữ trên nền kem/trắng); làm nền thì chữ trắng. */
+	--sg-accent: var(--wp--preset--color--accent, #9C5A3C);
+	--sg-em: var(--wp--custom--emphasis--color, #9C5A3C);
+	--sg-sand: var(--wp--preset--color--sand, #F8F5EF);
+	--sg-ink: var(--wp--preset--color--ink, #26251F);
+	--sg-muted: var(--wp--preset--color--muted, #46423B);
+	--sg-line: var(--wp--preset--color--line, #DDD5C8);
+	--sg-line-soft: var(--wp--preset--color--line-soft, #ECE6DC);
 	--sg-white: var(--wp--preset--color--white, #fff);
-	--sg-radius: var(--wp--custom--radius--medium, 16px);
-	--sg-radius-lg: var(--wp--custom--radius--large, 28px);
+	--sg-radius: var(--wp--custom--radius--medium, 20px);
+	--sg-radius-lg: var(--wp--custom--radius--large, 24px);
 	--sg-ease: cubic-bezier(.22, .61, .36, 1);
 }
 
@@ -54,7 +60,7 @@
 	content: "";
 	position: absolute;
 	inset: 0;
-	background: linear-gradient(180deg, rgba(10, 30, 32, calc(var(--sg-overlay, .35) * .6)) 0%, rgba(10, 30, 32, var(--sg-overlay, .35)) 70%, rgba(10, 30, 32, calc(var(--sg-overlay, .35) + .15)) 100%);
+	background: linear-gradient(180deg, rgba(20, 22, 18, calc(var(--sg-overlay, .35) * 1.2)) 0%, rgba(20, 22, 18, calc(var(--sg-overlay, .35) * .15)) 30%, rgba(20, 22, 18, calc(var(--sg-overlay, .35) * .4)) 55%, rgba(20, 22, 18, calc(var(--sg-overlay, .35) + .34)) 100%);
 }
 .sg-banner__poster,
 .sg-banner__video {
@@ -92,12 +98,12 @@
 	height: 48px;
 	border: 1px solid rgba(255, 255, 255, .5);
 	border-radius: 999px;
-	background: rgba(10, 30, 32, .35);
+	background: rgba(20, 22, 18, .35);
 	color: #fff;
 	cursor: pointer;
 	backdrop-filter: blur(6px);
 }
-.sg-banner__toggle:hover { background: rgba(10, 30, 32, .6); }
+.sg-banner__toggle:hover { background: rgba(20, 22, 18, .6); }
 .sg-banner__toggle .sg-banner__icon-play,
 .sg-banner__toggle.is-paused .sg-banner__icon-pause { display: none; }
 .sg-banner__toggle.is-paused .sg-banner__icon-play { display: inline-flex; }
@@ -132,10 +138,11 @@
 	position: absolute;
 	top: 12px;
 	left: 12px;
-	padding: .35em .8em;
+	padding: .35em .85em;
 	border-radius: 999px;
-	background: var(--sg-accent);
-	color: var(--sg-ink);
+	/* Nhãn giảm giá trên ảnh: nền kem đặc, chữ đất nung (nền kem 92% trên ảnh tối chỉ đạt 4.1:1). */
+	background: var(--sg-sand);
+	color: var(--sg-em);
 	font-weight: 700;
 	font-size: var(--wp--preset--font-size--small, .875rem);
 }
@@ -143,7 +150,8 @@
 /* ---------- Thư viện ---------- */
 .sg-gallery__title {
 	font-family: var(--wp--preset--font-family--heading, serif);
-	font-size: var(--wp--preset--font-size--large, 1.4rem);
+	font-size: var(--wp--preset--font-size--x-large, 1.875rem);
+	font-weight: 600;
 	margin: 0 0 .75rem;
 }
 .sg-gallery__list {
@@ -197,7 +205,7 @@
 	cursor: zoom-in;
 }
 .sg-gallery__open:focus-visible {
-	outline: 3px solid var(--sg-accent);
+	outline: 3px solid var(--sg-primary);
 	outline-offset: -3px;
 }
 
@@ -222,12 +230,12 @@
 }
 .sg-gallery__nav:hover:not(:disabled),
 .sg-lightbox__btn:hover {
-	background: var(--sg-primary-dark);
+	background: var(--sg-primary);
 	color: #fff;
 }
 .sg-gallery__nav:focus-visible,
 .sg-lightbox__btn:focus-visible {
-	outline: 3px solid var(--sg-accent);
+	outline: 3px solid var(--sg-primary);
 	border-radius: 999px;
 	outline-offset: 2px;
 }
@@ -243,10 +251,9 @@
 
 /* Khung phóng to ảnh */
 .sg-lightbox {
-	--sg-primary: var(--wp--preset--color--primary, #1fa3a3);
-	--sg-primary-dark: var(--wp--preset--color--primary-dark, #147C7C);
-	--sg-accent: var(--wp--preset--color--accent, #f6b93b);
-	--sg-ink: var(--wp--preset--color--ink, #1e2a2b);
+	--sg-primary: var(--wp--preset--color--primary, #3F5B4B);
+	--sg-primary-dark: var(--wp--preset--color--primary-dark, #2F4639);
+	--sg-ink: var(--wp--preset--color--ink, #26251F);
 	width: 100vw;
 	max-width: none;
 	height: 100vh;
@@ -255,11 +262,11 @@
 	margin: 0;
 	padding: 0;
 	border: 0;
-	background: rgb(10 18 19 / .94);
+	background: rgb(20 22 18 / .95);
 	color: #fff;
 	overscroll-behavior: contain;
 }
-.sg-lightbox::backdrop { background: rgb(10 18 19 / .94); }
+.sg-lightbox::backdrop { background: rgb(20 22 18 / .95); }
 .sg-lightbox[open] { display: block; }
 .sg-lightbox__stage {
 	display: flex;
@@ -307,21 +314,22 @@ html.sg-lightbox-open { overflow: hidden; }
 	gap: .5rem;
 }
 .sg-filter__chip {
-	min-height: 48px;
-	padding: .5rem 1.25rem;
-	border: 1.5px solid color-mix(in srgb, var(--sg-primary) 45%, transparent);
+	min-height: 44px;
+	padding: 0 1.25rem;
+	border: 1px solid #D9D0C2;
 	border-radius: 999px;
-	background: var(--sg-white);
+	background: transparent;
 	color: var(--sg-ink);
 	font: inherit;
+	font-size: .875rem;
 	font-weight: 600;
 	cursor: pointer;
 	transition: background .2s, color .2s, border-color .2s, transform .2s;
 }
-.sg-filter__chip:hover { border-color: var(--sg-primary); transform: translateY(-1px); }
+.sg-filter__chip:hover { border-color: var(--sg-ink); transform: translateY(-1px); }
 .sg-filter__chip.is-active {
-	background: var(--sg-primary-dark);
-	border-color: var(--sg-primary-dark);
+	background: var(--sg-ink);
+	border-color: var(--sg-ink);
 	color: var(--sg-white);
 }
 .wp-block-post[hidden] { display: none !important; }
@@ -335,20 +343,21 @@ html.sg-lightbox-open { overflow: hidden; }
 	margin: 0;
 	padding: 0;
 	font-size: var(--wp--preset--font-size--small, .9375rem);
-	color: color-mix(in srgb, var(--sg-ink) 82%, transparent);
+	color: var(--sg-muted);
 }
 .sg-facts__item {
 	display: inline-flex;
 	align-items: center;
 	gap: .4rem;
 }
-.sg-facts .sg-icon { color: var(--sg-primary-dark); flex: none; }
+.sg-facts .sg-icon { color: var(--sg-primary); flex: none; }
 .sg-place { display: grid; gap: .75rem; }
 .sg-place__compare {
 	margin: 0;
 	font-family: var(--wp--preset--font-family--heading, serif);
 	font-style: italic;
-	color: var(--sg-secondary);
+	font-weight: 600;
+	color: var(--sg-em);
 }
 .sg-place__map {
 	display: inline-flex;
@@ -378,7 +387,7 @@ html.sg-lightbox-open { overflow: hidden; }
 	height: 20px;
 	margin-top: .15em;
 	margin-top: calc((1lh - 20px) / 2);
-	color: var(--sg-primary-dark);
+	color: var(--sg-primary);
 }
 /* Dạng gọn trong thẻ phòng */
 .sg-terms--compact .sg-terms__list { display: flex; flex-wrap: wrap; gap: .35rem 1rem; }
@@ -388,7 +397,7 @@ html.sg-lightbox-open { overflow: hidden; }
 .sg-terms--chips .sg-terms__item {
 	padding: .25rem .75rem;
 	border-radius: 999px;
-	background: color-mix(in srgb, var(--sg-secondary) 14%, transparent);
+	background: var(--sg-line-soft);
 	color: var(--sg-ink);
 	font-size: var(--wp--preset--font-size--small, .875rem);
 	font-weight: 600;
@@ -404,17 +413,22 @@ html.sg-lightbox-open { overflow: hidden; }
 	align-items: center;
 	justify-content: center;
 	flex: none;
-	width: 40px;
+	width: 28px;
 	height: 40px;
-	border-radius: 999px;
-	background: color-mix(in srgb, var(--sg-primary) 14%, transparent);
-	color: var(--sg-primary-dark);
+	color: var(--sg-primary);
 }
 .sg-contact__text { display: flex; flex-direction: column; justify-content: center; min-height: 40px; }
-.sg-contact__label { font-size: var(--wp--preset--font-size--small, .8125rem); opacity: .75; }
+.sg-contact__label { font-size: var(--wp--preset--font-size--small, .875rem); color: var(--sg-muted); }
 .sg-contact__value { font-weight: 600; }
 .sg-contact__item--name .sg-contact__value { font-family: var(--wp--preset--font-family--heading, serif); font-size: var(--wp--preset--font-size--large, 1.25rem); }
-.sg-contact__item--about .sg-contact__value { font-weight: 400; opacity: .85; }
+.sg-contact__item--about .sg-contact__value { font-weight: 500; }
+/* Chữ thường: không icon, không nhãn (chân trang) */
+.sg-contact--plain .sg-contact__list { gap: 0; }
+.sg-contact--plain .sg-contact__icon, .sg-contact--plain .sg-contact__label { display: none; }
+.sg-contact--plain .sg-contact__link { min-height: 0; line-height: 2.1; }
+.sg-contact--plain .sg-contact__text { min-height: 0; }
+.sg-contact--plain .sg-contact__value { font-weight: 500; }
+@media (pointer: coarse) { .sg-contact--plain a.sg-contact__link, .sg-contact--plain .sg-contact__app { min-height: 44px; display: inline-flex; align-items: center; } }
 .sg-contact--inline .sg-contact__list { display: flex; flex-wrap: wrap; gap: .75rem 1.5rem; }
 .sg-contact--buttons .sg-contact__list { display: flex; flex-wrap: wrap; gap: .75rem; }
 .sg-contact--buttons .sg-contact__link {
@@ -422,7 +436,7 @@ html.sg-lightbox-open { overflow: hidden; }
 	padding: .35rem 1.1rem .35rem .35rem;
 	border-radius: 999px;
 	background: var(--sg-white);
-	box-shadow: 0 6px 20px rgba(30, 42, 43, .08);
+	border: 1px solid var(--sg-line);
 }
 .sg-contact--buttons .sg-contact__label { display: none; }
 .sg-contact__map {
@@ -451,8 +465,8 @@ html.sg-lightbox-open { overflow: hidden; }
 	text-decoration: none;
 	letter-spacing: .04em;
 }
-.sg-lang__link:hover { background: color-mix(in srgb, var(--sg-primary) 12%, transparent); }
-.sg-lang__link.is-current { background: var(--sg-primary-dark); color: var(--sg-white); }
+.sg-lang__link:hover { background: var(--sg-line-soft); }
+.sg-lang__link.is-current { background: var(--sg-primary); color: var(--sg-white); }
 
 /* ---------- Menu ---------- */
 .sg-menu__list { display: flex; gap: .25rem 1.5rem; list-style: none; margin: 0; padding: 0; flex-wrap: wrap; }
@@ -519,7 +533,7 @@ html.sg-lightbox-open { overflow: hidden; }
 		min-height: 56px;
 		font-family: var(--wp--preset--font-family--heading, serif);
 		font-size: var(--wp--preset--font-size--x-large, 1.6rem);
-		border-bottom: 1px solid color-mix(in srgb, var(--sg-ink) 10%, transparent);
+		border-bottom: 1px solid var(--sg-line);
 	}
 	html.sg-menu-open { overflow: hidden; }
 }

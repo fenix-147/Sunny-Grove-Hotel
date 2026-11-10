@@ -58,7 +58,7 @@
 	var maskCache = {};
 	function maskUrl( name ) {
 		if ( ! maskCache[ name ] ) {
-			var svg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">' + byName[ name ].d + '</svg>';
+			var svg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">' + byName[ name ].d + '</svg>';
 			maskCache[ name ] = 'url("data:image/svg+xml,' + encodeURIComponent( svg ) + '")';
 		}
 		return maskCache[ name ];

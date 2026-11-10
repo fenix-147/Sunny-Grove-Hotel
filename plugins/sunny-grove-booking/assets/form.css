@@ -4,12 +4,16 @@
  */
 .sgb-block,
 .sgb-wrap {
-	--sgb-primary: var(--wp--preset--color--primary-dark, #147c7c);
-	--sgb-accent: var(--wp--preset--color--accent, #f6b93b);
-	--sgb-ink: var(--wp--preset--color--ink, #1e2a2b);
+	/* Rêu đậm: nút chính, ô đang chọn (chữ trắng). Rêu hover khi rê chuột. */
+	--sgb-primary: var(--wp--preset--color--primary, #3F5B4B);
+	--sgb-primary-hover: var(--wp--preset--color--primary-dark, #2F4639);
+	--sgb-ink: var(--wp--preset--color--ink, #26251F);
+	--sgb-muted: var(--wp--preset--color--muted, #46423B);
+	--sgb-line: var(--wp--preset--color--line, #DDD5C8);
 	--sgb-bg: var(--wp--preset--color--white, #fff);
-	--sgb-sand: var(--wp--preset--color--sand, #f7f1e6);
-	--sgb-error: #b42318;
+	--sgb-sand: var(--wp--preset--color--sand, #F8F5EF);
+	/* Lỗi nhập: chữ đất nung (5.3:1 trên nền trắng). */
+	--sgb-error: var(--wp--preset--color--accent, #9C5A3C);
 	--sgb-radius: var(--wp--custom--radius--medium, 14px);
 	font-family: var(--wp--preset--font-family--body, inherit);
 	color: var(--sgb-ink);
@@ -18,7 +22,7 @@
 	padding: clamp(1.25rem, 3vw, 2.25rem);
 	border-radius: var(--wp--custom--radius--large, 24px);
 	background: var(--sgb-bg);
-	box-shadow: var(--wp--preset--shadow--soft, 0 10px 30px rgba(30, 42, 43, .08));
+	border: 1px solid var(--wp--preset--color--line-soft, #ECE6DC);
 }
 .sgb-form { margin: 0; }
 .sgb-grid { display: grid; gap: 1rem 1.25rem; grid-template-columns: 1fr; }
@@ -45,11 +49,11 @@
 textarea.sgb-input { min-height: 96px; resize: vertical; }
 .sgb-input:focus { outline: none; border-color: var(--sgb-primary); box-shadow: 0 0 0 3px color-mix(in srgb, var(--sgb-primary) 25%, transparent); }
 .sgb-input[aria-invalid="true"] { border-color: var(--sgb-error); }
-.sgb-error { margin: 0; min-height: 0; color: var(--sgb-error); font-size: .875rem; }
+.sgb-error { margin: 0; min-height: 0; color: var(--sgb-error); font-size: .875rem; font-weight: 600; }
 .sgb-error:empty { display: none; }
-.sgb-hint { margin: .25rem 0 0; font-size: .875rem; opacity: .8; }
+.sgb-hint { margin: .25rem 0 0; font-size: .875rem; color: var(--sgb-muted); }
 .sgb-hint:empty { display: none; }
-.sgb-privacy { font-size: .875rem; opacity: .85; margin: .75rem 0 1rem; }
+.sgb-privacy { font-size: .875rem; color: var(--sgb-muted); margin: .75rem 0 1rem; }
 .sgb-methods { border: 0; padding: 0; display: flex; flex-wrap: wrap; gap: .5rem; flex-direction: row; }
 .sgb-methods legend { margin-bottom: .35rem; padding: 0; width: 100%; }
 .sgb-choice { position: relative; display: inline-flex; }
@@ -72,22 +76,22 @@ textarea.sgb-input { min-height: 96px; resize: vertical; }
 	align-items: center;
 	justify-content: center;
 	gap: .4rem;
-	min-height: 52px;
-	padding: .8rem 1.75rem;
+	min-height: 56px;
+	padding: .8rem 2rem;
 	border: 0;
 	border-radius: 999px;
-	background: var(--sgb-accent);
-	color: var(--sgb-ink);
+	background: var(--sgb-primary);
+	color: #fff;
 	font: inherit;
-	font-weight: 700;
+	font-weight: 600;
 	text-decoration: none;
 	cursor: pointer;
 	transition: transform .2s, background .2s;
 }
-.sgb-button:hover { transform: translateY(-2px); background: color-mix(in srgb, var(--sgb-accent) 85%, #000); color: var(--sgb-ink); }
+.sgb-button:hover { transform: translateY(-1px); background: var(--sgb-primary-hover); color: #fff; }
 .sgb-button:disabled { opacity: .7; cursor: progress; transform: none; }
-.sgb-button--ghost { background: transparent; border: 2px solid currentColor; }
-.sgb-button--ghost:hover { background: color-mix(in srgb, var(--sgb-ink) 6%, transparent); }
+.sgb-button--ghost { background: transparent; border: 1px solid var(--sgb-ink); color: var(--sgb-ink); }
+.sgb-button--ghost:hover { background: var(--sgb-ink); color: #fff; }
 .sgb-form--full .sgb-button { width: 100%; }
 @media (min-width: 640px) { .sgb-form--full .sgb-button { width: auto; } }
 .sgb-link { margin-top: 1rem; padding: .5rem 0; border: 0; background: none; color: inherit; font: inherit; text-decoration: underline; cursor: pointer; min-height: 44px; }

@@ -29,7 +29,8 @@
 		"gallery_next": { "group": "general", "label": "Thư viện ảnh: nút ảnh tiếp theo", "vi": "Ảnh tiếp theo", "en": "Next photo" },
 		"gallery_close": { "group": "general", "label": "Thư viện ảnh: nút đóng ảnh phóng to", "vi": "Đóng", "en": "Close" },
 		"gallery_counter": { "group": "general", "label": "Thư viện ảnh: số thứ tự ảnh ({n} = ảnh đang xem, {tong} = tổng số ảnh)", "vi": "Ảnh {n} / {tong}", "en": "Photo {n} of {tong}" },
-		"copyright": { "group": "general", "label": "Dòng bản quyền ở chân trang ({nam} = năm hiện tại)", "vi": "© {nam} Sunny Grove Hotel – Phú Quốc. Ảnh và video minh họa – sẽ thay bằng hình thật.", "en": "© {nam} Sunny Grove Hotel – Phu Quoc. Illustrative photos and videos – to be replaced with real ones." },
+		"copyright": { "group": "general", "label": "Dòng bản quyền ở chân trang ({nam} = năm hiện tại)", "vi": "© {nam} Sunny Grove Hotel · Phú Quốc", "en": "© {nam} Sunny Grove Hotel · Phu Quoc" },
+		"photo_credit": { "group": "general", "label": "Ghi nguồn ảnh ở chân trang", "vi": "Ảnh minh họa: Wikimedia Commons (CC BY-SA) và thư viện ảnh miễn phí", "en": "Illustrative photos: Wikimedia Commons (CC BY-SA) and free stock libraries" },
 
 		"price_format": { "group": "room", "label": "Giá phòng ({gia} = số tiền)", "vi": "Từ {gia}đ / đêm", "en": "From {gia} VND / night" },
 		"adults": { "group": "room", "label": "Số người lớn ({n})", "vi": "{n} người lớn", "en": "{n} adults" },
@@ -76,6 +77,8 @@
 		"call": { "group": "contact", "label": "Nút gọi", "vi": "Gọi ngay", "en": "Call us" },
 		"footer_menu_title": { "group": "contact", "label": "Chân trang: tiêu đề cột menu", "vi": "Khám phá", "en": "Explore" },
 		"footer_contact_title": { "group": "contact", "label": "Chân trang: tiêu đề cột liên hệ", "vi": "Liên hệ", "en": "Contact" },
+		"footer_address_title": { "group": "contact", "label": "Chân trang: tiêu đề cột địa chỉ", "vi": "Địa chỉ", "en": "Address" },
+		"menu_hotline": { "group": "contact", "label": "Menu điện thoại: chữ trước số hotline", "vi": "Hotline", "en": "Hotline" },
 		"chat_toggle": { "group": "contact", "label": "Nút mở khung chat nổi", "vi": "Liên hệ nhanh", "en": "Quick contact" },
 		"chat_button": { "group": "contact", "label": "Nút Chat ở thanh cuối màn hình (điện thoại)", "vi": "Chat", "en": "Chat" },
 		"map_title": { "group": "contact", "label": "Tiêu đề bản đồ (cho trình đọc màn hình)", "vi": "Bản đồ đường tới Sunny Grove", "en": "Map to Sunny Grove" },

@@ -162,6 +162,13 @@
 			"vi": "Sunny Grove Hotel – Phú Quốc",
 			"en": "Sunny Grove Hotel – Phu Quoc"
 		},
+		"brand_tagline": {
+			"label": "Dòng nhỏ dưới tên ở logo chữ (đầu trang)",
+			"type": "text",
+			"help": "Hiện dưới tên khách sạn khi chưa có logo ảnh, ví dụ PHÚ QUỐC. Để trống nếu không cần.",
+			"vi": "Phú Quốc",
+			"en": "Phu Quoc"
+		},
 		"slogan": {
 			"label": "Slogan",
 			"type": "text",
