@@ -167,11 +167,11 @@ Mỗi trang/phòng/tiện ích/địa điểm/ưu đãi/bài viết chỉ có **
 1. Mở trang/phòng/bài cần dịch (ví dụ **Trang → Trang chủ → Chỉnh sửa**).
 2. Trên thanh công cụ trên cùng có nút gạt **VI | EN**. Đang ở **VI** là sửa tiếng Việt như bình thường.
 
-   ![Trình soạn thảo ở chế độ VI](images/trinh-soan-thao-vi.png)
+   ![Trình soạn thảo ở chế độ VI](images/trinh-soan-thao-vi.webp)
 
 3. Bấm **EN**. Trang hiện bản tiếng Anh **ở đúng vị trí, đúng bố cục**. Bấm vào chữ nào thì gõ bản tiếng Anh của chữ đó. Ô tiêu đề bài cũng đổi sang tiêu đề tiếng Anh.
 
-   ![Trình soạn thảo ở chế độ EN](images/trinh-soan-thao-en.png)
+   ![Trình soạn thảo ở chế độ EN](images/trinh-soan-thao-en.webp)
 
    - Block chưa dịch hiện chữ tiếng Việt **mờ** kèm nhãn **“Chưa dịch”**.
    - Ở chế độ EN **không thêm/xóa/di chuyển block và không đổi ảnh** – bố cục và ảnh dùng chung cho cả hai ngôn ngữ. Dòng nhắc màu xanh phía trên trang giải thích điều này. Muốn đổi bố cục/ảnh, gạt về **VI**.
