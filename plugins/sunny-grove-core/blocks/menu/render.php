@@ -12,7 +12,7 @@ $sgc_location = sanitize_key( $attributes['location'] );
 if ( ! has_nav_menu( $sgc_location ) ) {
 	return;
 }
-$sgc_menu = wp_nav_menu(
+$sgc_menu = sgc_nav_menu(
 	array(
 		'theme_location' => $sgc_location,
 		'container'      => false,

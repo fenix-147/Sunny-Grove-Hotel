@@ -88,14 +88,15 @@ add_filter( 'render_block_core/list', 'sgc_list_icon_render_list', 20, 2 );
  * CSS của danh sách có biểu tượng: chỉ nạp khi trang có danh sách; trong trình soạn thảo luôn nạp.
  */
 function sgc_list_icon_styles() {
-	wp_register_style( 'sgc-list-icons', SGC_URL . 'assets/list-icons.css', array(), SGC_VERSION );
+	$css = sgc_asset( 'assets/list-icons.css' );
+	wp_register_style( 'sgc-list-icons', $css['url'], array(), $css['ver'] );
 	wp_enqueue_block_style(
 		'core/list',
 		array(
 			'handle' => 'sgc-list-icons',
-			'src'    => SGC_URL . 'assets/list-icons.css',
-			'path'   => SGC_DIR . 'assets/list-icons.css',
-			'ver'    => SGC_VERSION,
+			'src'    => $css['url'],
+			'path'   => $css['path'],
+			'ver'    => $css['ver'],
 		)
 	);
 }

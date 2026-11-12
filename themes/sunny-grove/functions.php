@@ -44,15 +44,43 @@ function sunny_grove_textdomain() {
 add_action( 'init', 'sunny_grove_textdomain', 1 );
 
 /**
+ * File CSS/JS dùng ngoài website: bản thu gọn (.min) nếu có VÀ mới hơn hoặc bằng file gốc; còn lại dùng file gốc
+ * (sửa file gốc mà chưa tạo lại bản .min thì website tự dùng file gốc). Bật SCRIPT_DEBUG thì luôn dùng file gốc.
+ * ?ver= theo thời gian sửa file để trình duyệt không giữ bản cũ.
+ *
+ * @param string $rel Đường dẫn trong theme, vd. 'assets/css/theme.css'.
+ * @return array { url, ver }
+ */
+function sunny_grove_asset( $rel ) {
+	$dir = get_template_directory() . '/';
+	$use = $rel;
+	if ( ! ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ) {
+		$min      = preg_replace( '/\.(css|js)$/', '.min.$1', $rel );
+		$src_time = @filemtime( $dir . $rel ); // phpcs:ignore WordPress.PHP.NoSilencedErrors.Discouraged
+		$min_time = @filemtime( $dir . $min ); // phpcs:ignore WordPress.PHP.NoSilencedErrors.Discouraged
+		if ( $min_time && $src_time && $min_time >= $src_time ) {
+			$use = $min;
+		}
+	}
+	$time = @filemtime( $dir . $use ); // phpcs:ignore WordPress.PHP.NoSilencedErrors.Discouraged
+	return array(
+		'url' => get_template_directory_uri() . '/' . $use,
+		'ver' => $time ? (string) $time : SUNNY_GROVE_VERSION,
+	);
+}
+
+/**
  * CSS & JS phía khách.
  */
 function sunny_grove_assets() {
-	wp_enqueue_style( 'sunny-grove', get_template_directory_uri() . '/assets/css/theme.css', array(), SUNNY_GROVE_VERSION );
+	$css = sunny_grove_asset( 'assets/css/theme.css' );
+	$js  = sunny_grove_asset( 'assets/js/theme.js' );
+	wp_enqueue_style( 'sunny-grove', $css['url'], array(), $css['ver'] );
 	wp_enqueue_script(
 		'sunny-grove',
-		get_template_directory_uri() . '/assets/js/theme.js',
+		$js['url'],
 		array(),
-		SUNNY_GROVE_VERSION,
+		$js['ver'],
 		array(
 			'in_footer' => true,
 			'strategy'  => 'defer',
@@ -130,7 +158,14 @@ function sunny_grove_block_styles() {
 		'core/image',
 		array(
 			'name'  => 'sg-arch',
-			'label' => __( 'Khung vòm', 'sunny-grove' ),
+			'label' => __( 'Vòm mềm', 'sunny-grove' ),
+		)
+	);
+	register_block_style(
+		'core/image',
+		array(
+			'name'  => 'sg-arch-full',
+			'label' => __( 'Vòm đầy đủ', 'sunny-grove' ),
 		)
 	);
 	register_block_style(

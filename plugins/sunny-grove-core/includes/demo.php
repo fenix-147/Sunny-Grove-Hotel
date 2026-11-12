@@ -335,8 +335,13 @@ function sgc_demo_import() {
 
 	// Ảnh.
 	$files = array();
-	foreach ( $data['media'] as $m ) {
+	$hero  = array();
+	foreach ( $data['media'] as $key => $m ) {
 		$files[ $m['file'] ] = $m['vi'] ?? '';
+		// Ảnh nền banner đầu trang (phần tử hiện lớn nhất – LCP): các cỡ ảnh nén mạnh hơn (xem sgc_demo_import_image).
+		if ( 'hero' === $key || 0 === strpos( (string) $key, 'banner-' ) ) {
+			$hero[ $m['file'] ] = true;
+		}
 	}
 	foreach ( array( 'rooms', 'amenities', 'places', 'offers', 'posts' ) as $group ) {
 		foreach ( $data[ $group ] as $item ) {
@@ -348,7 +353,7 @@ function sgc_demo_import() {
 		}
 	}
 	foreach ( $files as $file => $alt ) {
-		sgc_demo_import_image( $file, $alt );
+		sgc_demo_import_image( $file, $alt, isset( $hero[ $file ] ) );
 	}
 	sgc_demo_log( 'Đã nhập ' . count( $files ) . ' ảnh mẫu.' );
 
@@ -437,14 +442,14 @@ function sgc_demo_import() {
 			)
 		);
 		if ( $id ) {
-			update_post_meta( $id, 'sg_rating', (string) $item['rating'] );
-			update_post_meta( $id, 'sg_source', $item['source'] );
-			update_post_meta( $id, 'sg_review_date', wp_date( 'Y-m-d', time() - (int) $item['days_ago'] * DAY_IN_SECONDS ) );
-			sgc_demo_meta_tr( $id, 'sg_review_text', $item['vi']['text'], $item[ $en ]['text'] ?? '' );
-			sgc_demo_meta_tr( $id, 'sg_review_from', $item['vi']['from'], $item[ $en ]['from'] ?? '' );
+			sg_reviews_apply_sample( $id, $item ); // Gắn nhãn MẪU: chỉ hiện ở website thử nghiệm.
 		}
 	}
-	sgc_demo_log( 'Đã tạo ' . count( (array) ( $data['reviews'] ?? array() ) ) . ' đánh giá.' );
+	if ( ! empty( $data['reviews'] ) ) {
+		sg_reviews_seed_sample_settings();
+		update_option( 'sgc_reviews_version', 2, true );
+	}
+	sgc_demo_log( 'Đã tạo ' . count( (array) ( $data['reviews'] ?? array() ) ) . ' đánh giá mẫu (nhãn MẪU).' );
 
 	// Trang: lượt 1 tạo trang trống để có link, lượt 2 dựng nội dung từ pattern bằng từng ngôn ngữ rồi ghép.
 	$pages = array();
@@ -633,9 +638,10 @@ function sgc_demo_remove() {
  *
  * @param string $file Tên file (không đuôi).
  * @param string $alt  Mô tả ảnh.
+ * @param bool   $hero Ảnh nền banner đầu trang (nén các cỡ ảnh mạnh hơn).
  * @return int
  */
-function sgc_demo_import_image( $file, $alt = '' ) {
+function sgc_demo_import_image( $file, $alt = '', $hero = false ) {
 	$existing = sgc_demo_attachment( $file );
 	if ( $existing ) {
 		return $existing;
@@ -651,6 +657,14 @@ function sgc_demo_import_image( $file, $alt = '' ) {
 
 	$tmp = wp_tempnam( $file . '.webp' );
 	copy( $path, $tmp );
+	// Ảnh banner đầu trang: các cỡ ảnh WordPress tạo ra nén ở chất lượng 70 (mặc định 82) – bản 768px của ảnh
+	// hoàng hôn 94 KB → 56 KB, nhìn không khác. Ảnh chủ website tự tải lên vẫn theo mặc định của WordPress.
+	$quality = static function ( $q, $mime ) {
+		return 'image/webp' === $mime ? 70 : $q;
+	};
+	if ( $hero ) {
+		add_filter( 'wp_editor_set_quality', $quality, 10, 2 );
+	}
 	$id = media_handle_sideload(
 		array(
 			'name'     => 'sunny-grove-' . $file . '.webp',
@@ -659,6 +673,7 @@ function sgc_demo_import_image( $file, $alt = '' ) {
 		0,
 		$alt
 	);
+	remove_filter( 'wp_editor_set_quality', $quality, 10 );
 	if ( is_wp_error( $id ) ) {
 		wp_delete_file( $tmp );
 		sgc_demo_log( 'Lỗi nhập ảnh ' . $file . ': ' . $id->get_error_message() );

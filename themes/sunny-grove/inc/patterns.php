@@ -198,7 +198,7 @@ function sunny_grove_paragraph( $text, $class = '', $center = false ) {
  *
  * @param string $key   Khóa ảnh mẫu.
  * @param string $alt   Chữ thay thế.
- * @param string $style Kiểu khối: sg-arch | sg-circle | ''.
+ * @param string $style Kiểu khối: sg-arch (vòm mềm) | sg-arch-full (vòm đầy đủ) | sg-circle | ''.
  * @param string $class Class thêm.
  * @return string
  */
@@ -429,7 +429,7 @@ function sunny_grove_group_close() {
  */
 function sunny_grove_room_card() {
 	return sunny_grove_card_open( 'room' )
-		. '<!-- wp:sunny-grove/motion-media {"aspectRatio":"3/4","showVideo":false,"showBadge":true,"badgeType":"type","className":"sg-media--arch"} /-->' . "\n"
+		. '<!-- wp:sunny-grove/motion-media {"aspectRatio":"4/5","showVideo":false,"showBadge":true,"badgeType":"type","className":"sg-media--arch"} /-->' . "\n"
 		. sunny_grove_card_body_open()
 		. '<!-- wp:post-title {"level":3,"isLink":true} /-->' . "\n"
 		. sunny_grove_bound_paragraph( 'meta', 'facts_line', 'sg-meta-line' )

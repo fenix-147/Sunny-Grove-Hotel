@@ -261,6 +261,16 @@ add_filter( 'query_vars', 'sg_i18n_query_vars' );
  * @return WP_Post|null
  */
 function sg_i18n_find_by_slug( $slug, $types, $lang ) {
+	// Bảng tra slug → bài (có bộ nhớ đệm, tự xóa khi lưu bài).
+	if ( sgc_cache_enabled() ) {
+		foreach ( sgc_slug_map( sg_en_key( 'slug', $lang ) )[ strtolower( sanitize_title( $slug ) ) ] ?? array() as $hit ) {
+			if ( in_array( $hit[1], (array) $types, true ) ) {
+				$post = get_post( $hit[0] );
+				return $post && 'publish' === $post->post_status ? $post : null;
+			}
+		}
+		return null;
+	}
 	$found = get_posts(
 		array(
 			'post_type'        => (array) $types,

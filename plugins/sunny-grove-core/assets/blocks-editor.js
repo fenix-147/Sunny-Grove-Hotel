@@ -267,18 +267,9 @@
 	/* ---------- Đánh giá khách hàng ---------- */
 	ssrBlock( 'sunny-grove/reviews', function ( p ) {
 		var a = p.attributes;
-		var sources = ( window.sgcEditor && window.sgcEditor.reviewSources ) || {};
 		return [
-			el( c.RangeControl, { key: 'n', label: __( 'Số đánh giá hiển thị', 'sunny-grove-core' ), min: 1, max: 12, value: a.count, onChange: function ( v ) { p.setAttributes( { count: v } ); } } ),
-			el( c.SelectControl, { key: 's', label: __( 'Chỉ lấy từ nguồn', 'sunny-grove-core' ), value: a.source,
-				options: [ { value: '', label: __( 'Tất cả', 'sunny-grove-core' ) } ].concat( options( sources ) ),
-				onChange: function ( v ) { p.setAttributes( { source: v } ); } } ),
-			el( c.RangeControl, { key: 'r', label: __( 'Số sao tối thiểu', 'sunny-grove-core' ), min: 0, max: 5, value: a.minRating, onChange: function ( v ) { p.setAttributes( { minRating: v } ); } } ),
-			el( c.SelectControl, { key: 'l', label: __( 'Kiểu hiển thị', 'sunny-grove-core' ), value: a.layout,
-				options: options( { grid: __( 'Lưới thẻ', 'sunny-grove-core' ), slider: __( 'Trình chiếu – 1 đánh giá lớn, tự chuyển', 'sunny-grove-core' ) } ),
-				onChange: function ( v ) { p.setAttributes( { layout: v } ); } } ),
-			a.layout === 'slider' && el( c.RangeControl, { key: 'i', label: __( 'Thời gian mỗi đánh giá (giây, tối thiểu 6)', 'sunny-grove-core' ), min: 6, max: 15, value: a.interval, onChange: function ( v ) { p.setAttributes( { interval: v } ); } } ),
-			el( 'p', { key: 'h' }, __( 'Thêm/sửa đánh giá ở menu Đánh giá.', 'sunny-grove-core' ) )
+			el( c.RangeControl, { key: 'n', label: __( 'Số đánh giá hiển thị (tối đa 3)', 'sunny-grove-core' ), min: 1, max: 3, value: Math.min( 3, a.count || 3 ), onChange: function ( v ) { p.setAttributes( { count: v } ); } } ),
+			el( 'p', { key: 'h' }, __( 'Đánh giá lấy từ menu Đánh giá: những đánh giá bật "Hiển thị trên trang chủ", theo Thứ tự. Điểm trung bình và link Google Maps sửa ở Sunny Grove → Đánh giá.', 'sunny-grove-core' ) )
 		];
 	} );
 }() );

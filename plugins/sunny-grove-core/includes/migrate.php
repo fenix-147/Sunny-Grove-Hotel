@@ -663,7 +663,8 @@ function sg_migrate_hide_merged( $query ) {
 	if ( sg_i18n_legacy_active() || $query->get( 'sg_include_merged' ) || 'trash' === $query->get( 'post_status' ) ) {
 		return;
 	}
-	$ids = sg_migrate_merged_ids();
+	// Chỉ những bài đã ghép còn hiện (bài đã vào Thùng rác vốn không hiện) – thường là rỗng sau bước dọn dẹp.
+	$ids = sgc_hidden_merged_ids();
 	if ( $ids ) {
 		$query->set( 'post__not_in', array_merge( (array) $query->get( 'post__not_in' ), $ids ) );
 	}

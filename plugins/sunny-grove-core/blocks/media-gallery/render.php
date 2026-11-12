@@ -23,7 +23,9 @@ $sgc_ids    = array_slice( $sgc_ids, 0, max( 1, (int) $attributes['max'] ) );
 $sgc_layout = 'scroller' === $attributes['layout'] ? 'scroller' : 'grid';
 $sgc_sizes  = 'scroller' === $sgc_layout ? '(min-width: 1024px) 60vw, 85vw' : '(min-width: 1024px) 25vw, 50vw';
 $sgc_poster = $sgc_ids ? wp_get_attachment_image_url( $sgc_ids[0], 'large' ) : get_the_post_thumbnail_url( $sgc_post_id, 'large' );
-$sgc_wrap   = get_block_wrapper_attributes( array( 'class' => 'sg-gallery sg-gallery--' . $sgc_layout ) );
+// Từ 2 ảnh trở lên: JS thêm nút + chấm vị trí → đánh dấu để CSS giữ sẵn chỗ cho hàng chấm (trang không bị nhảy).
+$sgc_multi  = 'scroller' === $sgc_layout && count( $sgc_ids ) + ( $sgc_video ? 1 : 0 ) >= 2;
+$sgc_wrap   = get_block_wrapper_attributes( array( 'class' => 'sg-gallery sg-gallery--' . $sgc_layout . ( $sgc_multi ? ' is-multi' : '' ) ) );
 ?>
 <div <?php echo $sgc_wrap; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
 	<?php if ( $attributes['showTitle'] ) : ?>

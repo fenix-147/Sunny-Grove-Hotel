@@ -12,8 +12,12 @@ defined( 'ABSPATH' ) || exit;
  */
 function sgc_chat_assets() {
 	if ( '1' === sgc_hotel( 'chat_enabled' ) ) {
-		wp_enqueue_style( 'sgc-chat', SGC_URL . 'assets/chat.css', array(), SGC_VERSION );
-		wp_enqueue_script( 'sgc-chat', SGC_URL . 'assets/chat.js', array(), SGC_VERSION, array( 'in_footer' => true, 'strategy' => 'defer' ) );
+		$css = sgc_asset( 'assets/chat.css' );
+		$js  = sgc_asset( 'assets/chat.js' );
+		wp_enqueue_style( 'sgc-chat', $css['url'], array(), $css['ver'] );
+		// CSS nhỏ (~3 KB): WordPress tự chèn thẳng vào trang thay vì tải thêm 1 file chặn hiển thị (wp_maybe_inline_styles).
+		wp_style_add_data( 'sgc-chat', 'path', $css['path'] );
+		wp_enqueue_script( 'sgc-chat', $js['url'], array(), $js['ver'], array( 'in_footer' => true, 'strategy' => 'defer' ) );
 	}
 }
 add_action( 'wp_enqueue_scripts', 'sgc_chat_assets' );

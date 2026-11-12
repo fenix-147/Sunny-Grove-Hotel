@@ -226,16 +226,19 @@ function sg_seo_description( $post_id, $lang ) {
 		if ( '' !== $desc ) {
 			return sg_seo_trim( $desc );
 		}
-		$excerpt = sg_with_lang(
-			$lang,
-			static function () use ( $post_id ) {
-				$short = sgc_meta_value( $post_id, 'short' );
-				return '' !== $short ? $short : get_the_excerpt( $post_id );
-			},
-			false
-		);
-		if ( '' !== trim( $excerpt ) && (int) get_option( 'page_on_front' ) !== $post_id ) {
-			return sg_seo_trim( $excerpt );
+		// Trang chủ dùng phần giới thiệu khách sạn bên dưới → không cần dựng tóm tắt (tốn ~10 ms vì phải dựng nội dung).
+		if ( (int) get_option( 'page_on_front' ) !== $post_id ) {
+			$excerpt = sg_with_lang(
+				$lang,
+				static function () use ( $post_id ) {
+					$short = sgc_meta_value( $post_id, 'short' );
+					return '' !== $short ? $short : get_the_excerpt( $post_id );
+				},
+				false
+			);
+			if ( '' !== trim( $excerpt ) ) {
+				return sg_seo_trim( $excerpt );
+			}
 		}
 	}
 	$about = sgc_hotel( 'footer_about', $lang );

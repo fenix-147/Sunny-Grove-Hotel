@@ -491,129 +491,49 @@
 		} );
 	}
 
-	/* ---------- Đánh giá trình chiếu ----------
-	   Tự chuyển (≥ 6 giây), dừng khi rê chuột / focus bên trong, nút Tạm dừng/Phát (WCAG 2.2.2),
-	   chấm chuyển, vuốt trái/phải trên điện thoại. Bật giảm chuyển động → không tự chạy. */
+	/* ---------- Đánh giá Google Maps ----------
+	   Trích dẫn tối đa 6 dòng: dài hơn thì cắt (CSS) và hiện link "Đọc tiếp trên Google Maps".
+	   Đánh giá đã dịch: nút "Xem bản gốc" / "Xem bản dịch" đổi chỗ hai đoạn chữ. */
 	function initReviews( root ) {
-		var slides = root.querySelectorAll( '.sg-review--slide' );
-		var dots = root.querySelectorAll( '.sg-reviews__dot' );
-		var toggle = root.querySelector( '.sg-reviews__toggle' );
-		var track = root.querySelector( '.sg-reviews__track' );
-		if ( slides.length < 2 || ! track ) {
-			return;
-		}
+		var items = root.querySelectorAll( '.sg-greview' );
 		root.classList.add( 'is-ready' );
-		var current = 0;
-		var timer = null;
-		var userPaused = reduce.matches; // Giảm chuyển động: bắt đầu ở trạng thái dừng.
-		var hover = false;
-		var interval = Math.max( 6000, parseInt( root.getAttribute( 'data-interval' ), 10 ) || 7000 );
-
-		function show( i ) {
-			current = ( i + slides.length ) % slides.length;
-			slides.forEach( function ( s, k ) {
-				var on = k === current;
-				s.classList.toggle( 'is-active', on );
-				if ( on ) {
-					s.removeAttribute( 'aria-hidden' );
-				} else {
-					s.setAttribute( 'aria-hidden', 'true' );
-				}
-			} );
-			dots.forEach( function ( d, k ) {
-				d.classList.toggle( 'is-active', k === current );
-				if ( k === current ) {
-					d.setAttribute( 'aria-current', 'true' );
-				} else {
-					d.removeAttribute( 'aria-current' );
+		function measure() {
+			items.forEach( function ( item ) {
+				var text = item.querySelector( '.sg-greview__text:not([hidden])' );
+				var more = item.querySelector( '.sg-greview__more' );
+				if ( text && more ) {
+					more.hidden = text.scrollHeight <= text.clientHeight + 1;
 				}
 			} );
 		}
-		function stop() {
-			window.clearInterval( timer );
-			timer = null;
-		}
-		function sync() {
-			var running = ! userPaused && ! hover && ! document.hidden;
-			stop();
-			if ( running ) {
-				timer = window.setInterval( function () {
-					show( current + 1 );
-				}, interval );
-			}
-			// Đang tự chạy: không đọc to mỗi lần chuyển; đã dừng: đọc khi người dùng tự chuyển.
-			track.setAttribute( 'aria-live', running ? 'off' : 'polite' );
-			if ( toggle ) {
-				toggle.classList.toggle( 'is-paused', userPaused );
-				toggle.setAttribute( 'aria-label', toggle.getAttribute( userPaused ? 'data-label-play' : 'data-label-pause' ) );
-			}
-		}
-		dots.forEach( function ( d ) {
-			d.addEventListener( 'click', function () {
-				show( parseInt( d.getAttribute( 'data-index' ), 10 ) || 0 );
-				sync();
-			} );
-		} );
-		if ( toggle ) {
-			toggle.addEventListener( 'click', function () {
-				userPaused = ! userPaused;
-				sync();
-			} );
-		}
-		root.addEventListener( 'mouseenter', function () {
-			hover = true;
-			sync();
-		} );
-		root.addEventListener( 'mouseleave', function () {
-			hover = false;
-			sync();
-		} );
-		root.addEventListener( 'focusin', function () {
-			hover = true;
-			sync();
-		} );
-		root.addEventListener( 'focusout', function ( e ) {
-			if ( ! root.contains( e.relatedTarget ) ) {
-				hover = false;
-				sync();
-			}
-		} );
-		document.addEventListener( 'visibilitychange', sync );
-		// Vuốt trên điện thoại
-		var startX = null;
-		var startY = 0;
-		track.addEventListener( 'touchstart', function ( e ) {
-			startX = e.touches[ 0 ].clientX;
-			startY = e.touches[ 0 ].clientY;
-		}, { passive: true } );
-		track.addEventListener( 'touchend', function ( e ) {
-			if ( null === startX ) {
+		items.forEach( function ( item ) {
+			var toggle = item.querySelector( '.sg-greview__toggle' );
+			var texts = item.querySelectorAll( '.sg-greview__text' );
+			if ( ! toggle || texts.length < 2 ) {
 				return;
 			}
-			var dx = e.changedTouches[ 0 ].clientX - startX;
-			var dy = e.changedTouches[ 0 ].clientY - startY;
-			startX = null;
-			if ( Math.abs( dx ) > 40 && Math.abs( dx ) > Math.abs( dy ) ) {
-				show( current + ( dx < 0 ? 1 : -1 ) );
-				sync();
-			}
+			toggle.addEventListener( 'click', function () {
+				var original = toggle.getAttribute( 'aria-pressed' ) !== 'true';
+				texts[ 0 ].hidden = original;
+				texts[ 1 ].hidden = ! original;
+				toggle.setAttribute( 'aria-pressed', original ? 'true' : 'false' );
+				toggle.textContent = toggle.getAttribute( original ? 'data-translation' : 'data-original' );
+				measure();
+			} );
 		} );
-		root.addEventListener( 'keydown', function ( e ) {
-			if ( e.key === 'ArrowRight' || e.key === 'ArrowLeft' ) {
-				show( current + ( e.key === 'ArrowRight' ? 1 : -1 ) );
-				var dot = dots[ current ];
-				if ( dot && root.contains( document.activeElement ) && document.activeElement.classList.contains( 'sg-reviews__dot' ) ) {
-					dot.focus();
-				}
-				sync();
-			}
+		measure();
+		var t = null;
+		window.addEventListener( 'resize', function () {
+			window.clearTimeout( t );
+			t = window.setTimeout( measure, 150 );
 		} );
-		show( 0 );
-		sync();
+		if ( document.fonts && document.fonts.ready ) {
+			document.fonts.ready.then( measure );
+		}
 	}
 
 	function init() {
-		document.querySelectorAll( '.sg-reviews--slider' ).forEach( initReviews );
+		document.querySelectorAll( '.sg-greviews' ).forEach( initReviews );
 		document.querySelectorAll( '.sg-gallery--scroller' ).forEach( initScroller );
 		document.querySelectorAll( '.sg-gallery' ).forEach( initLightbox );
 		document.querySelectorAll( '.sg-banner' ).forEach( initBanner );

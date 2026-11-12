@@ -21,6 +21,7 @@ define( 'SGC_URL', plugin_dir_url( __FILE__ ) );
 
 require_once SGC_DIR . 'includes/helpers.php';
 require_once SGC_DIR . 'includes/i18n.php';
+require_once SGC_DIR . 'includes/perf.php';
 require_once SGC_DIR . 'includes/icons.php';
 require_once SGC_DIR . 'includes/list-icons.php';
 require_once SGC_DIR . 'includes/term-colors.php';
@@ -63,6 +64,9 @@ register_activation_hook( __FILE__, 'sgc_activate' );
 
 function sgc_deactivate() {
 	flush_rewrite_rules();
+	// Không để lại bộ nhớ đệm (tùy chọn tự nạp) và lịch dọn hằng ngày khi tắt plugin.
+	sgc_cache_flush();
+	wp_clear_scheduled_hook( 'sgc_cache_daily_flush' );
 }
 register_deactivation_hook( __FILE__, 'sgc_deactivate' );
 

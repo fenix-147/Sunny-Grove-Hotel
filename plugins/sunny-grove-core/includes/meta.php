@@ -10,7 +10,10 @@ defined( 'ABSPATH' ) || exit;
 /**
  * Định nghĩa trường theo loại nội dung.
  *
- * Kiểu: number, int, text, textarea, url, date, select, gallery, video.
+ * Kiểu: number, int, text, textarea, url, date, select, gallery, video,
+ *       longtext (ô chữ dài một ngôn ngữ), checkbox ('1' | '0'), image (ID ảnh).
+ * Tùy chọn thêm: default (giá trị khi bài chưa có), required, placeholder, checkbox (chữ cạnh ô tích),
+ *       no_shared (không ghi "(dùng chung cho mọi ngôn ngữ)").
  *
  * @return array
  */
@@ -185,7 +188,12 @@ function sgc_sanitize_field( $value, $field ) {
 		case 'int':
 			return '' === trim( (string) $value ) ? '' : absint( $value );
 		case 'textarea':
+		case 'longtext':
 			return sanitize_textarea_field( $value );
+		case 'checkbox':
+			return '1' === (string) $value ? '1' : '0';
+		case 'image':
+			return absint( $value ) ? (string) absint( $value ) : '';
 		case 'url':
 			return esc_url_raw( trim( (string) $value ) );
 		case 'video':
@@ -228,13 +236,31 @@ add_action( 'add_meta_boxes', 'sgc_add_meta_boxes' );
 function sgc_render_meta_box( $post ) {
 	$fields = sgc_meta_fields()[ $post->post_type ] ?? array();
 	wp_nonce_field( 'sgc_save_meta', 'sgc_meta_nonce' );
+	do_action( 'sgc_meta_box_before', $post );
 	echo '<div class="sgc-fields">';
 	foreach ( $fields as $key => $field ) {
-		$value = get_post_meta( $post->ID, $key, true );
-		$id    = 'sgc-' . $key;
+		$value    = metadata_exists( 'post', $post->ID, $key ) ? get_post_meta( $post->ID, $key, true ) : ( $field['default'] ?? '' );
+		$id       = 'sgc-' . $key;
+		$required = empty( $field['required'] ) ? '' : ' required aria-required="true"';
+		$shared   = in_array( $field['type'], array( 'text', 'textarea' ), true ) || ! empty( $field['no_shared'] ) ? '' : ' <span class="sgc-shared">' . esc_html__( '(dùng chung cho mọi ngôn ngữ)', 'sunny-grove-core' ) . '</span>';
 		echo '<div class="sgc-field sgc-field--' . esc_attr( $field['type'] ) . '">';
-		echo '<label for="' . esc_attr( $id ) . '"><strong>' . esc_html( $field['label'] ) . '</strong>' . ( in_array( $field['type'], array( 'text', 'textarea' ), true ) ? '' : ' <span class="sgc-shared">' . esc_html__( '(dùng chung cho mọi ngôn ngữ)', 'sunny-grove-core' ) . '</span>' ) . '</label>';
+		echo '<label for="' . esc_attr( $id ) . '"><strong>' . esc_html( $field['label'] ) . '</strong>' . ( $required ? ' <span class="sgc-required">*</span>' : '' ) . $shared . '</label>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		switch ( $field['type'] ) {
+			case 'longtext':
+				printf( '<textarea id="%1$s" name="%2$s" rows="5" class="widefat"%4$s>%3$s</textarea>', esc_attr( $id ), esc_attr( $key ), esc_textarea( $value ), $required ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+				break;
+			case 'checkbox':
+				printf( '<input type="hidden" name="%2$s" value="0"><label class="sgc-check"><input type="checkbox" id="%1$s" name="%2$s" value="1" %3$s> %4$s</label>', esc_attr( $id ), esc_attr( $key ), checked( (string) $value, '1', false ), esc_html( $field['checkbox'] ?? __( 'Bật', 'sunny-grove-core' ) ) );
+				break;
+			case 'image':
+				printf( '<input type="hidden" id="%1$s" name="%2$s" value="%3$s" class="sgc-image-input">', esc_attr( $id ), esc_attr( $key ), esc_attr( $value ) );
+				echo '<div class="sgc-gallery-preview sgc-image-preview">' . ( $value ? sgc_admin_media_thumb( (int) $value ) : '' ) . '</div>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+				printf(
+					'<button type="button" class="button sgc-image-pick">%1$s</button> <button type="button" class="button-link sgc-image-clear">%2$s</button>',
+					esc_html__( 'Chọn ảnh', 'sunny-grove-core' ),
+					esc_html__( 'Bỏ ảnh', 'sunny-grove-core' )
+				);
+				break;
 			case 'text':
 			case 'textarea':
 				// Trường chữ: hai ô Tiếng Việt | English cạnh nhau. Ô English trống thì bản tiếng Anh hiện tiếng Việt.
@@ -286,12 +312,14 @@ function sgc_render_meta_box( $post ) {
 				);
 				$step       = 'number' === $field['type'] ? ' step="any" min="0"' : ( 'int' === $field['type'] ? ' step="1" min="0"' : '' );
 				printf(
-					'<input type="%1$s" id="%2$s" name="%3$s" value="%4$s" class="widefat"%5$s>',
+					'<input type="%1$s" id="%2$s" name="%3$s" value="%4$s" class="widefat"%5$s%6$s%7$s>',
 					esc_attr( $input_type[ $field['type'] ] ?? 'text' ),
 					esc_attr( $id ),
 					esc_attr( $key ),
 					esc_attr( $value ),
-					$step // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+					$step, // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+					$required, // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+					empty( $field['placeholder'] ) ? '' : ' placeholder="' . esc_attr( $field['placeholder'] ) . '"' // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 				);
 		}
 		if ( ! empty( $field['help'] ) ) {
@@ -376,6 +404,7 @@ function sgc_admin_assets( $hook ) {
 		'sgcAdmin',
 		array(
 			'galleryTitle' => __( 'Chọn ảnh / video cho thư viện', 'sunny-grove-core' ),
+			'imageTitle'   => __( 'Chọn ảnh', 'sunny-grove-core' ),
 			'videoTitle'   => __( 'Chọn video', 'sunny-grove-core' ),
 			'choose'       => __( 'Dùng các mục đã chọn', 'sunny-grove-core' ),
 		)

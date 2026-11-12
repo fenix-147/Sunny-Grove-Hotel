@@ -197,6 +197,12 @@
 			],
 			"Số mục tối đa (0 = tất cả)": [
 				"Maximum items (0 = all)"
+			],
+			"Số đánh giá hiển thị (tối đa 3)": [
+				"Number of reviews to show (up to 3)"
+			],
+			"Đánh giá lấy từ menu Đánh giá: những đánh giá bật \"Hiển thị trên trang chủ\", theo Thứ tự. Điểm trung bình và link Google Maps sửa ở Sunny Grove → Đánh giá.": [
+				"Reviews come from the Reviews menu: those with \"Show on the home page\" enabled, sorted by Order. Edit the average rating and Google Maps links in Sunny Grove → Reviews."
 			]
 		}
 	}

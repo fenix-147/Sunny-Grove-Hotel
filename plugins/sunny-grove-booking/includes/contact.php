@@ -66,11 +66,12 @@ add_action( 'init', 'sgb_register_message_type' );
  * Đăng ký block và tài nguyên.
  */
 function sgb_register_contact_block() {
+	$js = sgb_asset( 'assets/contact.js' );
 	wp_register_script(
 		'sgb-contact',
-		SGB_URL . 'assets/contact.js',
+		$js['url'],
 		array(),
-		SGB_VERSION,
+		$js['ver'],
 		array(
 			'in_footer' => true,
 			'strategy'  => 'defer',

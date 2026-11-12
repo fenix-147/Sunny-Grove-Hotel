@@ -43,6 +43,31 @@
 		$field.find( '.sgc-gallery-preview' ).empty();
 	} );
 
+	// Một ảnh (ví dụ ảnh đại diện người đánh giá).
+	$( document ).on( 'click', '.sgc-image-pick', function ( e ) {
+		e.preventDefault();
+		var $field = $( this ).closest( '.sgc-field' );
+		var frame = wp.media( {
+			title: sgcAdmin.imageTitle,
+			button: { text: sgcAdmin.choose },
+			library: { type: 'image' },
+			multiple: false
+		} );
+		frame.on( 'select', function () {
+			var att = frame.state().get( 'selection' ).first().toJSON();
+			$field.find( '.sgc-image-input' ).val( att.id );
+			$field.find( '.sgc-image-preview' ).html( thumb( att ) );
+		} );
+		frame.open();
+	} );
+
+	$( document ).on( 'click', '.sgc-image-clear', function ( e ) {
+		e.preventDefault();
+		var $field = $( this ).closest( '.sgc-field' );
+		$field.find( '.sgc-image-input' ).val( '' );
+		$field.find( '.sgc-image-preview' ).empty();
+	} );
+
 	$( document ).on( 'click', '.sgc-video-pick', function ( e ) {
 		e.preventDefault();
 		var $input = $( this ).siblings( '.sgc-video-input' );

@@ -46,7 +46,7 @@ Tài liệu dành cho nhân viên khách sạn – **không cần biết code**.
 | **Tiện ích** | Hồ bơi, Kids Club, nhà hàng… |
 | **Khám phá Phú Quốc** | Các địa điểm tham quan và khoảng cách |
 | **Ưu đãi** | Combo, khuyến mãi |
-| **Đánh giá** | Đánh giá của khách (Google, Booking.com, TripAdvisor…) |
+| **Đánh giá** | Đánh giá Google Maps chọn lọc hiện trên trang chủ (điểm trung bình và link chung ở **Sunny Grove → Đánh giá**) |
 | **Bài viết** | Blog |
 | **Trang** | Trang chủ, Phòng & Giá, Liên hệ… (nội dung trang) |
 | **Thư viện** | Ảnh và video |
@@ -279,17 +279,72 @@ Trên điện thoại (màn hình dưới 600px), nút **Đặt phòng** và cá
 
 **Thêm khối có sẵn vào trang:** trong trình soạn thảo (chế độ **VI**) bấm **+** (góc trên trái) → tab **Mẫu** → nhóm **Sunny Grove – Khối có sẵn**: Hero video, Điểm nổi bật, Phòng tiêu biểu, Tiện ích nổi bật, Băng chuyền Khám phá, Ưu đãi, Đánh giá, Lời kêu gọi đặt phòng… Khi tạo **trang mới**, WordPress gợi ý các **Trang mẫu** dựng sẵn.
 
-## 15. Đánh giá khách hàng
+## 15. Đánh giá khách hàng (Google Maps)
 
-**Đánh giá → Thêm đánh giá**
+Khối **Đánh giá** trên trang chủ hiện **tối đa 3 đánh giá Google Maps do bạn tự chọn**, chép nguyên văn vào trang quản trị, mỗi đánh giá có link tới đánh giá gốc trên Google Maps. Website **không** dùng Google Places API, plugin hay widget bên ngoài, cũng không dùng ảnh chụp màn hình.
+
+![Khối Đánh giá trên trang chủ](images/danh-gia-trang-chu.png)
+
+### Thêm một đánh giá Google mới
+
+**Bước 1 – Trên Google Maps (điện thoại hoặc máy tính):**
+1. Mở Google Maps, tìm **Sunny Grove Hotel – Phú Quốc** → tab **Bài đánh giá**.
+2. Chọn đánh giá muốn đưa lên website. Bấm **Xem thêm** để hiện đủ nội dung.
+3. Bôi đen và **sao chép nguyên văn** nội dung (không sửa câu chữ, không sửa lỗi chính tả). Ghi lại **tên người đánh giá**, **số sao** và **thời gian**.
+4. Lấy link của riêng đánh giá đó: bấm **⋮** hoặc **Chia sẻ** ở đánh giá → **Sao chép đường liên kết** (link dạng `https://maps.app.goo.gl/…`).
+
+**Bước 2 – Trong trang quản trị: Đánh giá → Thêm đánh giá**
+
+![Form thêm đánh giá Google Maps](images/danh-gia-them.png)
+
+| Ô | Nhập gì |
+|---|---|
+| **Tên người đánh giá** (ô trên cùng) | Đúng như tên hiện trên Google Maps |
+| **Ảnh đại diện** (tùy chọn) | Bấm **Chọn ảnh**. Để trống thì website hiện chữ cái đầu của tên trên nền tròn |
+| **Số sao** | 1–5, đúng như trên Google Maps |
+| **Ngày đánh giá** | Chọn ngày. Website tự hiện “2 tuần trước” / “2 weeks ago” và tự cập nhật theo thời gian |
+| **Nội dung nguyên văn** | Dán nội dung đã chép ở Bước 1 |
+| **Ngôn ngữ gốc** | Tiếng Việt / English / Khác. Chọn **Khác** thì điền thêm **Tên ngôn ngữ gốc** (ví dụ “tiếng Hàn” – “Korean”) |
+| **Bản dịch Tiếng Việt / English** (tùy chọn) | Bản dịch sang ngôn ngữ còn lại. Để trống ô của ngôn ngữ gốc |
+| **Link tới đánh giá trên Google Maps** | **Bắt buộc** – dán link đã sao chép ở Bước 1 |
+| **Hiển thị trên trang chủ** | Bật / tắt |
+| **Thứ tự** (khung **Thuộc tính** bên phải) | Số nhỏ đứng trước |
+
+Bấm **Xuất bản**.
+
+**Website hiển thị theo ngôn ngữ khách đang xem:** đánh giá gốc tiếng Anh thì bản EN hiện nguyên văn; bản VI hiện bản dịch (nếu có) kèm dòng nhỏ **“Đã dịch từ tiếng Anh · Xem bản gốc”** – khách bấm vào là thấy nguyên văn. Ngược lại với đánh giá gốc tiếng Việt. Chưa có bản dịch thì hiện nguyên văn. Đánh giá dài hơn 6 dòng tự cắt và có link **“Đọc tiếp trên Google Maps”**.
+
+**Link phải là link Google Maps** (`google.com/maps`, `maps.app.goo.gl`, `g.co`…). Link sai hoặc để trống thì đánh giá **không đăng được** – được giữ ở bản nháp và báo lỗi như sau:
+
+![Báo lỗi link không phải Google Maps](images/danh-gia-loi-link.png)
+
+### Chọn đánh giá hiện trên trang chủ
 
 ![Danh sách đánh giá](images/danh-gia.png)
 
-1. **Tiêu đề** = tên khách (ví dụ “Chị Lan”).
-2. **Số sao** (1–5), **Nội dung đánh giá** (2 ô Tiếng Việt | English – chép nguyên văn lời khách; ô English để trống thì bản EN hiện nguyên văn tiếng Việt), **Đến từ / kiểu chuyến đi** (ví dụ “Hà Nội · gia đình 4 người” – có 2 ô VI | EN), **Nguồn** (Google, Booking.com, TripAdvisor, Khách gửi trực tiếp), **Ngày đánh giá**.
-3. **Đăng**. Khối **Đánh giá khách hàng** trên trang chủ tự lấy các đánh giá mới nhất. Bấm vào khối trong trình soạn thảo để chọn số đánh giá hiển thị, chỉ lấy một nguồn, hoặc chỉ lấy đánh giá từ 4–5 sao.
+- Trang chủ hiện **tối đa 3** đánh giá đang **bật “Hiển thị trên trang chủ”**, theo cột **Thứ tự**. Bật nhiều hơn 3 thì website lấy 3 đánh giá đầu theo thứ tự đã đặt.
+- Dòng chữ đỏ **“Thiếu link Google Maps – không hiển thị”** nghĩa là đánh giá đó chưa có link đúng.
+- Chưa có đánh giá nào được bật thì **cả khối Đánh giá tự ẩn** khỏi trang chủ.
 
-Website **không nhúng widget bên ngoài** – hãy chép đánh giá thật từ Google/Booking/TripAdvisor vào đây. Xóa 3 đánh giá mẫu trước khi mở website.
+### Điểm trung bình và các link chung: Sunny Grove → Đánh giá
+
+![Cài đặt đánh giá Google Maps](images/danh-gia-cai-dat.png)
+
+- **Điểm trung bình** và **Tổng số đánh giá**: chép đúng số Google Maps đang hiện (ví dụ 4,9 và 128). Hiện ở đầu khối: “4,9 ★★★★★ | 128 đánh giá trên Google Maps”.
+- **Link trang đánh giá Google Maps của khách sạn**: dùng cho link “Xem tất cả đánh giá trên Google Maps ↗”.
+- **Link “Viết đánh giá”**: lấy trong **Google Business Profile → Nhận thêm bài đánh giá → Sao chép** (dạng `https://g.page/r/…/review`).
+- Trang hiện **ngày cập nhật lần cuối**. Quá **30 ngày** chưa cập nhật thì trang này và Bảng tin nhắc bạn mở Google Maps kiểm tra lại.
+
+### Đánh giá mẫu
+
+3 đánh giá có sẵn (chị Thu Hà, Emma & Tom, anh Minh Quân) và điểm 4,9 / 128 đánh giá là **nội dung mẫu**:
+- Trong danh sách có nhãn **— MẪU**; Bảng tin nhắc **“Còn N đánh giá mẫu – thay bằng đánh giá thật trước khi đưa website lên mạng”**.
+- Chỉ hiển thị ở **website thử nghiệm** (`127.0.0.1`, `localhost`, địa chỉ có chữ `staging`…). Ở website thật, đánh giá mẫu và điểm mẫu **tự ẩn**.
+- Thay bằng đánh giá thật: sửa đánh giá mẫu (đổi nội dung, tên và **link Google Maps** – đổi link là hết nhãn MẪU) hoặc xóa đi rồi thêm mới. Lưu trang **Sunny Grove → Đánh giá** một lần là điểm không còn là số mẫu.
+
+![Cảnh báo đánh giá mẫu trên Bảng tin](images/danh-gia-bang-tin.png)
+
+> **Vì sao không có sao vàng trên kết quả tìm kiếm Google?** Google không hiển thị sao cho đánh giá mà doanh nghiệp tự đăng lại trên website của mình, nên website không gắn dữ liệu đánh giá (schema Review/AggregateRating) – chỉ giữ thông tin khách sạn (schema Hotel). Sao trên Google Search/Maps lấy trực tiếp từ hồ sơ Google Maps của khách sạn.
 
 ## 16. SEO: hiển thị trên Google và mạng xã hội
 
@@ -364,7 +419,7 @@ Website không tự sao lưu và không tự cache trang – hai việc này dù
 - [ ] Email gửi qua SMTP, gửi thử vào Gmail không nằm trong thư rác ([HOSTING.md](HOSTING.md) mục 3).
 - [ ] Thay giá phòng, giá ưu đãi, giá dịch vụ có ghi [CẦN THAY].
 - [ ] Thay toàn bộ **ảnh và video minh họa** bằng hình thật của khách sạn (mục 3, 5, 6, 7) – chỉ cần đổi một lần.
-- [ ] Thay 3 **đánh giá mẫu** bằng đánh giá thật (mục 15).
+- [ ] Thay 3 **đánh giá mẫu** bằng đánh giá Google Maps thật và nhập điểm trung bình, số đánh giá, 2 link ở **Sunny Grove → Đánh giá** (mục 15).
 - [ ] Xóa ưu đãi mẫu “Hè rực rỡ 2025” (ví dụ ưu đãi hết hạn).
 - [ ] Cột **EN** ở danh sách Trang/Phòng/Ưu đãi… không còn ✗ hay ⚠ ở trang quan trọng (mục 8).
 - [ ] Mọi quản trị viên đã bật **xác thực 2 lớp**, rồi bật *Bắt buộc quản trị viên bật xác thực 2 lớp* (mục 17).

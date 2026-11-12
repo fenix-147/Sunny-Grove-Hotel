@@ -40,7 +40,11 @@ function sg_i18n_register_meta() {
 				'title_h'   => 'sanitize_key',
 				'excerpt'   => 'sanitize_textarea_field',
 				'excerpt_h' => 'sanitize_key',
-				'slug'      => 'sanitize_title',
+				// Chỉ truyền giá trị: WordPress gọi hàm làm sạch kèm tên khóa meta, sanitize_title() lại coi tham số thứ 2
+				// là "tiêu đề dự phòng" → xóa trống slug sẽ lưu nhầm thành "_sg_en_slug".
+				'slug'      => static function ( $value ) {
+					return sanitize_title( (string) $value );
+				},
 			);
 			foreach ( $fields as $field => $sanitize ) {
 				register_post_meta(

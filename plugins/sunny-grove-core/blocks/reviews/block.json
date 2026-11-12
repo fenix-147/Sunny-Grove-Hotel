@@ -5,14 +5,14 @@
 	"title": "Đánh giá khách hàng",
 	"category": "sunny-grove",
 	"icon": "star-filled",
-	"description": "Hiện các đánh giá đã nhập ở menu Đánh giá (tên khách, số sao, nội dung song ngữ, nguồn).",
-	"keywords": [ "review", "đánh giá", "testimonial" ],
+	"description": "Tối đa 3 đánh giá Google Maps chọn ở menu Đánh giá (nguyên văn, có link tới đánh giá gốc), kèm điểm trung bình và link xem tất cả / viết đánh giá.",
+	"keywords": [ "review", "đánh giá", "testimonial", "google maps" ],
 	"textdomain": "sunny-grove-core",
 	"attributes": {
 		"count": { "type": "number", "default": 3 },
 		"source": { "type": "string", "default": "" },
 		"minRating": { "type": "number", "default": 0 },
-		"layout": { "type": "string", "default": "grid", "enum": [ "grid", "slider" ] },
+		"layout": { "type": "string", "default": "google", "enum": [ "google", "grid", "slider" ] },
 		"interval": { "type": "number", "default": 7 }
 	},
 	"supports": { "html": false, "align": [ "wide", "full" ], "spacing": { "margin": true } },

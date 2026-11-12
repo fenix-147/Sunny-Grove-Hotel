@@ -79,6 +79,9 @@
 }
 .sg-banner__poster { animation: sg-kenburns 24s var(--sg-ease) infinite alternate; }
 .sg-banner__video {
+	/* Lùi 1px (phần thừa bị cắt ở đáy): vùng hiện của video nhỏ hơn ảnh nền 1 hàng điểm ảnh → trình duyệt giữ ảnh nền
+	   (tải sớm) làm "phần tử lớn nhất" (LCP) thay vì video chạy sau. Mắt thường không thấy khác. */
+	top: 1px;
 	opacity: 0;
 	transition: opacity 1.2s var(--sg-ease);
 }
@@ -205,6 +208,9 @@
 .sg-gallery__dot::before { content: ""; position: absolute; left: 50%; top: 50%; width: 6px; height: 6px; border-radius: 999px; background: #CFC6B8; transform: translate(-50%, -50%); transition: width .3s, background .3s; }
 .sg-gallery__dot.is-active::before { width: 20px; background: var(--sg-primary); }
 @media (pointer: coarse) { .sg-gallery__dot { width: 32px; height: 44px; } }
+/* Giữ sẵn chỗ cho hàng chấm (8px + cao 28px, cảm ứng 44px) trước khi JS thêm vào → nội dung bên dưới không bị đẩy xuống. */
+.sg-js .sg-gallery--scroller.is-multi:not(.has-nav) { padding-bottom: 36px; }
+@media (pointer: coarse) { .sg-js .sg-gallery--scroller.is-multi:not(.has-nav) { padding-bottom: 52px; } }
 .sg-gallery--scroller .sg-gallery__item {
 	flex: 0 0 min(85%, 760px);
 	scroll-snap-align: start;

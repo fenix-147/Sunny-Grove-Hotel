@@ -43,12 +43,16 @@ function sgb_rooms() {
  * Đăng ký block và tài nguyên.
  */
 function sgb_register_block() {
-	wp_register_style( 'sgb-form', SGB_URL . 'assets/form.css', array(), SGB_VERSION );
+	$css = sgb_asset( 'assets/form.css' );
+	$js  = sgb_asset( 'assets/form.js' );
+	wp_register_style( 'sgb-form', $css['url'], array(), $css['ver'] );
+	// CSS nhỏ (~7 KB): WordPress tự chèn thẳng vào trang thay vì tải thêm 1 file chặn hiển thị (wp_maybe_inline_styles).
+	wp_style_add_data( 'sgb-form', 'path', $css['path'] );
 	wp_register_script(
 		'sgb-form',
-		SGB_URL . 'assets/form.js',
+		$js['url'],
 		array(),
-		SGB_VERSION,
+		$js['ver'],
 		array(
 			'in_footer' => true,
 			'strategy'  => 'defer',

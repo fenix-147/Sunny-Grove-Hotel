@@ -28,14 +28,16 @@
 	:root { --sg-header-height: var(--wp--custom--header-height-mobile, 72px); }
 }
 
-html { scroll-padding-top: calc(var(--sg-header-height) + 12px); }
+/* Bấm link neo tới một khối: khối nằm ngay dưới đầu trang, cách 24px (scroll-margin-top = đầu trang + 24px).
+   Ô đang được chọn bằng phím Tab cũng không bị đầu trang che. Không dùng thêm scroll-padding ở html (sẽ cộng dồn). */
+:where([id], .sg-section, a, button, input, select, textarea, summary, [tabindex]) { scroll-margin-top: calc(var(--sg-header-height) + 24px); }
 @media (prefers-reduced-motion: no-preference) {
 	html { scroll-behavior: smooth; }
 }
 body { text-rendering: optimizeLegibility; }
 /* Chữ serif (Cormorant Garamond): luôn dùng file phông thật 500/600/700 thường và 500/600 nghiêng – không để trình duyệt tự giả lập đậm/nghiêng.
    Không dùng -webkit-font-smoothing: antialiased vì làm nét chữ mảnh đi trên máy Mac. */
-:where(h1, h2, h3, h4, h5, h6, .wp-block-site-title, .wp-block-post-title, .wp-block-quote, .wp-block-pullquote, .sg-accent, .sg-compare, .sg-offer-price, .sg-review__quote, .sg-menu__list, .sg-gallery__title, .sgb-success__title, .has-heading-font-family) { font-synthesis: none; }
+:where(h1, h2, h3, h4, h5, h6, .wp-block-site-title, .wp-block-post-title, .wp-block-quote, .wp-block-pullquote, .sg-accent, .sg-compare, .sg-offer-price, .sg-greview__quote, .sg-menu__list, .sg-gallery__title, .sgb-success__title, .has-heading-font-family) { font-synthesis: none; }
 img, video { max-width: 100%; height: auto; }
 strong, b { font-weight: 700; }
 
@@ -177,10 +179,14 @@ h1, h2, h3 { text-wrap: balance; }
 /* =========================================================
    4. Ảnh
    ========================================================= */
+/* Kiểu ảnh chọn trong trình soạn thảo – luôn giữ tỉ lệ bằng aspect-ratio, không giới hạn chiều cao.
+   Vòm mềm (4:5, bo trên 120px) · Vòm đầy đủ (4:5, đỉnh tròn hẳn) · Tròn (1:1). */
 .is-style-sg-arch img,
-.sg-arch { border-radius: var(--wp--custom--radius--arch) !important; }
-.is-style-sg-arch img { aspect-ratio: 4 / 5; object-fit: cover; width: 100%; }
-.is-style-sg-circle img { border-radius: 50% !important; aspect-ratio: 1; object-fit: cover; }
+.sg-arch { border-radius: var(--wp--custom--radius--arch, 120px 120px 16px 16px) !important; }
+.is-style-sg-arch-full img,
+.sg-arch-full { border-radius: var(--wp--custom--radius--arch-full, 999px 999px 24px 24px) !important; }
+:is(.is-style-sg-arch, .is-style-sg-arch-full) img { aspect-ratio: 4 / 5; object-fit: cover; width: 100%; height: auto; max-height: none; }
+.is-style-sg-circle img { border-radius: 50% !important; aspect-ratio: 1; object-fit: cover; width: 100%; height: auto; max-height: none; }
 
 /* Ken Burns cho ảnh */
 .is-style-sg-kenburns { overflow: hidden; border-radius: var(--wp--custom--radius--medium); }
@@ -550,17 +556,6 @@ html.sg-menu-open .sg-header { box-shadow: none; }
 .sg-highlight h3 { font-size: 1.625rem; margin: 0 0 .5rem; text-align: left !important; }
 .sg-highlight p { margin-top: 0; font-size: var(--wp--preset--font-size--small); color: var(--sg-muted); text-align: left !important; }
 
-/* Đánh giá */
-.sg-reviews { display: grid; gap: var(--wp--preset--spacing--40); grid-template-columns: repeat(auto-fill, minmax(min(100%, 18rem), 1fr)); }
-.sg-reviews .sg-review { margin: 0; display: flex; flex-direction: column; gap: .5rem; }
-.sg-review blockquote.sg-review__quote { margin: 0; padding: 0; border: 0; }
-.sg-review blockquote.sg-review__quote p { margin: 0; }
-.sg-review figcaption { margin-top: auto; }
-.sg-review .sg-stars { color: var(--sg-em); letter-spacing: .15em; font-size: 1.1rem; margin: 0; }
-.sg-review .sg-review__quote { font-family: var(--wp--preset--font-family--heading); font-weight: 600; font-size: 1.5rem; line-height: 1.35; }
-.sg-review .sg-review__name { font-weight: 700; margin-bottom: 0; }
-.sg-review .sg-review__from { font-size: var(--wp--preset--font-size--small); color: var(--sg-muted); margin-top: 0; }
-
 /* Tiện ích dạng hàng xen kẽ */
 .sg-amenity-list .wp-block-post-template { display: grid; gap: var(--wp--preset--spacing--70); list-style: none; padding: 0; }
 .sg-amenity-row { align-items: center !important; gap: var(--wp--preset--spacing--60) !important; }
@@ -624,18 +619,18 @@ body:not(.sg-has-hero) main.wp-block-group:first-of-type { scroll-margin-top: va
    ========================================================= */
 /* Tiêu đề khối căn giữa → nội dung cách 56px */
 .sg-section > .wp-block-heading.has-text-align-center { margin-bottom: 0; }
-.sg-section > .wp-block-heading.has-text-align-center + * { margin-top: clamp(24px, 4vh, 40px) !important; }
+.sg-section > .wp-block-heading.has-text-align-center + * { margin-top: 40px !important; }
 /* Hàng tiêu đề chia đôi: tiêu đề trái, chip lọc / nút trượt phải */
-.sg-head-split { gap: 24px !important; margin-bottom: clamp(24px, 4vh, 40px) !important; }
+.sg-head-split { gap: 24px !important; margin-bottom: 40px !important; }
 .sg-head-split .wp-block-heading { margin: 0; }
-.sg-head-split .sg-filter { margin: 0; }
+.sg-head-split .sg-filter { margin: 0; min-width: 0; max-width: 100%; }
 .sg-head-split .sg-carousel-nav { margin: 0; }
 .sg-link-more { margin-top: 0; }
 
 /* ---------- Hero ----------
    Vừa một màn hình: chiều cao theo nội dung – khoảng cách từ đầu trang tới dòng eyebrow tối đa 12vh, chữ căn đáy,
-   thanh đặt phòng đè lên mép dưới. Cỡ chữ co theo chiều cao màn hình (theme.json → huge) nên tổng chiều cao
-   hero luôn ≤ 100svh − đầu trang, kể cả màn hình laptop thấp (1366×657). */
+   thanh đặt phòng đè lên mép dưới. Chỉ màn hình đầu (hero + thanh đặt phòng) phải vừa một màn hình – kể cả laptop thấp
+   1366×657 (kiểm tra bằng .dev/check-fit.mjs). Các khối khác cao tự nhiên theo nội dung. */
 .sg-banner.sg-hero {
 	min-height: 0;
 	max-height: none;
@@ -683,47 +678,55 @@ body:not(.sg-has-hero) main.wp-block-group:first-of-type { scroll-margin-top: va
 	.sg-booking-bar { margin-top: -96px !important; }
 }
 
-/* ---------- Câu chuyện ---------- */
-.sg-story__cols { gap: clamp(2.5rem, 7vw, 6rem) !important; }
-.sg-story .wp-block-heading { margin: 0 0 28px; }
-.sg-story .sg-lead { font-size: 1.1875rem; max-width: 520px; }
+/* ---------- Câu chuyện ----------
+   Lưới 2 cột cách 72px. Ảnh vòm đầy đủ 4:5 rộng 400px (cách mép phải cột 40px); ảnh tròn 180px viền 8px màu nền
+   ở góc dưới trái, lệch ra ngoài mép trái ảnh vòm 55px, chồng lên ảnh vòm khoảng 1/4. Không giới hạn chiều cao ảnh. */
+@media (min-width: 768px) {
+	.sg-story__cols.wp-block-columns { display: grid !important; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 72px !important; align-items: center; }
+	.sg-story__cols > .wp-block-column { flex-basis: auto !important; min-width: 0; }
+}
+.sg-story .is-style-sg-eyebrow { margin-bottom: 18px !important; }
+.sg-story .wp-block-heading { margin: 0 0 24px; }
+.sg-story .sg-lead { font-size: var(--wp--preset--font-size--medium); max-width: 500px; color: var(--sg-muted); }
 .sg-stats {
 	display: grid;
 	grid-template-columns: repeat(3, minmax(0, 1fr));
 	gap: 24px;
-	max-width: 540px;
-	margin: 44px 0 40px !important;
-	padding-top: 32px;
+	max-width: 500px;
+	margin: 36px 0 32px !important;
+	padding-top: 28px;
 	border-top: 1px solid var(--sg-line);
 }
 .sg-stats > * { margin: 0 !important; }
 .sg-stat__value { gap: 0 !important; align-items: baseline !important; }
 .sg-stat__value > p { margin: 0 !important; font-family: var(--wp--preset--font-family--heading); font-weight: 600; line-height: 1; }
-.sg-stat__number { font-size: 2.5rem; }
-.sg-stat__unit { font-size: 1.375rem; white-space: pre; }
+.sg-stat__number { font-size: 2.25rem; }
+.sg-stat__unit { font-size: 1.25rem; white-space: pre; }
 .sg-stat__label { margin: 8px 0 0 !important; font-size: .875rem; color: var(--sg-muted); line-height: 1.5; }
-.sg-story__media { position: relative; padding-bottom: 60px; }
+.sg-story__media { position: relative; width: 400px; max-width: calc(100% - 95px); margin: 0 40px 0 auto !important; padding-bottom: 60px; }
 .sg-story__media > * { margin: 0 !important; }
-.sg-story__arch { max-width: 440px; margin-left: auto !important; overflow: hidden; border-radius: 999px 999px 28px 28px; }
-.sg-story__arch img { border-radius: 999px 999px 28px 28px !important; aspect-ratio: 4 / 5; max-height: min(56vh, 480px); width: 100%; object-fit: cover; }
+.sg-story__arch { width: 100%; overflow: hidden; border-radius: var(--wp--custom--radius--arch-full, 999px 999px 24px 24px); }
+.sg-story__arch img { display: block; width: 100%; height: auto !important; max-height: none; aspect-ratio: 4 / 5; object-fit: cover; border-radius: var(--wp--custom--radius--arch-full, 999px 999px 24px 24px) !important; }
 .sg-story__circle {
 	position: absolute;
-	left: 0;
+	left: -55px;
 	bottom: 0;
-	width: 220px;
+	width: 180px;
+	box-sizing: content-box;
 	overflow: hidden;
-	border: 10px solid var(--wp--preset--color--sand);
+	border: 8px solid var(--wp--preset--color--sand);
 	border-radius: 50%;
 }
-.sg-story__circle img { display: block; }
-@media (max-width: 781px) {
-	.sg-story__arch { max-width: none; }
-	.sg-story__circle { width: 150px; border-width: 8px; }
-	.sg-story__media { padding-bottom: 40px; }
+.sg-story__circle img { display: block; width: 100%; height: auto !important; aspect-ratio: 1; object-fit: cover; }
+@media (max-width: 767px) {
+	/* Điện thoại: ảnh vòm rộng 100% (tối đa 400px), ảnh tròn 120px chồng ở góc dưới trái. */
+	.sg-story__cols > .wp-block-column + .wp-block-column { margin-top: 16px; }
+	.sg-story__media { width: 100%; max-width: 400px; margin: 0 auto !important; padding-bottom: 40px; }
+	.sg-story__circle { left: 0; width: 120px; border-width: 6px; }
 }
 @media (max-width: 479px) {
 	.sg-stats { gap: 16px; }
-	.sg-stat__number { font-size: 2rem; }
+	.sg-stat__number { font-size: 1.875rem; }
 	.sg-stat__unit { font-size: 1.125rem; }
 }
 
@@ -744,11 +747,10 @@ body:not(.sg-has-hero) main.wp-block-group:first-of-type { scroll-margin-top: va
 	.sg-highlights__grid > .sg-highlight:last-child { border-bottom: 0; padding-bottom: 0 !important; }
 }
 
-/* ---------- Thẻ phòng: ảnh khung vòm, so le ---------- */
-/* Ảnh vòm: không cao quá min(56vh, 480px) VÀ phần màn hình còn lại sau tiêu đề khối + chữ của thẻ, để cả khối Phòng nghỉ vừa một màn hình
-   (1366×657: ảnh ~250px). Vẫn giữ dáng vòm, ảnh cắt vừa khung. Thẻ giữa so le ít đi khi màn hình thấp. */
-:root { --sg-stagger: clamp(0px, calc(100vh - 700px), 64px); }
-.sg-media--arch { border-radius: var(--wp--custom--radius--arch) !important; max-height: min(56vh, 480px, max(210px, calc(100svh - var(--sg-header-height) - 368px - var(--sg-stagger)))); }
+/* ---------- Thẻ phòng: ảnh "vòm mềm" 4:5, so le ---------- */
+/* Luôn giữ tỉ lệ 4:5 bằng aspect-ratio (kể cả trang đã lưu với tỉ lệ cũ), không bao giờ giới hạn chiều cao. */
+:root { --sg-stagger: 40px; }
+.sg-media--arch { aspect-ratio: 4 / 5 !important; max-height: none; border-radius: var(--wp--custom--radius--arch, 120px 120px 16px 16px) !important; }
 .sg-media__badge--kids,
 .sg-media__badge--distance {
 	top: auto;
@@ -761,9 +763,10 @@ body:not(.sg-has-hero) main.wp-block-group:first-of-type { scroll-margin-top: va
 }
 .sg-media__badge--kids { color: var(--wp--preset--color--primary); }
 .sg-media__badge--distance { top: 16px; bottom: auto; padding: 6px 12px; color: var(--wp--preset--color--ink); max-width: calc(100% - 32px); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.sg-card--room .sg-card__body { padding-top: 24px; gap: 4px; }
-.sg-card--room .wp-block-post-title { font-size: var(--wp--preset--font-size--x-large); line-height: 1.2; }
-.sg-card--room .sg-meta-line { margin-bottom: 10px !important; }
+/* Dưới ảnh: tên phòng 26px → 1 dòng thông tin 15px → đường kẻ → giá + "Xem phòng →" (đúng mẫu). */
+.sg-card--room .sg-card__body { padding-top: 20px; gap: 4px; }
+.sg-card--room .wp-block-post-title { font-size: 1.625rem; line-height: 1.2; }
+.sg-card--room .sg-meta-line { margin-bottom: 10px !important; font-size: .9375rem; }
 .sg-card--room .sg-card__footer { flex-wrap: nowrap !important; justify-content: space-between; align-items: baseline; gap: 12px; font-size: .9375rem; }
 .sg-card--room .sg-card__footer > * { margin: 0 !important; }
 .sg-price-line { font-weight: 500; }
@@ -782,19 +785,20 @@ body:not(.sg-has-hero) main.wp-block-group:first-of-type { scroll-margin-top: va
 .sg-grid--rooms .wp-block-post-template { align-items: start; }
 .sg-grid--rooms .sg-card__body > .sg-card__footer { margin-top: 0 !important; }
 @media (min-width: 960px) {
-	/* Thẻ giữa thấp hơn 64px (so le) */
+	/* Thẻ giữa thấp hơn 40px (so le) */
 	.sg-grid--rooms .wp-block-post-template > li:nth-child(3n+2 of :not([style*="display: none"])) { margin-top: var(--sg-stagger) !important; }
 }
 @media (max-width: 959px) {
 	/* Máy tính bảng: vẫn 3 cột (không so le), chữ nhỏ lại */
 	.sg-grid--rooms .wp-block-post-template { gap: 20px; }
-	.sg-card--room .wp-block-post-title { font-size: 1.5rem; }
+	.sg-card--room .wp-block-post-title { font-size: 1.375rem; }
 	.sg-card--room .sg-card__footer { flex-wrap: wrap !important; }
 }
-@media (max-width: 599px) {
+@media (max-width: 767px) {
+	/* Điện thoại: 1 cột, giữ vòm mềm 4:5, không so le */
 	.sg-grid--rooms .wp-block-post-template { grid-template-columns: minmax(0, 1fr); gap: 48px; }
-	.sg-grid--rooms .sg-media--arch { aspect-ratio: 4 / 5 !important; border-radius: 180px 180px 20px 20px !important; }
-	.sg-card--room .wp-block-post-title { font-size: 1.75rem; }
+	.sg-card--room .wp-block-post-title { font-size: 1.625rem; }
+	.sg-card--room .sg-card__footer { flex-wrap: nowrap !important; }
 }
 
 /* ---------- Khoảng lặng ---------- */
@@ -820,8 +824,7 @@ body:not(.sg-has-hero) main.wp-block-group:first-of-type { scroll-margin-top: va
 .sg-bento .wp-block-post-template {
 	display: grid;
 	grid-template-columns: repeat(4, minmax(0, 1fr));
-	/* Hàng co theo chiều cao màn hình để cả khối vừa một màn hình (300px ở màn hình cao, ~165px ở 1366×657). */
-	grid-template-rows: repeat(2, clamp(160px, calc((100svh - var(--sg-header-height) - 262px) / 2), 300px));
+	grid-template-rows: repeat(2, 270px);
 	gap: 20px;
 	list-style: none;
 	margin: 0;
@@ -897,8 +900,7 @@ body:not(.sg-has-hero) main.wp-block-group:first-of-type { scroll-margin-top: va
 	scroll-padding-inline: max(var(--wp--style--root--padding-left, 20px), calc((100% - var(--wp--style--global--wide-size)) / 2));
 	padding-block: 0 8px !important;
 }
-/* Thẻ hẹp lại khi màn hình thấp để cả khối (tiêu đề + ảnh 4:5 + tên) vừa một màn hình. */
-.sg-carousel--bleed .wp-block-post-template > li { flex: 0 0 clamp(200px, calc((100svh - var(--sg-header-height) - 318px) * .8), 340px); }
+.sg-carousel--bleed .wp-block-post-template > li { flex: 0 0 310px; }
 :where(.has-ink-background-color, .sg-dark) .sg-card--place { color: var(--wp--preset--color--sand); }
 .sg-card--place .sg-media { border-radius: var(--wp--custom--radius--medium); }
 .sg-card--place .sg-card__body { padding-top: 18px; gap: 2px; }
@@ -919,16 +921,16 @@ body:not(.sg-has-hero) main.wp-block-group:first-of-type { scroll-margin-top: va
 .sg-offer-list .wp-block-post-template > li { margin: 0 !important; border-bottom: 1px solid var(--sg-line); }
 .sg-offer-row {
 	display: grid !important;
-	grid-template-columns: clamp(88px, 14vh, 120px) minmax(0, 1fr) auto;
+	grid-template-columns: 112px minmax(0, 1fr) auto;
 	gap: 28px;
 	align-items: center;
-	padding: clamp(14px, 2.6vh, 28px) 0;
+	padding: 24px 0;
 	height: auto;
 }
 .sg-offer-row > * { margin: 0 !important; }
 .sg-offer-row .sg-offer-row__img { border-radius: var(--wp--custom--radius--small); }
 .sg-offer-row__body > * { margin: 0 !important; }
-.sg-offer-row .wp-block-post-title { margin-bottom: 4px !important; font-size: clamp(1.375rem, calc(1rem + 1.2vh), 1.75rem); line-height: 1.2; }
+.sg-offer-row .wp-block-post-title { margin-bottom: 4px !important; font-size: 1.625rem; line-height: 1.2; }
 .sg-offer-row .wp-block-post-title a::after { content: ""; position: absolute; inset: 0; z-index: 1; }
 .sg-offer-row .wp-block-post-excerpt { font-size: .9375rem; color: var(--sg-muted); }
 .sg-offer-row .wp-block-post-excerpt p { margin: 0; }
@@ -937,7 +939,7 @@ body:not(.sg-has-hero) main.wp-block-group:first-of-type { scroll-margin-top: va
 .sg-offer-row__deal > * { margin: 0 !important; }
 .sg-deal__note { font-size: .875rem; color: var(--sg-muted); }
 .sg-deal--old { text-decoration: line-through; }
-.sg-offer-row .sg-offer-price { font-size: 1.875rem; line-height: 1.1; white-space: nowrap; }
+.sg-offer-row .sg-offer-price { font-size: 1.75rem; line-height: 1.1; white-space: nowrap; }
 @media (max-width: 781px) {
 	.sg-offer-row { grid-template-columns: 88px minmax(0, 1fr); gap: 8px 18px; align-items: start; padding: 22px 0; }
 	.sg-offer-row .sg-offer-row__img { grid-row: span 2; }
@@ -947,64 +949,105 @@ body:not(.sg-has-hero) main.wp-block-group:first-of-type { scroll-margin-top: va
 	.sg-offer-row .sg-offer-price { font-size: 1.5rem; }
 }
 
-/* ---------- Đánh giá: trình chiếu một trích dẫn lớn ---------- */
-.sg-reviews--slider { display: block; max-width: 980px; margin-inline: auto; text-align: center; }
-.sg-reviews__mark { display: block; margin: 0 auto; color: var(--wp--preset--color--secondary); }
-.sg-reviews__track { display: grid; margin-top: 28px; }
-.sg-review--slide { grid-area: 1 / 1; margin: 0; transition: opacity .8s var(--sg-ease), visibility .8s; }
-.sg-reviews--slider.is-ready .sg-review--slide:not(.is-active) { opacity: 0; visibility: hidden; }
-.sg-reviews--slider:not(.is-ready) .sg-review--slide { grid-area: auto; }
-.sg-reviews--slider:not(.is-ready) .sg-review--slide + .sg-review--slide { margin-top: 48px; }
-.sg-reviews--slider .sg-review__quote { margin: 0 0 32px; padding: 0; border: 0; font-family: var(--wp--preset--font-family--heading); font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 600; line-height: 1.3; text-wrap: balance; }
-.sg-reviews--slider .sg-review__quote p { margin: 0; }
-.sg-reviews--slider .sg-review__name { margin: 0; font-size: .9375rem; font-weight: 700; }
-.sg-reviews--slider .sg-review__from { margin: 2px 0 0; font-size: .875rem; color: var(--sg-muted); }
-.sg-reviews__controls { display: none; align-items: center; justify-content: center; gap: 8px; margin-top: 28px; }
-.sg-reviews--slider.is-ready .sg-reviews__controls { display: flex; }
-.sg-reviews__dots { display: flex; }
-.sg-reviews__dot {
-	position: relative;
-	width: 44px;
-	height: 44px;
-	padding: 0;
-	border: 0;
-	background: none;
-	cursor: pointer;
-}
-.sg-reviews__dot::before {
-	content: "";
-	position: absolute;
-	left: 50%;
-	top: 50%;
-	width: 10px;
-	height: 4px;
-	border-radius: 4px;
-	background: #CFC6B8;
-	transform: translate(-50%, -50%);
-	transition: width .4s var(--sg-ease), background .4s;
-}
-.sg-reviews__dot.is-active::before { width: 28px; background: var(--wp--preset--color--primary); }
-.sg-reviews__toggle {
-	display: inline-flex;
+/* ---------- Đánh giá Google Maps (bản tối giản: không thẻ, không bóng, chỉ đường kẻ mảnh) ---------- */
+.sg-greviews { --sg-gr-gap: clamp(20px, 3.1vw, 44px); color: var(--wp--preset--color--ink); }
+.sg-greviews__head { text-align: center; }
+.sg-greviews .sg-greviews__eyebrow { margin: 0 0 16px !important; }
+.sg-greviews .sg-greviews__title { margin: 0 !important; font-size: var(--wp--preset--font-size--xx-large); line-height: 1.08; }
+.sg-greviews .sg-greviews__title .sg-accent { display: inline; } /* Mẫu: cả tiêu đề trên một dòng. */
+.sg-greviews__summary {
+	display: flex;
+	flex-wrap: wrap;
 	align-items: center;
 	justify-content: center;
-	width: 44px;
-	height: 44px;
-	margin-left: 8px;
-	padding: 0;
-	border: 1px solid var(--sg-line);
-	border-radius: 999px;
-	background: transparent;
-	color: var(--wp--preset--color--ink);
-	cursor: pointer;
+	gap: 8px 12px;
+	margin: 20px 0 0;
+	font-size: .9375rem;
+	color: var(--sg-muted);
 }
-.sg-reviews__toggle:hover { border-color: var(--wp--preset--color--ink); }
-.sg-reviews__toggle .sg-reviews__icon-play,
-.sg-reviews__toggle.is-paused .sg-reviews__icon-pause { display: none; }
-.sg-reviews__toggle.is-paused .sg-reviews__icon-play { display: inline-flex; }
+.sg-greviews__score { font-family: var(--wp--preset--font-family--heading); font-size: 26px; font-weight: 600; line-height: 1; color: var(--wp--preset--color--ink); }
+.sg-greviews__sep { flex: none; width: 1px; height: 16px; background: #CFC6B8; }
+
+/* Sao: hàng sao nhạt, phần tô màu đất nung theo điểm (4,6 → tô 92%). */
+.sg-stars-meter { position: relative; display: inline-block; font-size: 13px; line-height: 1; letter-spacing: 1px; white-space: nowrap; color: var(--sg-line); vertical-align: baseline; }
+.sg-stars-meter::before { content: "★★★★★"; }
+.sg-stars-meter > span { position: absolute; inset: 0 auto 0 0; overflow: hidden; color: var(--sg-em); }
+.sg-stars-meter > span::before { content: "★★★★★"; }
+.sg-stars-meter--lg { letter-spacing: 3px; }
+
+.sg-greviews__list {
+	display: grid;
+	grid-template-columns: repeat(var(--sg-n, 3), minmax(0, 1fr));
+	margin-top: 48px;
+	border-top: 1px solid var(--sg-line);
+}
+.sg-greviews[style*="--sg-n:1"] .sg-greviews__list { max-width: 760px; margin-inline: auto; }
+.sg-greview { display: flex; flex-direction: column; min-width: 0; margin: 0; padding: 44px var(--sg-gr-gap) 0; border-left: 1px solid var(--sg-line); }
+.sg-greview:first-child { padding-left: 0; border-left: 0; }
+.sg-greview:last-child { padding-right: 0; }
+.sg-greview__quote { margin: 0; padding: 0; border: 0; font-family: var(--wp--preset--font-family--heading); font-size: 24px; font-weight: 500; line-height: 1.45; font-synthesis: none; }
+.sg-greview__quote p { margin: 0; }
+/* Tối đa 6 dòng (chỉ khi có JavaScript để hiện link "Đọc tiếp"). */
+.sg-greviews.is-ready .sg-greview__text { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 6; line-clamp: 6; overflow: hidden; }
+.sg-greviews.is-ready .sg-greview__text[hidden] { display: none; }
+.sg-greview__more { margin: 10px 0 0; font-size: 13px; font-weight: 600; }
+.sg-greview__tr { margin: 10px 0 0; font-size: 12px; color: var(--sg-muted); }
+.sg-greview__toggle { padding: 0 0 2px; border: 0; background-color: transparent; font: inherit; color: var(--wp--preset--color--ink); cursor: pointer; }
+.sg-greview__by { display: flex; align-items: center; gap: 12px; margin-top: 32px; }
+.sg-greview__more:not([hidden]) ~ .sg-greview__by, .sg-greview__tr + .sg-greview__by { margin-top: 22px; }
+.sg-greview__avatar {
+	display: inline-flex;
+	flex: none;
+	align-items: center;
+	justify-content: center;
+	width: 36px;
+	height: 36px;
+	border-radius: 50%;
+	background: #E7E0D4;
+	color: var(--sg-muted);
+	font-size: 13px;
+	font-weight: 700;
+	line-height: 1;
+	object-fit: cover;
+}
+.sg-greview__who { min-width: 0; line-height: 1.35; }
+.sg-greview__name { display: block; font-size: 14px; font-weight: 700; }
+.sg-greview__sub { display: block; font-size: 13px; color: var(--sg-muted); }
+.sg-greview__sub a, .sg-greview__sub time { white-space: nowrap; }
+.sg-greviews__links { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 12px 36px; margin: 48px 0 0; font-size: .9375rem; font-weight: 600; }
+
+/* Link chữ gạch chân mảnh (gạch rút lại khi rê chuột). */
+.sg-greviews a.sg-ul, .sg-greviews .sg-ul {
+	color: var(--wp--preset--color--ink);
+	text-decoration: none;
+	background-image: linear-gradient(currentColor, currentColor);
+	background-position: 0 100%;
+	background-repeat: no-repeat;
+	background-size: 100% 1px;
+	padding-bottom: 3px;
+	transition: background-size .5s var(--sg-ease), color .2s;
+}
+.sg-greviews a.sg-ul:hover, .sg-greviews .sg-ul:hover { color: var(--wp--preset--color--primary); background-size: 0 1px; background-position: 100% 100%; }
+@media (prefers-reduced-motion: reduce) {
+	.sg-greviews .sg-ul { transition: none; }
+}
+
+/* Điện thoại / máy tính bảng dọc: xếp chồng, ngăn bằng đường kẻ ngang. */
+@media (max-width: 781px) {
+	.sg-greviews__summary .sg-greviews__sep { display: none; }
+	.sg-greviews__total { flex-basis: 100%; }
+	.sg-greviews__list { grid-template-columns: minmax(0, 1fr); margin-top: 40px; }
+	.sg-greview { padding: 32px 0; border-left: 0; border-top: 1px solid var(--sg-line); }
+	.sg-greview:first-child { border-top: 0; }
+	.sg-greview:last-child { padding-bottom: 0; }
+	.sg-greview__quote { font-size: 22px; }
+	.sg-greview__by { margin-top: 24px; }
+	.sg-greviews__links { flex-direction: column; gap: 16px; margin-top: 40px; }
+	.sg-greviews__links .sg-greviews__sep { display: none; }
+}
 
 /* ---------- Lời mời cuối trang ---------- */
-.sg-cta .sg-cta__title { font-size: clamp(2.5rem, 4.6vw, 4rem); margin-bottom: 20px; }
+.sg-cta .sg-cta__title { font-size: clamp(2.25rem, 4.2vw, 3.5rem); margin-bottom: 20px; }
 .sg-section.sg-cta > .wp-block-heading.has-text-align-center + * { margin-top: 0 !important; }
 .sg-cta .sg-lead { margin-top: 20px !important; margin-bottom: 36px; font-size: var(--wp--preset--font-size--medium); }
 .sg-cta .wp-block-buttons { gap: 12px; }

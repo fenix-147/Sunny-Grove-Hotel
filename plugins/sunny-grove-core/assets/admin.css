@@ -45,3 +45,12 @@
 .sgc-color-field__item:has(input:checked) { border-color: #2271b1; box-shadow: 0 0 0 1px #2271b1; }
 .sgc-color-field__item input { position: absolute; opacity: 0; }
 .sgc-color-field__swatch { display: inline-flex; align-items: center; justify-content: center; width: 30px; height: 30px; border-radius: 999px; color: #fff; font-weight: 600; font-size: 12px; }
+
+/* Đánh giá Google Maps: ô chữ dài, ô tích, ảnh đại diện, ghi chú hướng dẫn */
+.sgc-field--longtext { grid-column: 1 / -1; }
+.sgc-field .sgc-check { display: inline-flex; align-items: center; gap: 6px; margin: 0; font-weight: 400; }
+.sgc-field .sgc-check input[type="checkbox"] { width: auto; min-height: 0; margin: 0; }
+.sgc-required { color: #b32d2e; }
+.sgc-note { margin: 4px 0 16px; padding: 10px 14px; border-left: 4px solid #3F5B4B; background: #f6f7f7; }
+.sgc-note p { margin: .3em 0; }
+#sgc_fields .notice.inline { margin: 0 0 16px; }

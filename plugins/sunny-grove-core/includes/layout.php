@@ -14,8 +14,8 @@
 
 defined( 'ABSPATH' ) || exit;
 
-/** Phiên bản bố cục của theme ("Resort boutique" = 2). */
-const SGC_LAYOUT_VERSION = 2;
+/** Phiên bản bố cục của theme ("Resort boutique" = 2; khối Đánh giá Google Maps = 3). */
+const SGC_LAYOUT_VERSION = 3;
 
 /**
  * Dấu vân tay nội dung để biết trang có bị sửa không: tách riêng chữ tiếng Việt (block) và chữ tiếng Anh (thuộc tính sgEn).

@@ -639,7 +639,8 @@ function sg_i18n_term( $term ) {
 	if ( sg_i18n_legacy_active() || ! $term instanceof WP_Term || $lang === sg_default_lang() || ( is_admin() && empty( $GLOBALS['sg_lang_override'] ) ) ) {
 		return $term;
 	}
-	$name = (string) get_term_meta( $term->term_id, sg_en_key( 'name', $lang ), true );
+	// Bảng tra tên của mọi danh mục (1 lần/trang, có bộ nhớ đệm) thay vì đọc meta từng danh mục.
+	$name = (string) ( sgc_term_meta_map( sg_en_key( 'name', $lang ) )[ (int) $term->term_id ] ?? '' );
 	if ( '' !== $name ) {
 		$term       = clone $term;
 		$term->name = $name;

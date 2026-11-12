@@ -194,3 +194,28 @@ function sgb_texts_upgrade() {
 	update_option( 'sgb_texts_version', 2, true );
 }
 add_action( 'init', 'sgb_texts_upgrade', 5 );
+
+/**
+ * File CSS/JS dùng ngoài website: bản thu gọn (.min) nếu có VÀ mới hơn hoặc bằng file gốc; còn lại dùng file gốc.
+ * Bật SCRIPT_DEBUG thì luôn dùng file gốc. ?ver= theo thời gian sửa file.
+ *
+ * @param string $rel Đường dẫn trong plugin, vd. 'assets/form.css'.
+ * @return array { url, ver, path }
+ */
+function sgb_asset( $rel ) {
+	$use = $rel;
+	if ( ! ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ) {
+		$min      = preg_replace( '/\.(css|js)$/', '.min.$1', $rel );
+		$src_time = @filemtime( SGB_DIR . $rel ); // phpcs:ignore WordPress.PHP.NoSilencedErrors.Discouraged
+		$min_time = @filemtime( SGB_DIR . $min ); // phpcs:ignore WordPress.PHP.NoSilencedErrors.Discouraged
+		if ( $min_time && $src_time && $min_time >= $src_time ) {
+			$use = $min;
+		}
+	}
+	$time = @filemtime( SGB_DIR . $use ); // phpcs:ignore WordPress.PHP.NoSilencedErrors.Discouraged
+	return array(
+		'url'  => SGB_URL . $use,
+		'ver'  => $time ? (string) $time : SGB_VERSION,
+		'path' => SGB_DIR . $use,
+	);
+}

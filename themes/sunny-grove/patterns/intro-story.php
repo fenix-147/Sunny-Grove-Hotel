@@ -38,7 +38,7 @@ echo sunny_grove_paragraph( '<a href="' . esc_url( sunny_grove_page_url( 'amenit
 <div class="wp-block-column is-vertically-aligned-center" style="flex-basis:48%">
 <?php
 echo sunny_grove_group_open( 'sg-story__media', array( 'type' => 'default' ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-echo sunny_grove_image( 'story-arch', __( 'Hai bé chơi đùa bên đài phun nước', 'sunny-grove' ), 'sg-arch', 'sg-story__arch' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+echo sunny_grove_image( 'story-arch', __( 'Hai bé chơi đùa bên đài phun nước', 'sunny-grove' ), 'sg-arch-full', 'sg-story__arch' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 echo sunny_grove_image( 'story-circle', __( 'Bữa sáng với bánh sừng bò và nước cam', 'sunny-grove' ), 'sg-circle', 'sg-story__circle' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 echo sunny_grove_group_close(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 ?>

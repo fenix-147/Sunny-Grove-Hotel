@@ -1377,49 +1377,40 @@
 			"key": "thu-ha",
 			"order": 1,
 			"rating": 5,
-			"source": "google",
 			"days_ago": 12,
 			"name": "Thu Hà",
-			"vi": {
-				"text": "Hai bé nhà mình mê Kids Club tới mức không muốn về. Phòng rộng, sạch, nhân viên siêu dễ thương!",
-				"from": "Hà Nội · gia đình 4 người"
+			"lang": "vi",
+			"text": "Hai bé nhà mình mê Kids Club tới mức không muốn về. Phòng rộng, sạch, nhân viên siêu dễ thương!",
+			"tr": {
+				"en": "Our two kids loved the Kids Club so much they didn’t want to leave. Spacious, spotless rooms and the sweetest staff!"
 			},
-			"en": {
-				"text": "Our two kids loved the Kids Club so much they didn’t want to leave. Spacious, spotless rooms and the sweetest staff!",
-				"from": "Hanoi · family of 4"
-			}
+			"url": "https://www.google.com/maps/search/?api=1&query=Sunny+Grove+Hotel+Phu+Quoc"
 		},
 		{
 			"key": "emma-tom",
 			"order": 2,
 			"rating": 5,
-			"source": "booking",
 			"days_ago": 30,
 			"name": "Emma & Tom",
-			"vi": {
-				"text": "Khu vườn rất yên bình và hồ bơi trẻ em hoàn hảo cho bé mới biết đi. Chúng tôi chắc chắn sẽ quay lại.",
-				"from": "Melbourne · gia đình có bé nhỏ"
+			"lang": "en",
+			"text": "The garden is so peaceful and the kids’ pool is perfect for toddlers. We would come back in a heartbeat.",
+			"tr": {
+				"vi": "Khu vườn rất yên bình và hồ bơi trẻ em hoàn hảo cho bé mới biết đi. Chúng tôi chắc chắn sẽ quay lại."
 			},
-			"en": {
-				"text": "The garden is so peaceful and the kids’ pool is perfect for toddlers. We would come back in a heartbeat.",
-				"from": "Melbourne · family with a toddler"
-			}
+			"url": "https://www.google.com/maps/search/?api=1&query=Sunny+Grove+Hotel+Phu+Quoc"
 		},
 		{
 			"key": "minh-quan",
 			"order": 3,
 			"rating": 5,
-			"source": "tripadvisor",
 			"days_ago": 45,
 			"name": "Minh Quân",
-			"vi": {
-				"text": "Gần biển, gần chợ đêm, có xe máy thuê ngay tại lễ tân. Cả nhóm đi chơi rất tiện.",
-				"from": "TP. Hồ Chí Minh · nhóm bạn"
+			"lang": "vi",
+			"text": "Gần biển, gần chợ đêm, có xe máy thuê ngay tại lễ tân. Cả nhóm đi chơi rất tiện.",
+			"tr": {
+				"en": "Close to the beach and the night market, with motorbikes to rent right at reception. So easy for our group to get around."
 			},
-			"en": {
-				"text": "Close to the beach and the night market, with motorbikes to rent right at reception. So easy for our group to get around.",
-				"from": "Ho Chi Minh City · group of friends"
-			}
+			"url": "https://www.google.com/maps/search/?api=1&query=Sunny+Grove+Hotel+Phu+Quoc"
 		}
 	]
 }

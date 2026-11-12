@@ -28,12 +28,14 @@ function sgc_register_blocks() {
 		true
 	);
 	wp_set_script_translations( 'sgc-blocks-editor', 'sunny-grove-core', SGC_DIR . 'languages' );
-	wp_register_style( 'sgc-blocks',SGC_URL . 'assets/blocks.css', array(), SGC_VERSION );
+	$sgc_css = sgc_asset( 'assets/blocks.css' );
+	$sgc_js  = sgc_asset( 'assets/blocks-view.js' );
+	wp_register_style( 'sgc-blocks', $sgc_css['url'], array(), $sgc_css['ver'] );
 	wp_register_script(
 		'sgc-blocks-view',
-		SGC_URL . 'assets/blocks-view.js',
+		$sgc_js['url'],
 		array(),
-		SGC_VERSION,
+		$sgc_js['ver'],
 		array(
 			'in_footer' => true,
 			'strategy'  => 'defer',
@@ -100,7 +102,6 @@ function sgc_editor_data() {
 					'sg_place_tag'    => __( 'Nhãn lọc (Địa điểm)', 'sunny-grove-core' ),
 					'sg_room_feature' => __( 'Tiện nghi trong phòng', 'sunny-grove-core' ),
 				),
-				'reviewSources' => function_exists( 'sg_review_sources' ) ? sg_review_sources() : array(),
 			)
 		) . ';',
 		'before'

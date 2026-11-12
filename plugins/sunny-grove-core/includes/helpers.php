@@ -77,3 +77,29 @@ function sgc_phone_international( $phone ) {
 	}
 	return $digits;
 }
+
+/**
+ * File CSS/JS dùng ngoài website: bản thu gọn (.min) nếu có VÀ mới hơn hoặc bằng file gốc; còn lại dùng file gốc
+ * (sửa file gốc mà chưa tạo lại bản .min thì website tự dùng file gốc – không bao giờ mất thay đổi).
+ * Bật SCRIPT_DEBUG thì luôn dùng file gốc. Số phiên bản (?ver=) theo thời gian sửa file để trình duyệt không giữ bản cũ.
+ *
+ * @param string $rel Đường dẫn trong plugin, vd. 'assets/blocks.css'.
+ * @return array { url, ver, path }
+ */
+function sgc_asset( $rel ) {
+	$use = $rel;
+	if ( ! ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ) {
+		$min      = preg_replace( '/\.(css|js)$/', '.min.$1', $rel );
+		$src_time = @filemtime( SGC_DIR . $rel ); // phpcs:ignore WordPress.PHP.NoSilencedErrors.Discouraged
+		$min_time = @filemtime( SGC_DIR . $min ); // phpcs:ignore WordPress.PHP.NoSilencedErrors.Discouraged
+		if ( $min_time && $src_time && $min_time >= $src_time ) {
+			$use = $min;
+		}
+	}
+	$time = @filemtime( SGC_DIR . $use ); // phpcs:ignore WordPress.PHP.NoSilencedErrors.Discouraged
+	return array(
+		'url'  => SGC_URL . $use,
+		'ver'  => $time ? (string) $time : SGC_VERSION,
+		'path' => SGC_DIR . $use,
+	);
+}
